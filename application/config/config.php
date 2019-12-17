@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['url'] = 'http://'.$_SERVER['HTTP_HOST'].'/';
 
-$config['site'] = 'smk-14-bandung/';
+$config['site'] = 'smk14bandung/';
 $config['base_url'] = $config['url'].$config['site'];
 //$config['base_url'] = $config['url'];
 
