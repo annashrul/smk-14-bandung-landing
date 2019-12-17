@@ -104,7 +104,7 @@
                 </div><!-- /.block-title -->
                     <div class="course-category-one__carousel owl-carousel owl-theme">
                     <div class="item">
-                        <div class="course-category-one__single color-1">
+                        <div class="course-category-one__single color-1 headline">
                             <div class="course-category-one__icon">
                                 <i class="kipso-icon-desktop"></i><!-- /.kipso-icon-camera -->
                             </div><!-- /.course-category-one__icon -->
@@ -216,7 +216,6 @@
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
                                 <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Posted On Jan 19" href="#"><i class="fa fa-calendar-alt"></i></a>
                                     <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
                                     <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
                                 </div><!-- /.blog-one__meta -->
@@ -237,7 +236,6 @@
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
                                 <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Posted On Jan 19" href="#"><i class="fa fa-calendar-alt"></i></a>
                                     <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
                                     <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
                                 </div><!-- /.blog-one__meta -->
@@ -259,7 +257,6 @@
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
                                 <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Posted On Jan 19" href="#"><i class="fa fa-calendar-alt"></i></a>
                                     <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
                                     <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
                                 </div><!-- /.blog-one__meta -->
@@ -290,6 +287,8 @@
                 <h2 class="inner-banner__title text">Gallery</h2><!-- /.inner-banner__title -->
             </div><!-- /.container -->
         </section><!-- /.inner-banner -->
+
+
         <section class="gallery-one">
             <div class="container">
                 <div class="row">
@@ -314,6 +313,46 @@
                 </div><!-- /.row -->
             </div><!-- /.container -->
         </section><!-- /.gallery-one -->
+
+        <section class="brand-two ">
+            <div class="container">
+                <div class="block-title">
+                    <h2 class="block-title__title" style="text-align:center">Our company & partners</h2><!-- /.block-title__title -->
+                </div><!-- /.block-title -->
+                <div class="brand-one__carousel owl-carousel owl-theme">
+                    <div class="item">
+                        <img src="assets/images/brand-1-1.png" alt="">
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <img src="assets/images/brand-1-1.png" alt="">
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <img src="assets/images/brand-1-1.png" alt="">
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <img src="assets/images/brand-1-1.png" alt="">
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <img src="assets/images/brand-1-1.png" alt="">
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <img src="assets/images/brand-1-1.png" alt="">
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <img src="assets/images/brand-1-1.png" alt="">
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <img src="assets/images/brand-1-1.png" alt="">
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <img src="assets/images/brand-1-1.png" alt="">
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <img src="assets/images/brand-1-1.png" alt="">
+                    </div><!-- /.item -->
+                </div><!-- /.brand-one__carousel owl-carousel owl-theme -->
+            </div><!-- /.container -->
+        </section><!-- /.brand-one -->
 
 
         <!-- MAPS -->
@@ -347,7 +386,38 @@
                     </div>
                     <div class="col-lg-6">
         <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJfxip1i3oaC4Rz-hAAQOPSQ0" class="google-map__contact" allowfullscreen></iframe>
-                    </div>    
-                </div>
-            </div><!-- /.container -->
-        </section><!-- /.contact-one -->
+                </div>    
+            </div>
+        </div><!-- /.container -->
+    </section><!-- /.contact-one -->
+    <script src="<?=base_url();?>assets/js/scrollreveal.min.js"></script>
+    <script src="<?=base_url();?>assets/js/jquery.min.js"></script>
+    <script src="<?=base_url();?>assets/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=base_url();?>assets/js/owl.carousel.min.js"></script>
+    <script src="<?=base_url();?>assets/js/waypoints.min.js"></script>
+    <script src="<?=base_url();?>assets/js/jquery.counterup.min.js"></script>
+    <script src="<?=base_url();?>assets/js/TweenMax.min.js"></script>
+    <script src="<?=base_url();?>assets/js/wow.js"></script>
+    <script src="<?=base_url();?>assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="<?=base_url();?>assets/js/countdown.min.js"></script>
+    <script src="<?=base_url();?>assets/js/vegas.min.js"></script>
+    <!-- template scripts -->
+    <script src="<?=base_url();?>assets/js/theme.js">
+        var ScrollReveal;
+        var sr;
+        window.sr = ScrollReveal({
+                        scale: 1,
+                        duration: 750,
+                        delay: 400,
+                        distance: 0,
+                        easing: "cubic-bezier(.4, 0, .2, 1)",
+                    });
+            sr.reveal(".sr-btm", {
+            distance: "3em",
+            origin: "bottom",
+        });
+    </script>
+
+
+
+

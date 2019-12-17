@@ -1,8 +1,42 @@
 <?php $this->load->view('layout/tambahan') ?>
+<?php $this->load->view('layout/header') ?>
+
+
+<section class="team-details" style ="padding:40px">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-12">
+                <table id="prestasi">
+                          <tr>
+                            <th width="10px">No</th>
+                            <th>Ekstrakulikuler</th>
+                            <th>Jadwal Latihan</th>
+                            <th>Pelatih</th>
+                            <th>Pembina</th>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>Paskibra</td>
+                            <td>Jumat, Sabtu</td>
+                            <td>Fathurrahman Alfa, SE (085646551755)</td>
+                            <td>Nina Siti Musa’adah, S.Pd (0811366416)</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>Pecinta Alam</td>
+                            <td>Jumat</td>
+                            <td>Eko Nurdianto (081331298345)</td>
+                            <td>Harry Saputro, S.Pd (082233448470)</td>
+                          </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="blog-one blog-page" style = "padding:40px">
             <div class="container">
-                <h2 class="inner-banner__title" style="text-align:center;color:#011928;padding:30px">Ekstrakulikuler</h2><!-- /.inner-banner__title -->
+                <h2 class="inner-banner__title" style="text-align:center;color:#011928;padding:30px; font-size:22px">Galeri Kegiatan Ekstrakulikuler</h2><!-- /.inner-banner__title -->
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="blog-one__single">
@@ -12,15 +46,8 @@
                                     <!-- /.kipso-icon-plus-symbol --></a>
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
-                                <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Posted On Jan 19" href="#"><i class="fa fa-calendar-alt"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                                </div><!-- /.blog-one__meta -->
-                                <h2 class="blog-one__title"><a href="news-details.html">Taekwondo</a>
-                                </h2><!-- /.blog-one__title -->
-                                <p class="blog-one__text">Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit
-                                    amet finibus eros.</p><!-- /.blog-one__text -->
+                                <h2>Tittle</h2>                                
+                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
                                 <a href="news-details.html" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
                             </div><!-- /.blog-one__content -->
                         </div><!-- /.blog-one__single -->
@@ -33,15 +60,11 @@
                                     <!-- /.kipso-icon-plus-symbol --></a>
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
-                                <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Posted On Jan 19" href="#"><i class="fa fa-calendar-alt"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                                </div><!-- /.blog-one__meta -->
+                                
                                 <h2 class="blog-one__title"><a href="news-details.html">Cheerleader</a>
                                 </h2><!-- /.blog-one__title -->
-                                <p class="blog-one__text">Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit
-                                    amet finibus eros.</p><!-- /.blog-one__text -->
+                                <h2>Tittle</h2>
+                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
                                 <a href="news-details.html" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
                             </div><!-- /.blog-one__content -->
                         </div><!-- /.blog-one__single -->
@@ -54,15 +77,11 @@
                                     <!-- /.kipso-icon-plus-symbol --></a>
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
-                                <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Posted On Jan 19" href="#"><i class="fa fa-calendar-alt"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                                </div><!-- /.blog-one__meta -->
+                                
                                 <h2 class="blog-one__title"><a href="news-details.html">Paskibra</a>
                                 </h2><!-- /.blog-one__title -->
-                                <p class="blog-one__text">Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit
-                                    amet finibus eros.</p><!-- /.blog-one__text -->
+                                <h2>Tittle</h2>
+                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
                                 <a href="news-details.html" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
                             </div><!-- /.blog-one__content -->
                         </div><!-- /.blog-one__single -->

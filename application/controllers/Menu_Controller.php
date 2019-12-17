@@ -7,18 +7,24 @@ class Menu_Controller extends CI_Controller
 {
 	public function index(){
 		$data['isi'] = 'page/beranda/index';
-		$jurusan['tbl_jurusan'] = $this->db->get('tbl_jurusan')->result();
-		// var_dump($jurusan);die();
- 		$this->load->view("layout/wrapper.php",$data, $jurusan);
+		$data['jurusan'] = $this->db->get('tbl_jurusan')->row();
+ 		$hasil =$this->load->view("layout/wrapper.php",$data);
+
+
 	}
 
 	// Navbar
 	function beranda(){
 		$data['isi'] = 'page/beranda/index';
-		$this->load->view("layout/wrapper.php",$data, $jurusan);	
+		$this->load->view("layout/wrapper.php",$data);	
 	}
 	function berita(){
 		$data['isi'] = 'page/berita/index';
+		$this->load->view("layout/wrapper.php",$data);	
+	}
+
+	function detail_berita(){
+		$data['isi'] = 'page/berita/detail_berita';
 		$this->load->view("layout/wrapper.php",$data);	
 	}
 	function selayang(){

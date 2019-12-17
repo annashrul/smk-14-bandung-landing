@@ -36,12 +36,9 @@
                             </li>
                             <li>
                                 <a href="<?=base_url();?>Menu_Controller/berita">Berita</a>
-                                <ul class="sub-menu">
-                                    <li><a href="<?=base_url();?>Menu_Controller/berita">Berita UP TO DATE</a></li>
-                                </ul><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a href="<?=base_url();?>Menu_Controller/selayang">Selayang Pandang</a>
+                                <a href="#">Selayang Pandang</a>
                                 <ul class="sub-menu">
                                     <li><a href="<?=base_url();?>Menu_Controller/sejarah">Sejarah</a></li>
                                     <li><a href="<?=base_url();?>Menu_Controller/visi_misi">Visi & Misi</a></li>
@@ -51,7 +48,7 @@
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a href="<?=base_url();?>Menu_Controller/manajemen">Manajemen</a>
+                                <a href="#">Manajemen</a>
                                 <ul class="sub-menu">
                                     <li><a href="<?=base_url();?>Menu_Controller/kepala_sekolah">Kepala Sekolah</a></li>
                                     <li><a href="<?=base_url();?>Menu_Controller/kepala_tu">Kepala Tata Usaha</a></li>
@@ -62,14 +59,14 @@
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a href="<?=base_url();?>Menu_Controller/so">Struktur Organisasi</a>
+                                <a href="#">Struktur Organisasi</a>
                                 <ul class="sub-menu">
                                     <li><a href="<?=base_url();?>Menu_Controller/bagan_struktur">Bagan Struktur</a></li>
                                     <li><a href="<?=base_url();?>Menu_Controller/divisi">Divisi</a></li>
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a href="<?=base_url();?>Menu_Controller/kegiatan">Kegiatan</a>
+                                <a href="#">Kegiatan</a>
                                 <ul class="sub-menu">
                                     <li><a href="<?=base_url();?>Menu_Controller/osis">OSIS</a></li>
                                     <li><a href="<?=base_url();?>Menu_Controller/eskul">Ekstrakulikuler</a></li>
@@ -77,7 +74,7 @@
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a href="<?=base_url();?>Menu_Controller/informasi">Informasi</a>
+                                <a href="#">Informasi</a>
                                 <ul class="sub-menu">
                                     <li><a href="<?=base_url();?>Menu_Controller/tenaga_pen">Tenaga Pendidikan</a></li>
                                     <li><a href="<?=base_url();?>Menu_Controller/prestasi">Prestasi</a></li>
@@ -89,10 +86,10 @@
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a href="<?=base_url();?>Menu_Controller/keahlian">Paket Keahlian</a>
+                                <a href="#">Paket Keahlian</a>
                                 <ul class="sub-menu">
                                 <?php foreach ($jurusan as $j) { ?>
-                                    <li><a href=""><?php echo $j->nama_jurusan?></a></li>
+                                    <li><a href=""><?php echo $jurusan->nama_jurusan?></a></li>
                                 <?php  }?>
                                             
                                 </ul><!-- /.sub-menu -->
