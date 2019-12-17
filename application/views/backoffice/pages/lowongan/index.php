@@ -1,47 +1,37 @@
- <!-- <div class="box-content"> -->
+<div class="box-content">
     <h4 class="box-title">
-        <div class="row">
-            <?php if($this->session->grant_access!=0):?>
-           <div class="float-right" style="margin-right:15px;margin-bottom:10px;">
-               <a href="#!" class="btn btn-success" id="tambahKategori">Tambah Kategori</a>
-           </div>
-            <?php endif;?>
-           <div class="float-right" style="margin-right:15px;margin-bottom:10px;">
-               <a href="#!" class="btn btn-success" id="tambah">Tambah</a>
-           </div>
+    <div class="row">
+        <div class="col-md-3 float-right">
+            <a href="#" class="btn btn-primary btn-sm float-right" id="tambah">Tambah Lowongan Pekerjaan</a>
         </div>
-
+    </div>
     </h4>
     <!-- /.box-title -->
-           <div class="row">
-               <div class="col-md-9">
-                   <div class="row" id="berita">
-                   </div>
-                   <div class="row">
-                   ` <div class="col-md-12">
-                           <nav class="float-right" aria-label="Page navigation example">
-                                   <ul class="pagination">
-                                   </ul>
-                               </nav>
-                           </div>
-                       </div>
-                   </div>
-               <div class="col-lg-3">
-                   <div class="card p-4">
-                       <div class="card-body">
-                           <h5 class="card-title">Kategori <small><a href="" id="lihatSemua">Lihat Semua</small></a></h5>
-                           <div class="panel panel-default" id="kategori_side">
-                               
-                               
-                           </div>
-                           <!-- <ul class="list-group" id="kategori_side">
-                               <li class="list-group-item active">Suplemen</li>
-                               <li class="list-group-item">Tanah</li>
-                           </ul> -->
-                       </div>
-                   </div>
-               </div>
-           </div>
+    <table class="table table-hover">
+    	<thead>
+    		<tr>
+    			<th>#</th>
+    			<th>Nama</th> 
+    			<th>Username</th> 
+    			<th>Level</th> 
+    			<th>Status</th> 
+    			<th>Dibuat pada</th> 
+    			<th>Tanggal Perubahan</th> 
+    		</tr> 
+    	</thead> 
+    	<tbody id="tbl_lowongan"> 
+    	</tbody> 
+    </table>
+    <div class="row">
+    <div class="col-md-12">
+            <nav class="float-right" aria-label="Page navigation example">
+                    <ul class="pagination">
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal" id="form-berita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -61,12 +51,7 @@
                         <small id="err-title" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
-                        <label for="price">Kategori</label>
-                        <!-- <input type="text" class="form-control" id="qty" placeholder="Qty"> -->
-                        <select name="category" class="form-control" id="category">
-                            <option value="1">Suplemen</option>
-                            <option value="2">Kavling</option>
-                        </select>
+                        <input type="hidden" class="form-control" id="category" value="0">
                     </div>
                     <div class="form-group">
                         <label for="price">Deskripsi</label>
@@ -79,10 +64,6 @@
                         <small id="err-picture" style="display:none" class="form-text text-danger">.</small>
                         <input type="hidden" name="picture" id="picture" require>
                         <img src="" id="preview" alt="" width="100%">
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Tags</label>
-                        <input type="text" class="form-control" id="tags" require>
                     </div>
                 </div>
                     <!-- Modal footer -->

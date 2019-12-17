@@ -11,6 +11,11 @@ function dd($arr){
 function urls($path){
     return base_url().'site/'.$path;
 }
+
+function getImage($filename){
+    return base_url().'upload/'.$filename;
+}
+
 function _uploadImage(){
     $dis = & get_instance();
     $config['upload_path']          = './upload/';

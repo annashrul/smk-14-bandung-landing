@@ -34,12 +34,23 @@ class Site extends CI_Controller
 		$this->load->view($this->layout,$data);
 	}
 
+	function lowongan(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Manajemen Lowongan Pekerjaan',
+			'page'=>'lowongan/index',
+			'js'=>'lowongan/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
 	function beritaAction(){
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
 			if(!$this->akses) $where['id']=$this->id;
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
+			if(isset($_GET['type'])) $where['type']=$_GET['type'];
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('v_berita','id',$where);
 			$limit = 10;
@@ -68,7 +79,7 @@ class Site extends CI_Controller
 					"title"=>$this->input->post('title'),
 					"slug"=>url_title($this->input->post('title'), 'dash', true),
 					"content"=>$this->input->post('content'),
-					"image"=>_uploadImage(),
+					"image"=>getImage(_uploadImage()),
 					"tags"=>$this->input->post('tags'),
 					"status"=>(!$this->akses?'0':'1'),
 					"type"=>$this->input->post('type')
@@ -94,7 +105,7 @@ class Site extends CI_Controller
 				);
 				if (!empty($_FILES["image"]["name"])) {
 					$image = _uploadImage();
-					$data['image']=$image;
+					$data['image']=getImage($image);
 				}
 				$berita = $this->M_crud->update_data('tbl_berita',$data,array("id"=>$this->input->post('id')));
 				echo json_encode($berita, true);
@@ -131,7 +142,8 @@ class Site extends CI_Controller
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
-			if(!$this->akses) $where['id']=$this->id;
+			// if(!$this->akses) $where['id']=$this->id;
+			$where['id !=']=4;
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('tbl_category','id',$where);
 			$limit = 10;
@@ -216,13 +228,13 @@ class Site extends CI_Controller
 		if($action=='get'){
 			if(!$this->akses) $where['id']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
-			$count = $this->M_crud->count_read_data('tbl_category','id',$where);
+			$count = $this->M_crud->count_read_data('v_user','id',$where);
 			$limit = 10;
             $offset = ($limit * ($page-1));
             $jml = ceil($count / $limit);
             $countpage = $jml==0?1:$jml;
 			// ($table, $field, $where=null, $order=null, $group=null, $limit_sum=0, $limit_from=0, $having=null
-			$berita = $this->M_crud->read_data('tbl_category','*',$where,'created_at DESC', null,$limit,$offset);
+			$berita = $this->M_crud->read_data('v_user','*',$where,'created_at DESC', null,$limit,$offset);
 			$result = array(
 				"data"=>$berita,
 				"count"=>$count,
@@ -233,14 +245,18 @@ class Site extends CI_Controller
 			echo json_encode($result, true);
 		}elseif($action=='detail'){
 			$id= $_GET['id'];
-			$berita = $this->M_crud->get_data('tbl_category','*',array('id'=>$id));
+			$berita = $this->M_crud->get_data('v_user','*',array('id'=>$id));
 			echo json_encode($berita, true);
 		}elseif($action=='create'){
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$data = array(
-					"title"=>$this->input->post('title'),
+					"nama"=>$this->input->post('nama'),
+					"username"=>$this->input->post('username'),
+					"password"=>$this->bcrypt->hash_password($this->input->post('password')),
+					"status"=>$this->input->post('status'),
+					"id_level"=>$this->input->post('level'),
 				);
-				$berita = $this->M_crud->create_data('tbl_category',$data);
+				$berita = $this->M_crud->create_data('tbl_user',$data);
 				echo json_encode($berita, true);
 			}else{
 				echo 'FORBIDDEN.';
@@ -249,9 +265,15 @@ class Site extends CI_Controller
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				
 				$data = array(
-					"title"=>$this->input->post('title')
+					"nama"=>$this->input->post('nama'),
+					"username"=>$this->input->post('username'),
+					"status"=>$this->input->post('status'),
+					"id_level"=>$this->input->post('level'),
 				);
-				$berita = $this->M_crud->update_data('tbl_category',$data,array('id'=>$this->input->post('id')));
+				if($this->input->post('password')!=''){
+					$data['password']=$this->bcrypt->hash_password($this->input->post('password'));
+				}
+				$berita = $this->M_crud->update_data('tbl_user',$data,array('id'=>$this->input->post('id')));
 				echo json_encode($berita, true);
 			}else{
 				echo 'FORBIDDEN.';
@@ -262,7 +284,89 @@ class Site extends CI_Controller
 				$data = array(
 					"id"=>$this->input->post('id')
 				);
-				$berita = $this->M_crud->delete_data('tbl_category',$data);
+				$berita = $this->M_crud->delete_data('tbl_user',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='approval'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"status"=>$this->input->post('status')
+				);
+				$berita = $this->M_crud->update_data('tbl_user',$data,array("id"=>$this->input->post('id')));
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}else{
+			echo 'FORBIDDEN.';
+		}
+	}
+
+	function userlevel(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Manajemen User',
+			'page'=>'user/index',
+			'js'=>'user/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
+	function userLevelAction(){
+		$action = $_GET['aksi'];
+		$where = array();
+		if($action=='get'){
+			if(!$this->akses) $where['id']=$this->id;
+			$page= isset($_GET['page'])?$_GET['page']:1;
+			$count = $this->M_crud->count_read_data('tbl_user_level','id',$where);
+			$limit = 10;
+            $offset = ($limit * ($page-1));
+            $jml = ceil($count / $limit);
+            $countpage = $jml==0?1:$jml;
+			// ($table, $field, $where=null, $order=null, $group=null, $limit_sum=0, $limit_from=0, $having=null
+			$berita = $this->M_crud->read_data('tbl_user_level','*',$where,'created_at DESC', null,$limit,$offset);
+			$result = array(
+				"data"=>$berita,
+				"count"=>$count,
+				"current_page"=>(int)$page,
+				"perpage"=>$limit,
+				"last_page"=>$countpage
+			);
+			echo json_encode($result, true);
+		}elseif($action=='detail'){
+			$id= $_GET['id'];
+			$berita = $this->M_crud->get_data('tbl_user_level','*',array('id'=>$id));
+			echo json_encode($berita, true);
+		}elseif($action=='create'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"title"=>$this->input->post('title'),
+				);
+				$berita = $this->M_crud->create_data('tbl_user',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='update'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				
+				$data = array(
+					"title"=>$this->input->post('title')
+				);
+				$berita = $this->M_crud->update_data('tbl_user_level',$data,array('id'=>$this->input->post('id')));
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='delete'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+				$data = array(
+					"id"=>$this->input->post('id')
+				);
+				$berita = $this->M_crud->delete_data('tbl_user_level',$data);
 				echo json_encode($berita, true);
 			}else{
 				echo 'FORBIDDEN.';
@@ -273,7 +377,7 @@ class Site extends CI_Controller
 					"id"=>$this->input->post('id'),
 					"status"=>$this->input->post('status')
 				);
-				$berita = $this->M_crud->update_data('tbl_category',$data);
+				$berita = $this->M_crud->update_data('tbl_user_level',$data);
 				echo json_encode($berita, true);
 			}else{
 				echo 'FORBIDDEN.';

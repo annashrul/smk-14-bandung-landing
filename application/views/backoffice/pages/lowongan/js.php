@@ -6,8 +6,6 @@
     };
     $(document).ready(function(){
         
-        loadCategory();
-        categorySide();
         let searchParams = new URLSearchParams(window.location.search)
         if(searchParams.has('page')) get(searchParams.get('page'));
         else get();
@@ -85,71 +83,61 @@
         // if(localStorage.getItem('berita_cate')!=null||localStorage.getItem('berita_cate')!='') {$("#ID"+stringToHex(localStorage.getItem('berita_cate'))).addClass("active");console.log(localStorage.getItem('berita_cate'))}
         $.ajax({
             // pages+search+category,
-            url: "<?=urls('beritaAction')?>?aksi=get&type=1"+pages+search+category,
+            url: "<?=urls('beritaAction')?>?aksi=get&type=2"+pages+search+category,
             beforeSend: function(result){
                 NProgress.start();
                 //HoldOn.open(optionsLoader);
             },
             success: function(data){
-                NProgress.done();
-                //HoldOn.close();
-                if(data.length!==0){
-                    const result = JSON.parse(data);
+                NProgress.done();HoldOn.close();
+                const res = JSON.parse(data);
+                if(data.length>0){
+                    // const result = data.result;
+                    console.log(res);
+                    const result = res.data;
                     let card=''
                     let pagination=''
-                            $.each(result.data,function(key,item){
-                                card+='<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">'+
-                                        '<div class="single-article blog-content">'+
-                                                '<div class="box-img article-img">'+
-                                                    '<div class="thumb" style="background-image: url(\''+item.image+'\'); background-size: cover; background-position: center center;height:180px"></div>'+
-                                                '</div>'+
-                                            '<div class="single-desc">'+
-                                                '<div class="row">'+
-                                                    '<div class="col-md-9">'+
-                                                        '<a class="label label-primary" style="font-weight:600">'+
-                                                                item.category+
-                                                        '</a> '+
-                                                        (item.status==0?
-                                                        '<a class="label label-danger"  style="font-weight:600">Tidak Aktif</a>':'<a class="label label-success" style="font-weight:600">Aktif</a>')+
-                                                        '<h1 class="single-title" style="margin-top:5px;margin-bottom:2px;font-size:1.1em">'+(item.title.length>20?item.title.slice(0,20)+'...':item.title)+'</h1>'+
-                                                    '</div>'+
-                                                    '<div class="col-md-3">'+
-                                                    ' <div class="btn-group float-right">'+
-                                                        '<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
-                                                        '<span class="caret"></span>'+
-                                                    ' </button>'+
-                                                        '<ul class="dropdown-menu">'+
-                                                            '<li><a target="_blank" href="<?=base_url()?>berita/'+item.slug+'"><i class="fa fa-eye"></i> Detail</a></li>'+
-                                                            '<li><a href="#" onclick="update(\''+item.id+'\')"><i class="fa fa-edit"></i> Update</a></li>'+
-                                                            (item.status==0?'<li><a href="#"  onclick="approval(\''+item.id+'\',\'1\')"><i class="fa fa-check"></i> Aktifkan</a></li>':'<li><a href="#"  onclick="approval(\''+item.id+'\',\'0\')"><i class="fa fa-close"></i> Non-Aktifkan</a></li>')+
-                                                            // '<li><a href="#"><i class="fa fa-trash"></i> Hapus</a></li>'+
-                                                        '</ul>'+
-                                                        '</div>'+
-                                                    '</div>'+
-                                                '</div>'+
-                                                '<div style="font-weight:100;font-size:.8em">'+
-                                                'Oleh: Admin'+
-                                                '</div>'+
-                                                '<p>'+(item.content.length>80?item.content.slice(0,80).replace(/(<([^>]+)>)/ig,"")+'...':item.content.replace(/(<([^>]+)>)/ig,""))+
-                                                '</p>'+
-                                                '</div></div></div>';
-                            })
-                        var totalPages = result.last_page;
-                        var currentPage = result.current_page;
-                        $pagination.twbsPagination('destroy');
-                        $pagination.twbsPagination($.extend({}, defaultOpts, {
-                            startPage: currentPage,
-                            totalPages: totalPages
-                        })).on('page', function (evt, page) {
-                            console.log(page);
-                            localStorage.setItem('berita_page',page);
-                            get(page)
-                        });
-                        $("#berita").html(card);
-                    }else{
-                        $("#berita").html('<div style="text-align:center">Tidak ada data.</div>');
-                    }
-                // id(result.)
+                        $.each(result,function(key,item){
+                            card+='<tr><td><div class="dropdown">'+
+                                        '<button type="button" class="btn btn-default btn-xs  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>'+
+                                        '<ul class="dropdown-menu"><input type="hidden" id="getId'+key+'" value="'+item.id+'">'+
+                                            '<li><a href="#" onClick="event.preventDefault();update(\''+item.id+'\');"><i class="mdi mdi-tooltip-edit"></i> Update</a></li>'+
+                                            '<li><a href="#" onClick="event.preventDefault();approve(\''+item.status+'\',\''+item.id+'\');"><i class="mdi mdi-account-check"></i> '+(item.status===0?'Aktifkan':'Non-Aktifkan')+'</a></li>'+
+                                            // '<li><a href="#" onClick="event.preventDefault();hapus(\''+item.id+'\');"><i class="mdi mdi-delete-forever"></i> Delete</a></li>'+
+                                        '</ul></div></td>'+
+                                '<td>'+item.nama+'</td>'+
+                                '<td>'+item.username+'</td>'+
+                                '<td>'+item.level+'</td>'+
+                                '<td>'+(item.status=='1'?'<span class="label label-success">Aktif</span>':'<span class="label label-danger">Non-Aktif</span>')+'</td>'+
+                                '<td>'+item.created_at+'</td>'+
+                                '<td>'+item.updated_at+'</td>'+
+                                '<td>';
+                            card+='</td>'+
+                            '</tr>';
+
+                        })
+                        pagination+='<li class="page-item '+(res.current_page===1?'disabled':'')+'">'+
+                                    '<a class="page-link" href="#" aria-label="Previous"  onClick="event.preventDefault();get('+(res.current_page-1)+');">'+
+                                        '<span aria-hidden="true">&laquo;</span>'+
+                                        '<span class="sr-only">Previous</span>'+
+                                    '</a>'+
+                                    '</li>';
+                        for($i=0;$i<res.last_page;$i++){
+                            pagination+='<li class="page-item '+(res.current_page===$i+1?'active':'')+'">'+
+                                            '<a class="page-link" href="#" type="button" onClick="event.preventDefault();get('+($i+1)+');">'+($i+1)+'</a>'+
+                                        '</li>';
+                        }
+                            pagination+='<li class="page-item '+(res.current_page===res.last_page?'disabled':'')+'">'+
+                                    '<a class="page-link" href="#" aria-label="Next" onClick="event.preventDefault();get('+(res.current_page+1)+');">'+
+                                        '<span aria-hidden="true">&raquo;</span>'+
+                                        '<span class="sr-only">Next</span>'+
+                                    '</a>'+
+                                    '</li>';
+                    $(".pagination").html(pagination);
+                    $("#tbl_lowongan").html(card);
+                }else{
+                    card+="<div class='col-md-12'><div class='text-center'>Tidak ada data.</div></div>"
+                }
             }
         });
     }
@@ -173,9 +161,7 @@
                     $(".modal-title").html("Update: "+res.title);
                     $("#title").val(res.title);
                     $("#idItem").val(res.id);
-                    $("#tags").val(res.tags);
                     $("#btn_simpan").text("Update")
-                    $('#category option[value='+res.id_category+']').attr('selected','selected');
                     
                     $('#preview').attr("src",res.image);
                     CKEDITOR.instances['caption'].setData(res.content);
@@ -194,23 +180,21 @@
         let title=$("#title").val();
         let caption=CKEDITOR.instances['caption'].getData();
         console.log(caption);
-        let category=$("#category").val();
         let tags=$("#tags").val();
         if(title===""){$("#err-title").css("display", "block");$("#err-title").html("Nama produk tidak boleh kosong.")}
-        if(category===""){$("#err-category").css("display", "block");$("#err-category").html("Kategori   produk tidak boleh kosong.")}
         if(caption===""){$("#err-caption").css("display", "block");$("#err-caption").html("Deskripsi tidak boleh kosong.")}
 
         var fd =  new FormData();
         fd.append( 'id', id);
         fd.append( 'title', title);
-        fd.append( 'id_category', category);
+        fd.append( 'id_category', '0');
         // fd.append( 'image', picture);
         if ($('input[type=file]')[0].files.length !== 0) {
             fd.append( 'image', $('input[type=file]')[0].files[0])
         }
         fd.append( 'content', caption);
-        fd.append( 'tags', tags);
-        fd.append( 'type', 1);
+        fd.append( 'type', 2);
+        fd.append( 'tags', '-');
 
         if(title!=="" && caption!==""){
             $.ajax({
@@ -248,26 +232,22 @@
 
         let title=$("#title").val();
         let caption=CKEDITOR.instances['caption'].getData();
-        console.log(caption);
-        let category=$("#category").val();
-        let tags=$("#tags").val();
         let picture=$("#file2").val();
         if(title===""){$("#err-title").css("display", "block");$("#err-title").html("Nama produk tidak boleh kosong.")}
-        if(category===""){$("#err-category").css("display", "block");$("#err-category").html("Kategori   produk tidak boleh kosong.")}
         if(picture===""){$("#err-picture").css("display", "block");$("#err-picture").html("Gambar tidak boleh kosong.")}
         if(caption===""){$("#err-caption").css("display", "block");$("#err-caption").html("Deskripsi tidak boleh kosong.")}
 
         var fd =  new FormData();
         fd.append( 'title', title);
-        fd.append( 'id_category', category);
+        fd.append( 'id_category', 0);
         // fd.append( 'image', picture);
         fd.append( 'image', $('input[type=file]')[0].files[0])
         fd.append( 'content', caption);
-        fd.append( 'tags', tags);
-        fd.append( 'type', 1);
+        fd.append( 'type', 2);
+        fd.append( 'tags', '-');
 
         
-        if(title!=="" &&  caption!=="" && category>0){
+        if(title!=="" &&  caption!==""){
             console.log("oke")
             $.ajax({
                         url:  "<?=urls('beritaAction')?>?aksi=create",
