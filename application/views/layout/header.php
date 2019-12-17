@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="<?=base_url();?>assets/css/style.css">
     <link rel="stylesheet" href="<?=base_url();?>assets/css/responsive.css">
 
+    
     <script src="<?=base_url();?>assets/js/jquery.min.js"></script>
     <script src="<?=base_url();?>assets/js/bootstrap.bundle.min.js"></script>
     <script src="<?=base_url();?>assets/js/owl.carousel.min.js"></script>
@@ -39,7 +40,9 @@
     <script src="<?=base_url();?>assets/js/jquery.magnific-popup.min.js"></script>
     <script src="<?=base_url();?>assets/js/countdown.min.js"></script>
     <script src="<?=base_url();?>assets/js/vegas.min.js"></script>
-
     <!-- template scripts -->
     <script src="<?=base_url();?>assets/js/theme.js"></script>
+    <script src="<?=base_url();?>assets/js/scrollreveal.min.js"></script>
+    
+
 </head>

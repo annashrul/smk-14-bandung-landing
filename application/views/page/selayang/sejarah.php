@@ -1,6 +1,8 @@
 <?php $this->load->view('layout/tambahan') ?>
+<?php $this->load->view('layout/header') ?>
 
-<section class="" style = "padding:40px">
+
+<section class="team-one">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">

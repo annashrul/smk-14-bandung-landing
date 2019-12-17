@@ -1,8 +1,26 @@
 <?php $this->load->view('layout/tambahan') ?>
+<?php $this->load->view('layout/header') ?>
 
-<section class="blog-one blog-page">
+
+<section class="team-details" style="padding:40px">
             <div class="container">
-                <h2 class="inner-banner__title" style="text-align:center;color:#011928;padding:30px">OSIS</h2><!-- /.inner-banner__title -->
+                <div class="row justify-content-between">
+                    <div class="col-lg-6 col-lg-offset-3">
+                        <div class="team-one__single">
+                            <div class="team-one__image">
+                                <img src="<?=base_url();?>assets/img/osis.jpg" alt="" width="100%">
+                            </div><!-- /.team-one__image -->
+                        </div><!-- /.team-one__single -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+</section><!-- /.team-details -->
+
+
+
+<section class="blog-one blog-page" style="padding:40px">
+            <div class="container">
+                <h2 class="inner-banner__title" style="text-align:center;color:#011928;padding:30px; font-size:22px">Galeri Kegiatan OSIS</h2><!-- /.inner-banner__title -->
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="blog-one__single">
@@ -12,15 +30,8 @@
                                     <!-- /.kipso-icon-plus-symbol --></a>
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
-                                <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Posted On Jan 19" href="#"><i class="fa fa-calendar-alt"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                                </div><!-- /.blog-one__meta -->
-                                <h2 class="blog-one__title"><a href="news-details.html">Summer high school journalism camp</a>
-                                </h2><!-- /.blog-one__title -->
-                                <p class="blog-one__text">Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit
-                                    amet finibus eros.</p><!-- /.blog-one__text -->
+                                <h2>Tittle</h2>
+                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
                                 <a href="news-details.html" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
                             </div><!-- /.blog-one__content -->
                         </div><!-- /.blog-one__single -->
@@ -33,16 +44,8 @@
                                     <!-- /.kipso-icon-plus-symbol --></a>
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
-                                <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Posted On Jan 19" href="#"><i class="fa fa-calendar-alt"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                                </div><!-- /.blog-one__meta -->
-                                <h2 class="blog-one__title"><a href="news-details.html">Get a tips to develop a quality
-                                        education</a>
-                                </h2><!-- /.blog-one__title -->
-                                <p class="blog-one__text">Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit
-                                    amet finibus eros.</p><!-- /.blog-one__text -->
+                                <h2>Tittle</h2>
+                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
                                 <a href="news-details.html" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
                             </div><!-- /.blog-one__content -->
                         </div><!-- /.blog-one__single -->
@@ -55,16 +58,8 @@
                                     <!-- /.kipso-icon-plus-symbol --></a>
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
-                                <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Posted On Jan 19" href="#"><i class="fa fa-calendar-alt"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                                </div><!-- /.blog-one__meta -->
-                                <h2 class="blog-one__title"><a href="news-details.html">Learn variety of programs and
-                                        courses</a>
-                                </h2><!-- /.blog-one__title -->
-                                <p class="blog-one__text">Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit
-                                    amet finibus eros.</p><!-- /.blog-one__text -->
+                                <h2>Tittle</h2>                            
+                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
                                 <a href="news-details.html" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
                             </div><!-- /.blog-one__content -->
                         </div><!-- /.blog-one__single -->

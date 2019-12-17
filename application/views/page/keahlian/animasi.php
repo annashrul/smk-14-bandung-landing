@@ -1,10 +1,12 @@
 <?php $this->load->view('layout/tambahan') ?>
-<section class="" style = "padding:40px">
+<?php $this->load->view('layout/header') ?>
+
+<section class="team-details">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="blog-one__single">
-                            <div class="blog-one__image">
+                            <div class="blog-one__image2">
                                 <img src="<?=base_url();?>assets/img/animasi.jpg" alt="">
                             </div><!-- /.blog-one__image -->
                         </div><!-- /.blog-one__single -->
