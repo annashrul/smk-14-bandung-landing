@@ -23,7 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://192.168.1.8/smk14bandung/';
+$config['url'] = 'http://'.$_SERVER['HTTP_HOST'].'/';
+
+$config['site'] = 'smk-14-bandung/';
+$config['base_url'] = $config['url'].$config['site'];
+//$config['base_url'] = $config['url'];
 
 /*
 |--------------------------------------------------------------------------
