@@ -2,7 +2,7 @@
     <h4 class="box-title">
     <div class="row">
         <div class="col-md-3 float-right">
-            <a href="#" class="btn btn-primary btn-sm float-right" id="tambah">Tambah Lowongan Pekerjaan</a>
+            <a href="#" class="btn btn-primary btn-sm float-right" id="tambah">Tambah Manajemen</a>
         </div>
     </div>
     </h4>
@@ -11,11 +11,10 @@
     	<thead>
     		<tr>
     			<th>#</th>
-    			<th>image</th> 
-    			<th>title</th> 
-    			<th>content</th> 
-    			<th>Penulis</th> 
-    			<th>Status</th> 
+    			<th>photo</th> 
+    			<th>Nama</th> 
+    			<th>Jabatan</th> 
+    			<th>Sambutan</th> 
     			<th>Dibuat pada</th> 
     		</tr> 
     	</thead> 
@@ -45,21 +44,29 @@
             <form id="addBerita">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="title">Judul</label>
-                        <input type="text" class="form-control" id="title" require>
+                        <label for="title">Nama</label>
+                        <input type="text" class="form-control" id="nama" require>
                         <input type="hidden" name="idItem" id="idItem">
-                        <small id="err-title" style="display:none" class="form-text text-danger">.</small>
+                        <small id="err-nama" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
-                        <input type="hidden" class="form-control" id="category" value="0">
+                        <label for="title">NIP</label>
+                        <input type="text" class="form-control" id="nip" require>
+                        <small id="err-nip" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
-                        <label for="price">Deskripsi</label>
+                        <label for="price">Jabatan</label>
+                        <select name="jabatan" class="form-control" id="jabatan">
+                            <option value="1"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Sambutan</label>
                         <textarea name="caption" class="form-control" id="caption" cols="30" rows="10"></textarea>
                         <small id="err-caption" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
-                        <label for="">Gambar</label>
+                        <label for="">Photo</label>
                         <input type="file" id="file2" class="form-control" onchange="readURL(this,'preview')">
                         <small id="err-picture" style="display:none" class="form-text text-danger">.</small>
                         <input type="hidden" name="picture" id="picture" require>
