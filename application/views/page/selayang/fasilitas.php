@@ -1,12 +1,9 @@
 <?php $this->load->view('layout/tambahan') ?>
+<?php $this->load->view('layout/header') ?>
 
-<section class="blog-one blog-page">
+
+<section class="team-one">
             <div class="container">
-            <div class="sidebar__single sidebar__search col-md-12 col-md-offset-5">
-                                 <h2 class="blog-one__title">FASILITAS
-                                </h2><!-- /.blog-one__title -->
-                                
-                             </div><!-- /.sidebar__single -->
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="blog-one__single">
@@ -16,25 +13,9 @@
                                     <!-- /.kipso-icon-plus-symbol --></a>
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
-                                
-                                <h2 class="blog-one__title"><a href="news-details.html">Lapangan Olahraga</a>
-                                </h2><!-- /.blog-one__title -->
-                                
-                            </div><!-- /.blog-one__content -->
-                        </div><!-- /.blog-one__single -->
-                    </div><!-- /.col-lg-4 -->
-                    <div class="col-lg-4">
-                        <div class="blog-one__single">
-                            <div class="blog-one__image">
-                                <img src="<?=base_url();?>assets/img/lab.jpg" alt="">
-                                <a class="blog-one__plus" href="news-details.html"><i class="kipso-icon-plus-symbol"></i>
-                                    <!-- /.kipso-icon-plus-symbol --></a>
-                            </div><!-- /.blog-one__image -->
-                            <div class="blog-one__content text-center">
-                                
-                                <h2 class="blog-one__title"><a href="news-details.html">Lab Bahasa</a>
-                                </h2><!-- /.blog-one__title -->
-
+                                <h2>Tittle</h2>
+                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
+                                <a href="news-details.html" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
                             </div><!-- /.blog-one__content -->
                         </div><!-- /.blog-one__single -->
                     </div><!-- /.col-lg-4 -->
@@ -46,11 +27,23 @@
                                     <!-- /.kipso-icon-plus-symbol --></a>
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
-                                
-                                <h2 class="blog-one__title"><a href="news-details.html">Garasi Otomotif
-                                        </a>
-                                </h2><!-- /.blog-one__title -->
-                                
+                                <h2>Tittle</h2>                                
+                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
+                                <a href="news-details.html" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
+                            </div><!-- /.blog-one__content -->
+                        </div><!-- /.blog-one__single -->
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <div class="blog-one__single">
+                            <div class="blog-one__image">
+                                <img src="<?=base_url();?>assets/img/lab_komputer.jpg" alt="">
+                                <a class="blog-one__plus" href="news-details.html"><i class="kipso-icon-plus-symbol"></i>
+                                    <!-- /.kipso-icon-plus-symbol --></a>
+                            </div><!-- /.blog-one__image -->
+                            <div class="blog-one__content text-center">
+                                <h2>Tittle</h2>                        
+                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
+                                <a href="news-details.html" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
                             </div><!-- /.blog-one__content -->
                         </div><!-- /.blog-one__single -->
                     </div><!-- /.col-lg-4 -->
