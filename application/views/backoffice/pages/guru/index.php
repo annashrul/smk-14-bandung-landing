@@ -2,7 +2,7 @@
     <h4 class="box-title">
     <div class="row">
         <div class="col-md-3 float-right">
-            <a href="#" class="btn btn-primary btn-sm float-right" id="tambah">Tambah Manajemen</a>
+            <a href="#" class="btn btn-primary btn-sm float-right" id="tambah">Tambah Data Guru</a>
         </div>
     </div>
     </h4>
@@ -13,8 +13,8 @@
     			<th>#</th>
     			<th>photo</th> 
     			<th>Nama</th> 
-    			<th>Jabatan</th> 
-    			<th>Sambutan</th> 
+    			<th>NIP</th> 
+    			<th>Mata Pelajaran</th> 
     			<th>Dibuat pada</th> 
     		</tr> 
     	</thead> 
@@ -55,15 +55,9 @@
                         <small id="err-nip" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
-                        <label for="price">Jabatan</label>
-                        <select name="jabatan" class="form-control" id="jabatan">
-                            <option value="1"></option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Sambutan</label>
-                        <textarea name="caption" class="form-control" id="caption" cols="30" rows="10"></textarea>
-                        <small id="err-caption" style="display:none" class="form-text text-danger">.</small>
+                        <label for="title">Mata Pelajaran</label>
+                        <input type="text" class="form-control" id="matpel" require>
+                        <small id="err-matpel" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
                         <label for="">Photo</label>

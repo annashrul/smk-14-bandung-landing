@@ -40,6 +40,15 @@
 				<li>
 					<a class="waves-effect" href="<?=urls('manajemen')?>"><i class="menu-icon fa fa-newspaper-o"></i><span>Manajemen</span></a>
                 </li>
+				<li>
+					<a class="waves-effect" href="<?=urls('guru')?>"><i class="menu-icon fa fa-newspaper-o"></i><span>guru</span></a>
+                </li>
+				<li>
+					<a class="waves-effect" href="<?=urls('informasi')?>"><i class="menu-icon fa fa-newspaper-o"></i><span>informasi</span></a>
+                </li>
+				<li>
+					<a class="waves-effect" href="<?=urls('jurusan')?>"><i class="menu-icon fa fa-newspaper-o"></i><span>jurusan</span></a>
+                </li>
 				<!-- <li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-file-o"></i><span>Master Data</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">

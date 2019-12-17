@@ -16,13 +16,14 @@
                 $("#form-berita").modal();
                 if(!$("#form-berita").parent().is('body')) $("#form-berita").appendTo("body");
                 // $("#form-berita").appendTo("body");
-                $(".modal-title").html("Tambah Lowongan Pekerjaan");
+                $(".modal-title").html("Tambah Data Guru");
                 $("#title").val("");
-                CKEDITOR.instances['caption'].setData('');
 
                 $("#file2").val("");
                 $("#nama").val("");
-                $("#jabatan").text("");
+                $("#jabatan").val("");
+                $("#nip").val("");
+                $("#matpel").val("");
                 $("#idItem").val();
                 $("#btn_simpan").text("Simpan")
                 $("#notif-container").show();
@@ -80,7 +81,7 @@
 
         $.ajax({
             // pages+search+category,
-            url: "<?=urls('manajemenAction')?>?aksi=get"+pages+search+category,
+            url: "<?=urls('manajemenAction')?>?aksi=get&type=guru"+pages+search+category,
             beforeSend: function(result){
                 NProgress.start();
                 //HoldOn.open(optionsLoader);
@@ -104,8 +105,8 @@
                                         '</ul></div></td>'+
                                 '<td><img src="'+item.image+'" width="150px"/></td>'+
                                 '<td>'+item.nama+'</td>'+
-                                '<td>'+item.nama_jabatan+'</td>'+
-                                '<td>'+item.deskripsi.substr(0,120).replace(/(<([^>]+)>)/ig,"")+'...</td>'+
+                                '<td>'+item.nip+'</td>'+
+                                '<td>'+item.matpel+'</td>'+
                                 '<td>'+item.created_at+'</td>'+
                                 '<td>';
                             card+='</td>'+
@@ -157,12 +158,11 @@
                     $(".modal-title").html("Update: "+res.title);
                     $("#idItem").val(res.id);
                     $("#nama").val(res.nama);
-                    $("#jabatan").val(res.jabatan);
+                    $("#matpel").val(res.matpel);
                     $("#nip").val(res.nip);
                     $("#btn_simpan").text("Update")
                     
                     $('#preview').attr("src",res.image);
-                    CKEDITOR.instances['caption'].setData(res.deskripsi);
                     // $(".modal-body").html(data);
                 }else{
                     $('#form-berita').modal('hide');
@@ -176,24 +176,23 @@
     function goUpdate(){
         let id=$("#idItem").val();
         let nama=$("#nama").val();
-        let jabatan=$("#jabatan").val();
         let nip=$("#nip").val();
-        let caption=CKEDITOR.instances['caption'].getData();
+        let matpel=$("#matpel").val();
         let picture=$("#file2").val();
         if(nama===""){$("#err-nama").css("display", "block");$("#err-nama").html("Nama produk tidak boleh kosong.")}
-        if(caption===""){$("#err-caption").css("display", "block");$("#err-caption").html("Deskripsi tidak boleh kosong.")}
 
         var fd =  new FormData();
         fd.append( 'id', id);
         fd.append( 'nama', nama);
-        fd.append( 'jabatan', jabatan);
+        fd.append( 'jabatan', 7);
+        fd.append( 'matpel', matpel);
         fd.append( 'nip', nip);
         fd.append( 'image', $('input[type=file]')[0].files[0])
-        fd.append( 'deskripsi', caption);
+        fd.append( 'deskripsi', '-');
 
-        if(nama!=="" && caption!==""){
+        if(nama!=="" && matpel!==""){
             $.ajax({
-                url: "<?=urls('manajemenAction')?>?aksi=update&id="+id, 
+                url: "<?=urls('manajemenAction')?>?aksi=update", 
                 type: "post",
                 headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -226,50 +225,49 @@
         console.log("insert");
 
         let nama=$("#nama").val();
-        let jabatan=$("#jabatan").val();
         let nip=$("#nip").val();
-        let caption=CKEDITOR.instances['caption'].getData();
+        let matpel=$("#matpel").val();
         let picture=$("#file2").val();
         if(nama===""){$("#err-nama").css("display", "block");$("#err-nama").html("Nama produk tidak boleh kosong.")}
         if(picture===""){$("#err-picture").css("display", "block");$("#err-picture").html("Gambar tidak boleh kosong.")}
-        if(caption===""){$("#err-caption").css("display", "block");$("#err-caption").html("Deskripsi tidak boleh kosong.")}
 
         var fd =  new FormData();
         fd.append( 'nama', nama);
-        fd.append( 'jabatan', jabatan);
+        fd.append( 'jabatan', 7);
+        fd.append( 'matpel', matpel);
         fd.append( 'nip', nip);
         fd.append( 'image', $('input[type=file]')[0].files[0])
-        fd.append( 'deskripsi', caption);
+        fd.append( 'deskripsi', '-');
         
-        if(nama!=="" && jabatan!=="" &&  caption!==""){
+        if(nama!=="" && matpel!=="" ){
             console.log("oke")
             $.ajax({
-                        url:  "<?=urls('manajemenAction')?>?aksi=create",
-                        type: "post",
-                        headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                        data:fd,
-                        processData: false,
-                        contentType: false,
-                        dataType: 'json',
-                        beforeSend: function(result){
-                            NProgress.start();
-                        },
-                        success: function(data){
-                            NProgress.done();
-                            if(data){
-                                $("#form-berita").modal('hide');
-                            toastr["success"]("Berhasil menambah data.")
-                            }else{
-                                toastr["error"]("Gagal menambah data.")
-                            }
-                            get();
+                url:  "<?=urls('manajemenAction')?>?aksi=create",
+                type: "post",
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                data:fd,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                beforeSend: function(result){
+                    NProgress.start();
+                },
+                success: function(data){
+                    NProgress.done();
+                    if(data){
+                        $("#form-berita").modal('hide');
+                    toastr["success"]("Berhasil menambah data.")
+                    }else{
+                        toastr["error"]("Gagal menambah data.")
+                    }
+                    get();
 
                     // id(result.)
-                        }
-                    });
                 }
+            });
+        }
     }
 
     function approval(status,id){

@@ -190,7 +190,7 @@
         fd.append( 'nip', nip);
         fd.append( 'image', $('input[type=file]')[0].files[0])
         fd.append( 'deskripsi', caption);
-
+        fd.append( 'matpel', '-');
         if(nama!=="" && caption!==""){
             $.ajax({
                 url: "<?=urls('manajemenAction')?>?aksi=update&id="+id, 
@@ -240,6 +240,7 @@
         fd.append( 'nip', nip);
         fd.append( 'image', $('input[type=file]')[0].files[0])
         fd.append( 'deskripsi', caption);
+        fd.append( 'matpel', '-');
         
         if(nama!=="" && jabatan!=="" &&  caption!==""){
             console.log("oke")
