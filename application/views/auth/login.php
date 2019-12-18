@@ -56,7 +56,7 @@ $this->load->view('layout/header');
           <button type="submit" class="rkmd-btn btn-lightBlue ripple-effect float-right"><span>Sign in</span></button>
         </div>
         <div class="footer"><a href="#">Forgot your password?</a></div>
-      </form>
+  </form>
   </div>
   <div class="card login-register">
     <h1 class="title">Create an account</h1>

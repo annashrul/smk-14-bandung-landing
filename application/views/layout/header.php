@@ -43,6 +43,5 @@
     <!-- template scripts -->
     <script src="<?=base_url();?>assets/js/theme.js"></script>
     <script src="<?=base_url();?>assets/js/scrollreveal.min.js"></script>
-    
 
 </head>

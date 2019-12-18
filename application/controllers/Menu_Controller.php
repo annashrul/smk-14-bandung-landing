@@ -7,16 +7,14 @@ class Menu_Controller extends CI_Controller
 {
 	public function index(){
 		$data['isi'] = 'page/beranda/index';
-		$data['jurusan'] = $this->db->get('tbl_jurusan')->row();
- 		$hasil =$this->load->view("layout/wrapper.php",$data);
-
-
+		$data['jurusan'] = $this->m_crud->read_data("tbl_jurusan","*");
+		$data['berita'] = $this->m_crud->read_data("tbl_berita","*",null,"id desc",null,3);
+ 		$this->load->view("layout/wrapper.php",$data);
 	}
-
 	// Navbar
 	function beranda(){
 		$data['isi'] = 'page/beranda/index';
-		$this->load->view("layout/wrapper.php",$data);	
+		$this->load->view("layout/wrapper.php",$data);
 	}
 	function berita(){
 		$data['isi'] = 'page/berita/index';
@@ -107,10 +105,12 @@ class Menu_Controller extends CI_Controller
 	// Struktur Organisasi
 
 	function bagan_struktur(){
-		$data['isi'] = 'page/so/bagan_struktur';
+        $data['struktur'] = $this->m_crud->get_data("tbl_berita","*","id='2'");
+        $data['isi'] = 'page/so/bagan_struktur';
 		$this->load->view("layout/wrapper.php"	,$data);	
 	}
 	function divisi(){
+        $data['divisi'] = $this->m_crud->get_data("tbl_berita","*","id='3'");
 		$data['isi'] = 'page/so/divisi';
 		$this->load->view("layout/wrapper.php"	,$data);	
 	}
@@ -208,7 +208,28 @@ function animasi(){
 		$this->load->view("layout/wrapper.php",$data);	
 	}
 
+    function login(){
+        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        if ($this->form_validation->run() != FALSE){
+            $cek = $this->M_crud->get_data('tbl_siswa','*',array('nis'=>$username));
+            if($cek){
+                $this->m_crud->update_data("tbl_siswa",array("isLogin"=>1),"nis='".$username."'");
+                redirect('http://localhost/perpustakaan/bo/dashboard');
+            }else{
+                $this->session->set_flashdata('error', 'Username tidak dikenali.');
+                redirect('menu_controller/login');
+            }
+        }else{
+            $this->session->set_flashdata('error', 'Username/Password tidak valid.');
+            redirect('menu_controller/login');
+        }
 
+        $this->load->view("");
+
+    }
 
 }
  ?>
