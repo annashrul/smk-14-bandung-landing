@@ -25,6 +25,7 @@
                 $("#file2").val("");
                 $("#picture").val("");
                 $("#caption").text("");
+                $("#tags").val("");
                 $("#idItem").val();
                 $("#btn_simpan").text("Simpan")
                 $("#notif-container").show();
