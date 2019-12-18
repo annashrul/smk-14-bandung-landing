@@ -311,9 +311,9 @@ class Site extends CI_Controller{
 	function userlevel(){
 		$data=array(
 			'site'=>$this->site,
-			'title'=>'Manajemen User',
-			'page'=>'user/index',
-			'js'=>'user/js'
+			'title'=>'User Level',
+			'page'=>'userLevel/index',
+			'js'=>'userLevel/js'
 		);
 		$this->load->view($this->layout,$data);
 	}
@@ -348,7 +348,7 @@ class Site extends CI_Controller{
 				$data = array(
 					"title"=>$this->input->post('title'),
 				);
-				$berita = $this->M_crud->create_data('tbl_user',$data);
+				$berita = $this->M_crud->create_data('tbl_user_level',$data);
 				echo json_encode($berita, true);
 			}else{
 				echo 'FORBIDDEN.';
@@ -675,6 +675,279 @@ class Site extends CI_Controller{
 					"status"=>$this->input->post('status')
 				);
 				$berita = $this->M_crud->update_data('tbl_jurusan',$data,array("id"=>$this->input->post('id')));
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}else{
+			echo 'FORBIDDEN.';
+		}
+	}
+
+	function siswa(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Siswa',
+			'page'=>'siswa/index',
+			'js'=>'siswa/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
+	function siswaAction(){
+		$action = $_GET['aksi'];
+		$where = array();
+		if($action=='get'){
+			if(!$this->akses) $where['id']=$this->id;
+			$page= isset($_GET['page'])?$_GET['page']:1;
+			$kelas= $_GET['kelas'];
+			if($kelas!=0) $where['id_kelas']=$kelas;
+			if(isset($_GET['q'])) $where['nama LIKE']='%'.$_GET['q'].'%';
+			$count = $this->M_crud->count_read_data('v_siswa','id',$where);
+			$limit = 10;
+            $offset = ($limit * ($page-1));
+            $jml = ceil($count / $limit);
+            $countpage = $jml==0?1:$jml;
+			// ($table, $field, $where=null, $order=null, $group=null, $limit_sum=0, $limit_from=0, $having=null
+			$berita = $this->M_crud->read_data('v_siswa','*',$where,null, null,$limit,$offset);
+			$result = array(
+				"data"=>$berita,
+				"count"=>$count,
+				"current_page"=>(int)$page,
+				"perpage"=>$limit,
+				"last_page"=>$countpage
+			);
+			echo json_encode($result, true);
+		}elseif($action=='detail'){
+			$id= $_GET['id'];
+			$berita = $this->M_crud->get_data('v_siswa','*',array('id'=>$id));
+			echo json_encode($berita, true);
+		}elseif($action=='create'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"nama"=>$this->input->post('nama'),
+					"nis"=>$this->input->post('nis'),
+					"id_kelas"=>$this->input->post('kelas'),
+					"jenis_kelamin"=>$this->input->post('jenis_kelamin'),
+					"no_hp"=>$this->input->post('no_hp'),
+					"alamat"=>$this->input->post('alamat'),
+				);
+				$berita = $this->M_crud->create_data('tbl_siswa',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='update'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				
+				$data = array(
+					"nama"=>$this->input->post('nama'),
+					"nis"=>$this->input->post('nis'),
+					"id_kelas"=>$this->input->post('kelas'),
+					"jenis_kelamin"=>$this->input->post('jenis_kelamin'),
+					"no_hp"=>$this->input->post('no_hp'),
+					"alamat"=>$this->input->post('alamat'),
+				);
+				$berita = $this->M_crud->update_data('tbl_siswa',$data,array('id'=>$this->input->post('id')));
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='delete'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+				$data = array(
+					"id"=>$this->input->post('id')
+				);
+				$berita = $this->M_crud->delete_data('tbl_siswa',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='approval'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"id"=>$this->input->post('id'),
+					"status"=>$this->input->post('status')
+				);
+				$berita = $this->M_crud->update_data('tbl_siswa',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}else{
+			echo 'FORBIDDEN.';
+		}
+	}
+
+	function kelas(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Kelas',
+			'page'=>'kelas/index',
+			'js'=>'kelas/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
+	function kelasAction(){
+		$action = $_GET['aksi'];
+		$where = array();
+		if($action=='get'){
+			if(!$this->akses) $where['id']=$this->id;
+			$page= isset($_GET['page'])?$_GET['page']:1;
+			$kelas= $_GET['jurusan'];
+			if($kelas!=0) $where['id_jurusan']=$kelas;
+			if(isset($_GET['q'])) $where['nama LIKE']='%'.$_GET['q'].'%';
+			$count = $this->M_crud->count_read_data('v_siswa','id',$where);
+			$limit = 10;
+            $offset = ($limit * ($page-1));
+            $jml = ceil($count / $limit);
+            $countpage = $jml==0?1:$jml;
+			// ($table, $field, $where=null, $order=null, $group=null, $limit_sum=0, $limit_from=0, $having=null
+			$berita = $this->M_crud->read_data('v_kelas','*',$where,'created_at DESC', null,$limit,$offset);
+			$result = array(
+				"data"=>$berita,
+				"count"=>$count,
+				"current_page"=>(int)$page,
+				"perpage"=>$limit,
+				"last_page"=>$countpage
+			);
+			echo json_encode($result, true);
+		}elseif($action=='detail'){
+			$id= $_GET['id'];
+			$berita = $this->M_crud->get_data('v_kelas','*',array('id'=>$id));
+			echo json_encode($berita, true);
+		}elseif($action=='create'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"nama"=>$this->input->post('nama'),
+					"id_jurusan"=>$this->input->post('id_jurusan')
+				);
+				$berita = $this->M_crud->create_data('tbl_kelas',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='update'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				
+				$data = array(
+					"nama"=>$this->input->post('nama'),
+					"id_jurusan"=>$this->input->post('id_jurusan')
+				);
+				$berita = $this->M_crud->update_data('tbl_kelas',$data,array('id'=>$this->input->post('id')));
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='delete'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+				$data = array(
+					"id"=>$this->input->post('id')
+				);
+				$berita = $this->M_crud->delete_data('tbl_kelas',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='approval'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"id"=>$this->input->post('id'),
+					"status"=>$this->input->post('status')
+				);
+				$berita = $this->M_crud->update_data('tbl_kelas',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}else{
+			echo 'FORBIDDEN.';
+		}
+	}
+
+	function setting(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Setting',
+			'page'=>'setting/index',
+			'js'=>'setting/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
+	function settingAction(){
+		$action = $_GET['aksi'];
+		$where = array();
+		if($action=='get'){
+			if(!$this->akses) $where['id']=$this->id;
+			$page= isset($_GET['page'])?$_GET['page']:1;
+			$count = $this->M_crud->count_read_data('tbl_config','id',$where);
+			$limit = 10;
+            $offset = ($limit * ($page-1));
+            $jml = ceil($count / $limit);
+            $countpage = $jml==0?1:$jml;
+			// ($table, $field, $where=null, $order=null, $group=null, $limit_sum=0, $limit_from=0, $having=null
+			$berita = $this->M_crud->read_data('tbl_config','*',$where,'created_at DESC', null,$limit,$offset);
+			$result = array(
+				"data"=>$berita,
+				"count"=>$count,
+				"current_page"=>(int)$page,
+				"perpage"=>$limit,
+				"last_page"=>$countpage
+			);
+			echo json_encode($result, true);
+		}elseif($action=='detail'){
+			$berita = $this->M_crud->get_data('tbl_config','*',array('id'=>1));
+			echo json_encode($berita, true);
+		}elseif($action=='create'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"title"=>$this->input->post('title'),
+				);
+				$berita = $this->M_crud->create_data('tbl_config',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='update'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				
+				$data = array(
+					"site_title"=>$this->input->post('site_title'),
+					"email"=>$this->input->post('email'),
+					"telp"=>$this->input->post('telp'),
+					"fax"=>$this->input->post('fax'),
+					"address"=>$this->input->post('address'),
+					"facebook"=>$this->input->post('facebook'),
+					"twitter"=>$this->input->post('twitter'),
+					"instagram"=>$this->input->post('instagram'),
+				);
+				$berita = $this->M_crud->update_data('tbl_config',$data,array('id'=>1));
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='delete'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+				$data = array(
+					"id"=>$this->input->post('id')
+				);
+				$berita = $this->M_crud->delete_data('tbl_config',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='approval'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"id"=>$this->input->post('id'),
+					"status"=>$this->input->post('status')
+				);
+				$berita = $this->M_crud->update_data('tbl_config',$data);
 				echo json_encode($berita, true);
 			}else{
 				echo 'FORBIDDEN.';
