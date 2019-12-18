@@ -91,30 +91,19 @@
                                     <?php foreach ($jurusan as $j) { ?>
                                     <li><a href="<?=$j['id']?>"><?=$j['title']?></a></li>
                                     <?php  }?>
-                                    <li><a href="<?=base_url();?>Menu_Controller/otomotif">Teknik Bodi Otomotif</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/multimedia">Multimedia</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/design">Design Komunikasi Visual</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/animasi">Animasi</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/tesktil">Kriya Kreatif Tekstil dan Batik</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/kulit">Kriya Kreatif Kulit dan Imitasi</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/keramik">Kriya Kreatif Keramik</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/logam">Kriya Kreatif Logam dan Perhiasan</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/kayu">Kriya Kreatif Kayu dan Rotan</a></li>
+
                                 </ul><!-- /.sub-menu -->
                             </li>
 
                             <li>
                                 <a href="<?=base_url();?>Menu_Controller/perpustakaan">Pepustakaan</a>
                             </li>
-                           <!--  <li>
-                                <a href="contact.html">Contact</a>
-                            </li> -->
+
                         </ul>
                     </div><!-- /.navbar-collapse -->
-                    <div class="right-side-box">
-                        <a class="header__search-btn search-popup__toggler" href="#"><i class="kipso-icon-magnifying-glass"></i>
-                            <!-- /.kipso-icon-magnifying-glass --></a>
-                    </div><!-- /.right-side-box -->
+<!--                    <div class="right-side-box">-->
+<!--                        <a class="header__search-btn search-popup__toggler" href="#"><i class="kipso-icon-magnifying-glass"></i>-->
+<!--                    </div><!-- /.right-side-box -->
                 </div>
                 <!-- /.container -->
             </nav>

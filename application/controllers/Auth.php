@@ -18,7 +18,7 @@ class Auth extends CI_Controller
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		if ($this->form_validation->run() != FALSE){
-			$cek = $this->M_crud->get_data('v_user','*',array('username'=>$username));
+			$cek = $this->m_crud->get_data('v_user','*',array('username'=>$username));
 			if($cek){
 				if ($this->bcrypt->check_password($password , $cek['password'])){
 					// dd($cek);
