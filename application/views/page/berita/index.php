@@ -8,7 +8,7 @@
                         <div class="blog-one__single">
                             <div class="blog-one__image">
                                 <img src="<?=base_url();?>assets/img/pelepasan.jpg" alt="">
-                                <a class="blog-one__plus" href="<?=base_url();?>Menu_Controller/detail_berita"><i class="fas fa-eye"></i>
+                                <a class="blog-one__plus" href="<?=base_url();?>Menu_Controller/detail_berita/"><i class="fas fa-eye"></i>
                                     <!-- /.kipso-icon-plus-symbol --></a>
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">

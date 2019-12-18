@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 17, 2019 at 02:04 PM
+-- Generation Time: Dec 17, 2019 at 08:31 PM
 -- Server version: 5.7.28-0ubuntu0.19.04.2
 -- PHP Version: 5.6.40-14+ubuntu19.04.1+deb.sury.org+1
 
@@ -47,14 +47,42 @@ CREATE TABLE `tbl_berita` (
 
 INSERT INTO `tbl_berita` (`id`, `id_member`, `id_category`, `title`, `slug`, `content`, `image`, `tags`, `status`, `type`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 'Berita terbaru', 'berita-terbaru', 'beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa beritaaaaaa ', 'http://localhost/smk-14-bandung/assets/img/pelepasan.jpg', 'berita,terbaru', 1, 1, '2019-12-16 16:34:53', '2019-12-16 16:34:53'),
-(2, 1, 1, 'sadasd', 'sadasd', '<p>sadasd sadasdsadas dsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv</p>\n', 'http://localhost/smk-14-bandung/assets/img/pelepasan.jpg', 'sadasd', 1, 1, '2019-12-16 16:39:12', '2019-12-16 16:39:12'),
-(3, 1, 1, 'sadasd', 'sadasd', '<p>asdasdasdas</p>\n', 'http://localhost/smk-14-bandung/upload/1576510721.png', 'sadasd', 1, 1, '2019-12-16 21:09:21', '2019-12-16 21:09:21'),
-(4, 1, 1, 'sadasdas', 'sadasdas', '<p>sadasdasdasdas</p>\n', 'http://localhost/smk-14-bandung/upload/1576510712.png', 'wqe qwe wq', 1, 1, '2019-12-16 21:13:47', '2019-12-16 21:13:47'),
-(5, 1, 1, 'sadasd', 'sadasd', '<p>sadasdas</p>\n', 'http://localhost/smk-14-bandung/upload/1576510708.png', 'asdsadas', 1, 1, '2019-12-16 21:15:04', '2019-12-16 21:15:04'),
-(6, 1, 1, 'sadasd', 'sadasd', '<p>sadasdasdas</p>\n', 'http://localhost/smk-14-bandung/upload/1576510693.png', 'sadasd', 1, 1, '2019-12-16 21:17:42', '2019-12-16 21:17:42'),
-(7, 1, 3, 'asdasdas', 'asdasdas', '<p>sadasdasdsa</p>\n', 'http://localhost/smk-14-bandung/upload/1576510704.png', 'dsasda', 1, 1, '2019-12-16 21:19:06', '2019-12-16 21:19:06'),
-(8, 1, 1, 'UPDATEEEss', 'updateeess', '<p>cekasdasd</p>\n', 'http://localhost/smk-14-bandung/upload/1576510701.png', 'xx', 1, 1, '2019-12-16 21:20:31', '2019-12-16 21:20:31'),
-(11, 1, 4, 'xxxxxxxx xx xxxxxxxxx xxxxxx xxxxxxxxx xxxx ', 'xxxxxxxx-xx-xxxxxxxxx-xxxxxx-xxxxxxxxx-xxxx', '<p>xxxxxx xxxxxxxx xxxxxxxxx xxxxx xxxxxxxx</p>\n', 'http://localhost/smk-14-bandung/upload/1576558821.png', '-', 1, 2, '2019-12-17 12:00:21', '2019-12-17 12:00:21');
+(2, 1, 1, 'Struktur Organisasi', 'struktur-organisasi', '<p>sadasd sadasdsadas dsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv sadasd sadasdsadasdsadasdsa dasdsadasdsadasdvv</p>\n', 'http://localhost/smk-14-bandung/assets/img/pelepasan.jpg', 'sadasd', 1, 3, '2019-12-16 16:39:12', '2019-12-16 16:39:12'),
+(3, 1, 1, 'Divisi', 'divisi', '<p>asdasdasdas</p>\n', 'http://localhost/smk-14-bandung/upload/1576510721.png', 'sadasd', 1, 3, '2019-12-16 21:09:21', '2019-12-16 21:09:21'),
+(4, 1, 1, 'Akreditasi', 'akreditasi', '<p>sadasdasdasdas</p>\n', 'http://localhost/smk-14-bandung/upload/1576510712.png', 'wqe qwe wq', 1, 3, '2019-12-16 21:13:47', '2019-12-16 21:13:47'),
+(5, 1, 1, 'Sejarah', 'sejarah', '<p>sadasdas</p>\n', 'http://localhost/smk-14-bandung/upload/1576510708.png', 'asdsadas', 1, 3, '2019-12-16 21:15:04', '2019-12-16 21:15:04'),
+(6, 1, 1, 'Visi & Misi', 'visi-misi', '<p>sadasdasdas</p>\n', 'http://localhost/smk-14-bandung/upload/1576510693.png', 'sadasd', 1, 3, '2019-12-16 21:17:42', '2019-12-16 21:17:42'),
+(7, 1, 3, 'Budaya & Logo', 'budaya-logo', '<p>sadasdasdsa</p>\n', 'http://localhost/smk-14-bandung/upload/1576510704.png', 'dsasda', 1, 3, '2019-12-16 21:19:06', '2019-12-16 21:19:06'),
+(8, 1, 1, 'Landasan Hukum', 'landasan-hukum', '<p>cekasdasd</p>\n', 'http://localhost/smk-14-bandung/upload/1576510701.png', 'xx', 1, 3, '2019-12-16 21:20:31', '2019-12-16 21:20:31'),
+(11, 1, 4, 'xxxxxxxx xx xxxxxxxxx xxxxxx xxxxxxxxx xxxx ', 'xxxxxxxx-xx-xxxxxxxxx-xxxxxx-xxxxxxxxx-xxxx', '<p>xxxxxx xxxxxxxx xxxxxxxxx xxxxx xxxxxxxx</p>\n', 'http://localhost/smk-14-bandung/upload/1576558821.png', '-', 1, 2, '2019-12-17 12:00:21', '2019-12-17 12:00:21'),
+(12, 1, 0, 'cek', 'cek', '<p>cekkkkk</p>\n', 'http://localhost/smk-14-bandung/upload/1576582719.png', '-', 1, 4, '2019-12-17 18:38:39', '2019-12-17 18:38:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_buku`
+--
+
+CREATE TABLE `tbl_buku` (
+  `id` int(11) NOT NULL,
+  `id_category_buku` int(11) NOT NULL,
+  `id_lokasi` int(11) NOT NULL,
+  `nama` varchar(35) NOT NULL,
+  `keterangan` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `gambar` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_buku`
+--
+
+INSERT INTO `tbl_buku` (`id`, `id_category_buku`, `id_lokasi`, `nama`, `keterangan`, `created_at`, `updated_at`, `gambar`) VALUES
+(1, 1, 1, 'harry potter', 'buku harry potter', '2019-12-17 03:49:06', '2019-12-17 03:49:06', 'assets/upload/buku/Mimbar-Masjid-04.jpg'),
+(2, 2, 1, 'krisis moneter', 'krisis moneter', '2019-12-17 03:49:10', '2019-12-17 03:49:10', 'assets/upload/buku/usecase.png'),
+(7, 1, 2, 'sejarah islam', 'menceritkan tentang sejarang islam', '2019-12-17 04:00:44', '2019-12-17 04:00:44', 'assets/upload/buku/Mimbar-Masjid-041.jpg'),
+(8, 2, 1, 'aasasasasas', 'nmnm', '2019-12-17 04:19:13', '2019-12-17 04:19:13', 'assets/upload/buku/usecase1.png');
 
 -- --------------------------------------------------------
 
@@ -77,6 +105,27 @@ INSERT INTO `tbl_category` (`id`, `title`, `created_at`, `updated_at`) VALUES
 (1, 'Category Baru', '2019-12-16 16:35:07', '2019-12-16 16:35:07'),
 (3, 'UPDATEE', '2019-12-16 22:21:13', '2019-12-16 22:21:13'),
 (4, 'Lowongan Pekerjaan', '2019-12-17 12:03:08', '2019-12-17 12:03:08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_category_buku`
+--
+
+CREATE TABLE `tbl_category_buku` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(35) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_category_buku`
+--
+
+INSERT INTO `tbl_category_buku` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'Agama', '2019-12-17 03:30:26', '2019-12-17 03:30:26'),
+(2, 'Sains', '2019-12-17 03:30:26', '2019-12-17 03:30:26');
 
 -- --------------------------------------------------------
 
@@ -178,10 +227,31 @@ CREATE TABLE `tbl_jurusan` (
   `deskripsi` text NOT NULL,
   `visi` text NOT NULL,
   `misi` text NOT NULL,
-  `image` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `image` varchar(150) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_lokasi`
+--
+
+CREATE TABLE `tbl_lokasi` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_lokasi`
+--
+
+INSERT INTO `tbl_lokasi` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'deket jurang', '2019-12-17 02:51:23', '2019-12-17 02:51:23'),
+(2, 'samping sampah', '2019-12-17 02:51:23', '2019-12-17 02:51:23');
 
 -- --------------------------------------------------------
 
@@ -194,6 +264,7 @@ CREATE TABLE `tbl_manajemen` (
   `nama` varchar(60) NOT NULL,
   `nip` varchar(50) NOT NULL,
   `jabatan` int(11) NOT NULL,
+  `matpel` varchar(60) NOT NULL DEFAULT '-',
   `deskripsi` text NOT NULL,
   `image` varchar(150) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -204,8 +275,59 @@ CREATE TABLE `tbl_manajemen` (
 -- Dumping data for table `tbl_manajemen`
 --
 
-INSERT INTO `tbl_manajemen` (`id`, `nama`, `nip`, `jabatan`, `deskripsi`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Nama Kepala Sekolah', '00000001', 1, 'SMKN 14 Kota Bandung adalah Sekolah Menengah Kejuruan yang memiliki bidang keahlian Seni Rupa, Kerajinan Kriya, TIK, serta Teknologi dan Rekayasa. SMKN 14 Kota Bandung Mempersiapkan lulusan yang berwawasan profesional, produktif, dan memiliki budaya kerja yang baik. Dengan Demikian SMKN 14 Kota Bandung siap menciptakan tamatan yang berkompeten sesuai dengan bidangnya.\r\n\r\n', 'http://localhost/smk-14-bandung/assets/img/b.jpg', '2019-12-17 00:00:00', '2019-12-17 00:00:00');
+INSERT INTO `tbl_manajemen` (`id`, `nama`, `nip`, `jabatan`, `matpel`, `deskripsi`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Nama Kepala Sekolah', '00000001', 1, '-', 'SMKN 14 Kota Bandung adalah Sekolah Menengah Kejuruan yang memiliki bidang keahlian Seni Rupa, Kerajinan Kriya, TIK, serta Teknologi dan Rekayasa. SMKN 14 Kota Bandung Mempersiapkan lulusan yang berwawasan profesional, produktif, dan memiliki budaya kerja yang baik. Dengan Demikian SMKN 14 Kota Bandung siap menciptakan tamatan yang berkompeten sesuai dengan bidangnya.\r\n\r\n', 'http://localhost/smk-14-bandung/assets/img/b.jpg', '2019-12-17 00:00:00', '2019-12-17 00:00:00'),
+(3, 'Guru', '121212', 7, '-', '-', 'http://localhost/smk-14-bandung/upload/1576572729.png', '2019-12-17 15:52:09', '2019-12-17 15:52:09'),
+(4, 'sadasd UPDATE', '21312312321', 7, 'Bahasa Indonesia', '-', 'http://localhost/smk-14-bandung/upload/1576576056.png', '2019-12-17 16:24:07', '2019-12-17 16:24:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_peminjaman`
+--
+
+CREATE TABLE `tbl_peminjaman` (
+  `id` int(11) NOT NULL,
+  `id_siswa` int(11) NOT NULL,
+  `id_buku` int(11) NOT NULL,
+  `id_jurusan` int(11) NOT NULL,
+  `keterangan` text NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_peminjaman`
+--
+
+INSERT INTO `tbl_peminjaman` (`id`, `id_siswa`, `id_buku`, `id_jurusan`, `keterangan`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 'minjem poe ayena', 0, '2019-12-16 21:29:11', '2019-12-16 21:29:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_siswa`
+--
+
+CREATE TABLE `tbl_siswa` (
+  `id` int(11) NOT NULL,
+  `id_jurusan` int(11) NOT NULL,
+  `nis` varchar(15) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `jenis_kelamin` int(11) NOT NULL,
+  `no_hp` int(15) NOT NULL,
+  `alamat` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_siswa`
+--
+
+INSERT INTO `tbl_siswa` (`id`, `id_jurusan`, `nis`, `nama`, `jenis_kelamin`, `no_hp`, `alamat`, `created_at`, `updated_at`) VALUES
+(1, 1, 'D1115101', 'annashrul yusuf', 1, 2147483647, 'padasuka', '2019-12-16 21:07:22', '2019-12-16 21:07:22');
 
 -- --------------------------------------------------------
 
@@ -296,6 +418,7 @@ CREATE TABLE `v_manajemen` (
 ,`created_at` datetime
 ,`updated_at` datetime
 ,`nama_jabatan` varchar(40)
+,`matpel` varchar(60)
 );
 
 -- --------------------------------------------------------
@@ -325,7 +448,7 @@ CREATE TABLE `v_user` (
 --
 DROP TABLE IF EXISTS `v_berita`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_berita`  AS  select `ta`.`id` AS `id`,`ta`.`id_member` AS `id_member`,`ta`.`id_category` AS `id_category`,`ta`.`title` AS `title`,`ta`.`slug` AS `slug`,`ta`.`content` AS `content`,`ta`.`image` AS `image`,`ta`.`tags` AS `tags`,`ta`.`status` AS `status`,`ta`.`type` AS `type`,`ta`.`created_at` AS `created_at`,`ta`.`updated_at` AS `updated_at`,`tu`.`nama` AS `nama`,`tc`.`title` AS `category` from ((`tbl_berita` `ta` join `tbl_category` `tc` on((`tc`.`id` = `ta`.`id_category`))) join `tbl_user` `tu` on((`tu`.`id` = `ta`.`id_member`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_berita`  AS  select `ta`.`id` AS `id`,`ta`.`id_member` AS `id_member`,`ta`.`id_category` AS `id_category`,`ta`.`title` AS `title`,`ta`.`slug` AS `slug`,`ta`.`content` AS `content`,`ta`.`image` AS `image`,`ta`.`tags` AS `tags`,`ta`.`status` AS `status`,`ta`.`type` AS `type`,`ta`.`created_at` AS `created_at`,`ta`.`updated_at` AS `updated_at`,`tu`.`nama` AS `nama`,`tc`.`title` AS `category` from ((`tbl_berita` `ta` left join `tbl_category` `tc` on((`tc`.`id` = `ta`.`id_category`))) left join `tbl_user` `tu` on((`tu`.`id` = `ta`.`id_member`))) ;
 
 -- --------------------------------------------------------
 
@@ -334,7 +457,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_manajemen`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_manajemen`  AS  select `tm`.`id` AS `id`,`tm`.`nama` AS `nama`,`tm`.`nip` AS `nip`,`tm`.`jabatan` AS `jabatan`,`tm`.`deskripsi` AS `deskripsi`,`tm`.`image` AS `image`,`tm`.`created_at` AS `created_at`,`tm`.`updated_at` AS `updated_at`,`tj`.`title` AS `nama_jabatan` from (`tbl_manajemen` `tm` join `tbl_jabatan` `tj` on((`tj`.`id` = `tm`.`jabatan`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_manajemen`  AS  select `tm`.`id` AS `id`,`tm`.`nama` AS `nama`,`tm`.`nip` AS `nip`,`tm`.`jabatan` AS `jabatan`,`tm`.`deskripsi` AS `deskripsi`,`tm`.`image` AS `image`,`tm`.`created_at` AS `created_at`,`tm`.`updated_at` AS `updated_at`,`tj`.`title` AS `nama_jabatan`,`tm`.`matpel` AS `matpel` from (`tbl_manajemen` `tm` join `tbl_jabatan` `tj` on((`tj`.`id` = `tm`.`jabatan`))) ;
 
 -- --------------------------------------------------------
 
@@ -417,7 +540,7 @@ ALTER TABLE `tbl_user_level`
 -- AUTO_INCREMENT for table `tbl_berita`
 --
 ALTER TABLE `tbl_berita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tbl_category`
 --
@@ -447,12 +570,12 @@ ALTER TABLE `tbl_jabatan`
 -- AUTO_INCREMENT for table `tbl_jurusan`
 --
 ALTER TABLE `tbl_jurusan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_manajemen`
 --
 ALTER TABLE `tbl_manajemen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --

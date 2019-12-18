@@ -24,8 +24,11 @@ class Menu_Controller extends CI_Controller
 	}
 
 	function detail_berita(){
+		// $query = $this->M_crud->get_data('tbl_berita', '*', array('slug' => $berita) );
 		$data['isi'] = 'page/berita/detail_berita';
-		$this->load->view("layout/wrapper.php",$data);	
+		// $data['berita'] = $query;
+		$this->load->view("layout/wrapper",$data);
+		// dd($data);
 	}
 	function selayang(){
 		$data['isi'] = 'page/selayang/index';
