@@ -103,96 +103,18 @@
                     </h2><!-- /.block-title__title -->
                 </div><!-- /.block-title -->
                     <div class="course-category-one__carousel owl-carousel owl-theme">
+
+                    <?php foreach($jurusan as $row) : ?>
                     <div class="item">
                         <div class="course-category-one__single color-1 headline">
                             <div class="course-category-one__icon">
                                 <i class="kipso-icon-desktop"></i><!-- /.kipso-icon-camera -->
                             </div><!-- /.course-category-one__icon -->
-                            <h3 class="course-category-one__title"><a href="#">Teknik Bodi Otomotif</a></h3>
+                            <h3 class="course-category-one__title"><a href="#"><?=$row['title']?></a></h3>
                             <!-- /.course-category-one__title -->
                         </div><!-- /.course-category-one__single -->
                     </div><!-- /.item -->
-                    <div class="item">
-                        <div class="course-category-one__single color-2">
-                            <div class="course-category-one__icon">
-                                <i class="kipso-icon-web-programming"></i><!-- /.kipso-icon-camera -->
-                            </div><!-- /.course-category-one__icon -->
-                            <h3 class="course-category-one__title"><a href="#">Multimedia</a></h3>
-                            <!-- /.course-category-one__title -->
-                        </div><!-- /.course-category-one__single -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="course-category-one__single color-3">
-                            <div class="course-category-one__icon">
-                                <i class="kipso-icon-music-player"></i><!-- /.kipso-icon-camera -->
-                            </div><!-- /.course-category-one__icon -->
-                            <h3 class="course-category-one__title"><a href="#">Design Komunikasi Visual</a></h3>
-                            <!-- /.course-category-one__title -->
-                        </div><!-- /.course-category-one__single -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="course-category-one__single color-4">
-                            <div class="course-category-one__icon">
-                                <i class="kipso-icon-camera"></i><!-- /.kipso-icon-camera -->
-                            </div><!-- /.course-category-one__icon -->
-                            <h3 class="course-category-one__title"><a href="#">Animasi</a></h3>
-                            <!-- /.course-category-one__title -->
-                        </div><!-- /.course-category-one__single -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="course-category-one__single color-5">
-                            <div class="course-category-one__icon">
-                                <i class="kipso-icon-targeting"></i><!-- /.kipso-icon-camera -->
-                            </div><!-- /.course-category-one__icon -->
-                            <h3 class="course-category-one__title"><a href="#">Kriya Kreatif Tekstil & Batik</a></h3>
-                            <!-- /.course-category-one__title -->
-                        </div>
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="course-category-one__single color-6">
-                            <div class="course-category-one__icon">
-                                <i class="kipso-icon-health"></i><!-- /.kipso-icon-camera -->
-                            </div><!-- /.course-category-one__icon -->
-                            <h3 class="course-category-one__title"><a href="#">Kriya Kreatif Kulit & Imitasi</a></h3>
-                            <!-- /.course-category-one__title -->
-                        </div><!-- /.course-category-one__single -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="course-category-one__single color-1">
-                            <div class="course-category-one__icon">
-                                <i class="kipso-icon-desktop"></i><!-- /.kipso-icon-camera -->
-                            </div><!-- /.course-category-one__icon -->
-                            <h3 class="course-category-one__title"><a href="#">Kriya Kreatif</a></h3>
-                            <!-- /.course-category-one__title -->
-                        </div><!-- /.course-category-one__single -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="course-category-one__single color-2">
-                            <div class="course-category-one__icon">
-                                <i class="kipso-icon-web-programming"></i><!-- /.kipso-icon-camera -->
-                            </div><!-- /.course-category-one__icon -->
-                            <h3 class="course-category-one__title"><a href="#">Kriya Kreatif Keramik</a></h3>
-                            <!-- /.course-category-one__title -->
-                        </div><!-- /.course-category-one__single -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="course-category-one__single color-3">
-                            <div class="course-category-one__icon">
-                                <i class="kipso-icon-music-player"></i><!-- /.kipso-icon-camera -->
-                            </div><!-- /.course-category-one__icon -->
-                            <h3 class="course-category-one__title"><a href="#">Kriya Kreatif Logam & Perhiasan</a></h3>
-                            <!-- /.course-category-one__title -->
-                        </div><!-- /.course-category-one__single -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="course-category-one__single color-4">
-                            <div class="course-category-one__icon">
-                                <i class="kipso-icon-camera"></i><!-- /.kipso-icon-camera -->
-                            </div><!-- /.course-category-one__icon -->
-                            <h3 class="course-category-one__title"><a href="#">Kriya Kreatif Kayu & Rotan</a></h3>
-                            <!-- /.course-category-one__title -->
-                        </div><!-- /.course-category-one__single -->
-                    </div><!-- /.item -->
+                    <?php endforeach; ?>
                 </div><!-- /.course-category-one__carousel owl-carousel owl-theme -->
                 </div><!-- /.block-title -->
             </div><!-- /.container -->
@@ -205,13 +127,14 @@
         <!-- Berita -->
         <section class="blog-one blog-page">
             <div class="container">
-                <h2 class="inner-banner__title" style="text-align:center;color:#011928;padding:30px">Berita</h2><!-- /.inner-banner__title -->
+                <h2 class="inner-banner__title" style="text-align:center;color:#011928;padding:30px">Berita Terbaru</h2><!-- /.inner-banner__title -->
                 <div class="row">
+                    <?php foreach($berita as $row): ?>
                     <div class="col-lg-4">
                         <div class="blog-one__single">
                             <div class="blog-one__image">
-                                <img src="assets/img/pelepasan.jpg" alt="">
-                                <a class="blog-one__plus" href="<?=base_url();?>Menu_controller/berita"><i class="kipso-icon-plus-symbol"></i>
+                                <img src="<?=$row['image']?>" alt="">
+                                <a class="blog-one__plus" href="<?=base_url();?>Menu_controller/berita/<?=$row['slug']?>"><i class="kipso-icon-plus-symbol"></i>
                                     <!-- /.kipso-icon-plus-symbol --></a>
                             </div><!-- /.blog-one__image -->
                             <div class="blog-one__content text-center">
@@ -219,56 +142,14 @@
                                     <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
                                     <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
                                 </div><!-- /.blog-one__meta -->
-                                <h2 class="blog-one__title"><a href="<?=base_url();?>Menu_controller/berita">Pelepasan Angkatan 2018</a>
+                                <h2 class="blog-one__title"><a href="<?=base_url();?>Menu_controller/berita"><?=$row['title']?></a>
                                 </h2><!-- /.blog-one__title -->
-                                <p class="blog-one__text">Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit
-                                    amet finibus eros.</p><!-- /.blog-one__text -->
-                                <a href="<?=base_url();?>Menu_controller/berita" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
+                                <p class="blog-one__text"><?=substr(strip_tags($row['content']),0,100)?></p><!-- /.blog-one__text -->
+                                <a href="<?=base_url();?>Menu_controller/berita/<?=$row['slug']?>" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
                             </div><!-- /.blog-one__content -->
                         </div><!-- /.blog-one__single -->
                     </div><!-- /.col-lg-4 -->
-                    <div class="col-lg-4">
-                        <div class="blog-one__single">
-                            <div class="blog-one__image">
-                                <img src="assets/img/akreditasi.jpg" alt="">
-                                <a class="blog-one__plus" href="<?=base_url();?>Menu_controller/berita"><i class="kipso-icon-plus-symbol"></i>
-                                    <!-- /.kipso-icon-plus-symbol --></a>
-                            </div><!-- /.blog-one__image -->
-                            <div class="blog-one__content text-center">
-                                <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                                </div><!-- /.blog-one__meta -->
-                                <h2 class="blog-one__title"><a href="<?=base_url();?>Menu_controller/berita">Get a tips to develop a quality
-                                        education</a>
-                                </h2><!-- /.blog-one__title -->
-                                <p class="blog-one__text">Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit
-                                    amet finibus eros.</p><!-- /.blog-one__text -->
-                                <a href="<?=base_url();?>Menu_controller/berita" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
-                            </div><!-- /.blog-one__content -->
-                        </div><!-- /.blog-one__single -->
-                    </div><!-- /.col-lg-4 -->
-                    <div class="col-lg-4">
-                        <div class="blog-one__single">
-                            <div class="blog-one__image">
-                                <img src="assets/img/ukk2017.jpg" alt="">
-                                <a class="blog-one__plus" href="<?=base_url();?>Menu_controller/berita"><i class="kipso-icon-plus-symbol"></i>
-                                    <!-- /.kipso-icon-plus-symbol --></a>
-                            </div><!-- /.blog-one__image -->
-                            <div class="blog-one__content text-center">
-                                <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                                </div><!-- /.blog-one__meta -->
-                                <h2 class="blog-one__title"><a href="<?=base_url();?>Menu_controller/berita">Learn variety of programs and
-                                        courses</a>
-                                </h2><!-- /.blog-one__title -->
-                                <p class="blog-one__text">Aelltes port lacus quis enim var sed efficitur turpis gilla sed sit
-                                    amet finibus eros.</p><!-- /.blog-one__text -->
-                                <a href="<?=base_url();?>Menu_controller/berita" class="blog-one__link">Read More</a><!-- /.blog-one__link -->
-                            </div><!-- /.blog-one__content -->
-                        </div><!-- /.blog-one__single -->
-                    </div><!-- /.col-lg-4 -->
+                    <?php endforeach; ?>
                 <div class="post-pagination col-lg-12">
                     <a href="#"><i class="fa fa-angle-double-left"></i><!-- /.fa fa-angle-double-left --></a>
                     <a class="active" href="#">1</a>

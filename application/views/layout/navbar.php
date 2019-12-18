@@ -12,7 +12,7 @@
                     <a href="#">(022)7560358</a>
                 </div><!-- /.topbar-one__left -->
                 <div class="topbar-one__right col-md-12 col-md-offset-9">
-                    <a class="btn btn-primary" href="<?=base_url();?>Auth_Controller" style="color:white">Masuk</a>
+                    <a class="btn btn-primary" href="http://localhost/perpustakaan/auth" style="color:white">Masuk</a>
                 </div><!-- /.topbar-one__right -->
             </div><!-- /.container -->
         </div><!-- /.topbar-one -->
@@ -89,7 +89,7 @@
                                 <a href="#">Paket Keahlian</a>
                                 <ul class="sub-menu">
                                 <?php foreach ($jurusan as $j) { ?>
-                                    <li><a href=""><?php echo $jurusan->nama_jurusan?></a></li>
+                                    <li><a href="<?=$j['id']?>"><?=$j['title']?></a></li>
                                 <?php  }?>
                                             
                                 </ul><!-- /.sub-menu -->
