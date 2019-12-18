@@ -22,8 +22,11 @@ class Menu_Controller extends CI_Controller
 	}
 
 	function detail_berita(){
+		// $query = $this->M_crud->get_data('tbl_berita', '*', array('slug' => $berita) );
 		$data['isi'] = 'page/berita/detail_berita';
-		$this->load->view("layout/wrapper.php",$data);	
+		// $data['berita'] = $query;
+		$this->load->view("layout/wrapper",$data);
+		// dd($data);
 	}
 	function selayang(){
 		$data['isi'] = 'page/selayang/index';
@@ -115,15 +118,15 @@ class Menu_Controller extends CI_Controller
 	// Kegiatan
 
 	function eskul(){
-		$data['isi'] = 'page/Kegiatan/eskul';
+		$data['isi'] = 'page/kegiatan/eskul';
 		$this->load->view("layout/wrapper.php"	,$data);	
 	}
 	function osis(){
-		$data['isi'] = 'page/Kegiatan/osis';
+		$data['isi'] = 'page/kegiatan/osis';
 		$this->load->view("layout/wrapper.php"	,$data);	
 	}
 	function pramuka(){
-		$data['isi'] = 'page/Kegiatan/pramuka';
+		$data['isi'] = 'page/kegiatan/pramuka';
 		$this->load->view("layout/wrapper.php"	,$data);	
 	}
 
@@ -152,49 +155,49 @@ class Menu_Controller extends CI_Controller
 	}
 
 
-// Paket Keahlian
+// Paket keahlian
 
 function animasi(){
-		$data['isi'] = 'page/Keahlian/animasi';
+		$data['isi'] = 'page/keahlian/animasi';
 		$this->load->view("layout/wrapper.php",$data);	
 	}
 
 	function design(){
-		$data['isi'] = 'page/Keahlian/design';
+		$data['isi'] = 'page/keahlian/design';
 		$this->load->view("layout/wrapper.php",$data);	
 	}
 
 	function kayu(){
-		$data['isi'] = 'page/Keahlian/kayu';
+		$data['isi'] = 'page/keahlian/kayu';
 		$this->load->view("layout/wrapper.php",$data);	
 	}
 
 	function keramik(){
-		$data['isi'] = 'page/Keahlian/keramik';
+		$data['isi'] = 'page/keahlian/keramik';
 		$this->load->view("layout/wrapper.php",$data);	
 	}
 
 	function kulit(){
-		$data['isi'] = 'page/Keahlian/kulit';
+		$data['isi'] = 'page/keahlian/kulit';
 		$this->load->view("layout/wrapper.php",$data);	
 	}
 
 	function logam(){
-		$data['isi'] = 'page/Keahlian/logam';
+		$data['isi'] = 'page/keahlian/logam';
 		$this->load->view("layout/wrapper.php",$data);	
 	}
 	function multimedia(){
-		$data['isi'] = 'page/Keahlian/multimedia';
+		$data['isi'] = 'page/keahlian/multimedia';
 		$this->load->view("layout/wrapper.php",$data);	
 	}
 
 	function otomotif(){
-		$data['isi'] = 'page/Keahlian/otomotif';
+		$data['isi'] = 'page/keahlian/otomotif';
 		$this->load->view("layout/wrapper.php",$data);	
 	}
 
 	function tesktil(){
-		$data['isi'] = 'page/Keahlian/tesktil';
+		$data['isi'] = 'page/keahlian/tesktil';
 		$this->load->view("layout/wrapper.php",$data);	
 	}
 

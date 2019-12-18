@@ -85,7 +85,7 @@
         // if(localStorage.getItem('berita_cate')!=null||localStorage.getItem('berita_cate')!='') {$("#ID"+stringToHex(localStorage.getItem('berita_cate'))).addClass("active");console.log(localStorage.getItem('berita_cate'))}
         $.ajax({
             // pages+search+category,
-            url: "<?=urls('beritaAction')?>?aksi=get"+pages+search+category,
+            url: "<?=urls('beritaAction')?>?aksi=get&type=1"+pages+search+category,
             beforeSend: function(result){
                 NProgress.start();
                 //HoldOn.open(optionsLoader);
@@ -106,11 +106,11 @@
                                             '<div class="single-desc">'+
                                                 '<div class="row">'+
                                                     '<div class="col-md-9">'+
-                                                        '<a class="label label-primary" >'+
+                                                        '<a class="label label-primary" style="font-weight:600">'+
                                                                 item.category+
                                                         '</a> '+
                                                         (item.status==0?
-                                                        '<a class="label label-danger">Tidak Aktif</a>':'<a class="label label-success">Aktif</a>')+
+                                                        '<a class="label label-danger"  style="font-weight:600">Tidak Aktif</a>':'<a class="label label-success" style="font-weight:600">Aktif</a>')+
                                                         '<h1 class="single-title" style="margin-top:5px;margin-bottom:2px;font-size:1.1em">'+(item.title.length>20?item.title.slice(0,20)+'...':item.title)+'</h1>'+
                                                     '</div>'+
                                                     '<div class="col-md-3">'+
@@ -254,7 +254,7 @@
         let picture=$("#file2").val();
         if(title===""){$("#err-title").css("display", "block");$("#err-title").html("Nama produk tidak boleh kosong.")}
         if(category===""){$("#err-category").css("display", "block");$("#err-category").html("Kategori   produk tidak boleh kosong.")}
-        if(picture===""){$("#err-picture").css("display", "block");$("#err-picture").html("Gambar produk tidak boleh kosong.")}
+        if(picture===""){$("#err-picture").css("display", "block");$("#err-picture").html("Gambar tidak boleh kosong.")}
         if(caption===""){$("#err-caption").css("display", "block");$("#err-caption").html("Deskripsi tidak boleh kosong.")}
 
         var fd =  new FormData();

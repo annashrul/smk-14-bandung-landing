@@ -3,7 +3,7 @@
 		<a href="index.html" class="logo"><?=$site?></a>
 		<button type="button" class="button-close fa fa-times js__menu_close"></button>
 		<div class="user">
-			<a href="#" class="avatar"><img src="<?=assets('bo/images/avatar-sm-5.jpg')?>" alt=""><span class="status online"></span></a>
+			<a href="#" class="avatar"><img src="<?=assets('bo/images/profile.png')?>" alt=""><span class="status online"></span></a>
 			<h5 class="name"><a href="profile.html"><?=$this->session->nama?></a></h5>
 			<h5 class="position"><?=$this->session->level?></h5>
 			<!-- /.name -->
@@ -28,28 +28,46 @@
 			<h5 class="title">Navigation</h5>
 			<!-- /.title -->
 			<ul class="menu js__accordion">
-				<li class="current">
+				<li  <?=$this->uri->segment('2')==''?'class="current active"':''?>>
 					<a class="waves-effect" href="<?=urls('')?>"><i class="menu-icon fa fa-dashboard"></i><span>Dashboard</span></a>
                 </li>
-                <li>
-					<a class="waves-effect" href="<?=urls('berita')?>"><i class="menu-icon fa fa-newspaper-o"></i><span>Berita</span></a>
+				<li 
+				<?=
+				$this->uri->segment('2')=='berita' ||
+				$this->uri->segment('2')=='lowongan' ||
+				$this->uri->segment('2')=='informasi'?'class="current active"':''?>
+				>
+					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-film"></i><span>Master Konten</span><span class="menu-arrow fa fa-angle-down"></span></a>
+					<ul class="sub-menu js__content">
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='berita'?'active':''?>" href="<?=urls('berita')?>"><span>Berita</span></a></li>
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='lowongan'?'active':''?>" href="<?=urls('lowongan')?>"><span>Lowongan</span></a></li>
+						
+						
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='informasi'?'active':''?>" href="<?=urls('informasi')?>"><span>informasi</span></a></li>
+					</ul>
                 </li>
-				<!-- <li>
+				<li
+				<?=
+				$this->uri->segment('2')=='guru' ||
+				$this->uri->segment('2')=='jurusan' ||
+				$this->uri->segment('2')=='kelas' ||
+				$this->uri->segment('2')=='manajemen' ||
+				$this->uri->segment('2')=='siswa'?'class="current active"':''?>
+				>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-file-o"></i><span>Master Data</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-						<li><a href="ui-buttons.html">Buttons</a></li>
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='manajemen'?'active':''?>" href="<?=urls('manajemen')?>"><span>Manajemen</span></a></li>
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='guru'?'active':''?>" href="<?=urls('guru')?>"><span>Guru</span></a></li>
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='jurusan'?'active':''?>" href="<?=urls('jurusan')?>"><span>Jurusan</span></a></li>
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='kelas'?'active':''?>" href="<?=urls('kelas')?>"><span>Kelas</span></a></li>
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='siswa'?'active':''?>" href="<?=urls('siswa')?>"><span>Siswa</span></a></li>
 					</ul>
-                </li> -->
-                <li>
-					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-users"></i><span>Manajemen User</span><span class="menu-arrow fa fa-angle-down"></span></a>
-					<ul class="sub-menu js__content">
-						<li><a href="ui-buttons.html">User List</a></li>
-						<li><a href="ui-buttons.html">User Level</a></li>
-					</ul>
-					<!-- /.sub-menu js__content -->
                 </li>
-                <li>
-					<a class="waves-effect" href="index.html"><i class="menu-icon fa fa-gear"></i><span>Setting</span></a>
+				<li  <?=$this->uri->segment('2')=='user'?'class="current active"':''?>>
+					<a class="waves-effect" href="<?=urls('user')?>"><i class="menu-icon fa fa-users"></i><span>User Admin</span></a>
+                </li>
+                <li  <?=$this->uri->segment('2')=='setting'?'class="current active"':''?>>
+					<a class="waves-effect" href="<?=urls('setting')?>"><i class="menu-icon fa fa-gear"></i><span>Setting</span></a>
                 </li>
 			</ul>
 			<!-- /.menu js__accordion -->

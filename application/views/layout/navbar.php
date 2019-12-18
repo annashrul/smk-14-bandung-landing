@@ -88,10 +88,25 @@
                             <li>
                                 <a href="#">Paket Keahlian</a>
                                 <ul class="sub-menu">
+<<<<<<< HEAD
                                 <?php foreach ($jurusan as $j) { ?>
                                     <li><a href="<?=$j['id']?>"><?=$j['title']?></a></li>
                                 <?php  }?>
                                             
+=======
+                                    <li><a href="<?=base_url();?>Menu_Controller/otomotif">Teknik Bodi Otomotif</a></li>
+                                    <li><a href="<?=base_url();?>Menu_Controller/multimedia">Multimedia</a></li>
+                                    <li><a href="<?=base_url();?>Menu_Controller/design">Design Komunikasi Visual</a></li>
+                                    <li><a href="<?=base_url();?>Menu_Controller/animasi">Animasi</a></li>
+                                    <li><a href="<?=base_url();?>Menu_Controller/tesktil">Kriya Kreatif Tekstil dan Batik</a></li>
+                                    <li><a href="<?=base_url();?>Menu_Controller/kulit">Kriya Kreatif Kulit dan Imitasi</a></li>
+                                    <li><a href="<?=base_url();?>Menu_Controller/keramik">Kriya Kreatif Keramik</a></li>
+                                    <li><a href="<?=base_url();?>Menu_Controller/logam">Kriya Kreatif Logam dan Perhiasan</a></li>
+                                    <li><a href="<?=base_url();?>Menu_Controller/kayu">Kriya Kreatif Kayu dan Rotan</a></li>
+
+                                   
+
+>>>>>>> c23b16b4c232766e63d7bc264d5652f98fe63047
                                 </ul><!-- /.sub-menu -->
                             </li>
 
