@@ -47,7 +47,7 @@
                         <small id="err-username" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
-                        <label for="title">Password</label>
+                        <label for="title">Password <small>(Kosongkan jika tidak di edit)</small></label>
                         <input type="password" class="form-control" id="password" require>
                         <small id="err-password" style="display:none" class="form-text text-danger">.</small>
                     </div>

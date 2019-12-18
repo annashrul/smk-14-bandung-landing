@@ -12,7 +12,7 @@
                     <a href="#">(022)7560358</a>
                 </div><!-- /.topbar-one__left -->
                 <div class="topbar-one__right col-md-12 col-md-offset-9">
-                    <a class="btn btn-primary" href="<?=base_url();?>Auth_Controller" style="color:white">Masuk</a>
+                    <a class="btn btn-primary" href="<?=base_url();?>Auth" style="color:white">Masuk</a>
                 </div><!-- /.topbar-one__right -->
             </div><!-- /.container -->
         </div><!-- /.topbar-one -->
@@ -92,8 +92,8 @@
                                     <li><a href="<?=base_url();?>Menu_Controller/multimedia">Multimedia</a></li>
                                     <li><a href="<?=base_url();?>Menu_Controller/design">Design Komunikasi Visual</a></li>
                                     <li><a href="<?=base_url();?>Menu_Controller/animasi">Animasi</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/tekstil">Kriya Kreatif Tekstil dan Batik</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/">Kriya Kreatif Kulit dan Imitasi</a></li>
+                                    <li><a href="<?=base_url();?>Menu_Controller/tesktil">Kriya Kreatif Tekstil dan Batik</a></li>
+                                    <li><a href="<?=base_url();?>Menu_Controller/kulit">Kriya Kreatif Kulit dan Imitasi</a></li>
                                     <li><a href="<?=base_url();?>Menu_Controller/keramik">Kriya Kreatif Keramik</a></li>
                                     <li><a href="<?=base_url();?>Menu_Controller/logam">Kriya Kreatif Logam dan Perhiasan</a></li>
                                     <li><a href="<?=base_url();?>Menu_Controller/kayu">Kriya Kreatif Kayu dan Rotan</a></li>
