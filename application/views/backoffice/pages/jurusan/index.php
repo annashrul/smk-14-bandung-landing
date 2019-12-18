@@ -14,8 +14,8 @@
     			<th>Gambar</th> 
     			<th>Nama Jurusan</th> 
     			<th>Deskripsi</th> 
-    			<th>Dibuat oleh</th> 
-    			<th>Status</th> 
+    			<th>Visi</th> 
+    			<th>Misi</th> 
     			<th>Dibuat pada</th> 
     		</tr> 
     	</thead> 
@@ -51,22 +51,19 @@
                         <small id="err-title" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
-                        <input type="hidden" class="form-control" id="category" value="0">
-                    </div>
-                    <div class="form-group">
                         <label for="price">Deskripsi</label>
                         <textarea name="caption" class="form-control" id="caption" cols="30" rows="10"></textarea>
                         <small id="err-caption" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
                         <label for="price">Visi</label>
-                        <textarea name="caption" class="form-control" id="caption" cols="30" rows="10"></textarea>
-                        <small id="err-caption" style="display:none" class="form-text text-danger">.</small>
+                        <textarea name="visi" class="form-control" id="visi" cols="30" rows="10"></textarea>
+                        <small id="err-visi" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
                         <label for="price">Misi</label>
-                        <textarea name="caption" class="form-control" id="caption" cols="30" rows="10"></textarea>
-                        <small id="err-caption" style="display:none" class="form-text text-danger">.</small>
+                        <textarea name="misi" class="form-control" id="misi" cols="30" rows="10"></textarea>
+                        <small id="err-misi" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
                         <label for="">Gambar</label>
@@ -79,34 +76,6 @@
                     <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="btn_simpan">Simpan</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="modal" id="form-kategori" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-                <h5 class="modal-title" id="exampleModalLabel">Create Account</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form id="addBerita">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="title">Judul</label>
-                        <input type="text" class="form-control" id="titleKategori" require>
-                        <input type="hidden" name="idItem" id="idItemKategori">
-                        <small id="err-title" style="display:none" class="form-text text-danger">.</small>
-                    </div>
-                </div>
-                    <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btn_simpan_kategori">Simpan</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </form>

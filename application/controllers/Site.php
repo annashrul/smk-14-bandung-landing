@@ -1,6 +1,6 @@
 <?php 
 
-// tbl_berita: type 1:berita;type 2:lowongan;type 3:informasi;type 4: Jurusan;
+// tbl_berita: type 1:berita;type 2:lowongan;type 3:informasi;
 
 class Site extends CI_Controller{
 	public function __construct(){
@@ -624,11 +624,12 @@ class Site extends CI_Controller{
 		}elseif($action=='create'){
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$data = array(
-					"nama"=>$this->input->post('nama'),
-					"username"=>$this->input->post('username'),
-					"password"=>$this->bcrypt->hash_password($this->input->post('password')),
-					"status"=>$this->input->post('status'),
-					"id_level"=>$this->input->post('level'),
+					"title"=>$this->input->post('title'),
+					"slug"=>url_title($this->input->post('title'), 'dash', true),
+					"image"=>getImage(_uploadImage()),
+					"deskripsi"=>$this->input->post('deskripsi'),
+					"visi"=>$this->input->post('visi'),
+					"misi"=>$this->input->post('misi'),
 				);
 				$berita = $this->M_crud->create_data('tbl_jurusan',$data);
 				echo json_encode($berita, true);
@@ -639,16 +640,19 @@ class Site extends CI_Controller{
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				
 				$data = array(
-					"nama"=>$this->input->post('nama'),
-					"username"=>$this->input->post('username'),
-					"status"=>$this->input->post('status'),
-					"id_level"=>$this->input->post('level'),
+					"title"=>$this->input->post('title'),
+					"slug"=>url_title($this->input->post('title'), 'dash', true),
+					"deskripsi"=>$this->input->post('deskripsi'),
+					"visi"=>$this->input->post('visi'),
+					"misi"=>$this->input->post('misi'),
 					"updated_at"=>date("Y-m-d")
 
 				);
-				if($this->input->post('password')!=''){
-					$data['password']=$this->bcrypt->hash_password($this->input->post('password'));
+				if (!empty($_FILES["image"]["name"])) {
+					$image = _uploadImage();
+					$data['image']=getImage($image);
 				}
+				
 				$berita = $this->M_crud->update_data('tbl_jurusan',$data,array('id'=>$this->input->post('id')));
 				echo json_encode($berita, true);
 			}else{

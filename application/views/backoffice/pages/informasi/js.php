@@ -5,52 +5,15 @@
         totalPages: 20,
     };
     $(document).ready(function(){
-        
-        let searchParams = new URLSearchParams(window.location.search)
-        if(searchParams.has('page')) get(searchParams.get('page'));
-        else get();
+        set_ckeditor('caption')
+
+       get(2);
             $("#tambah").on('click',function(event) {
-                set_ckeditor('caption')
                 event.preventDefault();
-                // $("#form-berita").modal('show');
-                $("#form-berita").modal();
-                if(!$("#form-berita").parent().is('body')) $("#form-berita").appendTo("body");
-                // $("#form-berita").appendTo("body");
-                $(".modal-title").html("Tambah Lowongan Pekerjaan");
-                $("#title").val("");
-                CKEDITOR.instances['caption'].setData('');
-
-                $("#file2").val("");
-                $("#picture").val("");
-                $("#caption").text("");
-                $("#idItem").val();
-                $("#btn_simpan").text("Simpan")
-                $("#notif-container").show();
-                $('#preview').attr("src","");
+                console.log('object');
+                goUpdate();
             });
 
-            $("#lihatSemua").on('click',function(event) {
-                event.preventDefault();
-                localStorage.removeItem('berita_cate')
-                $(".list-group-item").removeClass("active");
-                get();
-            });
-            
-            $("#tambahKategori").on('click',function(event) {
-                event.preventDefault();
-                $("#form-kategori").modal();
-                if(!$("#form-kategori").parent().is('body')) $("#form-kategori").appendTo("body");
-                $(".modal-title-kategori").html("Tambah Kategori");
-                $("#title-kategori").val("");
-                CKEDITOR.instances.captionKategori.setData("");
-                $("#file2-kategori").val("");
-                $("#picture-kategori").val("");
-                $("#caption-kategori").text("");
-                $("#idItemKategori").val();
-                $("#btn_simpan_kategori").text("Simpan")
-                $('#preview-kategori').attr("src","");
-            });
-            
             $("#btn_simpan").click(function(event) {
                 event.preventDefault();
                 if($("#idItem").val()===""){
@@ -64,6 +27,9 @@
     });
 
     function changeShow(that){
+        set_ckeditor('caption')
+        $("#gamar").show();
+
         $('#mgeneral').removeClass('active')
         $('#mdetail').removeClass('active')
         $('#mfaq').removeClass('active')
@@ -71,36 +37,42 @@
         $('#mvm').removeClass('active')
         $('#mbl').removeClass('active')
         $('#mlh').removeClass('active')
-        $('#general').hide();
-        $('#detail').hide();
-        $('#faq').hide();
-        $('#sejarah').hide()
-        $('#vm').hide()
-        $('#bl').hide()
-        $('#lh').hide()
-        if($(that).attr('id')=='mgeneral') $('#general').show();
-        if($(that).attr('id')=='mdetail') $('#detail').show();
-        if($(that).attr('id')=='mfaq') $('#faq').show();
-        if($(that).attr('id')=='msejarah') $('#sejarah').show();
-        if($(that).attr('id')=='mvm') $('#vm').show();
-        if($(that).attr('id')=='mbl') $('#bl').show();
-        if($(that).attr('id')=='mlh') $('#lh').show();
+        if($(that).attr('id')=='mgeneral') {
+            $('.box-title').text($(that).text());
+            get($(that).attr('data-id'))
+        }
+        if($(that).attr('id')=='mdetail') {
+            $('.box-title').text($(that).text());
+            get($(that).attr('data-id'))
+        }
+        if($(that).attr('id')=='mfaq') {
+            $('.box-title').text($(that).text());
+            get($(that).attr('data-id'))
+        }
+        if($(that).attr('id')=='msejarah') {
+            $('.box-title').text($(that).text());
+            get($(that).attr('data-id'))
+        }
+        if($(that).attr('id')=='mvm') {
+            $("#gamar").hide();
+            $('.box-title').text($(that).text());
+            get($(that).attr('data-id'))
+        }
+        if($(that).attr('id')=='mbl') {
+            $('.box-title').text($(that).text());
+            get($(that).attr('data-id'))
+        }
+        if($(that).attr('id')=='mlh') {
+            $('.box-title').text($(that).text());
+            get($(that).attr('data-id'))
+        }
+
         $(that).addClass('active')
     }
 
-    function get(page=1,q=null,cate=null){
-        var search = q!==null?`&q=${q}`:'';
-        var category = cate!==null?`&category=${cate}`:'';
-        var category= cate!=null?`&category=${cate}`:(localStorage.getItem('berita_cate')!==null?`&category=${localStorage.getItem('berita_cate')}`:'');
-
-        var pages= page!==1?`&page=${page}`:(localStorage.getItem('berita_page')?`&page=${localStorage.getItem('berita_page')}`:'&page=1');
-
-        // if(cate) {$(".list-group-item").removeClass("active");$("#ID"+stringToHex(cate)).addClass("active");if(category!=null)localStorage.setItem('berita_cate',cate);}
-
-        // if(localStorage.getItem('berita_cate')!=null||localStorage.getItem('berita_cate')!='') {$("#ID"+stringToHex(localStorage.getItem('berita_cate'))).addClass("active");console.log(localStorage.getItem('berita_cate'))}
+    function get(id){
         $.ajax({
-            // pages+search+category,
-            url: "<?=urls('beritaAction')?>?aksi=get&type=2"+pages+search+category,
+            url: "<?=urls('beritaAction')?>?aksi=detail&id="+id,
             beforeSend: function(result){
                 NProgress.start();
                 //HoldOn.open(optionsLoader);
@@ -108,109 +80,38 @@
             success: function(data){
                 NProgress.done();HoldOn.close();
                 const res = JSON.parse(data);
-                if(data.length>0){
-                    // const result = data.result;
-                    console.log(res);
-                    const result = res.data;
-                    let card=''
-                    let pagination=''
-                        $.each(result,function(key,item){
-                            card+='<tr><td><div class="dropdown">'+
-                                        '<button type="button" class="btn btn-default btn-xs  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>'+
-                                        '<ul class="dropdown-menu"><input type="hidden" id="getId'+key+'" value="'+item.id+'">'+
-                                            '<li><a href="#" onClick="event.preventDefault();update(\''+item.id+'\');"><i class="mdi mdi-tooltip-edit"></i> Update</a></li>'+
-                                            '<li><a href="#" onClick="event.preventDefault();approval(\''+item.status+'\',\''+item.id+'\');"><i class="mdi mdi-account-check"></i> '+(item.status===0?'Aktifkan':'Non-Aktifkan')+'</a></li>'+
-                                            '<li><a href="#" onClick="event.preventDefault();hapus(\''+item.id+'\');"><i class="mdi mdi-delete-forever"></i> Delete</a></li>'+
-                                        '</ul></div></td>'+
-                                '<td><img src="'+item.image+'" width="100px"/></td>'+
-                                '<td>'+item.title+'</td>'+
-                                '<td>'+item.content.replace(/(<([^>]+)>)/ig,"")+'</td>'+
-                                '<td>'+item.nama+'</td>'+
-                                '<td>'+(item.status=='1'?'<span class="label label-success">Aktif</span>':'<span class="label label-danger">Non-Aktif</span>')+'</td>'+
-                                '<td>'+item.created_at+'</td>'+
-                                '<td>';
-                            card+='</td>'+
-                            '</tr>';
-
-                        })
-                        pagination+='<li class="page-item '+(res.current_page===1?'disabled':'')+'">'+
-                                    '<a class="page-link" href="#" aria-label="Previous"  onClick="event.preventDefault();get('+(res.current_page-1)+');">'+
-                                        '<span aria-hidden="true">&laquo;</span>'+
-                                        '<span class="sr-only">Previous</span>'+
-                                    '</a>'+
-                                    '</li>';
-                        for($i=0;$i<res.last_page;$i++){
-                            pagination+='<li class="page-item '+(res.current_page===$i+1?'active':'')+'">'+
-                                            '<a class="page-link" href="#" type="button" onClick="event.preventDefault();get('+($i+1)+');">'+($i+1)+'</a>'+
-                                        '</li>';
-                        }
-                            pagination+='<li class="page-item '+(res.current_page===res.last_page?'disabled':'')+'">'+
-                                    '<a class="page-link" href="#" aria-label="Next" onClick="event.preventDefault();get('+(res.current_page+1)+');">'+
-                                        '<span aria-hidden="true">&raquo;</span>'+
-                                        '<span class="sr-only">Next</span>'+
-                                    '</a>'+
-                                    '</li>';
-                    $(".pagination").html(pagination);
-                    $("#tbl_lowongan").html(card);
-                }else{
-                    card+="<div class='col-md-12'><div class='text-center'>Tidak ada data.</div></div>"
-                }
-            }
-        });
-    }
-
-    function update(id){
-        // $('.modal-body').html(id)
-        set_ckeditor('caption')
-         $.ajax({
-            url: "<?=urls('beritaAction')?>?aksi=detail&id="+id, 
-            beforeSend: function(result){
-                NProgress.start();
-                // HoldOn.open(optionsLoader);
-            },
-            success: function(data){
-                NProgress.done();
-                // HoldOn.close();
-                const res = JSON.parse(data);
+                console.log(res);
                 if(res){
-                    $("#form-berita").modal();
-                    if(!$("#form-berita").parent().is('body')) $("#form-berita").appendTo("body");
-                    $(".modal-title").html("Update: "+res.title);
-                    $("#title").val(res.title);
+                    $("#judul").val(res.title);
+                    $("#caption").val(res.judul);
                     $("#idItem").val(res.id);
-                    $("#btn_simpan").text("Update")
-                    
                     $('#preview').attr("src",res.image);
                     CKEDITOR.instances['caption'].setData(res.content);
-                    // $(".modal-body").html(data);
                 }else{
-                    $('#form-berita').modal('hide');
                    toastr["error"]("Gagal mengambil data.")
+
                 }
-                // id(result.)
             }
         });
     }
 
     function goUpdate(){
         let id=$("#idItem").val();
-        let title=$("#title").val();
+        let title=$("#judul").val();
         let caption=CKEDITOR.instances['caption'].getData();
-        console.log(caption);
-        let tags=$("#tags").val();
         if(title===""){$("#err-title").css("display", "block");$("#err-title").html("Nama produk tidak boleh kosong.")}
         if(caption===""){$("#err-caption").css("display", "block");$("#err-caption").html("Deskripsi tidak boleh kosong.")}
 
         var fd =  new FormData();
         fd.append( 'id', id);
         fd.append( 'title', title);
-        fd.append( 'id_category', 4);
+        fd.append( 'id_category', 0);
         // fd.append( 'image', picture);
         if ($('input[type=file]')[0].files.length !== 0) {
             fd.append( 'image', $('input[type=file]')[0].files[0])
         }
         fd.append( 'content', caption);
-        fd.append( 'type', 2);
+        fd.append( 'type', 3);
         fd.append( 'tags', '-');
 
         if(title!=="" && caption!==""){
@@ -228,6 +129,7 @@
                     NProgress.start();HoldOn.open(optionsLoader);
                 },
                 success: function(data){
+                    console.log(id);
                     NProgress.done();HoldOn.close();
                     const res = data;
                     if(res){
@@ -236,7 +138,7 @@
                     }else{
                         toastr["error"]("Gagal memperbaharui data.")
                     }
-                    get();
+                    get(id);
 
                     // id(result.)
                 }
