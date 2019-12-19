@@ -1,5 +1,5 @@
 <?php
-$jurusan = $this->m_crud->read_data("tbl_jurusan","*");
+$jurusan = $this->M_crud->read_data("tbl_jurusan","*");
 include 'header.php';
 include 'navbar.php';
 // include 'tambahan.php';

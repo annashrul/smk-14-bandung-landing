@@ -18,7 +18,7 @@
                    <div class="row" id="berita">
                    </div>
                    <div class="row">
-                   ` <div class="col-md-12">
+                        <div class="col-md-12">
                            <nav class="float-right" aria-label="Page navigation example">
                                    <ul class="pagination">
                                    </ul>

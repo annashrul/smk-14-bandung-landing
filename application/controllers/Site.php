@@ -20,7 +20,8 @@ class Site extends CI_Controller{
 		$data=array(
 			'site'=>$this->site,
 			'title'=>'HOME',
-			'page'=>'dashboard/index'
+			'page'=>'dashboard/index',
+			'js'=>'dashboard/js'
 		);
 		$this->load->view($this->layout,$data);
 	}
@@ -859,6 +860,126 @@ class Site extends CI_Controller{
 					"status"=>$this->input->post('status')
 				);
 				$berita = $this->M_crud->update_data('tbl_kelas',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}else{
+			echo 'FORBIDDEN.';
+		}
+	}
+
+	function fasilitas(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Fasilitas Sekolah',
+			'page'=>'fasilitas/index',
+			'js'=>'fasilitas/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
+	function gallery(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Gallery Kegiatan Sekolah',
+			'page'=>'gallery/index',
+			'js'=>'gallery/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
+	function sarana_prasarana(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Sarana dan Prasarana Sekolah',
+			'page'=>'sarana_prasarana/index',
+			'js'=>'sarana_prasarana/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
+	function galleryAction(){
+		$action = $_GET['aksi'];
+		$where = array();
+		if($action=='get'){
+			if(!$this->akses) $where['id']=$this->id;
+			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
+			if($_GET['type']!=0) $where['type']=$_GET['type'];
+			if($_GET['type']==0)$where['type != 5 and type !=']=6;
+			$page= isset($_GET['page'])?$_GET['page']:1;
+			$count = $this->M_crud->count_read_data('tbl_gallery','id',$where);
+			$limit = 10;
+            $offset = ($limit * ($page-1));
+            $jml = ceil($count / $limit);
+			$countpage = $jml==0?1:$jml;
+			
+			$berita = $this->M_crud->read_data('tbl_gallery','*',$where,'created_at DESC', null,$limit,$offset);
+			$result = array(
+				"data"=>$berita,
+				"count"=>$count,
+				"current_page"=>(int)$page,
+				"perpage"=>$limit,
+				"last_page"=>$countpage
+			);
+			echo json_encode($result, true);
+		}elseif($action=='detail'){
+			$id= $_GET['id'];
+			$berita = $this->M_crud->get_data('tbl_gallery','*',array('id'=>$id));
+			echo json_encode($berita, true);
+		}elseif($action=='create'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"id_member"=>$this->session->id,
+					"image"=>getImage(_uploadImage()),
+					"title"=>$this->input->post('title'),
+					"deskripsi"=>$this->input->post('deskripsi'),
+					"type"=>$this->input->post('type'),
+					"link"=>$this->input->post('link'),
+					"status"=>(!$this->akses?'0':'1')
+				);
+				$berita = $this->M_crud->create_data('tbl_gallery',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='update'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$image;
+				$data = array(
+					"id_member"=>$this->session->id,
+					"title"=>$this->input->post('title'),
+					"deskripsi"=>$this->input->post('deskripsi'),
+					"type"=>$this->input->post('type'),
+					"link"=>$this->input->post('link'),
+					"status"=>(!$this->akses?'0':'1'),
+					"updated_at"=>date("Y-m-d")
+				);
+				if (!empty($_FILES["image"]["name"])) {
+					$image = _uploadImage();
+					$data['image']=getImage($image);
+				}
+				$berita = $this->M_crud->update_data('tbl_gallery',$data,array("id"=>$this->input->post('id')));
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='delete'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"id"=>$this->input->post('id')
+				);
+				$berita = $this->M_crud->delete_data('tbl_gallery',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='approval'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"status"=>$this->input->post('status')
+				);
+				$berita = $this->M_crud->update_data('tbl_gallery',$data,array("id"=>$this->input->post('id')));
 				echo json_encode($berita, true);
 			}else{
 				echo 'FORBIDDEN.';
