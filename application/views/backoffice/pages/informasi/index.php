@@ -39,7 +39,7 @@
                     <small id="err-caption" style="display:none" class="form-text text-danger">.</small>
                 </div>
                 <div class="form-group">
-                    <label for="price">Deskripsi</label>
+                    <label for="price">Deskripsi <small style="font-style:italic">(Tekan TAB untuk menambah row tabel)</small></label>
                     <textarea name="caption" class="form-control" id="caption" cols="30" rows="10"></textarea>
                     <small id="err-caption" style="display:none" class="form-text text-danger">.</small>
                 </div>
