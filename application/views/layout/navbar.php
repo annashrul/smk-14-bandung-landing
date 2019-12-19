@@ -40,21 +40,21 @@
                             <li>
                                 <a href="#">Selayang Pandang</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url();?>Menu_Controller/sejarah">Sejarah</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/visi_misi">Visi & Misi</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/budaya">Budaya & Logo</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/landasan_hukum">Landaasan Hukum</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/fasilitas">Fasilitas</a></li>
+                                    <li><a href="<?=base_url().'selayang_pandang?type=sejarah';?>">Sejarah</a></li>
+                                    <li><a href="<?=base_url().'selayang_pandang?type=visi_misi';?>">Visi & Misi</a></li>
+                                    <li><a href="<?=base_url().'selayang_pandang?type=budaya';?>">Budaya & Logo</a></li>
+                                    <li><a href="<?=base_url().'selayang_pandang?type=landasan_hukum';?>">Landaasan Hukum</a></li>
+                                    <li><a href="<?=base_url().'selayang_pandang?type=fasilitas';?>">Fasilitas</a></li>
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
                                 <a href="#">Manajemen</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url();?>Menu_Controller/kepala_sekolah">Kepala Sekolah</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/kepala_tu">Kepala Tata Usaha</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/wakil_kepala">Wakil Kepala Sekolah</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/dewan">Dewan Komite</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/kajur">Kajur & Kaprog</a></li>
+                                    <li><a href="<?=base_url().'manajemen?type=kepala_sekolah';?>">Kepala Sekolah</a></li>
+                                    <li><a href="<?=base_url().'manajemen?type=kepala_tu';?>">Kepala Tata Usaha</a></li>
+                                    <li><a href="<?=base_url().'manajemen?type=wakil_kepala_sekolah';?>">Wakil Kepala Sekolah</a></li>
+                                    <li><a href="<?=base_url().'manajemen?type=dewan_komite';?>">Dewan Komite</a></li>
+                                    <li><a href="<?=base_url().'manajemen?type=kajur_kaprog';?>">Kajur & Kaprog</a></li>
 
                                 </ul><!-- /.sub-menu -->
                             </li>

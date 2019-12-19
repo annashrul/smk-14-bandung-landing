@@ -2,69 +2,39 @@
 <?php $this->load->view('layout/header') ?>
 
 <section class="blog-one blog-page">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="blog-one__single">
-                            <div class="blog-one__image">
-                                <img src="<?=base_url();?>assets/img/pelepasan.jpg" alt="">
-                                <a class="blog-one__plus" href="<?=base_url();?>Menu_Controller/detail_berita/"><i class="fas fa-eye"></i>
-                                    <!-- /.kipso-icon-plus-symbol --></a>
-                            </div><!-- /.blog-one__image -->
-                            <div class="blog-one__content text-center">
-                                <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                                </div><!-- /.blog-one__meta -->
-                                <h2>Tittle</h2>
-                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
-                                <a href="<?=base_url();?>Menu_Controller/detail_berita" class="blog-one__link">Lihat Berita</a><!-- /.blog-one__link -->
-                            </div><!-- /.blog-one__content -->
-                        </div><!-- /.blog-one__single -->
-                    </div><!-- /.col-lg-4 -->
-                    <div class="col-lg-4">
-                        <div class="blog-one__single">
-                            <div class="blog-one__image">
-                                <img src="<?=base_url();?>assets/img/unbk.jpg" alt="">
-                                <a class="blog-one__plus" href="<?=base_url();?>Menu_Controller/detail_berita"><i class="fas fa-eye"></i>
-                                    <!-- /.kipso-icon-plus-symbol --></a>
-                            </div><!-- /.blog-one__image -->
-                            <div class="blog-one__content text-center">
-                                <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                                </div><!-- /.blog-one__meta -->
-                                <h2>Tittle</h2>
-                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
-                                <a href="news-details.html" class="blog-one__link">Lihat Berita</a><!-- /.blog-one__link -->
-                            </div><!-- /.blog-one__content -->
-                        </div><!-- /.blog-one__single -->
-                    </div><!-- /.col-lg-4 -->
-                    <div class="col-lg-4">
-                        <div class="blog-one__single">
-                            <div class="blog-one__image">
-                                <img src="<?=base_url();?>assets/img/ukk2017.jpg" alt="">
-                                <a class="blog-one__plus" href="<?=base_url();?>Menu_Controller/detail_berita"><i class="fas fa-eye"></i>
-                                    <!-- /.kipso-icon-plus-symbol --></a>
-                            </div><!-- /.blog-one__image -->
-                            <div class="blog-one__content text-center">
-                                <div class="blog-one__meta">
-                                    <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                                </div><!-- /.blog-one__meta -->
-                                <h2>Tittle</h2>
-                                <p class="blog-one__text">Deskripsi</p><!-- /.blog-one__text -->
-                                <a href="<?=base_url();?>Menu_Controller/detail_berita" class="blog-one__link">Lihat Berita</a><!-- /.blog-one__link -->
-                            </div><!-- /.blog-one__content -->
-                        </div><!-- /.blog-one__single -->
-                    </div><!-- /.col-lg-4 -->
-                <div class="post-pagination col-lg-12">
-                    <a href="#"><i class="fa fa-angle-double-left"></i><!-- /.fa fa-angle-double-left --></a>
-                    <a class="active" href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#"><i class="fa fa-angle-double-right"></i><!-- /.fa fa-angle-double-left --></a>
-                </div><!-- /.post-pagination -->
-            </div><!-- /.container -->
-        </section><!-- /.blog-one blog-page -->    
+    <div class="container">
+        <div class="row" id="result_table">
+        </div><!-- /.container -->
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <nav aria-label="..." id="pagination_link"></nav>
+        </div>
+</section><!-- /.blog-one blog-page -->
+
+
+<script>
+	var img = "<?=base_url('assets/')?>";    //** url images **//
+	$(document).ready(function(){
+		load_data(1);
+	}).on("click", ".pagination li a", function(event){
+		event.preventDefault();
+		var page = $(this).data("ci-pagination-page");
+		load_data(page);
+	});
+	function load_data(page,data={}) {
+		$.ajax({
+			url       : "<?=base_url()?>menu_controller/berita/get/"+page,
+			method    : "POST",
+			data      : data,
+			dataType  : "JSON",
+			beforeSend: function() {$('body').append('<div class="first-loader"><img src="'+img+'spin.svg"></div>')},
+			complete  : function() {$('.first-loader').remove()},
+			success   : function(data) {
+				$('#result_table').html(data.result_table);
+				$('#pagination_link').html(data.pagination_link);
+				// $("#page").val(data.hal);
+				console.log(data);
+			}
+		});
+	}
+
+</script>
