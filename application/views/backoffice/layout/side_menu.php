@@ -4,15 +4,13 @@
 		<button type="button" class="button-close fa fa-times js__menu_close"></button>
 		<div class="user">
 			<a href="#" class="avatar"><img src="<?=assets('bo/images/profile.png')?>" alt=""><span class="status online"></span></a>
-			<h5 class="name"><a href="profile.html"><?=$this->session->nama?></a></h5>
+			<h5 class="name"><a href="#"><?=$this->session->nama?></a></h5>
 			<h5 class="position"><?=$this->session->level?></h5>
 			<!-- /.name -->
 			<div class="control-wrap js__drop_down">
 				<i class="fa fa-caret-down js__drop_down_button"></i>
 				<div class="control-list">
-					<div class="control-item"><a href="profile.html"><i class="fa fa-user"></i> Profile</a></div>
-					<div class="control-item"><a href="#"><i class="fa fa-gear"></i> Settings</a></div>
-					<div class="control-item"><a href="#"><i class="fa fa-sign-out"></i> Log out</a></div>
+					<div class="control-item"><a href="<?=base_url('auth/logout')?>"><i class="fa fa-sign-out"></i> Log out</a></div>
 				</div>
 				<!-- /.control-list -->
 			</div>
@@ -35,15 +33,19 @@
 				<?=
 				$this->uri->segment('2')=='berita' ||
 				$this->uri->segment('2')=='lowongan' ||
+				$this->uri->segment('2')=='gallery' ||
+				$this->uri->segment('2')=='fasilitas' ||
+				$this->uri->segment('2')=='sarana_prasarana' ||
 				$this->uri->segment('2')=='informasi'?'class="current active"':''?>
 				>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-film"></i><span>Master Konten</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
 						<li><a class="waves-effect <?=$this->uri->segment('2')=='berita'?'active':''?>" href="<?=urls('berita')?>"><span>Berita</span></a></li>
 						<li><a class="waves-effect <?=$this->uri->segment('2')=='lowongan'?'active':''?>" href="<?=urls('lowongan')?>"><span>Lowongan</span></a></li>
-						
-						
-						<li><a class="waves-effect <?=$this->uri->segment('2')=='informasi'?'active':''?>" href="<?=urls('informasi')?>"><span>informasi</span></a></li>
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='informasi'?'active':''?>" href="<?=urls('informasi')?>"><span>Informasi</span></a></li>
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='gallery'?'active':''?>" href="<?=urls('gallery')?>"><span>Gallery</span></a></li>
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='fasilitas'?'active':''?>" href="<?=urls('fasilitas')?>"><span>Fasilitas</span></a></li>
+						<li><a class="waves-effect <?=$this->uri->segment('2')=='sarana_prasarana'?'active':''?>" href="<?=urls('sarana_prasarana')?>"><span>Sarana dan Prasarana</span></a></li>
 					</ul>
                 </li>
 				<li

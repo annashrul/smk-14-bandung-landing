@@ -37,35 +37,42 @@
         $('#mvm').removeClass('active')
         $('#mbl').removeClass('active')
         $('#mlh').removeClass('active')
-        if($(that).attr('id')=='mgeneral') {
-            $('.box-title').text($(that).text());
-            get($(that).attr('data-id'))
-        }
-        if($(that).attr('id')=='mdetail') {
-            $('.box-title').text($(that).text());
-            get($(that).attr('data-id'))
-        }
-        if($(that).attr('id')=='mfaq') {
-            $('.box-title').text($(that).text());
-            get($(that).attr('data-id'))
-        }
-        if($(that).attr('id')=='msejarah') {
-            $('.box-title').text($(that).text());
-            get($(that).attr('data-id'))
-        }
+        $('#mosis').removeClass('active')
+        $('#mpramuka').removeClass('active')
+        $('#mekstra').removeClass('active')
+        $('#mprestasi').removeClass('active')
+        // if($(that).attr('id')=='mgeneral') {
+        //     $('.box-title').text($(that).text());
+        //     get($(that).attr('data-id'))
+        // }
+        // if($(that).attr('id')=='mdetail') {
+        //     $('.box-title').text($(that).text());
+        //     get($(that).attr('data-id'))
+        // }
+        // if($(that).attr('id')=='mfaq') {
+        //     $('.box-title').text($(that).text());
+        //     get($(that).attr('data-id'))
+        // }
+        // if($(that).attr('id')=='msejarah') {
+        //     $('.box-title').text($(that).text());
+        //     get($(that).attr('data-id'))
+        // }
         if($(that).attr('id')=='mvm') {
             $("#gamar").hide();
+        }
+        if($(that).attr('id')=='mekstra') {
+            $("#gamar").hide();
+        }
+        if($(that).attr('id')=='mprestasi') {
+            $("#gamar").hide();
+        }
+        // if($(that).attr('id')=='mbl') {
+        //     $('.box-title').text($(that).text());
+        //     get($(that).attr('data-id'))
+        // }
+        // if($(that).attr('id')=='mlh') {
             $('.box-title').text($(that).text());
             get($(that).attr('data-id'))
-        }
-        if($(that).attr('id')=='mbl') {
-            $('.box-title').text($(that).text());
-            get($(that).attr('data-id'))
-        }
-        if($(that).attr('id')=='mlh') {
-            $('.box-title').text($(that).text());
-            get($(that).attr('data-id'))
-        }
 
         $(that).addClass('active')
     }

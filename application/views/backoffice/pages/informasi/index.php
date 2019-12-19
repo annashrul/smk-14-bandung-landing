@@ -8,6 +8,10 @@
             <li class="list-group-item" data-id='6' style="cursor:pointer" id="mvm" onClick='event.preventDefault();changeShow(this);'>Visi & Misi</li>
             <li class="list-group-item" data-id='7' style="cursor:pointer" id="mbl" onClick='event.preventDefault();changeShow(this);'>Budaya & Logo</li>
             <li class="list-group-item" data-id='8' style="cursor:pointer" id="mlh" onClick='event.preventDefault();changeShow(this);'>Landasan Hukum</li>
+            <li class="list-group-item" data-id='13' style="cursor:pointer" id="mosis" onClick='event.preventDefault();changeShow(this);'>Osis</li>
+            <li class="list-group-item" data-id='14' style="cursor:pointer" id="mpramuka" onClick='event.preventDefault();changeShow(this);'>Pramuka</li>
+            <li class="list-group-item" data-id='15' style="cursor:pointer" id="mekstra" onClick='event.preventDefault();changeShow(this);'>Ekstrakurikuler</li>
+            <li class="list-group-item" data-id='16' style="cursor:pointer" id="mprestasi" onClick='event.preventDefault();changeShow(this);'>Pestasi</li>
 
         </ul>
     </div>
@@ -35,7 +39,7 @@
                     <small id="err-caption" style="display:none" class="form-text text-danger">.</small>
                 </div>
                 <div class="form-group">
-                    <label for="price">Deskripsi</label>
+                    <label for="price">Deskripsi <small style="font-style:italic">(Tekan TAB untuk menambah row tabel)</small></label>
                     <textarea name="caption" class="form-control" id="caption" cols="30" rows="10"></textarea>
                     <small id="err-caption" style="display:none" class="form-text text-danger">.</small>
                 </div>

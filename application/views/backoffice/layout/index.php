@@ -150,8 +150,8 @@ $this->load->view('backoffice/layout/side_menu')
 	}
 	var optionsLoader = {
 		theme:"sk-cube-grid",
-		message:'some cool message for your user here ! Or where the logo is ! Your skills are the only limit. ',
-		backgroundColor:"#1847B1",
+		message:'Tunggu sebentar...',
+		backgroundColor:"#333",
 		textColor:"white"
 	};
 </script>

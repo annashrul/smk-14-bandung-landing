@@ -8,6 +8,8 @@ class Menu_Controller extends CI_Controller{
 		$data['manajemen'] = $this->m_crud->get_data("tbl_manajemen","*","jabatan=1");
 		$data['berita'] = $this->m_crud->read_data("tbl_berita","*","type='1'","id desc",null,3);
 		$data['gallery'] = $this->m_crud->read_data("tbl_gallery","*","type='4'","id desc",null,3);
+		$data['jurusan'] = $this->M_crud->read_data("tbl_jurusan","*");
+		$data['berita'] = $this->M_crud->read_data("tbl_berita","*",null,"id desc",null,3);
  		$this->load->view("layout/wrapper.php",$data);
 	}
 	// Navbar
@@ -184,12 +186,12 @@ class Menu_Controller extends CI_Controller{
 	// Struktur Organisasi
 
 	function bagan_struktur(){
-        $data['struktur'] = $this->m_crud->get_data("tbl_berita","*","id='2'");
+        $data['struktur'] = $this->M_crud->get_data("tbl_berita","*","id='2'");
         $data['isi'] = 'page/so/bagan_struktur';
 		$this->load->view("layout/wrapper.php"	,$data);	
 	}
 	function divisi(){
-        $data['divisi'] = $this->m_crud->get_data("tbl_berita","*","id='3'");
+        $data['divisi'] = $this->M_crud->get_data("tbl_berita","*","id='3'");
 		$data['isi'] = 'page/so/divisi';
 		$this->load->view("layout/wrapper.php"	,$data);	
 	}
@@ -295,7 +297,7 @@ function animasi(){
         if ($this->form_validation->run() != FALSE){
             $cek = $this->M_crud->get_data('tbl_siswa','*',array('nis'=>$username));
             if($cek){
-                $this->m_crud->update_data("tbl_siswa",array("isLogin"=>1),"nis='".$username."'");
+                $this->M_crud->update_data("tbl_siswa",array("isLogin"=>1),"nis='".$username."'");
                 redirect('http://localhost/perpustakaan/bo/dashboard');
             }else{
                 $this->session->set_flashdata('error', 'Username tidak dikenali.');
