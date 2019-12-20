@@ -13,7 +13,7 @@ class M_website extends CI_Model
             '<div class="col-lg-6">
                 <div class="team-one__single">
                     <div class="team-one__image">
-                        <img src="'.$img.'" alt="">
+                        <img src="'.$img.'" alt="" style="width:80%!important;">
                     </div>
                     <div class="team-one__content">
                         <h2 class="team-one__name"><a href=#"> '.$name.'</a></h2>
@@ -24,23 +24,28 @@ class M_website extends CI_Model
             <div class="col-lg-6">
                 <div class="team-details__content">
                     <h2 class="team-details__title">'.$jabatan.'</h2>
-                    <p class="team-details__text" style="text-align:justify">'.$desc.'</p>
+                    <p class="team-details__text" style="text-align:justify">'.strip_tags($desc).'</p>
                 </div>
             </div>
         ';
     }
 
     public function tempTwo($img,$name,$nip,$desc){
+        if(strlen($desc) > 30){
+            $potong = substr($desc,0,30).'....';
+        }else{
+            $potong = $desc;
+        }
         return /** @lang text */'
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-xs-6" style="height:400px;">
                 <div class="team-one__single">
-                    <div class="team-one__image">
-                        <img src="'.$img.'" alt="">
+                    <div class="team-one__image" style="height:200px!important;">
+                        <img src="'.$img.'" alt="" style="width:80%!important;height:100%!important;">
                     </div>
                     <div class="team-one__content">
                         <h2 class="team-one__name">'.$name.'</h2>
-                        <p class="team-one__designation">'.$nip.'</p>
-                        <p class="team-one__text">'.$desc.'</p>
+                        <p class="team-one__designation">NIP : '.$nip.'</p>
+                        <p class="team-one__text">'.strip_tags($potong).'</p>
                     </div>
                 </div>
             </div>
@@ -48,12 +53,78 @@ class M_website extends CI_Model
         ';
     }
 
-    public function myPagination($table,$field,$where){
-        $count = $this->m_crud->count_data($table, $field, $where);
+    public function tempThree($img,$title,$content){
+        return /** @lang text */'
+        <div class="col-lg-6">
+            <div class="team-one__single">
+                <div class="blog-one__image2">
+                    <img src="'.$img.'" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="team-details__content">
+                <h2 class="team-details__title">'.$title.'</h2>
+                <p class="team-details__text" style="text-align:justify">'.strip_tags($content).'</p>
+            </div>
+        </div>
+        ';
+    }
+
+
+    public function tempNews($image,$url,$date,$title,$content){
+        if(strlen($title) > 20){
+            $subTitle = substr($title,0,20).' .....';
+        }else{
+            $subTitle = $title;
+        }
+        if(strlen($content) > 50){
+            $subContent = substr($content,0,50).' .....';
+        }else{
+            $subContent = $content;
+        }
+        return /** @lang text */
+            '<div class="col-lg-4">
+                <div class="blog-one__single">
+                    <div class="blog-one__image">
+                        <img src="'.$image.'" alt="">
+                        <a class="blog-one__plus" href="'.$url.'"><i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                    <div class="col-md-12">
+                        <p><i class="fa fa-clock"></i> '.date("Y-m-d",strtotime($date)).'</p>
+                    </div>
+                    <div class="blog-one__content text-center">
+                        <h4>'.$subTitle.'</h4>
+                        <p class="blog-one__text">'.html_entity_decode($subContent).'</p>
+                        <a href="'.$url.'" class="blog-one__link">Selengkapnya</a>
+                    </div>
+                    
+                </div>
+            </div>
+        ';
+    }
+
+    public function tempGallery($image,$title){
+        return /** @lang text */'
+        <div class="col-lg-4 col-md-6">
+            <div class="gallery-one__single">
+                <img src="'.$image.'" alt="" style="height:300px;width:100%;">
+                <a href="'.$image.'" class="gallery-one__popup img-popup">
+                    <p class="text-center" style="color: white!important;">'.$title.'</p>
+                </a>
+            </div>
+        </div>
+        
+        ';
+    }
+
+
+    public function myPagination($table,$field,$where,$page){
+        $count = $this->M_crud->count_data($table, $field, $where);
         $config = array();
         $config["base_url"] 				= "#";
         $config["total_rows"] 			= $count;
-        $config["per_page"] 				= 1;
+        $config["per_page"] 				= $page;
         $config["uri_segment"] 			= 4;
         $config["num_links"] 				= 1;
         $config["use_page_numbers"] = TRUE;

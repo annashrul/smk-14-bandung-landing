@@ -1,13 +1,12 @@
 <?php //$this->load->view('layout/tambahan') ?>
 <?php $this->load->view('layout/header') ?>
 
-
 <section class="inner-banner">
     <div class="container">
         <h2 class="inner-banner__title text" id="title"></h2><!-- /.inner-banner__title -->
     </div><!-- /.container -->
 </section>
-<section class="team-one">
+<section class="team-details">
     <div class="container">
         <div class="row justify-content-between" id="result_table">
 
@@ -21,7 +20,7 @@
 		load_data();
 	});
 	function load_data(){
-		dynamic_ajax("<?=base_url().'manajemen/load_data/kepala_tu'?>",null,function(res){
+		dynamic_ajax("<?=base_url().'struktur/load_data/bagan'?>",null,function(res){
 			$("#result_table").html(res.result);
 			$("#title").html(res.title)
 		});

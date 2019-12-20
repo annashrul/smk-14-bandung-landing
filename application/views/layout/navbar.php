@@ -40,47 +40,52 @@
                             <li>
                                 <a href="#">Selayang Pandang</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url().'selayang_pandang?type=sejarah';?>">Sejarah</a></li>
-                                    <li><a href="<?=base_url().'selayang_pandang?type=visi_misi';?>">Visi & Misi</a></li>
-                                    <li><a href="<?=base_url().'selayang_pandang?type=budaya';?>">Budaya & Logo</a></li>
-                                    <li><a href="<?=base_url().'selayang_pandang?type=landasan_hukum';?>">Landaasan Hukum</a></li>
-                                    <li><a href="<?=base_url().'selayang_pandang?type=fasilitas';?>">Fasilitas</a></li>
+                                    <?php $controller='selayang_pandang'; ?>
+                                    <li><a href="<?=base_url().$controller.'?type=sejarah';?>">Sejarah</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=visi_misi';?>">Visi & Misi</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=budaya';?>">Budaya & Logo</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=landasan_hukum';?>">Landaasan Hukum</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=fasilitas';?>">Fasilitas</a></li>
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
                                 <a href="#">Manajemen</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url().'manajemen?type=kepala_sekolah';?>">Kepala Sekolah</a></li>
-                                    <li><a href="<?=base_url().'manajemen?type=kepala_tu';?>">Kepala Tata Usaha</a></li>
-                                    <li><a href="<?=base_url().'manajemen?type=wakil_kepala_sekolah';?>">Wakil Kepala Sekolah</a></li>
-                                    <li><a href="<?=base_url().'manajemen?type=dewan_komite';?>">Dewan Komite</a></li>
-                                    <li><a href="<?=base_url().'manajemen?type=kajur_kaprog';?>">Kajur & Kaprog</a></li>
+                                    <?php $controller='manajemen'; ?>
+                                    <li><a href="<?=base_url().$controller.'?type=kepala_sekolah';?>">Kepala Sekolah</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=kepala_tu';?>">Kepala Tata Usaha</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=wakil_kepala_sekolah';?>">Wakil Kepala Sekolah</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=dewan_komite';?>">Dewan Komite</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=kajur_kaprog';?>">Kajur & Kaprog</a></li>
 
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
                                 <a href="#">Struktur Organisasi</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url();?>Menu_Controller/bagan_struktur">Bagan Struktur</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/divisi">Divisi</a></li>
+                                    <?php $controller='struktur'; ?>
+                                    <li><a href="<?=base_url().$controller.'?type=bagan';?>">Bagan Struktur</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=divisi';?>">Divisi</a></li>
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
                                 <a href="#">Kegiatan</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url();?>Menu_Controller/osis">OSIS</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/eskul">Ekstrakulikuler</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/pramuka">Pramuka</a></li>
+                                    <?php $controller='kegiatan'; ?>
+                                    <li><a href="<?=base_url().$controller.'?type=osis';?>">OSIS</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=eskul';?>">Ekstrakulikuler</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=pramuka';?>">Pramuka</a></li>
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
                                 <a href="#">Informasi</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url();?>Menu_Controller/tenaga_pen">Tenaga Pendidikan</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/prestasi">Prestasi</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/sarana">Sarana & Prasarana</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/akreditasi">Akreditasi</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/lowongan_kerja">Lowongan Kerja</a></li>
+                                    <?php $controller='informasi'; ?>
+                                    <li><a href="<?=base_url().$controller.'?type=tenaga_pendidik';?>">Tenaga Pendidikan</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=prestasi';?>">Prestasi</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=sarana_prasarana';?>">Sarana & Prasarana</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=akreditasi';?>">Akreditasi</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=lowongan_kerja';?>">Lowongan Kerja</a></li>
 
 
                                 </ul><!-- /.sub-menu -->
@@ -90,7 +95,7 @@
                                 <ul class="sub-menu">
                                     <?php foreach ($jurusan as $j) { ?>
                                     <li><a href="<?=$j['id']?>"><?=$j['title']?></a></li>
-                                    <?php  }?>
+                                    <?php }?>
 
                                 </ul><!-- /.sub-menu -->
                             </li>

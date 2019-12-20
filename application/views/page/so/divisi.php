@@ -1,23 +1,28 @@
-<?php $this->load->view('layout/tambahan') ?>
+<?php //$this->load->view('layout/tambahan') ?>
 <?php $this->load->view('layout/header') ?>
 
+<section class="inner-banner">
+    <div class="container">
+        <h2 class="inner-banner__title text" id="title"></h2><!-- /.inner-banner__title -->
+    </div><!-- /.container -->
+</section>
 <section class="team-details">
-            <div class="container">
-                <div class="row justify-content-between">
-                 <div class="col-lg-12">
-                        <div class="team-one__single">
-                            <div class="team-one__image">
-                                <img src="<?=$divisi['image']?>" alt="" width="100%">
-                            </div><!-- /.team-one__image -->
-                        </div><!-- /.team-one__single -->
-                    </div><!-- /.col-lg-6 -->
-                    <div class="col-lg-12">
-                        <div class="team-details__content">
-                            <h2 class="team-details__title"><?=$divisi['title']?></h2><!-- /.team-details__title -->
-                            <p class="team-details__text" style="text-align:justify"><?=strip_tags($divisi['content'])?></p><!-- /.team-details__text -->
-                        </div><!-- /.team-details__content -->
-                    </div><!-- /.col-lg-6 -->
-                   
-                </div><!-- /.row -->
-            </div><!-- /.container -->
+    <div class="container">
+        <div class="row justify-content-between" id="result_table">
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
 </section><!-- /.team-details -->
+
+
+<script>
+	$(document).ready(function(res){
+		load_data();
+	});
+	function load_data(){
+		dynamic_ajax("<?=base_url().'struktur/load_data/divisi'?>",null,function(res){
+			$("#result_table").html(res.result);
+			$("#title").html(res.title)
+		});
+	}
+</script>

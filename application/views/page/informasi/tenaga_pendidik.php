@@ -26,7 +26,7 @@
 		load_data(page);
 	});
 	function load_data(page,data={}){
-		dynamic_ajax("<?=base_url().'manajemen/load_data/dewan_komite/'?>"+page,null,function(res){
+		dynamic_ajax("<?=base_url().'informasi/load_data/tenaga_pendidik/'?>"+page,null,function(res){
 			$("#result_table").html(res.result);
 			$("#title").html(res.title);
 			$('#pagination_link').html(res.pagination_link);

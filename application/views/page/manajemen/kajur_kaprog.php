@@ -3,53 +3,35 @@
 
 <section class="inner-banner">
     <div class="container">
-        <h2 class="inner-banner__title text">Kajur & Kaprog</h2><!-- /.inner-banner__title -->
+        <h2 class="inner-banner__title text" id="title"></h2><!-- /.inner-banner__title -->
     </div><!-- /.container -->
 </section>
 <section class="team-one">
     <div class="container">
-        <div class="row">
-            <?php if($kajur != null){ foreach($kajur as $row): ?>
-                <div class="col-lg-3">
-                    <div class="team-one__single">
-                        <div class="team-one__image">
-                            <img src="<?=$kajur['image']?>" alt="">
-                        </div><!-- /.team-one__image -->
-                        <div class="team-one__content">
-                            <h2 class="team-one__name"><?=$kajur['nama']?></h2>
-                            <!-- /.team-one__name -->
-                            <p class="team-one__designation"><?=$kajur['image']?></p><!-- /.team-one__designation -->
-                            <p class="team-one__text"><?=$kajur['deskripsi']?></p>
-                            <!-- /.team-one__text -->
-                        </div><!-- /.team-one__content -->
-                    </div><!-- /.team-one__single -->
-                </div><!-- /.col-lg-3 -->
-            <?php endforeach; }else{ ?>
-                <div class="col-md-12">
-                    <h1 class="text-center">Data Kajur Tidak Ada</h1>
-                </div>
-            <?php } ?>
-
-            <?php if($kaprog != null){ foreach($kaprog as $row): ?>
-                <div class="col-lg-3">
-                    <div class="team-one__single">
-                        <div class="team-one__image">
-                            <img src="<?=$kaprog['image']?>" alt="">
-                        </div><!-- /.team-one__image -->
-                        <div class="team-one__content">
-                            <h2 class="team-one__name"><?=$kaprog['nama']?></h2>
-                            <!-- /.team-one__name -->
-                            <p class="team-one__designation"><?=$kaprog['image']?></p><!-- /.team-one__designation -->
-                            <p class="team-one__text"><?=$kaprog['deskripsi']?></p>
-                            <!-- /.team-one__text -->
-                        </div><!-- /.team-one__content -->
-                    </div><!-- /.team-one__single -->
-                </div><!-- /.col-lg-3 -->
-            <?php endforeach; }else{ ?>
-                <div class="col-md-12">
-                    <h1 class="text-center">Data Kaprog Tidak Ada</h1>
-                </div>
-            <?php } ?>
+        <div class="row" id="result_table">
         </div><!-- /.row -->
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <nav aria-label="..." id="pagination_link"></nav>
+        </div>
     </div><!-- /.container -->
+
 </section><!-- /.team-one team-page -->
+
+
+<script>
+	$(document).ready(function(){
+		load_data(1);
+	}).on("click", ".pagination li a", function(event){
+		event.preventDefault();
+		var page = $(this).data("ci-pagination-page");
+		load_data(page);
+	});
+	function load_data(page){
+		dynamic_ajax("<?=base_url().'manajemen/load_data/kajur_kaprog/'?>"+page,null,function(res){
+			$("#result_table").html(res.result);
+			$("#title").html(res.title);
+			$('#pagination_link').html(res.pagination_link);
+		});
+	}
+
+</script>

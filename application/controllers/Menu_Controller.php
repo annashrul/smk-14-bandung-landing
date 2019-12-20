@@ -3,11 +3,11 @@
 class Menu_Controller extends CI_Controller{
 	public function index(){
 		$data['isi'] = 'page/beranda/index';
-		$data['jurusan'] = $this->m_crud->read_data("tbl_jurusan","*");
-		$data['config'] = $this->m_crud->get_data("tbl_config","*");
-		$data['manajemen'] = $this->m_crud->get_data("tbl_manajemen","*","jabatan=1");
-		$data['berita'] = $this->m_crud->read_data("tbl_berita","*","type='1'","id desc",null,3);
-		$data['gallery'] = $this->m_crud->read_data("tbl_gallery","*","type='4'","id desc",null,3);
+		$data['jurusan'] = $this->M_crud->read_data("tbl_jurusan","*");
+		$data['config'] = $this->M_crud->get_data("tbl_config","*");
+		$data['manajemen'] = $this->M_crud->get_data("tbl_manajemen","*","jabatan=1");
+		$data['berita'] = $this->M_crud->read_data("tbl_berita","*","type='1'","id desc",null,3);
+		$data['gallery'] = $this->M_crud->read_data("tbl_gallery","*","type='4'","id desc",null,3);
 		$data['jurusan'] = $this->M_crud->read_data("tbl_jurusan","*");
 		$data['berita'] = $this->M_crud->read_data("tbl_berita","*",null,"id desc",null,3);
  		$this->load->view("layout/wrapper.php",$data);
@@ -19,82 +19,25 @@ class Menu_Controller extends CI_Controller{
 	}
 	function berita($action=null){
 
-        $count = $this->m_crud->count_data('v_berita', "id", "type='1'");
+        $count = $this->M_crud->count_data('v_berita', "id", "type='1'");
         $data['isi'] = 'page/berita/index';
         if($action == "get"){
-            $config = array();
-            $config["base_url"] 				= "#";
-            $config["total_rows"] 			= $count;
-            $config["per_page"] 				= 12;
-            $config["uri_segment"] 			= 4;
-            $config["num_links"] 				= 1;
-            $config["use_page_numbers"] = TRUE;
-            $config["full_tag_open"] = '<ul class="pagination pagination-sm">';
-            $config["full_tag_close"] = '</ul>';
-            $config['first_link'] = '&laquo;';
-            $config["first_tag_open"] = '<li>';
-            $config["first_tag_close"] = '</li>';
-            $config['last_link'] = '&raquo;';
-            $config["last_tag_open"] = '<li>';
-            $config["last_tag_close"] = '</li>';
-            $config['next_link'] = '&gt;';
-            $config["next_tag_open"] = '<li>';
-            $config["next_tag_close"] = '</li>';
-            $config["prev_link"] = "&lt;";
-            $config["prev_tag_open"] = "<li>";
-            $config["prev_tag_close"] = "</li>";
-            $config["cur_tag_open"] = "<li class='active'><a href='#'>";
-            $config["cur_tag_close"] = "</a></li>";
-            $config["num_tag_open"] = "<li>";
-            $config["num_tag_close"] = "</li>";
-            $this->pagination->initialize($config);
-            $hal  	= $this->uri->segment(4);
-            $start 	= ($hal - 1) * $config["per_page"];
-            $read_data = $this->m_crud->read_data(
+            $pagin = $this->M_website->myPagination('v_berita','id',"type='1'",8);
+            $read_data = $this->M_crud->read_data(
                 "v_berita","*",
-                "type='1'","id desc",null,$config["per_page"], $start
+                "type='1'","id desc",null,$pagin["perPage"], $pagin['start']
             );
-            $res_index = ""; $no = $start+1;
+            $res_index = "";
             if($read_data != null){
                 foreach ($read_data as $row):
-                    if(strlen($row['title']) > 20){
-                        $title = substr($row['title'],0,20).' .....';
-                    }else{
-                        $title = $row['title'];
-                    }
-                    if(strlen($row['content']) > 50){
-                        $content = substr($row['content'],0,50).' .....';
-                    }else{
-                        $content = $row['content'];
-                    }
-                    $res_index.='
-                        <div class="col-lg-4">
-                            <div class="blog-one__single">
-                                <div class="blog-one__image">
-                                    <img src="'.$row['image'].'" alt="">
-                                    <a class="blog-one__plus" href="'.base_url("berita/").$row["slug"].'"><i class="fas fa-eye"></i></a>
-                                </div>
-                                <div class="col-md-12">
-                                    <p><i class="fa fa-clock"></i> '.date("Y-m-d",strtotime($row['created_at'])).'</p>
-                                </div>
-                                <div class="blog-one__content text-center">
-                                   
-                                    <h4>'.$title.'</h4>
-                                    <p class="blog-one__text">'.strip_tags($content).'</p>
-                                    <a href="'.base_url("berita/").$row["slug"].'" class="blog-one__link">Lihat Berita</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    ';
+                    $res_index.=$this->M_website->tempNews($row['image'],base_url("berita/").$row["slug"],$row['created_at'],$row['title'],$row['content']);
                 endforeach;
             }else{
                 $res_index .=/**@lang text */'<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';
             }
             $data = array(
-                "pagination_link"   => $this->pagination->create_links(),
+                "pagination_link"   => $pagin['pagination_link'],
                 "result_table" 	    => $res_index,
-                "hal"               => $hal
             );
             echo json_encode($data);
         }else{

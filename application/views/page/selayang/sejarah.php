@@ -7,11 +7,14 @@
         <h2 class="inner-banner__title text" id="title"></h2><!-- /.inner-banner__title -->
     </div><!-- /.container -->
 </section>
+
 <section class="team-one">
-    <div class="container-fluid">
-        <div class="row" id="result_table"></div><!-- /.row -->
+    <div class="container">
+        <div class="row justify-content-between" id="result_table">
+
+        </div><!-- /.row -->
     </div><!-- /.container -->
-</section><!-- /.blog-details -->
+</section><!-- /.team-details -->
 
 <script>
 	$(document).ready(function(res){
