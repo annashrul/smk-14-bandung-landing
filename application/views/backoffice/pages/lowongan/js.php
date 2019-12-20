@@ -36,21 +36,7 @@
                 get();
             });
             
-            $("#tambahKategori").on('click',function(event) {
-                event.preventDefault();
-                $("#form-kategori").modal();
-                if(!$("#form-kategori").parent().is('body')) $("#form-kategori").appendTo("body");
-                $(".modal-title-kategori").html("Tambah Kategori");
-                $("#title-kategori").val("");
-                CKEDITOR.instances.captionKategori.setData("");
-                $("#file2-kategori").val("");
-                $("#picture-kategori").val("");
-                $("#caption-kategori").text("");
-                $("#idItemKategori").val();
-                $("#btn_simpan_kategori").text("Simpan")
-                $('#preview-kategori').attr("src","");
-            });
-            
+           
             $("#btn_simpan").click(function(event) {
                 event.preventDefault();
                 if($("#idItem").val()===""){
@@ -94,9 +80,9 @@
                                         '<button type="button" class="btn btn-default btn-xs  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>'+
                                         '<ul class="dropdown-menu"><input type="hidden" id="getId'+key+'" value="'+item.id+'">'+
                                             '<li><a href="#" onClick="event.preventDefault();update(\''+item.id+'\');"><i class="mdi mdi-tooltip-edit"></i> Update</a></li>'+
-                                                                                                                                                    '<div <?=$this->session->grant_access!=1?'style="display:none"':''?>>'+
+                                                                                                                                                    '<li <?=$this->session->grant_access!=1?'style="display:none"':''?>>'+
 
-                                            '<li><a href="#" onClick="event.preventDefault();approval(\''+item.status+'\',\''+item.id+'\');"><i class="mdi mdi-account-check"></i> '+(item.status===0?'Aktifkan':'Non-Aktifkan')+'</a></li>'+'</div>'+
+                                            '<li><a href="#" onClick="event.preventDefault();approval(\''+item.status+'\',\''+item.id+'\');"><i class="mdi mdi-account-check"></i> '+(item.status===0?'Aktifkan':'Non-Aktifkan')+'</a></li>'+'</li>'+
                                             '<li><a href="#" onClick="event.preventDefault();hapus(\''+item.id+'\');"><i class="mdi mdi-delete-forever"></i> Delete</a></li>'+
                                         '</ul></div></td>'+
                                 '<td><img src="'+item.image+'" width="100px"/></td>'+
@@ -143,11 +129,11 @@
             url: "<?=urls('beritaAction')?>?aksi=detail&id="+id, 
             beforeSend: function(result){
                 NProgress.start();
-                // HoldOn.open(optionsLoader);
+                HoldOn.open(optionsLoader);
             },
             success: function(data){
                 NProgress.done();
-                // HoldOn.close();
+                HoldOn.close();
                 const res = JSON.parse(data);
                 if(res){
                     $("#form-berita").modal();
@@ -213,6 +199,9 @@
                     }else{
                         toastr["error"]("Gagal memperbaharui data.")
                     }
+                    CKEditor.destroy();
+
+
                     get();
 
                     // id(result.)
@@ -265,6 +254,8 @@
                                 toastr["error"]("Gagal menambah data.")
                             }
                             get();
+CKEditor.destroy();
+
 
                     // id(result.)
                         }
