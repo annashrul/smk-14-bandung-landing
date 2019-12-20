@@ -30,12 +30,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="main-navigation">
                         <ul class=" navigation-box">
-                            <li class="">
-                                <a href="<?=base_url();?>">Beranda</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url();?>Menu_Controller/berita">Berita</a>
-                            </li>
+                            <li><a href="<?=base_url();?>">Beranda</a></li>
+                            <li><a href="<?=base_url();?>berita">Berita</a></li>
                             <li>
                                 <a href="#">Selayang Pandang</a>
                                 <ul class="sub-menu">
@@ -45,7 +41,7 @@
                                     <li><a href="<?=base_url().$controller.'?type=budaya';?>">Budaya & Logo</a></li>
                                     <li><a href="<?=base_url().$controller.'?type=landasan_hukum';?>">Landaasan Hukum</a></li>
                                     <li><a href="<?=base_url().$controller.'?type=fasilitas';?>">Fasilitas</a></li>
-                                </ul><!-- /.sub-menu -->
+                                </ul>
                             </li>
                             <li>
                                 <a href="#">Manajemen</a>
@@ -56,8 +52,7 @@
                                     <li><a href="<?=base_url().$controller.'?type=wakil_kepala_sekolah';?>">Wakil Kepala Sekolah</a></li>
                                     <li><a href="<?=base_url().$controller.'?type=dewan_komite';?>">Dewan Komite</a></li>
                                     <li><a href="<?=base_url().$controller.'?type=kajur_kaprog';?>">Kajur & Kaprog</a></li>
-
-                                </ul><!-- /.sub-menu -->
+                                </ul>
                             </li>
                             <li>
                                 <a href="#">Struktur Organisasi</a>
@@ -65,7 +60,7 @@
                                     <?php $controller='struktur'; ?>
                                     <li><a href="<?=base_url().$controller.'?type=bagan';?>">Bagan Struktur</a></li>
                                     <li><a href="<?=base_url().$controller.'?type=divisi';?>">Divisi</a></li>
-                                </ul><!-- /.sub-menu -->
+                                </ul>
                             </li>
                             <li>
                                 <a href="#">Kegiatan</a>
@@ -74,7 +69,7 @@
                                     <li><a href="<?=base_url().$controller.'?type=osis';?>">OSIS</a></li>
                                     <li><a href="<?=base_url().$controller.'?type=eskul';?>">Ekstrakulikuler</a></li>
                                     <li><a href="<?=base_url().$controller.'?type=pramuka';?>">Pramuka</a></li>
-                                </ul><!-- /.sub-menu -->
+                                </ul>
                             </li>
                             <li>
                                 <a href="#">Informasi</a>
@@ -85,9 +80,7 @@
                                     <li><a href="<?=base_url().$controller.'?type=sarana_prasarana';?>">Sarana & Prasarana</a></li>
                                     <li><a href="<?=base_url().$controller.'?type=akreditasi';?>">Akreditasi</a></li>
                                     <li><a href="<?=base_url().$controller.'?type=lowongan_kerja';?>">Lowongan Kerja</a></li>
-
-
-                                </ul><!-- /.sub-menu -->
+                                </ul>
                             </li>
                             <li>
                                 <a href="#">Paket Keahlian</a>
@@ -95,19 +88,17 @@
                                     <?php foreach ($jurusan as $j) { ?>
                                     <li><a href="<?=$j['id']?>"><?=$j['title']?></a></li>
                                     <?php }?>
-
-                                </ul><!-- /.sub-menu -->
+                                </ul>
                             </li>
 
                             <li>
                                 <a href="<?=base_url();?>Menu_Controller/perpustakaan">Pepustakaan</a>
                             </li>
-
                         </ul>
                     </div><!-- /.navbar-collapse -->
-<!--                    <div class="right-side-box">-->
-<!--                        <a class="header__search-btn search-popup__toggler" href="#"><i class="kipso-icon-magnifying-glass"></i>-->
-<!--                    </div><!-- /.right-side-box -->
+                    <div class="right-side-box">
+                        <a class="header__search-btn search-popup__toggler" href="#"><i class="fa fa-search"></i></a>
+                    </div><!-- /.right-side-box
                 </div>
                 <!-- /.container -->
             </nav>
@@ -126,6 +117,16 @@
             </div><!-- /.site-header__decor -->
         </header><!-- /.site-header -->
 
-
-
+        <div class="search-popup">
+            <div class="search-popup__overlay custom-cursor__overlay">
+                <div class="cursor"></div>
+                <div class="cursor-follower"></div>
+            </div>
+            <div class="search-popup__inner">
+                <form action="#" class="search-popup__form">
+                    <input type="text" name="search" placeholder="Type here to Search....">
+                    <button type="submit"><i class="kipso-icon-magnifying-glass"></i></button>
+                </form>
+            </div>
+        </div>
 

@@ -1,14 +1,16 @@
-<?php $this->load->view('layout/tambahan') ?>
 <?php $this->load->view('layout/header') ?>
 
+<section class="inner-banner">
+    <div class="container">
+        <h2 class="inner-banner__title text" id="title"></h2>
+    </div><!-- /.container -->
+</section>
 <section class="blog-one blog-page">
     <div class="container">
-        <div class="row" id="result_table">
-        </div><!-- /.container -->
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <nav aria-label="..." id="pagination_link"></nav>
-        </div>
-</section><!-- /.blog-one blog-page -->
+        <div class="row" id="result_table"></div>
+        <div class="col-md-12 col-sm-12 col-xs-12"><nav aria-label="..." id="pagination_link"></nav></div>
+    </div>
+</section>
 
 
 <script>
@@ -22,7 +24,7 @@
 	});
 	function load_data(page,data={}) {
 		$.ajax({
-			url       : "<?=base_url()?>menu_controller/berita/get/"+page,
+			url       : "<?=base_url()?>berita/load_data/get_list/"+page,
 			method    : "POST",
 			data      : data,
 			dataType  : "JSON",
@@ -33,6 +35,7 @@
 				$('#pagination_link').html(data.pagination_link);
 				// $("#page").val(data.hal);
 				console.log(data);
+				$("#title").html("Berita")
 			}
 		});
 	}

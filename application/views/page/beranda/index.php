@@ -19,7 +19,7 @@ foreach($read_data as $key=>$value){
     $ke.=$key;
     $gbr.=$value['image'];
     $slide.= /** @lang text */'
-    <div class="banner-one__slide banner-one__slide-'.$ke.'" style="background-image: url('."'$gbr'".');opacity: 0.5;filter: alpha(opacity=50); ">
+    <div class="banner-one__slide banner-one__slide-'.$ke.'" style="background-image: url('."'$gbr'".');">
         <div class="container">
             <div class="banner-one__bubble-1"></div>
             <div class="banner-one__bubble-2"></div>
@@ -28,7 +28,7 @@ foreach($read_data as $key=>$value){
                 <div class="col-xl-12">
                     <h3 class="banner-one__title banner-one__light-color">'.$value["title"].' </h3>
                     <p class="banner-one__tag-line">'.$value["deskripsi"].' </p>
-                    <a href="'.$value["link"].'" class="thm-btn banner-one__btn">Di era 4.0</a>
+                    <a href="'.$value["link"].'" class="thm-btn banner-one__btn">Selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@ foreach($read_data as $key=>$value){
 
 
 <div class="banner-wrapper">
-    <section class="banner-one banner-carousel__one no-dots owl-theme owl-carousel">
+    <section class="banner-one banner-carousel__one no-dots owl-theme owl-carousel" id="result_slider">
         <?=$slide?>
     </section>
     <div class="banner-carousel-btn">
@@ -109,27 +109,9 @@ foreach($read_data as $key=>$value){
 <!-- Berita -->
 <section class="blog-one blog-page">
     <div class="container">
-        <h2 class="inner-banner__title" style="text-align:center;color:#011928;padding:30px">Berita Terbaru</h2><!-- /.inner-banner__title -->
-        <div class="row">
-            <?php foreach($berita as $row): ?>
-                <div class="col-lg-4">
-                    <div class="blog-one__single">
-                        <div class="blog-one__image">
-                            <img src="<?=$row['image']?>" alt="">
-                            <a class="blog-one__plus" href="<?=base_url();?>Menu_controller/berita/<?=$row['slug']?>"><i class="kipso-icon-plus-symbol"></i>
-                        </div>
-                        <div class="blog-one__content text-center">
-                            <div class="blog-one__meta">
-                                <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
-                                <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                            </div>
-                            <h2 class="blog-one__title"><a href="<?=base_url();?>Menu_controller/berita"><?=$row['title']?></a></h2>
-                            <p class="blog-one__text"><?=substr(strip_tags($row['content']),0,100)?></p>
-                            <a href="<?=base_url();?>Menu_controller/berita/<?=$row['slug']?>" class="blog-one__link">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+        <h2 class="inner-banner__title" style="text-align:center;color:#011928;padding:30px">Berita Terbaru</h2>
+        <div class="row" id="result_berita">
+
         </div>
 </section>
 
@@ -236,38 +218,16 @@ foreach($read_data as $key=>$value){
         </div>
     </div><!-- /.container -->
 </section>
-<script src="<?=base_url();?>assets/js/scrollreveal.min.js"></script>
-<script src="<?=base_url();?>assets/js/jquery.min.js"></script>
-<script src="<?=base_url();?>assets/js/bootstrap.bundle.min.js"></script>
-<script src="<?=base_url();?>assets/js/owl.carousel.min.js"></script>
-<script src="<?=base_url();?>assets/js/waypoints.min.js"></script>
-<script src="<?=base_url();?>assets/js/jquery.counterup.min.js"></script>
-<script src="<?=base_url();?>assets/js/TweenMax.min.js"></script>
-<script src="<?=base_url();?>assets/js/wow.js"></script>
-<script src="<?=base_url();?>assets/js/jquery.magnific-popup.min.js"></script>
-<script src="<?=base_url();?>assets/js/countdown.min.js"></script>
-<script src="<?=base_url();?>assets/js/vegas.min.js"></script>
-<!-- template scripts -->
-<!-- ANIMATION SCROLL -->
-<script src="<?=base_url();?>assets/js/theme.js">
 
-	var ScrollReveal;
-	var sr;
-	window.sr = ScrollReveal({
-		scale: 1,
-		duration: 750,
-		delay: 400,
-		distance: 0,
-		easing: "cubic-bezier(.4, 0, .2, 1)",
+
+<script>
+	$(document).ready(function(){
+		load_data();
 	});
-	sr.reveal(".sr-btm", {
-		distance: "3em",
-		origin: "bottom",
-	});
-
-
+	function load_data(){
+		dynamic_ajax("<?=base_url().'berita/load_data/get_home'?>",null,function(res){
+			$("#result_berita").html(res.result);
+		});
+	}
 </script>
-
-
-
 
