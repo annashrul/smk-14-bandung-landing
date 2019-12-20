@@ -14,11 +14,18 @@
             $(".modal-title").html("Tambah Gallery");
             $("#judul").val('');
             $("#btn_hapus").hide();
+            $("#btn_aktif").hide();
             $("#idItem").val('')
             $("#tipe").val('');
             $("#caption").val('');
             $('#preview').attr("src","#");
             $("#btn_simpan").text("Simpan")
+        });
+        $("#btn_aktif").click(function(event) {
+            event.preventDefault();
+            var status = $("#status").val();
+            var id = $("#idItem").val();
+            approve(status,id);
         });
             $("#btn_search").click(function(event) {
                 event.preventDefault();
@@ -67,13 +74,16 @@
                                     '<div class="title">'+
                                         '<div>'+
                                             '<h3 style="color:white!important;">'+item.title+'</h3>'+
-                                            '<h4 style="font-size:.6em">Status: Aktif </h4>'+
-                                            '<h4>'+(item.type==1?'Osis':(item.type==2?'Pramuka':item.type==3?'Ekstrakurikuler':'Kegiatan Lainnya'))+'</h4>'+
+                                            (item.status==1?
+                                            '<h4 style="font-size:.6em;text-align:left;margin-bottom:2px">Status: <span style="background:green;color:white">Aktif</span></h4>':'<h4 style="font-size:.6em;text-align:left;margin-bottom:2px">Status: <span style="background:red;color:white">Tidak Aktif</span></h4>'
+                                            )+
+                                            '<h4>'+(item.type==1?'Osis':(item.type==2?'Pramuka':item.type==3?'Ekstrakurikuler':(item.type==8?'Prestasi':'Kegiatan Lainnya')))+'</h4>'+
                                         '</div>'+
                                     '</div>'+
                                     '<figcaption>'+
-                                        '<p>'+item.deskripsi+'</p>'+
+                                        // '<p>'+item.deskripsi+'</p>'+
                                     '</figcaption>'+
+                                    // '<a class="btn btn-success btn-custom waves-effect waves-light btn-xs" onclick="update(\''+item.id+'\')"><i class="fa fa-pencil"></i></a>'+
                                     '<a href="#"></a>'+
                                 '</figure>'+
                             '</div>';
@@ -122,7 +132,7 @@
         fd.append( 'title', judul);
         fd.append( 'type', tipe);
         fd.append( 'link', '-');
-        fd.append( 'deskripsi', caption);
+        fd.append( 'deskripsi', '-');
         // if ($('input[type=file]')[0].files.length !== 0) {
             fd.append( 'image', $('input[type=file]')[0].files[0])
         // }
@@ -160,7 +170,8 @@
 
     function update(id){
         // $('.modal-body').html(id)
-                $("#btn_hapus").show();
+        $("#btn_aktif").show();
+        $("#btn_hapus").show();
         $.ajax({
             url:  "<?=urls('galleryAction')?>?aksi=detail&id="+id,
             beforeSend: function(result){
@@ -173,11 +184,18 @@
                     $("#form-gallery").modal();
                     if(!$("#form-gallery").parent().is('body')) $("#form-gallery").appendTo("body");
                     const result = res;
-                    $(".modal-title").html("Update: "+result.nama);
+                    $(".modal-title").html("Update: "+result.title);
                     $("#judul").val(res.title);
-                    $("#caption").val(res.deskripsi);
+                    // $("#caption").val(res.deskripsi);
                     $('#preview').attr("src",res.image);
+                    if(res.status==1){
+                        $("#btn_aktif").html('Non-aktifkan');
+                    }else{
+                        $("#btn_aktif").html('Aktifkan');
+                    }
+
                     $("#idItem").val(res.id)
+                    $("#status").val(res.status)
                     $('#tipe option[value='+res.type+']').attr('selected','selected');
                     $("#btn_simpan").text("Update")
 
@@ -212,7 +230,7 @@
         fd.append( 'title', judul);
         fd.append( 'type', tipe);
         fd.append( 'link', '-');
-        fd.append( 'deskripsi', caption);
+        fd.append( 'deskripsi', '-');
         if ($('input[type=file]')[0].files.length !== 0) {
             fd.append( 'image', $('input[type=file]')[0].files[0])
         }
@@ -249,7 +267,6 @@
     }
 
     function approve(status,id){
-        var sts = status ===1?'Terima!':'Tolak!'
         Swal.fire({
             title: 'Anda yakin?',
             text: "Data yang sudah diubah tidak dapat kembali.",
@@ -257,7 +274,7 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, '+sts+'.'
+            confirmButtonText: 'Ya.'
         }).then((result) => {
         if (result.value) {
             var fd = new FormData();
@@ -281,16 +298,17 @@
                     if(data){
                         Swal.fire(
                             'Berhasil',
-                            status==0?'Berhasil non-aktifkan data':'Berhasil mengaktifkan data.',
+                            status==1?'Berhasil non-aktifkan data':'Berhasil mengaktifkan data.',
                             'success'
                         )
                     }else{
                         Swal.fire(
                             'Gagal',
-                            status==0?'Gagal non-aktifkan data':'Gagal mengaktifkan data.',
+                            status==1?'Gagal non-aktifkan data':'Gagal mengaktifkan data.',
                             'error'
                         )
                     }
+                    $('#form-gallery').modal('hide');
                     get();
                 }
             });

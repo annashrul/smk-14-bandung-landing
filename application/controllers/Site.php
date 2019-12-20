@@ -50,7 +50,7 @@ class Site extends CI_Controller{
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
-			if(!$this->akses) $where['id']=$this->id;
+			if(!$this->akses) $where['id_member']=$this->id;
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
 			if(isset($_GET['type'])) $where['type']=$_GET['type'];
 			$page= isset($_GET['page'])?$_GET['page']:1;
@@ -229,7 +229,7 @@ class Site extends CI_Controller{
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
-			if(!$this->akses) $where['id']=$this->id;
+			if(!$this->akses) $where['id_member']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('v_user','id',$where);
 			$limit = 10;
@@ -323,7 +323,7 @@ class Site extends CI_Controller{
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
-			if(!$this->akses) $where['id']=$this->id;
+			if(!$this->akses) $where['id_member']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('tbl_user_level','id',$where);
 			$limit = 10;
@@ -416,7 +416,7 @@ class Site extends CI_Controller{
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
-			if(!$this->akses) $where['id']=$this->id;
+			// if(!$this->akses) $where['id_member']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$type= isset($_GET['type'])?$_GET['type']:'all';
 
@@ -508,7 +508,7 @@ class Site extends CI_Controller{
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
-			if(!$this->akses) $where['id']=$this->id;
+			if(!$this->akses) $where['id_member']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('tbl_jabatan','id',$where);
 			$limit = 10;
@@ -601,7 +601,7 @@ class Site extends CI_Controller{
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
-			if(!$this->akses) $where['id']=$this->id;
+			// if(!$this->akses) $where['id_member']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('tbl_jurusan','id',$where);
 			$limit = 10;
@@ -699,7 +699,7 @@ class Site extends CI_Controller{
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
-			if(!$this->akses) $where['id']=$this->id;
+			// if(!$this->akses) $where['id']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$kelas= $_GET['kelas'];
 			if($kelas!=0) $where['id_kelas']=$kelas;
@@ -795,7 +795,7 @@ class Site extends CI_Controller{
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
-			if(!$this->akses) $where['id']=$this->id;
+			// if(!$this->akses) $where['id']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$kelas= $_GET['jurusan'];
 			if($kelas!=0) $where['id_jurusan']=$kelas;
@@ -879,6 +879,16 @@ class Site extends CI_Controller{
 		$this->load->view($this->layout,$data);
 	}
 
+	function slider(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Slider',
+			'page'=>'slider/index',
+			'js'=>'slider/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
 	function gallery(){
 		$data=array(
 			'site'=>$this->site,
@@ -903,10 +913,10 @@ class Site extends CI_Controller{
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
-			if(!$this->akses) $where['id']=$this->id;
+			if(!$this->akses) $where['id_member']=$this->id;
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
 			if($_GET['type']!=0) $where['type']=$_GET['type'];
-			if($_GET['type']==0)$where['type != 5 and type !=']=6;
+			if($_GET['type']==0)$where['type != 5 and type != 7 and type !=']=6;
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('tbl_gallery','id',$where);
 			$limit = 10;
@@ -980,6 +990,95 @@ class Site extends CI_Controller{
 					"status"=>$this->input->post('status')
 				);
 				$berita = $this->M_crud->update_data('tbl_gallery',$data,array("id"=>$this->input->post('id')));
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}else{
+			echo 'FORBIDDEN.';
+		}
+	}
+
+	function contact(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Kontak',
+			'page'=>'contact/index',
+			'js'=>'contact/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
+	function contactAction(){
+		$action = $_GET['aksi'];
+		$where = array();
+		if($action=='get'){
+			if(!$this->akses) $where['id']=$this->id;
+			$page= isset($_GET['page'])?$_GET['page']:1;
+			$count = $this->M_crud->count_read_data('tbl_contact','id',$where);
+			$limit = 10;
+            $offset = ($limit * ($page-1));
+            $jml = ceil($count / $limit);
+            $countpage = $jml==0?1:$jml;
+			// ($table, $field, $where=null, $order=null, $group=null, $limit_sum=0, $limit_from=0, $having=null
+			$berita = $this->M_crud->read_data('tbl_contact','*',$where,'created_at DESC', null,$limit,$offset);
+			$result = array(
+				"data"=>$berita,
+				"count"=>$count,
+				"current_page"=>(int)$page,
+				"perpage"=>$limit,
+				"last_page"=>$countpage
+			);
+			echo json_encode($result, true);
+		}elseif($action=='detail'){
+			$berita = $this->M_crud->get_data('tbl_contact','*',array('id'=>1));
+			echo json_encode($berita, true);
+		}elseif($action=='create'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"title"=>$this->input->post('title'),
+				);
+				$berita = $this->M_crud->create_data('tbl_contact',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='update'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				
+				$data = array(
+					"site_title"=>$this->input->post('site_title'),
+					"email"=>$this->input->post('email'),
+					"telp"=>$this->input->post('telp'),
+					"fax"=>$this->input->post('fax'),
+					"address"=>$this->input->post('address'),
+					"facebook"=>$this->input->post('facebook'),
+					"twitter"=>$this->input->post('twitter'),
+					"instagram"=>$this->input->post('instagram'),
+				);
+				$berita = $this->M_crud->update_data('tbl_contact',$data,array('id'=>1));
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='delete'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+				$data = array(
+					"id"=>$this->input->post('id')
+				);
+				$berita = $this->M_crud->delete_data('tbl_contact',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='approval'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"id"=>$this->input->post('id'),
+					"status"=>$this->input->post('status')
+				);
+				$berita = $this->M_crud->update_data('tbl_contact',$data);
 				echo json_encode($berita, true);
 			}else{
 				echo 'FORBIDDEN.';

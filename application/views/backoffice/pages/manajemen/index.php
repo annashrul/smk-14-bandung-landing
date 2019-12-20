@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-group">
                         <label for="title">NIP</label>
-                        <input type="text" class="form-control" id="nip" require>
+                        <input type="number" class="form-control" id="nip" require>
                         <small id="err-nip" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">

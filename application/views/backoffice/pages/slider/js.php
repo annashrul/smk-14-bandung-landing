@@ -4,20 +4,20 @@
         let searchParams = new URLSearchParams(window.location.search)
         if(searchParams.has('page')) get(searchParams.get('page'));
         else get();
-        loadCategory();
 
         $("#tambah").on('click',function(event) {
             event.preventDefault();
             // $("#form-berita").modal('show');
-            $("#form-user").modal();
-            if(!$("#form-user").parent().is('body')) $("#form-user").appendTo("body");
-            // $("#form-user").appendTo("body");
-            $(".modal-title").html("Tambah User");
-            $("#title").val("");
-            $("#nama").val("");
-            $("#idItem").val("");
-            $("#nama").val("");
-            $("#username").val("");
+            $("#form-gallery").modal();
+            if(!$("#form-gallery").parent().is('body')) $("#form-gallery").appendTo("body");
+            // $("#form-gallery").appendTo("body");
+            $(".modal-title").html("Tambah Slider");
+            $("#judul").val('');
+            $("#btn_hapus").hide();
+            $("#idItem").val('')
+            $("#tipe").val('');
+            $("#caption").val('');
+            $('#preview').attr("src","#");
             $("#btn_simpan").text("Simpan")
         });
             $("#btn_search").click(function(event) {
@@ -45,10 +45,10 @@
 
     });
 
-    function get(page=1,q=null){
+    function get(page=1,q=null,kelas=0){
         var search = q!==null?`&q=${q}`:'';
         $.ajax({
-            url: "<?=urls('userAction')?>?aksi=get",
+            url: "<?=urls('galleryAction')?>?aksi=get&type=7"+search,
             beforeSend: function(result){
                 NProgress.start();HoldOn.open(optionsLoader);
             },
@@ -57,28 +57,14 @@
                 const res = JSON.parse(data);
                 if(data.length>0){
                     // const result = data.result;
-                    console.log(res);
                     const result = res.data;
                     let card=''
                     let pagination=''
                         $.each(result,function(key,item){
-                            card+='<tr><td><div class="dropdown">'+
-                                        '<button type="button" class="btn btn-default btn-xs  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>'+
-                                        '<ul class="dropdown-menu"><input type="hidden" id="getId'+key+'" value="'+item.id+'">'+
-                                            '<li><a href="#" onClick="event.preventDefault();update(\''+item.id+'\');"><i class="mdi mdi-tooltip-edit"></i> Update</a></li>'+
-                                            '<li><a href="#" onClick="event.preventDefault();approve(\''+item.status+'\',\''+item.id+'\');"><i class="mdi mdi-account-check"></i> '+(item.status===0?'Aktifkan':'Non-Aktifkan')+'</a></li>'+
-                                            // '<li><a href="#" onClick="event.preventDefault();hapus(\''+item.id+'\');"><i class="mdi mdi-delete-forever"></i> Delete</a></li>'+
-                                        '</ul></div></td>'+
-                                '<td>'+item.nama+'</td>'+
-                                '<td>'+item.username+'</td>'+
-                                '<td>'+item.level+'</td>'+
-                                '<td>'+(item.status=='1'?'<span class="label label-success">Aktif</span>':'<span class="label label-danger">Non-Aktif</span>')+'</td>'+
-                                '<td>'+item.created_at+'</td>'+
-                                '<td>'+item.updated_at+'</td>'+
-                                '<td>';
-                            card+='</td>'+
-                            '</tr>';
-
+                            card+='<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"><div class="single-article blog-content" style="background-image: url(\''+item.image+'\'); background-size: 100% 100%; background-position: center center;height:300px"><div class="box-img article-img"></div><div class="promosi-desc"><div class="promosi-content"><h1 class="single-title">'+item.title+'</h1>'+                                              (item.status==1?'<span class="label label-success">Aktif</span>':'<span class="label label-danger">Non-Aktif</span>')+
+                            '<div class="card-read-more" style="margin-top:10px;width:100%"><a class="btn btn-success btn-custom waves-effect waves-light btn-xs" onclick="update(\''+item.id+'\')"><i class="fa fa-pencil"></i></a> <a class="btn btn-danger btn-custom waves-effect waves-light btn-xs" onclick="hapus(\''+item.id+'\')"><i class="fa fa-trash"></i></a> '+
+                            '<span <?=$this->session->grant_access!=1?'style="display:none"':''?>>'
+                            +(item.status==1?'<a href="#" style="font-size:.9em;margin-top:5px" class="label label-warning" onclick="approve(\''+item.status+'\',\''+item.id+'\')"><i class="fa fa-remove"></i> Non-Aktifkan</a>':'<a href="#" style="font-size:.9em;margin-top:5px" class="label label-success" onclick="approve(\''+item.status+'\',\''+item.id+'\')"><i class="fa fa-check"></i> Aktifkan</a>')+'</span></div></div></div></div></div>'
                         })
                         pagination+='<li class="page-item '+(res.current_page===1?'disabled':'')+'">'+
                                     '<a class="page-link" href="#" aria-label="Previous"  onClick="event.preventDefault();get('+(res.current_page-1)+');">'+
@@ -98,7 +84,7 @@
                                     '</a>'+
                                     '</li>';
                     $(".pagination").html(pagination);
-                    $("#tbl_user").html(card);
+                    $("#gallery").html(card);
                 }else{
                     card+="<div class='col-md-12'><div class='text-center'>Tidak ada data.</div></div>"
                 }
@@ -110,27 +96,28 @@
     function goInsert() {
         console.log("insert");
 
-        let nama = $("#nama").val();
-        let username = $("#username").val();
-        let password = $("#password").val();
-        let level = $("#level").val();
-        let status = $("#status").val();
-        if(nama===""){$("#err-nama").css("display", "block");$("#err-nama").html("Kategori   produk tidak boleh kosong.")}
-        if(username===""){$("#err-username").css("display", "block");$("#err-username").html("Gambar tidak boleh kosong.")}
-        if(password===""){$("#err-password").css("display", "block");$("#err-password").html("Deskripsi tidak boleh kosong.")}
+        let judul = $("#judul").val();
+        // let tipe = $("#tipe").val();
+        let link = $("#link").val();
+        let caption = $("#caption").val();
+
+        if(judul===""){$("#err-judul").css("display", "block");$("#err-judul").html("Kategori   produk tidak boleh kosong.")}
+        if(caption===""){$("#err-caption").css("display", "block");$("#err-caption").html("Kategori   produk tidak boleh kosong.")}
+
 
         var fd =  new FormData();
-        fd.append( 'nama', nama);
-        fd.append( 'username', username);
-        fd.append( 'password', password)
-        fd.append( 'level', level);
-        fd.append( 'status', status);
-
+        fd.append( 'title', judul);
+        fd.append( 'type', 7);
+        fd.append( 'link', link);
+        fd.append( 'deskripsi', caption);
+        // if ($('input[type=file]')[0].files.length !== 0) {
+            fd.append( 'image', $('input[type=file]')[0].files[0])
+        // }
         
-        if(nama!=="" &&  username!=="" && password!==""){
+        if(judul!=="" &&  caption!==""){
             console.log("oke")
             $.ajax({
-                        url:  "<?=urls('userAction')?>?aksi=create",
+                        url:  "<?=urls('galleryAction')?>?aksi=create",
                         type: "post",
                         headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -140,12 +127,12 @@
                         contentType: false,
                         dataType: 'json',
                         beforeSend: function(result){
-                            NProgress.start();
+                            NProgress.start();HoldOn.open(optionsLoader);
                         },
                         success: function(data){
-                            NProgress.done();
+                            NProgress.done();HoldOn.close();
                             if(data){
-                                $("#form-user").modal('hide');
+                                $("#form-gallery").modal('hide');
                             toastr["success"]("Berhasil menambah data.")
                             }else{
                                 toastr["error"]("Gagal menambah data.")
@@ -160,8 +147,9 @@
 
     function update(id){
         // $('.modal-body').html(id)
+                $("#btn_hapus").show();
         $.ajax({
-            url:  "<?=urls('userAction')?>?aksi=detail&id="+id,
+            url:  "<?=urls('galleryAction')?>?aksi=detail&id="+id,
             beforeSend: function(result){
                 NProgress.start();HoldOn.open(optionsLoader);
             },
@@ -169,25 +157,24 @@
                 NProgress.done();HoldOn.close();
                 const res = JSON.parse(data);
                 if(res){
-                    $("#form-user").modal();
-                    if(!$("#form-user").parent().is('body')) $("#form-user").appendTo("body");
+                    $("#form-gallery").modal();
+                    if(!$("#form-gallery").parent().is('body')) $("#form-gallery").appendTo("body");
                     const result = res;
-                    $(".modal-title").html("Update: "+result.nama);
-                    $("#nama").val(result.name);
-                    $("#idItem").val(result.id);
-                    $("#nama").val(result.nama);
-                    $("#username").val(result.username);
-                    $('#level option[value='+res.id_level+']').attr('selected','selected');
-                    $('#status option[value='+res.status+']').attr('selected','selected');
-
+                    $(".modal-title").html("Update: "+result.title);
+                    $("#judul").val(res.title);
+                    $("#caption").val(res.deskripsi);
+                    $("#link").val(res.link);
+                    $('#preview').attr("src",res.image);
+                    $("#idItem").val(res.id)
+                    $('#tipe option[value='+res.type+']').attr('selected','selected');
                     $("#btn_simpan").text("Update")
 
                     // $(".modal-body").html(data);
                 }else{
-                    $('#form-testimoni').modal('hide');
+                    $('#form-gallery').modal('hide');
                     Swal.fire(
                         'Gagal',
-                        res.msg,
+                        'Gagal mengambil data.',
                         'danger'
                     )
                 }
@@ -198,29 +185,30 @@
 
     function goUpdate(){
 
-        let nama = $("#nama").val();
-        let username = $("#username").val();
-        let password = $("#password").val();
-        let level = $("#level").val();
         let id = $("#idItem").val();
-        let status = $("#status").val();
-        if(nama===""){$("#err-nama").css("display", "block");$("#err-nama").html("Kategori   produk tidak boleh kosong.")}
-        if(username===""){$("#err-username").css("display", "block");$("#err-username").html("Gambar tidak boleh kosong.")}
+        let judul = $("#judul").val();
+        // let tipe = $("#tipe").val();
+        let link = $("#link").val();
+        let caption = $("#caption").val();
+
+        if(judul===""){$("#err-judul").css("display", "block");$("#err-judul").html("Kategori   produk tidak boleh kosong.")}
+        if(caption===""){$("#err-caption").css("display", "block");$("#err-caption").html("Kategori   produk tidak boleh kosong.")}
+
 
         var fd =  new FormData();
         fd.append( 'id', id);
-        fd.append( 'nama', nama);
-        fd.append( 'username', username);
-        fd.append( 'password', password)
-        fd.append( 'level', level);
-        fd.append( 'status', status);
+        fd.append( 'title', judul);
+        fd.append( 'type', 7);
+        fd.append( 'link', link);
+        fd.append( 'deskripsi', caption);
+        if ($('input[type=file]')[0].files.length !== 0) {
+            fd.append( 'image', $('input[type=file]')[0].files[0])
+        }
 
-
-        if(nama!=="" && username!==""){
-                    console.log("update");
+        if(judul!=="" && link!==""){
 
             $.ajax({
-                url:  "<?=urls('userAction')?>?aksi=update",
+                url:  "<?=urls('galleryAction')?>?aksi=update",
                 type: "post",
                 headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -235,7 +223,7 @@
                 success: function(data){
                     NProgress.done();HoldOn.close();
                     if(data){
-                        $("#form-user").modal('hide');
+                        $("#form-gallery").modal('hide');
                         toastr["success"]("Berhasil menambah data.")
                     }else{
                         toastr["error"]("Gagal menambah data.")
@@ -264,7 +252,7 @@
             fd.append('id',id);
             fd.append('status',status==1?0:1);
             $.ajax({
-            url: "<?=urls('userAction')?>?aksi=approval",
+            url: "<?=urls('galleryAction')?>?aksi=approval",
                 type: "post",
                 headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -281,13 +269,13 @@
                     if(data){
                         Swal.fire(
                             'Berhasil',
-                            status==0?'Berhasil non-aktifkan data':'Berhasil mengaktifkan data.',
+                            status==1?'Berhasil non-aktifkan data':'Berhasil mengaktifkan data.',
                             'success'
                         )
                     }else{
                         Swal.fire(
                             'Gagal',
-                            status==0?'Gagal non-aktifkan data':'Gagal mengaktifkan data.',
+                            status==1?'Gagal non-aktifkan data':'Gagal mengaktifkan data.',
                             'error'
                         )
                     }
@@ -299,27 +287,52 @@
         })
     }
 
-    function loadCategory(){
-        $('#level').empty().append('<option value="0">Pilih Level</option>');
-        $.ajax({
-                url: "<?=urls('UserLevelAction')?>?aksi=get", 
+    function hapus(id){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+        if (result.value) {
+            var fd = new FormData();
+            fd.append( 'id', id);
+            $.ajax({
+                url: "<?=urls('galleryAction')?>?aksi=delete",
+                type: "post",
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                data:fd,
+                processData: false,
+                contentType: false,
                 dataType: 'json',
-                type: 'GET',
-                success: function(response) {
-                var array = response.data;
-                    if (array != ''){
-                        for (i in array) {
-                            $("#level").append("<option value="+array[i].id+">"+array[i].title+"</option>");
-                        }
-
-                    }
-
+                beforeSend: function(result){
+                    NProgress.start();HoldOn.open(optionsLoader);
                 },
-                error: function(x, e) {
-
+                success: function(data){
+                    NProgress.done();HoldOn.close();
+                    if(data){
+                        $("#form-gallery").modal('hide');
+                        toastr["success"]("Berhasil menghapus data.")
+                    }else{
+                        toastr["error"]("Gagal menghapus data.")
+                    }
+                    get();
                 }
+            });
+            
+        }
+        })
+    }
 
-        });
+
+    function getval(sel){
+        // alert(sel.value);
+        get(1,null,sel.value)
     }
 
 </script>

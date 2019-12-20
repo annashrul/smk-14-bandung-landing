@@ -5,22 +5,24 @@
         totalPages: 20,
     };
     $(document).ready(function(){
-        loadJabatan();
         let searchParams = new URLSearchParams(window.location.search)
         if(searchParams.has('page')) get(searchParams.get('page'));
         else get();
             $("#tambah").on('click',function(event) {
-                set_ckeditor('caption')
+                set_ckeditor('caption');
+                loadJabatan();
+
                 event.preventDefault();
                 // $("#form-berita").modal('show');
                 $("#form-berita").modal();
                 if(!$("#form-berita").parent().is('body')) $("#form-berita").appendTo("body");
                 // $("#form-berita").appendTo("body");
-                $(".modal-title").html("Tambah Lowongan Pekerjaan");
+                $(".modal-title").html("Tambah Manajemen");
                 $("#title").val("");
                 CKEDITOR.instances['caption'].setData('');
 
                 $("#file2").val("");
+                $("#nip").val("");
                 $("#nama").val("");
                 $("#jabatan").text("");
                 $("#idItem").val();
@@ -139,6 +141,8 @@
     }
 
     function update(id){
+        loadJabatan();
+
         // $('.modal-body').html(id)
         set_ckeditor('caption')
          $.ajax({
