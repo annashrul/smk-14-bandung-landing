@@ -19,7 +19,7 @@ class Site extends CI_Controller{
 	function index(){
 		$data=array(
 			'site'=>$this->site,
-			'title'=>'HOME',
+			'title'=>'Dashboard',
 			'page'=>'dashboard/index',
 			'js'=>'dashboard/js'
 		);
@@ -231,6 +231,7 @@ class Site extends CI_Controller{
 		if($action=='get'){
 			if(!$this->akses) $where['id_member']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
+			$where['id !=']=1;
 			$count = $this->M_crud->count_read_data('v_user','id',$where);
 			$limit = 10;
             $offset = ($limit * ($page-1));
@@ -889,6 +890,17 @@ class Site extends CI_Controller{
 		$this->load->view($this->layout,$data);
 	}
 
+	function partnership(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Partnership',
+			'page'=>'partnership/index',
+			'js'=>'partnership/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
+
 	function gallery(){
 		$data=array(
 			'site'=>$this->site,
@@ -916,7 +928,7 @@ class Site extends CI_Controller{
 			if(!$this->akses) $where['id_member']=$this->id;
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
 			if($_GET['type']!=0) $where['type']=$_GET['type'];
-			if($_GET['type']==0)$where['type != 5 and type != 7 and type !=']=6;
+			if($_GET['type']==0)$where['type != 5 and type != 7 and type != 8 and type !=']=6;
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('tbl_gallery','id',$where);
 			$limit = 10;

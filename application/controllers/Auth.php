@@ -9,7 +9,7 @@ class Auth extends CI_Controller
 		if($this->session->is_logged_in){
 			redirect('site');
 		}
-		$this->load->view('auth/login');
+		$this->load->view('auth/login_bo',array('title'=>'SMKN 14 Bandung'));
 	}
 
 	function login(){

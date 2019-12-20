@@ -37,6 +37,7 @@
 				$this->uri->segment('2')=='lowongan' ||
 				$this->uri->segment('2')=='gallery' ||
 				$this->uri->segment('2')=='fasilitas' ||
+				$this->uri->segment('2')=='partnership' ||
 				$this->uri->segment('2')=='sarana_prasarana' ||
 				$this->uri->segment('2')=='informasi'?'class="current active"':''?>
 				>
@@ -48,6 +49,9 @@
 						<li
 						<?=$this->session->id_level!=1&&$this->session->id_level!=7?'style="display:none"':''?>
 						><a class="waves-effect <?=$this->uri->segment('2')=='lowongan'?'active':''?>" href="<?=urls('lowongan')?>"><span>Lowongan</span></a></li>
+						<li
+						<?=$this->session->id_level!=1&&$this->session->id_level!=7?'style="display:none"':''?>
+						><a class="waves-effect <?=$this->uri->segment('2')=='partnership'?'active':''?>" href="<?=urls('partnership')?>"><span>Partnership</span></a></li>
 						<li 
 						<?=$this->session->id_level!=1&&$this->session->id_level!=2&&$this->session->id_level!=5?'style="display:none"':''?>
 						><a class="waves-effect <?=$this->uri->segment('2')=='informasi'?'active':''?>" href="<?=urls('informasi')?>"><span>Informasi</span></a></li>

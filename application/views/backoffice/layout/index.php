@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="description" content="">
-    <meta name="author" content="">
+	<meta name="author" content="">
+	<link rel="icon" type="image/png" href="<?=base_url()?>assets/img/icon.png">
 
     <title><?=$title?> - <?=$site?></title>
 
@@ -89,6 +90,11 @@ $this->load->view('backoffice/layout/side_menu')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.18.1/dist/sweetalert2.all.min.js"></script>
 <script src="<?=assets('bo/plugin/waves/waves.min.js')?>"></script>
 <script src="<?=assets('bo/plugin/ckeditor/ckeditor.js')?>"></script>
+
+<script src="<?=assets('bo/plugin/chart/morris/morris.min.js')?>"></script>
+<script src="<?=assets('bo/plugin/chart/morris/raphael-min.js')?>"></script>
+<script src="<?=assets('bo/scripts/chart.morris.init.min.js')?>"></script>
+
 <!-- Toastr -->
 <script src="<?=assets('bo/plugin/toastr/toastr.min.js')?>"></script>
 <script src="<?=assets('bo/scripts/main.min.js')?>"></script>
@@ -149,7 +155,7 @@ $this->load->view('backoffice/layout/side_menu')
 		"hideMethod": "fadeOut"
 	}
 	var optionsLoader = {
-		theme:"sk-cube-grid",
+		theme:"sk-bounce",
 		message:'Tunggu sebentar...',
 		backgroundColor:"#333",
 		textColor:"white"

@@ -1,6 +1,13 @@
  <!-- <div class="box-content"> -->
     <h4 class="box-title">
         <div class="row">
+            <div class="col-md-3">
+                <select name="" id="" class="form-control">
+                    <option value="3">Semua</option>
+                    <option value="1">Aktif</option>
+                    <option value="0">Tidak Aktid</option>
+                </select>
+            </div>
             <?php if($this->session->grant_access!=0):?>
            <div class="float-right" style="margin-right:15px;margin-bottom:10px;">
                <a href="#!" class="btn btn-success" id="tambahKategori">Tambah Kategori</a>
