@@ -8,7 +8,7 @@
 
 <section class="team-details" style ="padding:40px">
     <div class="container">
-        <div class="row justify-content-between" id="result_header"></div>
+        <div class="row" id="result_header"></div>
     </div>
     <div class="container">
         <h2 class="text-center" id="title_body"></h2><br>

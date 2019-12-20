@@ -17,6 +17,8 @@ class Detail extends CI_Controller
             $late_post = $this->M_crud->read_data("v_berita","*","type='1' and slug != '".$_GET['title']."'","RAND()",null,3);
             $read_data = $this->M_crud->get_data("v_berita","*","slug='".$_GET['title']."'");
         }
+
+
         $data['isi'] = 'page/berita/detail_berita';
         $data['read_data'] = $read_data;
         $data['late_post'] = $late_post;

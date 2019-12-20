@@ -1,8 +1,4 @@
 <?php $url = base_url() . "assets"?>
-
-
-
-    <div class="preloader"><span></span></div><!-- /.preloader -->
     <div class="page-wrapper">
         <div class="topbar-one">
             <div class="container">
@@ -31,7 +27,15 @@
                     <div class="main-navigation">
                         <ul class=" navigation-box">
                             <li><a href="<?=base_url();?>">Beranda</a></li>
-                            <li><a href="<?=base_url();?>berita">Berita</a></li>
+                            <li>
+                                <a href="#">Berita</a>
+                                <ul class="sub-menu">
+                                    <?php $read_data=$this->M_crud->read_data('tbl_category','*'); foreach ($read_data as $row) { ?>
+                                        <li><a href="<?=base_url("berita?title=".$row['slug'])?>"><?=$row['title']?></a></li>
+                                    <?php }?>
+                                </ul>
+                            </li>
+
                             <li>
                                 <a href="#">Selayang Pandang</a>
                                 <ul class="sub-menu">
@@ -96,6 +100,11 @@
                             </li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
+                    <style>
+                        @media (max-width: 576px) {
+                            .right-side-box{margin-top: 20px!important;}
+                        }
+                    </style>
                     <div class="right-side-box">
                         <a class="header__search-btn search-popup__toggler" href="#"><i class="fa fa-search"></i></a>
                     </div><!-- /.right-side-box

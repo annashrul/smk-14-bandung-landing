@@ -126,15 +126,18 @@ foreach($read_data as $key=>$value){
 
 <section class="gallery-one">
     <div class="container">
-        <div class="row">
+        <div class="row" id="result_galler">
 
             <?php if($gallery != null){ foreach($gallery as $row):?>
-            <div class="col-lg-4 col-md-6">
-                <div class="gallery-one__single">
-                    <img src="<?=$row['image']?>" alt="">
-                    <a href="<?=$row['image']?>" class="gallery-one__popup img-popup"><i class="kipso-icon-plus-symbol"></i><!-- /.kipso-icon-plus-symbol --></a>
-                </div><!-- /.gallery-one__single -->
-            </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-one__single">
+                        <img src="<?=$row['image']?>" alt="" style="height:300px;width:100%;">
+                        <a href="<?=$row['image']?>" class="gallery-one__popup img-popup">
+                            <p class="text-center" style="font-size:20px!important;color: white!important;"><?=$row['title']?></p>
+                        </a>
+                    </div>
+                </div>
+
             <?php endforeach;}else{ ?>
                 <h1 class="text-center">Data Tidak Tersedia</h1>
             <?php } ?>
@@ -148,36 +151,11 @@ foreach($read_data as $key=>$value){
             <h2 class="block-title__title" style="text-align:center">Our company & partners</h2><!-- /.block-title__title -->
         </div><!-- /.block-title -->
         <div class="brand-one__carousel owl-carousel owl-theme">
+            <?php $read_data = $this->M_crud->read_data("tbl_gallery","*","type='9'");foreach($read_data as $row):?>
             <div class="item">
-                <img src="assets/images/brand-1-1.png" alt="">
+                <img src="<?=$row['image']?>" alt="">
             </div><!-- /.item -->
-            <div class="item">
-                <img src="assets/images/brand-1-1.png" alt="">
-            </div><!-- /.item -->
-            <div class="item">
-                <img src="assets/images/brand-1-1.png" alt="">
-            </div><!-- /.item -->
-            <div class="item">
-                <img src="assets/images/brand-1-1.png" alt="">
-            </div><!-- /.item -->
-            <div class="item">
-                <img src="assets/images/brand-1-1.png" alt="">
-            </div><!-- /.item -->
-            <div class="item">
-                <img src="assets/images/brand-1-1.png" alt="">
-            </div><!-- /.item -->
-            <div class="item">
-                <img src="assets/images/brand-1-1.png" alt="">
-            </div><!-- /.item -->
-            <div class="item">
-                <img src="assets/images/brand-1-1.png" alt="">
-            </div><!-- /.item -->
-            <div class="item">
-                <img src="assets/images/brand-1-1.png" alt="">
-            </div><!-- /.item -->
-            <div class="item">
-                <img src="assets/images/brand-1-1.png" alt="">
-            </div><!-- /.item -->
+            <?php endforeach; ?>
         </div><!-- /.brand-one__carousel owl-carousel owl-theme -->
     </div><!-- /.container -->
 </section>
@@ -222,11 +200,17 @@ foreach($read_data as $key=>$value){
 
 <script>
 	$(document).ready(function(){
-		load_data();
+		load_berita();
+		load_gallery();
 	});
-	function load_data(){
+	function load_berita(){
 		dynamic_ajax("<?=base_url().'berita/load_data/get_home'?>",null,function(res){
 			$("#result_berita").html(res.result);
+		});
+	}
+	function load_gallery(){
+		dynamic_ajax("<?=base_url().'beranga/load_data/gallery'?>",null,function(res){
+			$("#result_gallery").html(res.result);
 		});
 	}
 </script>

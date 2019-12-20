@@ -14,10 +14,10 @@ class Berita extends CI_Controller
     }
     function load_data($action=null){
         if($action == "get_list"){
-            $pagin = $this->M_website->myPagination('v_berita','id',"type='1'",6);
+            $pagin = $this->M_website->myPagination('v_berita','id',"slug_category='".$_POST['type']."'",6);
             $read_data = $this->M_crud->read_data(
                 "v_berita","*",
-                "type='1'","id desc",null,$pagin["perPage"], $pagin['start']
+                "slug_category='".$_POST['type']."'","id desc",null,$pagin["perPage"], $pagin['start']
             );
             $res_index = "";
             if($read_data != null){

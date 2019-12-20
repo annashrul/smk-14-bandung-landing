@@ -7,6 +7,7 @@
 </section>
 <section class="blog-one blog-page">
     <div class="container">
+
         <div class="row" id="result_table"></div>
         <div class="col-md-12 col-sm-12 col-xs-12"><nav aria-label="..." id="pagination_link"></nav></div>
     </div>
@@ -23,10 +24,11 @@
 		load_data(page);
 	});
 	function load_data(page,data={}) {
+		var type = "<?=$_GET['title']?>";
 		$.ajax({
 			url       : "<?=base_url()?>berita/load_data/get_list/"+page,
 			method    : "POST",
-			data      : data,
+			data      : {data:data,type:type},
 			dataType  : "JSON",
 			beforeSend: function() {$('body').append('<div class="first-loader"><img src="'+img+'spin.svg"></div>')},
 			complete  : function() {$('.first-loader').remove()},
