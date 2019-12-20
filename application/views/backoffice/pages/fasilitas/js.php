@@ -73,11 +73,14 @@
                                         '</div>'+
                                         '<div class="col-lg-6">'+
                                             '<div class="team-details__content">'+
-                                                '<h4 class="team-details__title">'+item.title+
+                                                '<h4 class="team-details__title" style="font-size:1.2em">'+item.title+
                                                 '<div class="float-right">'+
-                                                '<a href="#" class="label label-success" onclick="update(\''+item.id+'\')"><i class="fa fa-edit"></i></a> <a href="#" class="label label-danger" onclick="hapus(\''+item.id+'\')"><i class="fa fa-trash"></i></a>'+
+                                                (item.status==1?'<a href="#" class="label label-warning" onclick="approve(\''+item.status+'\',\''+item.id+'\')"><i class="fa fa-remove"></i> Non-Aktifkan</a>':'<a href="#" class="label label-success" onclick="approve(\''+item.status+'\',\''+item.id+'\')"><i class="fa fa-check"></i> Aktifkan</a>')+' <a href="#" class="label label-info" onclick="update(\''+item.id+'\')"><i class="fa fa-edit"></i></a> <a href="#" class="label label-danger" onclick="hapus(\''+item.id+'\')"><i class="fa fa-trash"></i></a>'+
                                                 '</div>'+
                                                 '</h4>'+
+                                                '<div <?=$this->session->grant_access!=1?'style="display:none"':''?>>'+
+                                                (item.status==1?'<span class="label label-success">Aktif</span>':'<span class="label label-danger">Non-Aktif</span>')+
+                                                '</div>'+
                                                 '<p class="team-details__text" style="text-align:justify">'+item.deskripsi+'</p>'+                      
                                             '</div>'+
                                         '</div>'+
@@ -286,13 +289,13 @@
                     if(data){
                         Swal.fire(
                             'Berhasil',
-                            status==0?'Berhasil non-aktifkan data':'Berhasil mengaktifkan data.',
+                            status==1?'Berhasil non-aktifkan data':'Berhasil mengaktifkan data.',
                             'success'
                         )
                     }else{
                         Swal.fire(
                             'Gagal',
-                            status==0?'Gagal non-aktifkan data':'Gagal mengaktifkan data.',
+                            status==1?'Gagal non-aktifkan data':'Gagal mengaktifkan data.',
                             'error'
                         )
                     }
