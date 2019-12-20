@@ -21,9 +21,39 @@ class Site extends CI_Controller{
 			'site'=>$this->site,
 			'title'=>'Dashboard',
 			'page'=>'dashboard/index',
-			'js'=>'dashboard/js'
+			'js'=>'dashboard/js',
+			'guru'=> $this->M_crud->count_data('tbl_manajemen','jabatan',array('jabatan'=>7)),
+			'siswa'=> $this->M_crud->count_data('tbl_siswa','id'),
+			'pengunjung'=> $this->M_crud->count_data('tbl_pengunjung','id_pengunjung'),
 		);
 		$this->load->view($this->layout,$data);
+	}
+
+	function home(){
+		$chart = $this->db->query('SELECT weekday(tanggal_pengunjung)AS daily,COUNT(id_pengunjung) jumlah FROM tbl_pengunjung GROUP BY daily ORDER BY daily ASC')->result_array();
+		$donut = $this->db->query('SELECT COUNT(perangkat_pengunjung) AS value, perangkat_pengunjung AS platform FROM tbl_pengunjung GROUP BY platform ORDER BY platform ASC')->result_array();
+		$pengunjung = array();
+		foreach($chart as $item){
+			array_push($pengunjung, 
+			array(
+				'x'=>($item['daily']==0?"SENIN":($item['daily']==1?"SELASA":($item['daily']==2?"RABU":($item['daily']==3?"KAMIS":($item['daily']==4?"JUMAT":($item['daily']==5?"SABTU":"MINGGU")))))),
+				'y'=>$item['jumlah']
+			));
+		}
+
+		$platform = array();
+		foreach($donut as $item){
+			array_push($platform, 
+			array(
+				'value'=> $item['value'],
+                'label'=>$item['platform']
+			));
+		}
+		echo json_encode(array(
+			'chart'=>$pengunjung,
+			'donut'=>$platform
+		), true);
+
 	}
 
 	function berita(){
@@ -53,6 +83,7 @@ class Site extends CI_Controller{
 			if(!$this->akses) $where['id_member']=$this->id;
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
 			if(isset($_GET['type'])) $where['type']=$_GET['type'];
+			if(isset($_GET['status'])) $where['status']=$_GET['status'];
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('v_berita','id',$where);
 			$limit = 10;
@@ -929,7 +960,9 @@ class Site extends CI_Controller{
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
 			if($_GET['type']!=0) $where['type']=$_GET['type'];
 			if($_GET['type']==0)$where['type != 5 and type != 7 and type != 8 and type !=']=6;
+			if(isset($_GET['status'])) $where['status']=$_GET['status'];
 			$page= isset($_GET['page'])?$_GET['page']:1;
+
 			$count = $this->M_crud->count_read_data('tbl_gallery','id',$where);
 			$limit = 10;
             $offset = ($limit * ($page-1));

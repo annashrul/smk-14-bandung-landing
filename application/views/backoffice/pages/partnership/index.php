@@ -1,4 +1,11 @@
     <div class="row" style="margin-bottom:20px">
+        <div class="col-md-3">
+                <select name="" id="" class="form-control" onchange="getval(this)"> 
+                    <option value="3">Semua</option>
+                    <option value="1">Aktif</option>
+                    <option value="0">Tidak Aktif</option>
+                </select>
+        </div>
         <div class="col-md-3 float-right">
             <a href="#" class="btn btn-primary btn-sm float-right" style="margin-right:5px" id="tambah">Tambah Partnership</a> 
         </div>

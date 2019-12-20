@@ -52,10 +52,12 @@
 
     });
 
-    function get(page=1,q=null,kelas=0){
+    function get(page=1,q=null,kelas=0,status=3){
         var search = q!==null?`&q=${q}`:'';
+        var sts = parseInt(status)!==3?`&status=${status}`:'';
+
         $.ajax({
-            url: "<?=urls('galleryAction')?>?aksi=get&type="+kelas+search,
+            url: "<?=urls('galleryAction')?>?aksi=get&type="+kelas+search+sts,
             beforeSend: function(result){
                 NProgress.start();HoldOn.open(optionsLoader);
             },
@@ -363,6 +365,11 @@
     function getval(sel){
         // alert(sel.value);
         get(1,null,sel.value)
+    }
+
+    function getval2(sel){
+        // alert(sel.value);
+        get(1,null,0,sel.value)
     }
 
 </script>

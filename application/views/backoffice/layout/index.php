@@ -93,7 +93,7 @@ $this->load->view('backoffice/layout/side_menu')
 
 <script src="<?=assets('bo/plugin/chart/morris/morris.min.js')?>"></script>
 <script src="<?=assets('bo/plugin/chart/morris/raphael-min.js')?>"></script>
-<script src="<?=assets('bo/scripts/chart.morris.init.min.js')?>"></script>
+<!-- <script src="<?=assets('bo/scripts/chart.morris.init.min.js')?>"></script> -->
 
 <!-- Toastr -->
 <script src="<?=assets('bo/plugin/toastr/toastr.min.js')?>"></script>
