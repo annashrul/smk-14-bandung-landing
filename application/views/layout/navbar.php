@@ -1,9 +1,4 @@
 <?php $url = base_url() . "assets"?>
-
-<!DOCTYPE html>
-<html lang="en">
-<body>
-    <div class="preloader"><span></span></div><!-- /.preloader -->
     <div class="page-wrapper">
         <div class="topbar-one">
             <div class="container">
@@ -31,79 +26,88 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="main-navigation">
                         <ul class=" navigation-box">
-                            <li class="">
-                                <a href="<?=base_url();?>">Beranda</a>
-                            </li>
+                            <li><a href="<?=base_url();?>">Beranda</a></li>
                             <li>
-                                <a href="<?=base_url();?>Menu_Controller/berita">Berita</a>
+                                <a href="#">Berita</a>
+                                <ul class="sub-menu">
+                                    <?php $read_data=$this->M_crud->read_data('tbl_category','*'); foreach ($read_data as $row) { ?>
+                                        <li><a href="<?=base_url("berita?title=".$row['slug'])?>"><?=$row['title']?></a></li>
+                                    <?php }?>
+                                </ul>
                             </li>
+
                             <li>
                                 <a href="#">Selayang Pandang</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url();?>Menu_Controller/sejarah">Sejarah</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/visi_misi">Visi & Misi</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/budaya">Budaya & Logo</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/landasan_hukum">Landaasan Hukum</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/fasilitas">Fasilitas</a></li>
-                                </ul><!-- /.sub-menu -->
+                                    <?php $controller='selayang_pandang'; ?>
+                                    <li><a href="<?=base_url().$controller.'?type=sejarah';?>">Sejarah</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=visi_misi';?>">Visi & Misi</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=budaya';?>">Budaya & Logo</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=landasan_hukum';?>">Landaasan Hukum</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=fasilitas';?>">Fasilitas</a></li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="#">Manajemen</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url();?>Menu_Controller/kepala_sekolah">Kepala Sekolah</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/kepala_tu">Kepala Tata Usaha</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/wakil_kepala">Wakil Kepala Sekolah</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/dewan">Dewan Komite</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/kajur">Kajur & Kaprog</a></li>
-
-                                </ul><!-- /.sub-menu -->
+                                    <?php $controller='manajemen'; ?>
+                                    <li><a href="<?=base_url().$controller.'?type=kepala_sekolah';?>">Kepala Sekolah</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=kepala_tu';?>">Kepala Tata Usaha</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=wakil_kepala_sekolah';?>">Wakil Kepala Sekolah</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=dewan_komite';?>">Dewan Komite</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=kajur_kaprog';?>">Kajur & Kaprog</a></li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="#">Struktur Organisasi</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url();?>Menu_Controller/bagan_struktur">Bagan Struktur</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/divisi">Divisi</a></li>
-                                </ul><!-- /.sub-menu -->
+                                    <?php $controller='struktur'; ?>
+                                    <li><a href="<?=base_url().$controller.'?type=bagan';?>">Bagan Struktur</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=divisi';?>">Divisi</a></li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="#">Kegiatan</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url();?>Menu_Controller/osis">OSIS</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/eskul">Ekstrakulikuler</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/pramuka">Pramuka</a></li>
-                                </ul><!-- /.sub-menu -->
+                                    <?php $controller='kegiatan'; ?>
+                                    <li><a href="<?=base_url().$controller.'?type=osis';?>">OSIS</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=eskul';?>">Ekstrakulikuler</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=pramuka';?>">Pramuka</a></li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="#">Informasi</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?=base_url();?>Menu_Controller/tenaga_pen">Tenaga Pendidikan</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/prestasi">Prestasi</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/sarana">Sarana & Prasarana</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/akreditasi">Akreditasi</a></li>
-                                    <li><a href="<?=base_url();?>Menu_Controller/lowongan_kerja">Lowongan Kerja</a></li>
-
-
-                                </ul><!-- /.sub-menu -->
+                                    <?php $controller='informasi'; ?>
+                                    <li><a href="<?=base_url().$controller.'?type=tenaga_pendidik';?>">Tenaga Pendidikan</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=prestasi';?>">Prestasi</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=sarana_prasarana';?>">Sarana & Prasarana</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=akreditasi';?>">Akreditasi</a></li>
+                                    <li><a href="<?=base_url().$controller.'?type=lowongan_kerja';?>">Lowongan Kerja</a></li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="#">Paket Keahlian</a>
                                 <ul class="sub-menu">
                                     <?php foreach ($jurusan as $j) { ?>
                                     <li><a href="<?=$j['id']?>"><?=$j['title']?></a></li>
-                                    <?php  }?>
-
-                                </ul><!-- /.sub-menu -->
+                                    <?php }?>
+                                </ul>
                             </li>
 
                             <li>
                                 <a href="<?=base_url();?>Menu_Controller/perpustakaan">Pepustakaan</a>
                             </li>
-
                         </ul>
                     </div><!-- /.navbar-collapse -->
-<!--                    <div class="right-side-box">-->
-<!--                        <a class="header__search-btn search-popup__toggler" href="#"><i class="kipso-icon-magnifying-glass"></i>-->
-<!--                    </div><!-- /.right-side-box -->
+                    <style>
+                        @media (max-width: 576px) {
+                            .right-side-box{margin-top: 20px!important;}
+                        }
+                    </style>
+                    <div class="right-side-box">
+                        <a class="header__search-btn search-popup__toggler" href="#"><i class="fa fa-search"></i></a>
+                    </div><!-- /.right-side-box
                 </div>
                 <!-- /.container -->
             </nav>
@@ -122,22 +126,16 @@
             </div><!-- /.site-header__decor -->
         </header><!-- /.site-header -->
 
+        <div class="search-popup">
+            <div class="search-popup__overlay custom-cursor__overlay">
+                <div class="cursor"></div>
+                <div class="cursor-follower"></div>
+            </div>
+            <div class="search-popup__inner">
+                <form action="#" class="search-popup__form">
+                    <input type="text" name="search" placeholder="Type here to Search....">
+                    <button type="submit"><i class="kipso-icon-magnifying-glass"></i></button>
+                </form>
+            </div>
+        </div>
 
-    <script src="<?=base_url();?>assets/js/jquery.min.js"></script>
-    <script src="<?=base_url();?>assets/js/bootstrap.bundle.min.js"></script>
-    <script src="<?=base_url();?>assets/js/owl.carousel.min.js"></script>
-    <script src="<?=base_url();?>assets/js/waypoints.min.js"></script>
-    <script src="<?=base_url();?>assets/js/jquery.counterup.min.js"></script>
-    <script src="<?=base_url();?>assets/js/TweenMax.min.js"></script>
-    <script src="<?=base_url();?>assets/js/wow.js"></script>
-    <script src="<?=base_url();?>assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="<?=base_url();?>assets/js/countdown.min.js"></script>
-    <script src="<?=base_url();?>assets/js/vegas.min.js"></script>
-
-    <!-- template scripts -->
-    <script src="assets/js/theme.js"></script>
-</body>
-
-
-<!-- Mirrored from layerdrops.com/kipso/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Dec 2019 02:03:46 GMT -->
-</html>

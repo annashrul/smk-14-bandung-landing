@@ -28,8 +28,8 @@
     <!-- template styles -->
     <link rel="stylesheet" href="<?=base_url();?>assets/css/style.css">
     <link rel="stylesheet" href="<?=base_url();?>assets/css/responsive.css">
+    <!-- Animation Scroll -->
 
-    
     <script src="<?=base_url();?>assets/js/jquery.min.js"></script>
     <script src="<?=base_url();?>assets/js/bootstrap.bundle.min.js"></script>
     <script src="<?=base_url();?>assets/js/owl.carousel.min.js"></script>
@@ -45,3 +45,105 @@
     <script src="<?=base_url();?>assets/js/scrollreveal.min.js"></script>
 
 </head>
+<style>
+    .first-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1050;
+        background: rgba(168, 168, 168, .5)
+    }
+    .first-loader img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px
+    }
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: #1e88e5;
+        /*border-radius: 10px;*/
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #1e88e5;
+        z-index: 1050;
+        /*border-radius: 10px;*/
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #1e88e5;
+    }
+    .pagination > li > a {
+        padding: 6px 12px;
+        color: #000000;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+        margin: 0 3px;
+    }
+    .pagination > .active > a {
+        color: #000000;
+        font-weight: bold;
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+    }
+    .pagination > li:first-child > a {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+    }
+    .pagination > li:last-child > a {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .pagination > li > a:hover,
+    .pagination > li > a:focus {
+        color: #ffffff;
+        background-color: #0073b7 !important;
+        border-color: #0073b7 !important;
+    }
+    .pagination > .active > a,
+    .pagination > .active > a:hover,
+    .pagination > .active > a:focus {
+        color: #ffffff;
+        background-color: #0073b7 !important;
+        border-color: #0073b7 !important;
+        z-index: -0!important;
+    }
+    .pagination > .disabled > a,
+    .pagination > .disabled > a:hover,
+    .pagination > .disabled > a:focus {
+        color: #777777;
+        background-color: #ffffff;
+        border-color: #dddddd;
+
+    }
+</style>
+<script>
+	var img_loader = '<img src="<?=base_url().'assets/'?>spin.svg">';
+	function dynamic_ajax(url,req=null,func_req){
+		$.ajax({
+			url : url,
+			type:"POST",
+			dataType : "JSON",
+			data:req?req:null,
+			success:func_req,
+			beforeSend: function() {$('body').append('<div class="first-loader">'+img_loader+'</div>')},
+			complete: function() {$('.first-loader').remove()},
+		});
+		return;
+	}
+</script>

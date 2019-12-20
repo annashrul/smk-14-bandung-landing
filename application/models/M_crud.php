@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_crud extends CI_Model {
 
+
+
 	public function my_query($my_query){
 		$data = $this->db->query($my_query);
 		if($data->num_rows()>0){

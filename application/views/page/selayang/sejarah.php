@@ -1,26 +1,29 @@
-<?php $this->load->view('layout/tambahan') ?>
+<?php //$this->load->view('layout/tambahan') ?>
 <?php $this->load->view('layout/header') ?>
 
 
+<section class="inner-banner">
+    <div class="container">
+        <h2 class="inner-banner__title text" id="title"></h2><!-- /.inner-banner__title -->
+    </div><!-- /.container -->
+</section>
+
 <section class="team-one">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="blog-one__single">
-                            <div class="blog-one__image">
-                                <img src="<?=base_url();?>assets/img/sejarah.jpg" alt="">
-                            </div><!-- /.blog-one__image -->
-                        </div><!-- /.blog-one__single -->
-                    </div><!-- /.col-lg-8 -->
-                    <div class="col-lg-6">
-                        <div class="sidebar">
-                            <div class="sidebar__single sidebar__search">
-                                 <h2 class="blog-one__title">SEJARAH SMK NEGERI 14 BANDUNG
-                                </h2><!-- /.blog-one__title -->
-                                
-                             </div><!-- /.sidebar__single -->
-                        </div><!-- /.sidebar -->
-                    </div><!-- /.col-lg-4 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-</section><!-- /.blog-details -->
+    <div class="container">
+        <div class="row justify-content-between" id="result_table">
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.team-details -->
+
+<script>
+	$(document).ready(function(res){
+		load_data();
+	});
+	function load_data(){
+		dynamic_ajax("<?=base_url().'Selayang_pandang/load_data/sejarah'?>",null,function(res){
+			$("#result_table").html(res.result);
+			$("#title").html(res.title)
+		});
+	}
+</script>
