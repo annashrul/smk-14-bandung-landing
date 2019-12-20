@@ -1,65 +1,37 @@
-<?php $this->load->view('layout/tambahan') ?>
+<?php //$this->load->view('layout/tambahan') ?>
 <?php $this->load->view('layout/header') ?>
 
-<section class="team-details">
-            <div class="container">
-                <div class="row justify-content-between">
-                 <div class="col-lg-6">
-                        <div class="team-one__single">
-                            <div class="team-one__image">
-                                <img src="<?=base_url();?>assets/img/perpustakaan.jpg" alt="" width="100%">
-                            </div><!-- /.team-one__image -->
-                        </div><!-- /.team-one__single -->
-                    </div><!-- /.col-lg-6 -->
-                    <div class="col-lg-6">
-                        <div class="team-details__content">
-                            <h2 class="team-details__title">Pepustakaan</h2><!-- /.team-details__title -->
-                            <p class="team-details__text" style="text-align:justify">Deskripsi</p><!-- /.team-details__text -->                            
-                        </div><!-- /.team-details__content -->
-                    </div><!-- /.col-lg-6 -->
-                   
-                </div><!-- /.row -->
-            </div><!-- /.container -->
+
+<section class="inner-banner">
+    <div class="container">
+        <h2 class="inner-banner__title text" id="title"></h2><!-- /.inner-banner__title -->
+    </div><!-- /.container -->
+</section>
+
+<section class="team-one">
+    <div class="container">
+        <div class="row justify-content-between" id="result_table">
+
+        </div><!-- /.row -->
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <nav aria-label="..." id="pagination_link"></nav>
+        </div>
+    </div><!-- /.container -->
 </section><!-- /.team-details -->
 
-<section class="team-details">
-            <div class="container">
-                <div class="row justify-content-between">
-                 <div class="col-lg-6">
-                        <div class="team-one__single">
-                            <div class="team-one__image">
-                                <img src="<?=base_url();?>assets/img/lab_komputer.jpg" alt="" width="100%">
-                            </div><!-- /.team-one__image -->
-                        </div><!-- /.team-one__single -->
-                    </div><!-- /.col-lg-6 -->
-                    <div class="col-lg-6">
-                        <div class="team-details__content">
-                            <h2 class="team-details__title">Lab Komputer</h2><!-- /.team-details__title -->
-                            <p class="team-details__text" style="text-align:justify">Deskripsi</p><!-- /.team-details__text -->                            
-                        </div><!-- /.team-details__content -->
-                    </div><!-- /.col-lg-6 -->
-                   
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-</section><!-- /.team-details -->
-
-<section class="team-details">
-            <div class="container">
-                <div class="row justify-content-between">
-                 <div class="col-lg-6">
-                        <div class="team-one__single">
-                            <div class="team-one__image">
-                                <img src="<?=base_url();?>assets/img/ruang.jpg" alt="" width="100%">
-                            </div><!-- /.team-one__image -->
-                        </div><!-- /.team-one__single -->
-                    </div><!-- /.col-lg-6 -->
-                    <div class="col-lg-6">
-                        <div class="team-details__content">
-                            <h2 class="team-details__title">Ruangan Kelas</h2><!-- /.team-details__title -->
-                            <p class="team-details__text" style="text-align:justify">Deskripsi</p><!-- /.team-details__text -->                            
-                        </div><!-- /.team-details__content -->
-                    </div><!-- /.col-lg-6 -->
-                   
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-</section><!-- /.team-details -->
+<script>
+	$(document).ready(function(){
+		load_data(1);
+	}).on("click", ".pagination li a", function(event){
+		event.preventDefault();
+		var page = $(this).data("ci-pagination-page");
+		load_data(page);
+	});
+	function load_data(page){
+		dynamic_ajax("<?=base_url().'informasi/load_data/sarana_prasarana/'?>"+page,null,function(res){
+			$("#result_table").html(res.result);
+			$("#title").html(res.title);
+			$('#pagination_link').html(res.pagination_link);
+		});
+	}
+</script>

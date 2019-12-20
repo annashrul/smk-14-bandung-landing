@@ -57,6 +57,78 @@ class Informasi extends CI_Controller
                 'title_body'=>$title_body
             ));
         }
+        elseif ($action == 'sarana_prasarana'){
+            $pagin = $this->M_website->myPagination("tbl_gallery",'id','type=6',10);
+            $read_data = $this->M_crud->read_data("tbl_gallery","*",'type=6',"id desc",null,$pagin["perPage"], $pagin['start']);
+            if($read_data!=null){
+                $title.='Sarana & Prasarana';
+                foreach($read_data as $row){
+                    $result.=$this->M_website->tempThree($row["image"],$row["title"],$row["deskripsi"]);
+                }
+            }else{
+                $title.='Tidak Ada Data';
+                $result.='<h1 class="text-center">Tidak Ada Data</h1>';
+            }
+            echo json_encode(array(
+                'pagination_link' => $pagin['pagination_link'],
+                'result'=>$result,
+                'title'=>$title
+            ));
+        }
+        elseif ($action == 'akreditasi'){
+            $read_data = $this->M_crud->get_data('v_berita',"*","id=4");
+            if($read_data!=null){
+                $title.=$read_data['title'];
+                $result.=$this->M_website->tempThree($read_data["image"],$read_data["title"],$read_data["content"]);
+            }else{
+                $title.='Tidak Ada Data';
+                $result.='<h1 class="text-center">Tidak Ada Data</h1>';
+            }
+            echo json_encode(array(
+                'result'=>$result,
+                'title'=>$title
+            ));
+        }
+        elseif ($action == 'lowongan_kerja'){
+            $pagin = $this->M_website->myPagination("v_berita",'id','type=2',10);
+            $read_data = $this->M_crud->read_data("v_berita","*",'type=2',"id desc",null,$pagin["perPage"], $pagin['start']);
+            if($read_data!=null){
+                $title.='Lowongan Kerja';
+                foreach($read_data as $row){
+                    if(strlen($row['content']) > 220){
+                        $desc = substr($row['content'],0,220).' .... ';
+                    }else{
+                        $desc = $row['content'];
+                    }
+                    $result.='
+                    <div class="col-md-12">
+                        <div class="col-lg-4">
+                            <div class="blog-one__single">
+                                <div class="blog-one__image">
+                                    <img src="'.$row["image"].'" alt="" widht="100">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <h3 class="text-left" style="color: #012237">'.$row["title"].'</h3>
+                            <p class="blog-one__text">'.html_entity_decode($desc).' <a href="'.base_url("detail?type=lowongan_kerja&title=".$row['slug']).'">Selengkapnya</a></p>
+                            <p class="blog-one__text"><i class="fa fa-clock"></i> '.date("Y-m-d",strtotime($row["created_at"])).' | <i class="fa fa-share"></i> Bagikan</p>
+                        </div>
+                        
+                    </div>
+                    <hr/>
+                    ';
+                }
+            }else{
+                $title.='Tidak Ada Data';
+                $result.='<h1 class="text-center">Tidak Ada Data</h1>';
+            }
+            echo json_encode(array(
+                'pagination_link' => $pagin['pagination_link'],
+                'result'=>$result,
+                'title'=>$title
+            ));
+        }
     }
 
 }

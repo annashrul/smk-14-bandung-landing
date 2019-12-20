@@ -1,8 +1,7 @@
 <?php $url = base_url() . "assets"?>
 
-<!DOCTYPE html>
-<html lang="en">
-<body>
+
+
     <div class="preloader"><span></span></div><!-- /.preloader -->
     <div class="page-wrapper">
         <div class="topbar-one">
@@ -128,21 +127,5 @@
         </header><!-- /.site-header -->
 
 
-    <script src="<?=base_url();?>assets/js/jquery.min.js"></script>
-    <script src="<?=base_url();?>assets/js/bootstrap.bundle.min.js"></script>
-    <script src="<?=base_url();?>assets/js/owl.carousel.min.js"></script>
-    <script src="<?=base_url();?>assets/js/waypoints.min.js"></script>
-    <script src="<?=base_url();?>assets/js/jquery.counterup.min.js"></script>
-    <script src="<?=base_url();?>assets/js/TweenMax.min.js"></script>
-    <script src="<?=base_url();?>assets/js/wow.js"></script>
-    <script src="<?=base_url();?>assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="<?=base_url();?>assets/js/countdown.min.js"></script>
-    <script src="<?=base_url();?>assets/js/vegas.min.js"></script>
-
-    <!-- template scripts -->
-    <script src="assets/js/theme.js"></script>
-</body>
 
 
-<!-- Mirrored from layerdrops.com/kipso/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Dec 2019 02:03:46 GMT -->
-</html>

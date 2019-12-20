@@ -30,7 +30,7 @@ class Menu_Controller extends CI_Controller{
             $res_index = "";
             if($read_data != null){
                 foreach ($read_data as $row):
-                    $res_index.=$this->M_website->tempNews($row['image'],base_url("berita/").$row["slug"],$row['created_at'],$row['title'],$row['content']);
+                    $res_index.=$this->M_website->tempNews($row['image'],base_url("detail?type=berita&title=".$row['slug']),$row['created_at'],$row['nama'],$row['title'],$row['content']);
                 endforeach;
             }else{
                 $res_index .=/**@lang text */'<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';

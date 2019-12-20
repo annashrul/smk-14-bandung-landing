@@ -452,11 +452,11 @@
                 margin: 0,
                 dots: true,
                 nav: false,
-                animateOut: 'slideOutDown',
+                animateOut: 'slideOutLeft',
                 animateIn: 'fadeIn',
                 active: true,
                 smartSpeed: 1000,
-                autoplay: 7000
+                autoplay: false
             });
             $('.banner-carousel-btn__left-btn').on('click', function () {
                 $('.banner-carousel__one').trigger('next.owl.carousel');

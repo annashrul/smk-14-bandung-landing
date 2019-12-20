@@ -1,76 +1,79 @@
 <?php $url = base_url() .'assets'?>
+<style>
+    .banner-one__slide:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:transparent!important;
+        opacity: 0.4;
+    }
+
+</style>
+<?php
+$ke = '';$slide='';$gbr='';
+$read_data = $this->M_crud->read_data("tbl_gallery","*","type='7'");
+foreach($read_data as $key=>$value){
+    $ke.=$key;
+    $gbr.=$value['image'];
+    $slide.= /** @lang text */'
+    <div class="banner-one__slide banner-one__slide-'.$ke.'" style="background-image: url('."'$gbr'".');opacity: 0.5;filter: alpha(opacity=50); ">
+        <div class="container">
+            <div class="banner-one__bubble-1"></div>
+            <div class="banner-one__bubble-2"></div>
+            <div class="banner-one__bubble-3"></div>
+            <div class="row no-gutters">
+                <div class="col-xl-12">
+                    <h3 class="banner-one__title banner-one__light-color">'.$value["title"].' </h3>
+                    <p class="banner-one__tag-line">'.$value["deskripsi"].' </p>
+                    <a href="'.$value["link"].'" class="thm-btn banner-one__btn">Di era 4.0</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    ';
+}
+
+?>
+
+
 <div class="banner-wrapper">
     <section class="banner-one banner-carousel__one no-dots owl-theme owl-carousel">
-        <div class="banner-one__slide banner-one__slide-one">
-            <div class="container">
-                <div class="banner-one__bubble-1"></div><!-- /.banner-one__bubble- -->
-                <div class="banner-one__bubble-2"></div><!-- /.banner-one__bubble- -->
-                <div class="banner-one__bubble-3"></div><!-- /.banner-one__bubble- -->
-                <img src="assets/images/slider-1-scratch.png" alt="" class="banner-one__scratch">
-                <img src="assets/images/slider-1-person-1.png" class="banner-one__person" alt="">
-                <div class="row no-gutters">
-                    <div class="col-xl-12">
-                        <h3 class="banner-one__title banner-one__light-color">SMK Negeri <br>
-                            14 Bandung</h3><!-- /.banner-one__title -->
-                        <p class="banner-one__tag-line">Siapkah dirimu untuk bersaing?</p><!-- /.banner-one__tag-line -->
-                        <a href="#" class="thm-btn banner-one__btn">Di era 4.0</a>
-                    </div><!-- /.col-xl-12 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </div><!-- /.banner-one__slide -->
-        <div class="banner-one__slide banner-one__slide-two">
-            <div class="container">
-                <div class="banner-one__bubble-1"></div><!-- /.banner-one__bubble- -->
-                <div class="banner-one__bubble-2"></div><!-- /.banner-one__bubble- -->
-                <div class="banner-one__bubble-3"></div><!-- /.banner-one__bubble- -->
-                <img src="assets/images/slider-1-scratch.png" alt="" class="banner-one__scratch">
-                <img src="assets/images/slider-1-person-2.png" class="banner-one__person" alt="">
-                <div class="row no-gutters">
-                    <div class="col-xl-12">
-                        <h3 class="banner-one__title banner-one__light-color">Kamilah <br>
-                            Solusinya</h3><!-- /.banner-one__title -->
-                        <p class="banner-one__tag-line">are you ready to learn?</p><!-- /.banner-one__tag-line -->
-                        <a href="#" class="thm-btn banner-one__btn">Learn More</a>
-                    </div><!-- /.col-xl-12 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </div><!-- /.banner-one__slide -->
-    </section><!-- /.banner-one -->
+        <?=$slide?>
+    </section>
     <div class="banner-carousel-btn">
         <a href="#" class="banner-carousel-btn__left-btn"><i class="kipso-icon-left-arrow"></i></a>
         <a href="#" class="banner-carousel-btn__right-btn"><i class="kipso-icon-right-arrow"></i></a>
-    </div><!-- /.banner-carousel-btn -->
+    </div>
 
 </div><!-- /.banner-wrapper -->
 
-<!-- Kepala Sekolah -->
-
-<section class="about-two">
+<section class="about-two ">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
                 <div class="about-two__content">
                     <div class="block-title text-left">
-                        <h2 class="block-title__title">KEPALA SEKOLAH<br>
-                            <?=$config['site_title']?></h2><!-- /.block-title__title -->
-                    </div><!-- /.block-title -->
-                    <p class="about-two__text"style="text-align:justify">Nama : <?=$manajemen['nama']?><br>
+                        <h2 class="block-title__title">KEPALA SEKOLAH<br><?=$config['site_title']?></h2>
+                    </div>
+                    <p class="about-two__text"style="text-align:justify">
+                        Nama : <?=$manajemen['nama']?><br>
                         NIP : <?=$manajemen['nip']?><br>
-
                         <?=$manajemen['deskripsi']?>
-                    </p><!-- /.about-two__text -->
-
-                </div><!-- /.about-two__content -->
-            </div><!-- /.col-lg-6 -->
+                    </p>
+                </div>
+            </div>
             <div class="col-lg-6 d-flex justify-content-xl-end justify-content-sm-center">
                 <div class="about-two__image">
-                    <span class="about-two__image-dots"></span><!-- /.about-two__image-dots -->
+                    <span class="about-two__image-dots"></span>
                     <img src="<?=$manajemen['image']?>" alt="">
-                </div><!-- /.about-two__image -->
-            </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section><!-- /.about-two -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- End Kepala Sekolah -->
 
@@ -81,25 +84,24 @@
         <div class="block-title mb-0">
             <div class="block-title text-center">
                 <h2 class="inner-banner__title">Jurusan<br>
-                </h2><!-- /.block-title__title -->
-            </div><!-- /.block-title -->
+                </h2>
+            </div>
             <div class="course-category-one__carousel owl-carousel owl-theme">
                 <?php foreach($jurusan as $row) : ?>
                     <div class="item">
                         <div class="course-category-one__single color-1 headline">
                             <div class="course-category-one__icon">
-                                <i class="kipso-icon-desktop"></i><!-- /.kipso-icon-camera -->
-                            </div><!-- /.course-category-one__icon -->
+                                <i class="kipso-icon-desktop"></i>
+                            </div>
                             <h3 class="course-category-one__title"><a href="#"><?=$row['title']?></a></h3>
-                            <!-- /.course-category-one__title -->
-                        </div><!-- /.course-category-one__single -->
-                    </div><!-- /.item -->
+                        </div>
+                    </div>
                 <?php endforeach; ?>
-            </div><!-- /.course-category-one__carousel owl-carousel owl-theme -->
-        </div><!-- /.block-title -->
-    </div><!-- /.container -->
-    <div class="course-one__top-title__curve"></div><!-- /.course-one__top-title__curve -->
-</section><!-- /.course-one__top-title -->
+            </div>
+        </div>
+    </div>
+    <div class="course-one__top-title__curve"></div>
+</section>
 
 <!-- End Jurusan -->
 
@@ -115,31 +117,29 @@
                         <div class="blog-one__image">
                             <img src="<?=$row['image']?>" alt="">
                             <a class="blog-one__plus" href="<?=base_url();?>Menu_controller/berita/<?=$row['slug']?>"><i class="kipso-icon-plus-symbol"></i>
-                        </div><!-- /.blog-one__image -->
+                        </div>
                         <div class="blog-one__content text-center">
                             <div class="blog-one__meta">
                                 <a data-toggle="tooltip" data-placement="top" title="Like" href="#"><i class="fa fa-heart"></i></a>
                                 <a data-toggle="tooltip" data-placement="top" title="Share" href="#"><i class="fa fa-share "></i></a>
-                            </div><!-- /.blog-one__meta -->
-                            <h2 class="blog-one__title"><a href="<?=base_url();?>Menu_controller/berita"><?=$row['title']?></a>
-                            </h2><!-- /.blog-one__title -->
-                            <p class="blog-one__text"><?=substr(strip_tags($row['content']),0,100)?></p><!-- /.blog-one__text -->
-                            <a href="<?=base_url();?>Menu_controller/berita/<?=$row['slug']?>" class="blog-one__link">Selengkapnya</a><!-- /.blog-one__link -->
-                        </div><!-- /.blog-one__content -->
-                    </div><!-- /.blog-one__single -->
-                </div><!-- /.col-lg-4 -->
+                            </div>
+                            <h2 class="blog-one__title"><a href="<?=base_url();?>Menu_controller/berita"><?=$row['title']?></a></h2>
+                            <p class="blog-one__text"><?=substr(strip_tags($row['content']),0,100)?></p>
+                            <a href="<?=base_url();?>Menu_controller/berita/<?=$row['slug']?>" class="blog-one__link">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
             <?php endforeach; ?>
-
-        </div><!-- /.container -->
-</section><!-- /.blog-one blog-page -->
+        </div>
+</section>
 
 <!-- Galeri -->
 
 <section class="inner-banner">
     <div class="container">
-        <h2 class="inner-banner__title text">Gallery</h2><!-- /.inner-banner__title -->
-    </div><!-- /.container -->
-</section><!-- /.inner-banner -->
+        <h2 class="inner-banner__title text">Gallery</h2>
+    </div>
+</section>
 
 
 <section class="gallery-one">
@@ -158,7 +158,7 @@
             <?php } ?>
         </div><!-- /.row -->
     </div><!-- /.container -->
-</section><!-- /.gallery-one -->
+</section>
 
 <section class="brand-two ">
     <div class="container">
@@ -198,7 +198,7 @@
             </div><!-- /.item -->
         </div><!-- /.brand-one__carousel owl-carousel owl-theme -->
     </div><!-- /.container -->
-</section><!-- /.brand-one -->
+</section>
 
 
 <!-- MAPS -->
@@ -206,7 +206,7 @@
     <div class="container">
         <h2 class="inner-banner__title text">Kontak</h2><!-- /.inner-banner__title -->
     </div><!-- /.container -->
-</section><!-- /.inner-banner -->
+</section>
 <section class="contact-one">
     <div class="container-fluid">
         <div class="row">
@@ -235,7 +235,7 @@
             </div>
         </div>
     </div><!-- /.container -->
-</section><!-- /.contact-one -->
+</section>
 <script src="<?=base_url();?>assets/js/scrollreveal.min.js"></script>
 <script src="<?=base_url();?>assets/js/jquery.min.js"></script>
 <script src="<?=base_url();?>assets/js/bootstrap.bundle.min.js"></script>
@@ -248,7 +248,9 @@
 <script src="<?=base_url();?>assets/js/countdown.min.js"></script>
 <script src="<?=base_url();?>assets/js/vegas.min.js"></script>
 <!-- template scripts -->
+<!-- ANIMATION SCROLL -->
 <script src="<?=base_url();?>assets/js/theme.js">
+
 	var ScrollReveal;
 	var sr;
 	window.sr = ScrollReveal({
@@ -262,6 +264,8 @@
 		distance: "3em",
 		origin: "bottom",
 	});
+
+
 </script>
 
 

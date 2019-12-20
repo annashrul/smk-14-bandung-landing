@@ -55,24 +55,27 @@ class M_website extends CI_Model
 
     public function tempThree($img,$title,$content){
         return /** @lang text */'
-        <div class="col-lg-6">
-            <div class="team-one__single">
-                <div class="blog-one__image2">
-                    <img src="'.$img.'" alt="">
+        <div class="col-md-12">
+            <div class="col-lg-6">
+                <div class="team-one__single">
+                    <div class="blog-one__image2">
+                        <img src="'.$img.'" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="team-details__content">
+                    <h2 class="team-details__title">'.$title.'</h2>
+                    <p class="team-details__text" style="text-align:justify">'.strip_tags($content).'</p>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="team-details__content">
-                <h2 class="team-details__title">'.$title.'</h2>
-                <p class="team-details__text" style="text-align:justify">'.strip_tags($content).'</p>
-            </div>
-        </div>
+        <hr/>
         ';
     }
 
 
-    public function tempNews($image,$url,$date,$title,$content){
+    public function tempNews($image,$url,$date,$name,$title,$content){
         if(strlen($title) > 20){
             $subTitle = substr($title,0,20).' .....';
         }else{
@@ -90,10 +93,11 @@ class M_website extends CI_Model
                         <img src="'.$image.'" alt="">
                         <a class="blog-one__plus" href="'.$url.'"><i class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                    <div class="col-md-12">
-                        <p><i class="fa fa-clock"></i> '.date("Y-m-d",strtotime($date)).'</p>
-                    </div>
                     <div class="blog-one__content text-center">
+                        <div class="blog-one__meta">
+                            <a data-toggle="tooltip" data-placement="top" title="Tanggal '.date("Y-m-d",strtotime($date)).'" href="#"><i class="fa fa-calendar-alt"></i></a>
+                            <a data-toggle="tooltip" data-placement="top" title="Oleh '.$name.'" href="#"><i class="fa fa-user"></i></a>
+                        </div>
                         <h4>'.$subTitle.'</h4>
                         <p class="blog-one__text">'.html_entity_decode($subContent).'</p>
                         <a href="'.$url.'" class="blog-one__link">Selengkapnya</a>
