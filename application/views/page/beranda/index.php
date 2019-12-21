@@ -13,29 +13,38 @@
 
 </style>
 <?php
-$ke = '';$slide='';$gbr='';
-$read_data = $this->M_crud->read_data("tbl_gallery","*","type='7'");
-foreach($read_data as $key=>$value){
-    $ke.=$key;
-    $gbr.=$value['image'];
-    $slide.= /** @lang text */'
-    <div class="banner-one__slide banner-one__slide-'.$ke.'" style="background-image: url('."'$gbr'".');">
-        <div class="container">
-            <div class="banner-one__bubble-1"></div>
-            <div class="banner-one__bubble-2"></div>
-            <div class="banner-one__bubble-3"></div>
-            <div class="row no-gutters">
-                <div class="col-xl-12">
-                    <h3 class="banner-one__title banner-one__light-color">'.$value["title"].' </h3>
-                    <p class="banner-one__tag-line">'.$value["deskripsi"].' </p>
-                    <a href="'.$value["link"].'" class="thm-btn banner-one__btn">Selengkapnya</a>
+    $ke = '';$slide='';$gbr='';$btn='';
+    $read_data = $this->M_crud->read_data("tbl_gallery","*","status=1 and type='7'");
+    if(count($read_data) > 0){
+        foreach($read_data as $key=>$value){
+            $ke.=$key;
+            $gbr.=$value['image'];
+            $slide.= /** @lang text */'
+            <div class="banner-one__slide banner-one__slide-'.$ke.'" style="background-image: url('."'$gbr'".');">
+                <div class="container">
+                    <div class="banner-one__bubble-1"></div>
+                    <div class="banner-one__bubble-2"></div>
+                    <div class="banner-one__bubble-3"></div>
+                    <div class="row no-gutters">
+                        <div class="col-xl-12">
+                            <h3 class="banner-one__title banner-one__light-color">'.$value["title"].' </h3>
+                            <p class="banner-one__tag-line">'.$value["deskripsi"].' </p>
+                            <a href="'.$value["link"].'" class="thm-btn banner-one__btn">Selengkapnya</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    ';
-}
-
+            ';
+        }
+    }
+    if(count($read_data) > 1){
+        $btn.= /** @lang text */'
+            <div class="banner-carousel-btn">
+                <a href="#" class="banner-carousel-btn__left-btn"><i class="kipso-icon-left-arrow"></i></a>
+                <a href="#" class="banner-carousel-btn__right-btn"><i class="kipso-icon-right-arrow"></i></a>
+            </div>
+        ';
+    }
 ?>
 
 
@@ -43,11 +52,7 @@ foreach($read_data as $key=>$value){
     <section class="banner-one banner-carousel__one no-dots owl-theme owl-carousel" id="result_slider">
         <?=$slide?>
     </section>
-    <div class="banner-carousel-btn">
-        <a href="#" class="banner-carousel-btn__left-btn"><i class="kipso-icon-left-arrow"></i></a>
-        <a href="#" class="banner-carousel-btn__right-btn"><i class="kipso-icon-right-arrow"></i></a>
-    </div>
-
+    <?=$btn?>
 </div><!-- /.banner-wrapper -->
 
 <section class="about-two ">
@@ -171,24 +176,36 @@ foreach($read_data as $key=>$value){
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
-                <h2 class="contact-one__title text-center">Silahkan<br>
-                    hubungi kami</h2><!-- /.contact-one__title -->
-                <form action="#" class="contact-one__form">
+                <h2 class="contact-one__title text-center">Silahkan<br>hubungi kami</h2><!-- /.contact-one__title -->
+                <form action="#" method="post" id="form_input" class="contact-one__form">
                     <div class="row low-gutters">
                         <div class="col-lg-6">
-                            <input type="text" placeholder="Your Name">
+                            <input type="text" name="nama" id="nama" placeholder="Masukan Nama Anda">
                         </div><!-- /.col-lg-6 -->
                         <div class="col-lg-6">
-                            <input type="text" placeholder="Email Address">
+                            <input type="email" name="email" id="email" placeholder="Masukan Email Anda">
                         </div><!-- /.col-lg-6 -->
+
+
                         <div class="col-lg-12">
-                            <textarea placeholder="Write Message"></textarea>
-                            <div class="text-center">
-                                <button type="submit" class="contact-one__btn thm-btn">Submit Comment</button>
-                            </div><!-- /.text-center -->
+                            <textarea placeholder="Tulis Masukan Disini ...." name="pesan" id="pesan"></textarea>
+
                         </div><!-- /.col-lg-12 -->
+
+                        <div class="col-md-4 col-xs-6">
+                            <input type="text" name="captcha" id="captcha" placeholder="Masukan Kode">
+                        </div>
+                        <div class="col-md-4 col-xs-6">
+                            <p id="captImg"><?=$captchaImg; ?></p>
+<!--                            <a href="javascript:void(0);" class="refreshCaptcha" ><img style="height: 50px;" src="--><?php //echo base_url().'assets/images/refresh.png'; ?><!--"/></a>-->
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <button type="button" onclick="kirim()" class="contact-one__btn thm-btn">Kirim</button>
+                        </div>
+
                     </div><!-- /.row -->
                 </form><!-- /.contact-one__form -->
+
             </div>
             <div class="col-lg-6">
                 <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJfxip1i3oaC4Rz-hAAQOPSQ0" class="google-map__contact" allowfullscreen></iframe>
@@ -196,22 +213,58 @@ foreach($read_data as $key=>$value){
         </div>
     </div><!-- /.container -->
 </section>
-
+<style>
+    #captImg{float:left;}
+    .refreshCaptcha {position:relative;top:27px;}
+</style>
 
 <script>
+	$('.refreshCaptcha').on('click', function(){
+		$.get('<?php echo base_url().'beranda/refresh'; ?>', function(data){
+			$('#captImg').html(data);
+		});
+	});
+	function validateEmail(email) {
+		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(email);
+	}
+	function kirim(){
+		var nama = $("#nama");
+		var email = $("#email");
+		var captcha = $("#captcha");
+		var pesan = $("#pesan");
+		if(nama.val()==''||email.val()==''||captcha.val()==''||pesan.val()==''){
+			alert('lengkapi form yang tersedia');
+			$("#form_input")[0].reset();
+        }else{
+			if(validateEmail(email.val())){
+				console.log(captcha.val());
+				dynamic_ajax(
+					"<?=base_url().'beranda/komentar'?>",
+					{nama:nama.val(),email:email.val(),captcha:captcha.val(),pesan:pesan.val()},
+					function(res){
+						if(res.status == 'success'){
+							alert(res.msg);
+							$("#form_input")[0].reset();
+						}else{
+							alert(res.msg)
+						}
+					});
+            }else{
+				alert('email tidak valid');
+            }
+
+        }
+
+    }
 	$(document).ready(function(){
 		load_berita();
-		load_gallery();
 	});
 	function load_berita(){
 		dynamic_ajax("<?=base_url().'berita/load_data/get_home'?>",null,function(res){
 			$("#result_berita").html(res.result);
 		});
 	}
-	function load_gallery(){
-		dynamic_ajax("<?=base_url().'beranga/load_data/gallery'?>",null,function(res){
-			$("#result_gallery").html(res.result);
-		});
-	}
+
 </script>
 

@@ -7,7 +7,14 @@
                     <a href="#">(022)7560358</a>
                 </div><!-- /.topbar-one__left -->
                 <div class="topbar-one__right col-md-12 col-md-offset-9">
-                    <a class="btn btn-primary" href="http://localhost/perpustakaan/auth" style="color:white">Masuk</a>
+<!--                    <form action="--><?//=base_url().'auth'?><!--" method="post">-->
+<!--                    <input type="submit" name="type" class="btn btn-primary" value="masuk">-->
+<!--                    </form>-->
+                    <?php if($this->session->isLogin == true) : ?>
+                    <a class="btn btn-primary" href="<?=base_url().'auth/logout_'?>" style="color:white">Keluar</a>
+                    <?php else: ?>
+                    <a class="btn btn-primary" href="<?=base_url().'auth?type=siswa'?>" style="color:white">Masuk</a>
+                    <?php endif; ?>
                 </div><!-- /.topbar-one__right -->
             </div><!-- /.container -->
         </div><!-- /.topbar-one -->
@@ -27,6 +34,7 @@
                     <div class="main-navigation">
                         <ul class=" navigation-box">
                             <li><a href="<?=base_url();?>">Beranda</a></li>
+
                             <li>
                                 <a href="#">Berita</a>
                                 <ul class="sub-menu">
@@ -90,18 +98,20 @@
                                 <a href="#">Paket Keahlian</a>
                                 <ul class="sub-menu">
                                     <?php foreach ($jurusan as $j) { ?>
-                                    <li><a href="<?=$j['id']?>"><?=$j['title']?></a></li>
+                                    <li><a href="<?=base_url("keahlian?type=".$j['slug'])?>"><?=$j['title']?></a></li>
                                     <?php }?>
                                 </ul>
                             </li>
-
-                            <li>
-                                <a href="<?=base_url();?>Menu_Controller/perpustakaan">Pepustakaan</a>
-                            </li>
+                            <?php if($this->session->isLogin == true) {?>
+                            <li><a href="<?=base_url().'download';?>">Download</a></li>
+                            <?php } ?>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                     <style>
                         @media (max-width: 576px) {
+                            .right-side-box{margin-top: 20px!important;}
+                        }
+                        @media (max-width: 300px) {
                             .right-side-box{margin-top: 20px!important;}
                         }
                     </style>
@@ -132,10 +142,13 @@
                 <div class="cursor-follower"></div>
             </div>
             <div class="search-popup__inner">
-                <form action="#" class="search-popup__form">
-                    <input type="text" name="search" placeholder="Type here to Search....">
+                <form action="<?=base_url().'berita'?>" class="search-popup__form">
+                    <input type="text" name="title" placeholder="Type here to Search....">
                     <button type="submit"><i class="kipso-icon-magnifying-glass"></i></button>
                 </form>
             </div>
         </div>
+
+
+
 

@@ -75,7 +75,7 @@ class M_website extends CI_Model
     }
 
 
-    public function tempNews($image,$url,$date,$name,$title,$content){
+    public function tempNews($id,$image,$category,$url,$date,$name,$title,$content,$count){
         if(strlen($title) > 20){
             $subTitle = substr($title,0,20).' .....';
         }else{
@@ -87,27 +87,31 @@ class M_website extends CI_Model
             $subContent = $content;
         }
         return /** @lang text */
-            '<div class="col-lg-4">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="'.$image.'" alt="">
-                        <a class="blog-one__plus" href="'.$url.'"><i class="fas fa-arrow-circle-right"></i></a>
+            '
+            <div class="col-lg-4">
+                <div class="course-one__single">
+                    <div class="course-one__image">
+                        <img src="'.$image.'" alt="" style="height:250px!important;">
                     </div>
-                    <div class="blog-one__content text-center">
-                        <div class="blog-one__meta">
-                            <a data-toggle="tooltip" data-placement="top" title="Tanggal '.date("Y-m-d",strtotime($date)).'" href="#"><i class="fa fa-calendar-alt"></i></a>
-                            <a data-toggle="tooltip" data-placement="top" title="Oleh '.$name.'" href="#"><i class="fa fa-user"></i></a>
+                    <div class="course-one__content">
+                        <a href="#" class="course-one__category">'.$category.'</a>
+                        <div class="course-one__admin">
+                            <img src="assets/images/team-1-1.jpg" alt="">
+                            by <a href="#">'.$name.'</a>
+                        </div><!-- /.course-one__admin -->
+                        <h2 class="course-one__title"><a href="'.$url.'" id="cek">'.$subTitle.'</a></h2>
+                        <p class="text-left">'.html_entity_decode($subContent).'</p>
+                        <div class="course-one__meta">
+                            <a href="course-details.html"><i class="far fa-clock" id="love"></i> '.date("Y-m-d",strtotime($date)).'</a>
+                            <a href="javascript:void(0)"onclick="isLike('."'".$id."'".')"><i class="far fa-heart"></i> '.$count.' disukai</a>
                         </div>
-                        <h4>'.$subTitle.'</h4>
-                        <p class="blog-one__text">'.html_entity_decode($subContent).'</p>
-                        <a href="'.$url.'" class="blog-one__link">Selengkapnya</a>
+                        <a href="'.$url.'" class="course-one__link">Selengkapnya</a>
                     </div>
-                    
                 </div>
             </div>
         ';
     }
-
+//onclick="edit('."'".$row['id']."'".')"
     public function tempGallery($image,$title){
         return /** @lang text */'
         <div class="col-lg-4 col-md-6">

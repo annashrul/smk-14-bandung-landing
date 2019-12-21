@@ -90,8 +90,8 @@ class Informasi extends CI_Controller
             ));
         }
         elseif ($action == 'lowongan_kerja'){
-            $pagin = $this->M_website->myPagination("v_berita",'id','type=2',10);
-            $read_data = $this->M_crud->read_data("v_berita","*",'type=2',"id desc",null,$pagin["perPage"], $pagin['start']);
+            $pagin = $this->M_website->myPagination("v_berita",'id','status=1 and type=2',10);
+            $read_data = $this->M_crud->read_data("v_berita","*",'status=1 and type=2',"id desc",null,$pagin["perPage"], $pagin['start']);
             if($read_data!=null){
                 $title.='Lowongan Kerja';
                 foreach($read_data as $row){
@@ -100,7 +100,7 @@ class Informasi extends CI_Controller
                     }else{
                         $desc = $row['content'];
                     }
-                    $result.='
+                    $result.= /** @lang text */'
                     <div class="col-md-12">
                         <div class="col-lg-4">
                             <div class="blog-one__single">
