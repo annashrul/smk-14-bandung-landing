@@ -57,7 +57,7 @@
         var sts = parseInt(status)!==3?`&status=${status}`:'';
 
         $.ajax({
-            url: "<?=urls('galleryAction')?>?aksi=get&type="+kelas+search+sts,
+            url: "<?=urls('galleryAction')?>?aksi=get&page="+page+"&type="+kelas+search+sts,
             beforeSend: function(result){
                 NProgress.start();HoldOn.open(optionsLoader);
             },

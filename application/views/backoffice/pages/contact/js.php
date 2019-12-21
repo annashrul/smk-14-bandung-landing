@@ -43,7 +43,7 @@
     function get(page=1,q=null,kelas=0){
         var search = q!==null?`&q=${q}`:'';
         $.ajax({
-            url: "<?=urls('contactAction')?>?aksi=get&jurusan="+kelas+search,
+            url: "<?=urls('contactAction')?>?aksi=get&page="+page+"&jurusan="+kelas+search,
             beforeSend: function(result){
                 NProgress.start();HoldOn.open(optionsLoader);
             },

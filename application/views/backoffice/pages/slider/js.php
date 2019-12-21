@@ -50,7 +50,7 @@
         var sts = parseInt(status)!==3?`&status=${status}`:'';
 
         $.ajax({
-            url: "<?=urls('galleryAction')?>?aksi=get&type=7"+search+sts,
+            url: "<?=urls('galleryAction')?>?aksi=get&page="+page+"&type=7"+search+sts,
             beforeSend: function(result){
                 NProgress.start();HoldOn.open(optionsLoader);
             },

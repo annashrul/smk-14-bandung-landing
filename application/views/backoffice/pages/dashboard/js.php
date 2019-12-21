@@ -41,7 +41,7 @@
                     },
                     xkey: 'x',
                     ykeys: ['y'],
-                    labels: ['Penjualan']
+                    labels: ['Kunjungan']
                 });
                 Morris.Donut({
                     element: 'donut-morris-chart',

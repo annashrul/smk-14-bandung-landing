@@ -133,6 +133,7 @@
                                                 '</div>'+
                                                 '<div style="font-weight:100;font-size:.8em">'+
                                                 'Oleh: '+item.nama+
+                                                '<br>Jumlah like: '+item.likes+
                                                 '</div>'+
                                                 '<p>'+(item.content.length>80?item.content.slice(0,80).replace(/(<([^>]+)>)/ig,"")+'...':item.content.replace(/(<([^>]+)>)/ig,""))+
                                                 '</p>'+
