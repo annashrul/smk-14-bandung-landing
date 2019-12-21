@@ -248,6 +248,15 @@
                 <option value="4">Kegiatan Lainnya</option>
             </select>
         </div>
+        <div class="col-md-3">
+            <label for="" class="control-label">Status</label>
+
+                <select name="" id="" class="form-control" onchange="getval2(this)"> 
+                    <option value="3">Semua</option>
+                    <option value="1">Aktif</option>
+                    <option value="0">Tidak Aktif</option>
+                </select>
+        </div>
         <div class="col-md-3 float-right">
             <a href="#" class="btn btn-primary btn-sm float-right" style="margin-right:5px" id="tambah">Tambah Gallery</a> 
         </div>

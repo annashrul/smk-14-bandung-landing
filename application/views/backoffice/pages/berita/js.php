@@ -74,9 +74,10 @@
             
     });
 
-    function get(page=1,q=null,cate=null){
+    function get(page=1,q=null,cate=null,status=3){
         var search = q!==null?`&q=${q}`:'';
         var category = cate!==null?`&category=${cate}`:'';
+        var sts = parseInt(status)!==3?`&status=${status}`:'';
         var category= cate!=null?`&category=${cate}`:(localStorage.getItem('berita_cate')!==null?`&category=${localStorage.getItem('berita_cate')}`:'');
 
         var pages= page!==1?`&page=${page}`:(localStorage.getItem('berita_page')?`&page=${localStorage.getItem('berita_page')}`:'&page=1');
@@ -86,7 +87,7 @@
         // if(localStorage.getItem('berita_cate')!=null||localStorage.getItem('berita_cate')!='') {$("#ID"+stringToHex(localStorage.getItem('berita_cate'))).addClass("active");console.log(localStorage.getItem('berita_cate'))}
         $.ajax({
             // pages+search+category,
-            url: "<?=urls('beritaAction')?>?aksi=get&type=1"+pages+search+category,
+            url: "<?=urls('beritaAction')?>?aksi=get&type=1"+pages+search+category+sts,
             beforeSend: function(result){
                 NProgress.start();
                 //HoldOn.open(optionsLoader);
@@ -132,6 +133,7 @@
                                                 '</div>'+
                                                 '<div style="font-weight:100;font-size:.8em">'+
                                                 'Oleh: '+item.nama+
+                                                '<br>Jumlah like: '+item.likes+
                                                 '</div>'+
                                                 '<p>'+(item.content.length>80?item.content.slice(0,80).replace(/(<([^>]+)>)/ig,"")+'...':item.content.replace(/(<([^>]+)>)/ig,""))+
                                                 '</p>'+
@@ -685,6 +687,11 @@
             });
         return w_max;
         }
+
+    function getval(sel){
+        // alert(sel.value);
+        get(1,null,null,sel.value)
+    }
 
 
 </script>

@@ -2,10 +2,10 @@
     <h4 class="box-title">
         <div class="row">
             <div class="col-md-3">
-                <select name="" id="" class="form-control">
+                <select name="" id="" class="form-control" onchange="getval(this)"> 
                     <option value="3">Semua</option>
                     <option value="1">Aktif</option>
-                    <option value="0">Tidak Aktid</option>
+                    <option value="0">Tidak Aktif</option>
                 </select>
             </div>
             <?php if($this->session->grant_access!=0):?>

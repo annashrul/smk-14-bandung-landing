@@ -18,9 +18,10 @@
     	<thead>
     		<tr>
     			<th>#</th>
-    			<th>Logo</th> 
-    			<th>Nama Perusahaan</th> 
+    			<th>Judul</th> 
+    			<th>Link</th> 
                 <th>Status</th>
+                <th>Jumlah Download</th>
     			<th>Tanggal Input</th> 
     			<th>Aksi</th> 
     		</tr> 
@@ -57,39 +58,24 @@
                             <input type="hidden" name="id_gallery" class="id_gallery" value="69">
                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label class="control-label">judul</label>
-                                    <input type="text" name="judul" id="judul" class="form-control judul">
+                                    <label class="control-label">Judul</label>
+                                    <input type="text" name="title" id="title" class="form-control title">
                                     <input type="hidden" name="idItem" id="idItem" class="form-control">
                                 </div>
-                                <!-- <div class="form-group">
-                                    <label for="" class="control-label">Tipe/Kategori</label>
-                                    <select name="tipe" id="tipe" class="form-control">
-                                    <option value="1">Osis</option>
-                                    <option value="2">Pramuka</option>
-                                    <option value="3">Ekstrakurikuler</option>
-                                    <option value="4">Kegiatan Lainnya</option>
+                               
+                                <div class="form-group">
+                                    <label class="control-label">File</label>
+                                    <input type="file" id="file2" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Status</label>
+                                    <select name="status" id="status"  class="form-control">
+                                        <option value="0">Tidak Aktif</option>
+                                        <option value="1">Aktif</option>
                                     </select>
-                                </div> -->
-                                <!-- <div class="form-group">
-                                    <label for="">Link</label>
-                                     <input type="text" name="link" id="link" class="form-control link">
-                                </div> -->
-                                <div class="form-group">
-                                    <label class="control-label">Gambar</label>
-                                    <input type="file" id="file2" class="form-control" onchange="readURL(this,'preview')">
                                 </div>
-                                <div class="form-group">
-                                    <img src="" id="preview" alt="" width="100%" height="200px">
-                                </div>
+
                             </div>
-                        
-                            <div class="col-sm-6" id="desk" style="">
-                                <!-- <div class="form-group">
-                                    <label class="control-label">Deskripsi</label>
-                                    <textarea class="form-control deskripsi" name="deskripsi" id="caption"></textarea>
-                                </div> -->
-                            </div>
-        
                         </form>
                     </div>
                 </div>

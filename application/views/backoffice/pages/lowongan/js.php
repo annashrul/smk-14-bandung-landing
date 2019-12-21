@@ -49,10 +49,11 @@
             
     });
 
-    function get(page=1,q=null,cate=null){
+    function get(page=1,q=null,cate=null,status=3){
         var search = q!==null?`&q=${q}`:'';
         var category = cate!==null?`&category=${cate}`:'';
         var category= cate!=null?`&category=${cate}`:(localStorage.getItem('berita_cate')!==null?`&category=${localStorage.getItem('berita_cate')}`:'');
+        var sts = parseInt(status)!==3?`&status=${status}`:'';
 
         var pages= page!==1?`&page=${page}`:(localStorage.getItem('berita_page')?`&page=${localStorage.getItem('berita_page')}`:'&page=1');
 
@@ -61,7 +62,7 @@
         // if(localStorage.getItem('berita_cate')!=null||localStorage.getItem('berita_cate')!='') {$("#ID"+stringToHex(localStorage.getItem('berita_cate'))).addClass("active");console.log(localStorage.getItem('berita_cate'))}
         $.ajax({
             // pages+search+category,
-            url: "<?=urls('beritaAction')?>?aksi=get&type=2"+pages+search+category,
+            url: "<?=urls('beritaAction')?>?aksi=get&type=2"+pages+search+category+sts,
             beforeSend: function(result){
                 NProgress.start();
                 //HoldOn.open(optionsLoader);
@@ -413,233 +414,9 @@ CKEditor.destroy();
     }
 
 
-    function goInsertCategory() {
-        console.log("insert");
-
-        let title=$("#titleKategori").val();
-        // let caption=CKEDITOR.instances.captionKategori.getData();
-        if(title===""){$("#err-title-kategori").css("display", "block");$("#err-title-kategori").html("Nama kategori tidak boleh kosong.")}
-        // if(caption===""){$("#err-caption-kategori").css("display", "block");$("#err-caption-kategori").html("Deskripsi tidak boleh kosong.")}
-        var fd = new FormData();
-        fd.append( 'title', title);
-        // fd.append( 'captionKategori', caption);
-       
-        if(title!==""){
-            console.log("oke");
-            console.log(title);
-            $.ajax({
-                url: "<?=urls('categoryAction')?>?aksi=create",
-                type: "post",
-                headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                data:fd,
-                processData: false,
-                contentType: false,
-                dataType: 'json',
-                beforeSend: function(result){
-                    NProgress.start();HoldOn.open(optionsLoader);
-                },
-                success: function(data){
-                    NProgress.done();HoldOn.close();
-                    const res = data;
-                    if(res){
-                        $("#form-kategori").modal('hide');
-                        toastr["success"]("Berhasil menambah kategori.")
-                    }else{
-                        toastr["error"]("Gagal menambah kategori.")
-                    }
-                    categorySide();
-
-                    // id(result.)
-                }
-            });
-        }
+   function getval(sel){
+        // alert(sel.value);
+        get(1,null,null,sel.value)
     }
-
-    function goUpdateCategory(){
-        let title=$("#titleKategori").val();
-        let id=$("#idItemKategori").val();
-
-        if(title===""){$("#err-title").css("display", "block");$("#err-title").html("Nama produk tidak boleh kosong.")}
-
-        var fd = new FormData();
-        fd.append( 'id', id);
-        fd.append( 'title', title);
-
-        if(title!==""){
-            $.ajax({
-                url: "<?=urls('categoryAction')?>?aksi=update",
-                type: "post",
-                headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                data:fd,
-                processData: false,
-                contentType: false,
-                dataType: 'json',
-                beforeSend: function(result){
-                    NProgress.start();HoldOn.open(optionsLoader);
-                },
-                success: function(data){
-                    NProgress.done();HoldOn.close();
-                    const res = data;
-                    if(res){
-                        $("#form-kategori").modal('hide');
-                        toastr["success"]("Berhasil merubah kategori.")
-                    }else{
-                        toastr["error"]("Gagal merubah kategori.")
-                    }
-                    categorySide();
-
-                    // id(result.)
-                }
-            });
-        }
-    }
-    
-    function updateCategory(id){
-        // alert(id);
-        // $('.modal-body').html(id)
-        $("#notif-container").hide();
-        $.ajax({
-            url: "<?=urls('categoryAction')?>?aksi=detail&id="+id,
-            beforeSend: function(result){
-                NProgress.start();HoldOn.open(optionsLoader);
-            },
-            success: function(data){
-                NProgress.done();HoldOn.close();
-                const res = JSON.parse(data);
-                if(res){
-                   $("#form-kategori").modal();
-                    if(!$("#form-kategori").parent().is('body')) $("#form-kategori").appendTo("body");
-                    $("#titleKategori").val(res.title);
-                    $("#idItemKategori").val(res.id);
-                    // $(".modal-body").html(data);
-                }else{
-                    $('#form-kategori').modal('hide');
-                    toastr["error"]("Gagal merubah kategori.")
-                    
-                }
-                // id(result.)
-            }
-        });
-    }
-
-    function hapusCategory(id){
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-        if (result.value) {
-            var fd = new FormData();
-            fd.append( 'id', id);
-            $.ajax({
-                url: "<?=urls('categoryAction')?>?aksi=delete",
-                type: "post",
-                headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                data:fd,
-                processData: false,
-                contentType: false,
-                dataType: 'json',
-                beforeSend: function(result){
-                    NProgress.start();HoldOn.open(optionsLoader);
-                },
-                success: function(data){
-                    NProgress.done();HoldOn.close();
-                    if(data){
-                        Swal.fire(
-                            'Berhasil',
-                            'Berhail menghapus data.',
-                            'success'
-                        )
-                    }else{
-                        Swal.fire(
-                            'Gagal',
-                            'Gagal menghapus data.',
-                            'error'
-                        )
-                    }
-                    categorySide();
-                }
-            });
-            
-        }
-        })
-    }
-
-    function categorySide(){
-        $('#kategori_side').html('');
-        $.ajax({
-                url: "<?=urls('categoryAction')?>?aksi=get", 
-                dataType: 'json',
-                type: 'GET',
-                success: function(response) {
-                    var array = response.data;
-                    console.log(array);
-                    var html = '';
-                        for (i in array) {
-                            html+="<li class='list-group-item' id='ID"+stringToHex(array[i].title)+"'>";
-                            html+="<div class='row'>"
-                            html+="<div class='col-md-8' style='cursor:pointer' onClick='event.preventDefault();get(1,null,\""+array[i].id+"\");'>"
-                            html+="<span>"+array[i].title+"</span>";
-                            html+="</div>"
-                            <?php if($this->session->grant_access!=0):?>
-                            html+="<div class='col-md-4' style='margin:0;padding:0;'>"
-                            html+='<a class="label label-success label-custom waves-effect waves-light label-xs" onclick="updateCategory(\''+array[i].id+'\')">'+
-                                '<i class="fa fa-pencil"></i>'+
-                            '</a> ';
-                            html+='<a class="label label-danger label-custom waves-effect waves-light label-xs" onclick="hapusCategory(\''+array[i].id+'\')">'+
-                                '<i class="fa fa-trash"></i>'+
-                            '</a> ';
-                            html+="</div>"
-                            <?php endif?>
-                            html+="</div>"
-                            html+="</li>";
-                        }
-                        $('#kategori_side').html(html);
-                },
-                error: function(x, e) {}
-
-            });
-    }
-
-    function stringToHex (tmp) {
-        var str = '',
-            i = 0,
-            tmp_len = tmp.length,
-            c;
-    
-        for (; i < tmp_len; i += 1) {
-            c = tmp.charCodeAt(i);
-            str += d2h(c);
-        }
-        return str;
-    }
-
-    function d2h(d) {
-        return d.toString(16);
-    }
-
-    function max_width() {
-        w_max = 0;
-            jQuery('.binary-genealogy-tree').each(function () {
-                max_w_ele = jQuery(this).find('.last_level_user').parent().parent().width();
-                n = jQuery(this).find('.last_level_user').length;
-                max_w = max_w_ele * n;
-                if (w_max < max_w) {
-                w_max = max_w;
-                }
-            });
-        return w_max;
-        }
-
 
 </script>

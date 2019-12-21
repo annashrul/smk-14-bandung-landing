@@ -44,7 +44,7 @@
     function get(page=1,q=null,kelas=0){
         var search = q!==null?`&q=${q}`:'';
         $.ajax({
-            url: "<?=urls('siswaAction')?>?aksi=get&kelas="+kelas+search,
+            url: "<?=urls('siswaAction')?>?aksi=get&page="+page+"&kelas="+kelas+search,
             beforeSend: function(result){
                 NProgress.start();HoldOn.open(optionsLoader);
             },

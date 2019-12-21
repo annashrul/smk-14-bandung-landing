@@ -21,9 +21,39 @@ class Site extends CI_Controller{
 			'site'=>$this->site,
 			'title'=>'Dashboard',
 			'page'=>'dashboard/index',
-			'js'=>'dashboard/js'
+			'js'=>'dashboard/js',
+			'guru'=> $this->M_crud->count_data('tbl_manajemen','jabatan',array('jabatan'=>7)),
+			'siswa'=> $this->M_crud->count_data('tbl_siswa','id'),
+			'pengunjung'=> $this->M_crud->count_data('tbl_pengunjung','id_pengunjung'),
 		);
 		$this->load->view($this->layout,$data);
+	}
+
+	function home(){
+		$chart = $this->db->query('SELECT weekday(tanggal_pengunjung)AS daily,COUNT(id_pengunjung) jumlah FROM tbl_pengunjung GROUP BY daily ORDER BY daily ASC')->result_array();
+		$donut = $this->db->query('SELECT COUNT(perangkat_pengunjung) AS value, perangkat_pengunjung AS platform FROM tbl_pengunjung GROUP BY platform ORDER BY platform ASC')->result_array();
+		$pengunjung = array();
+		foreach($chart as $item){
+			array_push($pengunjung, 
+			array(
+				'x'=>($item['daily']==0?"SENIN":($item['daily']==1?"SELASA":($item['daily']==2?"RABU":($item['daily']==3?"KAMIS":($item['daily']==4?"JUMAT":($item['daily']==5?"SABTU":"MINGGU")))))),
+				'y'=>$item['jumlah']
+			));
+		}
+
+		$platform = array();
+		foreach($donut as $item){
+			array_push($platform, 
+			array(
+				'value'=> $item['value'],
+                'label'=>$item['platform']
+			));
+		}
+		echo json_encode(array(
+			'chart'=>$pengunjung,
+			'donut'=>$platform
+		), true);
+
 	}
 
 	function berita(){
@@ -53,6 +83,7 @@ class Site extends CI_Controller{
 			if(!$this->akses) $where['id_member']=$this->id;
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
 			if(isset($_GET['type'])) $where['type']=$_GET['type'];
+			if(isset($_GET['status'])) $where['status']=$_GET['status'];
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('v_berita','id',$where);
 			$limit = 10;
@@ -169,6 +200,8 @@ class Site extends CI_Controller{
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$data = array(
 					"title"=>$this->input->post('title'),
+					"slug"=>url_title($this->input->post('title'), 'dash', true),
+
 				);
 				$berita = $this->M_crud->create_data('tbl_category',$data);
 				echo json_encode($berita, true);
@@ -180,6 +213,7 @@ class Site extends CI_Controller{
 				
 				$data = array(
 					"title"=>$this->input->post('title'),
+					"slug"=>url_title($this->input->post('title'), 'dash', true),
 					"updated_at"=>date("Y-m-d")
 				);
 				$berita = $this->M_crud->update_data('tbl_category',$data,array('id'=>$this->input->post('id')));
@@ -900,7 +934,6 @@ class Site extends CI_Controller{
 		$this->load->view($this->layout,$data);
 	}
 
-
 	function gallery(){
 		$data=array(
 			'site'=>$this->site,
@@ -929,7 +962,9 @@ class Site extends CI_Controller{
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
 			if($_GET['type']!=0) $where['type']=$_GET['type'];
 			if($_GET['type']==0)$where['type != 5 and type != 7 and type != 8 and type !=']=6;
+			if(isset($_GET['status'])) $where['status']=$_GET['status'];
 			$page= isset($_GET['page'])?$_GET['page']:1;
+
 			$count = $this->M_crud->count_read_data('tbl_gallery','id',$where);
 			$limit = 10;
             $offset = ($limit * ($page-1));
@@ -1091,6 +1126,104 @@ class Site extends CI_Controller{
 					"status"=>$this->input->post('status')
 				);
 				$berita = $this->M_crud->update_data('tbl_contact',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}else{
+			echo 'FORBIDDEN.';
+		}
+	}
+
+	function files(){
+		$data=array(
+			'site'=>$this->site,
+			'title'=>'Files',
+			'page'=>'files/index',
+			'js'=>'files/js'
+		);
+		$this->load->view($this->layout,$data);
+	}
+
+	function filesAction(){
+		$action = $_GET['aksi'];
+		$where = array();
+		if($action=='get'){
+			if(!$this->akses) $where['id_member']=$this->id;
+			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
+			if(isset($_GET['status'])) $where['status']=$_GET['status'];
+			$page= isset($_GET['page'])?$_GET['page']:1;
+
+			$count = $this->M_crud->count_read_data('tbl_files','id',$where);
+			$limit = 10;
+            $offset = ($limit * ($page-1));
+            $jml = ceil($count / $limit);
+			$countpage = $jml==0?1:$jml;
+			
+			$berita = $this->M_crud->read_data('tbl_files','*',$where,'created_at DESC', null,$limit,$offset);
+			$result = array(
+				"data"=>$berita,
+				"count"=>$count,
+				"current_page"=>(int)$page,
+				"perpage"=>$limit,
+				"last_page"=>$countpage
+			);
+			echo json_encode($result, true);
+		}elseif($action=='detail'){
+			$id= $_GET['id'];
+			$berita = $this->M_crud->get_data('tbl_files','*',array('id'=>$id));
+			echo json_encode($berita, true);
+		}elseif($action=='create'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$files = _uploadFiles();
+				// dd($files);
+				if($files==false) echo 'false';
+				else{
+					$data = array(
+						"title"=> $this->input->post('title'),
+						"status"=> $this->input->post('status'),
+						"link"=>getFile($files),
+						"hits"=>0
+					);
+					$berita = $this->M_crud->create_data('tbl_files',$data);
+					echo json_encode($berita, true);
+
+				}
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='update'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$image;
+				$data = array(
+					"link"=>getImage(_uploadImage()),
+					"updated_at"=>date("Y-m-d")
+				);
+				if (!empty($_FILES["image"]["name"])) {
+					$image = _uploadImage();
+					$data['image']=getImage($image);
+				}
+				$berita = $this->M_crud->update_data('tbl_files',$data,array("id"=>$this->input->post('id')));
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='delete'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"id"=>$this->input->post('id')
+				);
+				$berita = $this->M_crud->delete_data('tbl_files',$data);
+				echo json_encode($berita, true);
+			}else{
+				echo 'FORBIDDEN.';
+			}
+		}elseif($action=='approval'){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$data = array(
+					"status"=>$this->input->post('status')
+				);
+				$berita = $this->M_crud->update_data('tbl_files',$data,array("id"=>$this->input->post('id')));
 				echo json_encode($berita, true);
 			}else{
 				echo 'FORBIDDEN.';
