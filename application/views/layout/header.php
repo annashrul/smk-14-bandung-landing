@@ -31,20 +31,37 @@
     <!-- Animation Scroll -->
 
     <script src="<?=base_url();?>assets/js/jquery.min.js"></script>
-    <script src="<?=base_url();?>assets/js/bootstrap.bundle.min.js"></script>
-    <script src="<?=base_url();?>assets/js/owl.carousel.min.js"></script>
-    <script src="<?=base_url();?>assets/js/waypoints.min.js"></script>
-    <script src="<?=base_url();?>assets/js/jquery.counterup.min.js"></script>
-    <script src="<?=base_url();?>assets/js/TweenMax.min.js"></script>
-    <script src="<?=base_url();?>assets/js/wow.js"></script>
-    <script src="<?=base_url();?>assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="<?=base_url();?>assets/js/countdown.min.js"></script>
-    <script src="<?=base_url();?>assets/js/vegas.min.js"></script>
-    <!-- template scripts -->
-    <script src="<?=base_url();?>assets/js/theme.js"></script>
-    <script src="<?=base_url();?>assets/js/scrollreveal.min.js"></script>
+
+
+
 </head>
 <style>
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+        .banner-one__title{font-size: 50px!important;}
+        .img-news{height: 100%!important;}
+        .img-gallery{height: 100%!important;}
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+
+    }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+
+    }
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+
+    }
     .first-loader {
         position: fixed;
         top: 0;

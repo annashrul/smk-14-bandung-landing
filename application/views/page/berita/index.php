@@ -45,17 +45,21 @@
 	}
 
 	function isLike(idContent){
-		dynamic_ajax("<?=base_url().'berita/isLike'?>",{idContent:idContent},function(res){
-			if(res.status === 'success'){
-				console.log(res.msg);
-				load_data(1);
-				$("#love").css('color','red');
-			}else{
-				console.log(res.msg);
-				load_data(1);
-				$("#love").css('color','white');
-			}
-		})
+		var id = "<?=$this->session->id?>";
+		if(id!=''){
+			dynamic_ajax("<?=base_url().'berita/isLike'?>",{idContent:idContent},function(res){
+				if(res.status === 'success'){
+					console.log(res.msg);
+					load_data(1);
+					$("#love").css('color','red');
+				}else{
+					console.log(res.msg);
+					load_data(1);
+					$("#love").css('color','white');
+				}
+			})
+        }
+
 	}
 
 </script>

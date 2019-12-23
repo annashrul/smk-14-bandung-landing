@@ -22,7 +22,7 @@ class Berita extends CI_Controller
             $res_index = "";
             if($read_data != null){
                 foreach ($read_data as $row):
-                    $res_index.=$this->M_website->tempNews($row['id'],$row['image'],$row['category'],base_url("detail?type=berita&title=".$row['slug']),$row['created_at'],$row['nama'],$row['title'],$row['content'],$row['likes']);
+                    $res_index.=$this->M_website->tempNews($row['id'],$row['image'],$row['category'],base_url("detail?type=berita&title=".$row['slug']),$row['created_at'],$row['nama'],$row['title'],$row['content'],$row['likes'],base_url("berita?title=".$row['slug_category']));
                 endforeach;
             }else{
                 $res_index .=/**@lang text */'<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';
@@ -39,7 +39,7 @@ class Berita extends CI_Controller
             $read_data = $this->M_crud->read_data("v_berita","*","status='1' and type='1'","id desc",null,3);
             if($read_data!=null){
                 foreach ($read_data as $row):
-                    $result.=$this->M_website->tempNews($row['id'],$row['image'],$row['category'],base_url("detail?type=berita&title=".$row['slug']),$row['created_at'],$row['nama'],$row['title'],$row['content'],$row['likes']);
+                    $result.=$this->M_website->tempNews($row['id'],$row['image'],$row['category'],base_url("detail?type=berita&title=".$row['slug']),$row['created_at'],$row['nama'],$row['title'],$row['content'],$row['likes'],base_url("berita?title=".$row['slug_category']));
                 endforeach;
             }else{
                 $result.='<h1 class="text-center">Tidak Ada Data</h1>';

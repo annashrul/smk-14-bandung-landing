@@ -55,7 +55,7 @@
     <?=$btn?>
 </div><!-- /.banner-wrapper -->
 
-<section class="about-two ">
+<section class="about-two sr-btm">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -84,7 +84,7 @@
 
 <!-- Jurusan -->
 <?php $img = base_url().'assets/img/jurusan.jpg';?>
-<section class="course-one__top-title home-one">
+<section class="course-one__top-title home-one sr-btm">
     <div class="container">
         <div class="block-title mb-0">
             <div class="block-title text-center">
@@ -112,7 +112,7 @@
 
 
 <!-- Berita -->
-<section class="blog-one blog-page">
+<section class="blog-one blog-page sr-btm">
     <div class="container">
         <h2 class="inner-banner__title" style="text-align:center;color:#011928;padding:30px">Berita Terbaru</h2>
         <div class="row" id="result_berita">
@@ -122,17 +122,16 @@
 
 <!-- Galeri -->
 
-<section class="inner-banner">
+<section class="inner-banner sr-btm">
     <div class="container">
         <h2 class="inner-banner__title text">Gallery</h2>
     </div>
 </section>
 
 
-<section class="gallery-one">
+<section class="gallery-one sr-btm">
     <div class="container">
-        <div class="row" id="result_galler">
-
+        <div class="row">
             <?php if($gallery != null){ foreach($gallery as $row):?>
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-one__single">
@@ -150,7 +149,7 @@
     </div><!-- /.container -->
 </section>
 
-<section class="brand-two ">
+<section class="brand-two sr-btm"">
     <div class="container">
         <div class="block-title">
             <h2 class="block-title__title" style="text-align:center">Our company & partners</h2><!-- /.block-title__title -->
@@ -167,7 +166,7 @@
 
 
 <!-- MAPS -->
-<section class="inner-banner">
+<section class="inner-banner sr-btm"">
     <div class="container">
         <h2 class="inner-banner__title text">Kontak</h2><!-- /.inner-banner__title -->
     </div><!-- /.container -->
@@ -219,11 +218,7 @@
 </style>
 
 <script>
-	$('.refreshCaptcha').on('click', function(){
-		$.get('<?php echo base_url().'beranda/refresh'; ?>', function(data){
-			$('#captImg').html(data);
-		});
-	});
+
 	function validateEmail(email) {
 		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		return re.test(email);
@@ -264,6 +259,24 @@
 		dynamic_ajax("<?=base_url().'berita/load_data/get_home'?>",null,function(res){
 			$("#result_berita").html(res.result);
 		});
+	}
+	function isLike(idContent){
+		var id = "<?=$this->session->id?>";
+		if(id != ''){
+			dynamic_ajax("<?=base_url().'berita/isLike'?>",{idContent:idContent},function(res){
+				if(res.status === 'success'){
+					console.log(res.msg);
+					load_berita();
+					$("#love").css('color','red');
+				}else{
+					console.log(res.msg);
+					load_berita();
+					$("#love").css('color','white');
+				}
+			})
+        }
+
+
 	}
 
 </script>

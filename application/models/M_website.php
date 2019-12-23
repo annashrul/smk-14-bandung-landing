@@ -75,7 +75,7 @@ class M_website extends CI_Model
     }
 
 
-    public function tempNews($id,$image,$category,$url,$date,$name,$title,$content,$count){
+    public function tempNews($id,$image,$category,$url,$date,$name,$title,$content,$count,$slug_category){
         if(strlen($title) > 20){
             $subTitle = substr($title,0,20).' .....';
         }else{
@@ -91,10 +91,10 @@ class M_website extends CI_Model
             <div class="col-lg-4">
                 <div class="course-one__single">
                     <div class="course-one__image">
-                        <img src="'.$image.'" alt="" style="height:250px!important;">
+                        <img src="'.$image.'" class="img-news" alt="" style="height:250px;">
                     </div>
                     <div class="course-one__content">
-                        <a href="#" class="course-one__category">'.$category.'</a>
+                        <a href="'.$slug_category.'" class="course-one__category">'.$category.'</a>
                         <div class="course-one__admin">
                             <img src="assets/images/team-1-1.jpg" alt="">
                             by <a href="#">'.$name.'</a>
@@ -111,12 +111,13 @@ class M_website extends CI_Model
             </div>
         ';
     }
+
 //onclick="edit('."'".$row['id']."'".')"
     public function tempGallery($image,$title){
         return /** @lang text */'
         <div class="col-lg-4 col-md-6">
             <div class="gallery-one__single">
-                <img src="'.$image.'" alt="" style="height:300px;width:100%;">
+                <img src="'.$image.'" alt="" class="img-gallery" style="height:300px;width:100%;">
                 <a href="'.$image.'" class="gallery-one__popup img-popup">
                     <p class="text-center" style="color: white!important;">'.$title.'</p>
                 </a>

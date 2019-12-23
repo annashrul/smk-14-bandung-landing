@@ -13,7 +13,6 @@ class Auth extends CI_Controller
             $this->load->view('auth/login',array('title'=>'SMKN 14 Bandung'));
         }else{
             $this->load->view('auth/login_bo',array('title'=>'SMKN 14 Bandung'));
-
         }
 	}
 
