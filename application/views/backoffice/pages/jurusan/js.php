@@ -9,37 +9,49 @@
         let searchParams = new URLSearchParams(window.location.search)
         if(searchParams.has('page')) get(searchParams.get('page'));
         else get();
-            $("#tambah").on('click',function(event) {
-                set_ckeditor('caption')
-                set_ckeditor('visi')
-                set_ckeditor('misi')
-                event.preventDefault();
-                // $("#form-berita").modal('show');
-                $("#form-berita").modal();
-                if(!$("#form-berita").parent().is('body')) $("#form-berita").appendTo("body");
-                // $("#form-berita").appendTo("body");
-                $(".modal-title").html("Tambah Jurusan");
-                $("#title").val("");
-                CKEDITOR.instances['caption'].setData('');
-                CKEDITOR.instances['visi'].setData('');
-                CKEDITOR.instances['misi'].setData('');
-                
-                $("#file2").val("");
-                $("#caption").text("");
-                $("#idItem").val();
-                $("#btn_simpan").text("Simpan")
-                $("#notif-container").show();
-                $('#preview').attr("src","");
-            });
+        $("#btn_search").click(function(event) {
+            event.preventDefault();
+            var data = $("#search").val();
+            get(1, data);
+        });
+        $('#search').on('keypress', function (e) {
+                if(e.which === 13){
 
-            $("#btn_simpan").click(function(event) {
-                event.preventDefault();
-                if($("#idItem").val()===""){
-                    goInsert();
-                }else{
-                    goUpdate();
+                    var data = $("#search").val();
+                    get(1, data);
                 }
-            });
+        });
+        $("#tambah").on('click',function(event) {
+            set_ckeditor('caption')
+            set_ckeditor('visi')
+            set_ckeditor('misi')
+            event.preventDefault();
+            // $("#form-berita").modal('show');
+            $("#form-berita").modal();
+            if(!$("#form-berita").parent().is('body')) $("#form-berita").appendTo("body");
+            // $("#form-berita").appendTo("body");
+            $(".modal-title").html("Tambah Jurusan");
+            $("#title").val("");
+            CKEDITOR.instances['caption'].setData('');
+            CKEDITOR.instances['visi'].setData('');
+            CKEDITOR.instances['misi'].setData('');
+            
+            $("#file2").val("");
+            $("#caption").text("");
+            $("#idItem").val();
+            $("#btn_simpan").text("Simpan")
+            $("#notif-container").show();
+            $('#preview').attr("src","");
+        });
+
+        $("#btn_simpan").click(function(event) {
+            event.preventDefault();
+            if($("#idItem").val()===""){
+                goInsert();
+            }else{
+                goUpdate();
+            }
+        });
 
             
     });

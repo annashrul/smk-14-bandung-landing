@@ -9,6 +9,18 @@
         let searchParams = new URLSearchParams(window.location.search)
         if(searchParams.has('page')) get(searchParams.get('page'));
         else get();
+        $("#btn_search").click(function(event) {
+            event.preventDefault();
+            var data = $("#search").val();
+            get(1, data);
+        });
+        $('#search').on('keypress', function (e) {
+                if(e.which === 13){
+
+                    var data = $("#search").val();
+                    get(1, data);
+                }
+        }); 
             $("#tambah").on('click',function(event) {
                 set_ckeditor('caption')
                 event.preventDefault();

@@ -9,7 +9,7 @@ class Auth extends CI_Controller
 		if($this->session->is_logged_in){
 			redirect('site');
 		}
-		if($_GET['type'] == 'siswa'){
+		if(isset($_GET['type']) && $_GET['type'] == 'siswa'){
             $this->load->view('auth/login',array('title'=>'SMKN 14 Bandung'));
         }else{
             $this->load->view('auth/login_bo',array('title'=>'SMKN 14 Bandung'));

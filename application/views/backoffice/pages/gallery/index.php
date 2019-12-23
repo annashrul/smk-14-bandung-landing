@@ -237,6 +237,19 @@
 <div class="box-content">
     <h4 class="box-title">
     <div class="row">
+      <div class="col-md-3">
+                    <div class="form-group">
+                            <label for="">Pencarian</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Cari dengan judul.." id="search">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit" id="btn_search">
+                                        <i style="color:white;" class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                    </div>
+        </div>
         <div class="col-md-3">
             <label for="" class="control-label">Tipe/Kategori</label>
             <select name="filtertipe" id="filtertipe" onClick='getval(this)' class="form-control">

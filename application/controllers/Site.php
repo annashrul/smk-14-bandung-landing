@@ -84,6 +84,7 @@ class Site extends CI_Controller{
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
 			if(isset($_GET['type'])) $where['type']=$_GET['type'];
 			if(isset($_GET['status'])) $where['status']=$_GET['status'];
+			if(isset($_GET['q'])) $where['title like']="%".$_GET['q']."%";
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('v_berita','id',$where);
 			$limit = 10;
@@ -177,6 +178,8 @@ class Site extends CI_Controller{
 			// if(!$this->akses) $where['id']=$this->id;
 			$where['id !=']=4;
 			$page= isset($_GET['page'])?$_GET['page']:1;
+			if(isset($_GET['q'])) $where['title like']="%".$_GET['q']."%";
+
 			$count = $this->M_crud->count_read_data('tbl_category','id',$where);
 			$limit = 10;
             $offset = ($limit * ($page-1));
@@ -265,6 +268,8 @@ class Site extends CI_Controller{
 		if($action=='get'){
 			if(!$this->akses) $where['id_member']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
+			if(isset($_GET['q'])) $where['nama like']="%".$_GET['q']."%";
+
 			$where['id !=']=1;
 			$count = $this->M_crud->count_read_data('v_user','id',$where);
 			$limit = 10;
@@ -360,6 +365,7 @@ class Site extends CI_Controller{
 		if($action=='get'){
 			if(!$this->akses) $where['id_member']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
+			if(isset($_GET['q'])) $where['title like']="%".$_GET['q']."%";
 			$count = $this->M_crud->count_read_data('tbl_user_level','id',$where);
 			$limit = 10;
             $offset = ($limit * ($page-1));
@@ -454,6 +460,7 @@ class Site extends CI_Controller{
 			// if(!$this->akses) $where['id_member']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$type= isset($_GET['type'])?$_GET['type']:'all';
+			if(isset($_GET['q'])) $where['nama like']="%".$_GET['q']."%";
 
 			if($type=='guru') $where['jabatan']=7;
 			else $where['jabatan !=']=7;
@@ -544,6 +551,8 @@ class Site extends CI_Controller{
 		$where = array();
 		if($action=='get'){
 			if(!$this->akses) $where['id_member']=$this->id;
+			if(isset($_GET['q'])) $where['title like']="%".$_GET['q']."%";
+
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$count = $this->M_crud->count_read_data('tbl_jabatan','id',$where);
 			$limit = 10;
@@ -638,6 +647,8 @@ class Site extends CI_Controller{
 		if($action=='get'){
 			// if(!$this->akses) $where['id_member']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
+			if(isset($_GET['q'])) $where['title like']="%".$_GET['q']."%";
+
 			$count = $this->M_crud->count_read_data('tbl_jurusan','id',$where);
 			$limit = 10;
             $offset = ($limit * ($page-1));
@@ -735,6 +746,8 @@ class Site extends CI_Controller{
 		$where = array();
 		if($action=='get'){
 			// if(!$this->akses) $where['id']=$this->id;
+			if(isset($_GET['q'])) $where['nama like']="%".$_GET['q']."%";
+
 			$page= isset($_GET['page'])?$_GET['page']:1;
 			$kelas= $_GET['kelas'];
 			if($kelas!=0) $where['id_kelas']=$kelas;
@@ -832,6 +845,8 @@ class Site extends CI_Controller{
 		if($action=='get'){
 			// if(!$this->akses) $where['id']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
+			if(isset($_GET['q'])) $where['nama like']="%".$_GET['q']."%";
+
 			$kelas= $_GET['jurusan'];
 			if($kelas!=0) $where['id_jurusan']=$kelas;
 			if(isset($_GET['q'])) $where['nama LIKE']='%'.$_GET['q'].'%';
@@ -960,6 +975,7 @@ class Site extends CI_Controller{
 		if($action=='get'){
 			if(!$this->akses) $where['id_member']=$this->id;
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
+			if(isset($_GET['q'])) $where['title like']="%".$_GET['q']."%";
 			if($_GET['type']!=0) $where['type']=$_GET['type'];
 			if($_GET['type']==0)$where['type != 5 and type != 7 and type != 8 and type !=']=6;
 			if(isset($_GET['status'])) $where['status']=$_GET['status'];
@@ -1062,6 +1078,8 @@ class Site extends CI_Controller{
 		if($action=='get'){
 			if(!$this->akses) $where['id']=$this->id;
 			$page= isset($_GET['page'])?$_GET['page']:1;
+			if(isset($_GET['q'])) $where['nama like']="%".$_GET['q']."%";
+
 			$count = $this->M_crud->count_read_data('tbl_contact','id',$where);
 			$limit = 10;
             $offset = ($limit * ($page-1));
@@ -1151,6 +1169,7 @@ class Site extends CI_Controller{
 		if($action=='get'){
 			if(!$this->akses) $where['id_member']=$this->id;
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
+			if(isset($_GET['q'])) $where['title like']="%".$_GET['q']."%";
 			if(isset($_GET['status'])) $where['status']=$_GET['status'];
 			$page= isset($_GET['page'])?$_GET['page']:1;
 
