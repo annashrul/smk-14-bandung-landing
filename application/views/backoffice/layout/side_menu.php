@@ -100,6 +100,12 @@
                 </li>
 				<li 
 					<?=$this->session->id_level!=1?'style="display:none"':''?> 
+					<?=$this->uri->segment('2')=='files'?'class="current active"':''?>
+				>
+					<a class="waves-effect" href="<?=urls('files')?>"><i class="menu-icon fa fa-file-archive-o"></i><span>Manajemen Files</span></a>
+                </li>
+				<li 
+					<?=$this->session->id_level!=1?'style="display:none"':''?> 
 					<?=$this->uri->segment('2')=='user'?'class="current active"':''?>
 				>
 					<a class="waves-effect" href="<?=urls('user')?>"><i class="menu-icon fa fa-users"></i><span>User Admin</span></a>

@@ -27,18 +27,18 @@
             var id = $("#idItem").val();
             approve(status,id);
         });
-            $("#btn_search").click(function(event) {
-                event.preventDefault();
-                var data = $("#search").val();
-                get(1, data);
-            });
-            $('#search').on('keypress', function (e) {
-                    if(e.which === 13){
+        $("#btn_search").click(function(event) {
+            event.preventDefault();
+            var data = $("#search").val();
+            get(1, data);
+        });
+        $('#search').on('keypress', function (e) {
+                if(e.which === 13){
 
-                        var data = $("#search").val();
-                        get(1, data);
-                    }
-            });
+                    var data = $("#search").val();
+                    get(1, data);
+                }
+        });
 
             $("#btn_simpan").click(function(event) {
                 event.preventDefault();

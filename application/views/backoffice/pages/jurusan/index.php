@@ -1,6 +1,19 @@
 <div class="box-content">
     <h4 class="box-title">
     <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                    <label for="">Pencarian</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Cari dengan nama.." id="search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit" id="btn_search">
+                                <i style="color:white;" class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+            </div>
+        </div>
         <div class="col-md-3 float-right">
             <a href="#" class="btn btn-primary btn-sm float-right" id="tambah">Tambah </a>
         </div>

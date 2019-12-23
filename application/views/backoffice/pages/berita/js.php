@@ -38,6 +38,18 @@
                 $(".list-group-item").removeClass("active");
                 get();
             });
+            $("#btn_search").click(function(event) {
+                event.preventDefault();
+                var data = $("#search").val();
+                get(1, data);
+            });
+            $('#search').on('keypress', function (e) {
+                    if(e.which === 13){
+
+                        var data = $("#search").val();
+                        get(1, data);
+                    }
+            });
             
             $("#tambahKategori").on('click',function(event) {
                 event.preventDefault();

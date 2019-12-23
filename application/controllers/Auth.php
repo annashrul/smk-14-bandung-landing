@@ -8,21 +8,21 @@ class Auth extends CI_Controller
 		// dd($this->bcrypt->hash_password('admin1'));
         error_reporting(0);
 
-		if($_GET['type'] == 'siswa'){
-            if($this->session->is_logged_in){
-                redirect('site');
-            }else{
-                $this->load->view('auth/login',array('title'=>'SMKN 14 Bandung','config'=>$this->M_crud->get_data("tbl_config","*")));
+		if($_GET['type'] == 'siswa') {
+            if ($this->session->isLogin == true) {
+                redirect();
+            } else {
+                $this->load->view('auth/login', array('title' => 'SMKN 14 Bandung', 'config' => $this->M_crud->get_data("tbl_config", "*")));
             }
-
         }else{
             if($this->session->is_logged_in){
                 redirect('site');
             }else{
                 $this->load->view('auth/login_bo',array('title'=>'SMKN 14 Bandung'));
             }
-
         }
+
+
 	}
 
 	function login(){
