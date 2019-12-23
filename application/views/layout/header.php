@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SMKN 14 BANDUNG</title>
+    <title><?=$config['site_title']?></title>
     <link rel="apple-touch-icon" sizes="180x180" href="<?=base_url();?>assets/images/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<?=base_url();?>assets/img/icon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url();?>assets/img/icon.png">
@@ -41,6 +41,9 @@
         .banner-one__title{font-size: 50px!important;}
         .img-news{height: 100%!important;}
         .img-gallery{height: 100%!important;}
+        #headEmail{font-size: 10px!important;}
+        #headTelp{font-size: 10px!important;}
+        .inner-banner__title{font-size: 20px!important;}
     }
 
     /* Small devices (portrait tablets and large phones, 600px and up) */

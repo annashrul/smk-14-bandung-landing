@@ -98,7 +98,7 @@
                             <div class="course-category-one__icon">
                                 <i class="kipso-icon-desktop"></i>
                             </div>
-                            <h3 class="course-category-one__title"><a href="#"><?=$row['title']?></a></h3>
+                            <h3 class="course-category-one__title"><a href="<?=base_url("keahlian?type=".$row['slug'])?>"><?=$row['title']?></a></h3>
                         </div>
                     </div>
                 <?php endforeach; ?>

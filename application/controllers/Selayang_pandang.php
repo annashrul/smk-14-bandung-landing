@@ -75,6 +75,12 @@ class Selayang_pandang extends CI_Controller
             if($read_data != null){
                 $title.='Fasilitas';
                 foreach($read_data as $row){
+                    if(strlen($row["title"]) > 20){
+                        $luhur = substr($row['title'],0,20).' ...';
+                    }else{
+                        $luhur = $row['title'];
+                    }
+
                     $result.= /** @lang text */'
                         <div class="col-lg-4 col-xs-6">
                             <div class="blog-one__single">
@@ -82,8 +88,8 @@ class Selayang_pandang extends CI_Controller
                                     <img src="'.$row["image"].'" alt="">
                                 </div>
                                 <div class="blog-one__content text-center">
-                                    <h2>'.$row["title"].'</h2>
-                                    <p class="blog-one__text">'.$row["deskripsi"].'</p>
+                                    <h4>'.$luhur.'</h4>
+                                    <p class="blog-one__text">'.$row['deskripsi'].'</p>
                                 </div>
                             </div>
                         </div>

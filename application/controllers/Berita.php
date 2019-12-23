@@ -21,8 +21,15 @@ class Berita extends CI_Controller
             );
             $res_index = "";
             if($read_data != null){
+
                 foreach ($read_data as $row):
-                    $res_index.=$this->M_website->tempNews($row['id'],$row['image'],$row['category'],base_url("detail?type=berita&title=".$row['slug']),$row['created_at'],$row['nama'],$row['title'],$row['content'],$row['likes'],base_url("berita?title=".$row['slug_category']));
+                    $cek = $this->M_crud->read_data("tbl_likes","*","id_content='".$row['id']."' and id_siswa='".$this->session->id."'");
+                    if(count($cek) > 0){
+                        $isTrue = true;
+                    }else{
+                        $isTrue = false;
+                    }
+                    $res_index.=$this->M_website->tempNews($row['id'],$row['image'],$row['category'],base_url("detail?type=berita&title=".$row['slug']),$row['created_at'],$row['nama'],$row['title'],$row['content'],$row['likes'],base_url("berita?title=".$row['slug_category']),$isTrue);
                 endforeach;
             }else{
                 $res_index .=/**@lang text */'<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';
@@ -39,7 +46,13 @@ class Berita extends CI_Controller
             $read_data = $this->M_crud->read_data("v_berita","*","status='1' and type='1'","id desc",null,3);
             if($read_data!=null){
                 foreach ($read_data as $row):
-                    $result.=$this->M_website->tempNews($row['id'],$row['image'],$row['category'],base_url("detail?type=berita&title=".$row['slug']),$row['created_at'],$row['nama'],$row['title'],$row['content'],$row['likes'],base_url("berita?title=".$row['slug_category']));
+                    $cek = $this->M_crud->read_data("tbl_likes","*","id_content='".$row['id']."' and id_siswa='".$this->session->id."'");
+                    if(count($cek) > 0){
+                        $isTrue = true;
+                    }else{
+                        $isTrue = false;
+                    }
+                    $result.=$this->M_website->tempNews($row['id'],$row['image'],$row['category'],base_url("detail?type=berita&title=".$row['slug']),$row['created_at'],$row['nama'],$row['title'],$row['content'],$row['likes'],base_url("berita?title=".$row['slug_category']),$isTrue);
                 endforeach;
             }else{
                 $result.='<h1 class="text-center">Tidak Ada Data</h1>';

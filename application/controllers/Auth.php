@@ -6,13 +6,22 @@ class Auth extends CI_Controller
 {
 	public function index(){
 		// dd($this->bcrypt->hash_password('admin1'));
-		if($this->session->is_logged_in){
-			redirect('site');
-		}
+        error_reporting(0);
+
 		if($_GET['type'] == 'siswa'){
-            $this->load->view('auth/login',array('title'=>'SMKN 14 Bandung'));
+            if($this->session->is_logged_in){
+                redirect('site');
+            }else{
+                $this->load->view('auth/login',array('title'=>'SMKN 14 Bandung','config'=>$this->M_crud->get_data("tbl_config","*")));
+            }
+
         }else{
-            $this->load->view('auth/login_bo',array('title'=>'SMKN 14 Bandung'));
+            if($this->session->is_logged_in){
+                redirect('site');
+            }else{
+                $this->load->view('auth/login_bo',array('title'=>'SMKN 14 Bandung'));
+            }
+
         }
 	}
 

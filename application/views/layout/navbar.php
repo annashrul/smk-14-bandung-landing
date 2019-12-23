@@ -3,13 +3,11 @@
     <div class="topbar-one">
         <div class="container">
             <div class="topbar-one__left">
-                <a href="#">smk14bdg@yahoo.com</a>
-                <a href="#">(022)7560358</a>
+                <a href="#" id="headEmail"><?=$config['email']?></a>
+                <a href="#" id="headTelp"><?=$config['telp']?></a>
             </div><!-- /.topbar-one__left -->
-            <div class="topbar-one__right col-md-12 col-md-offset-7">
-
+            <div class="topbar-one__right">
                 <?php if($this->session->isLogin == true) : ?>
-                    <a class="btn btn-primary" href="<?=base_url()?>" style="color:white">Perpustakaan</a>
                     <a class="btn btn-primary" href="<?=base_url().'auth/logout_'?>" style="color:white">Keluar</a>
                 <?php else: ?>
                     <a class="btn btn-primary" href="<?=base_url().'auth?type=siswa'?>" style="color:white">Masuk</a>
@@ -17,21 +15,38 @@
             </div><!-- /.topbar-one__right -->
         </div><!-- /.container -->
     </div><!-- /.topbar-one -->
+    <div class="topbar-one visible-xs">
+        <div class="container">
+            <form action="<?=base_url().'berita'?>" class="search-popup__form">
+                <input type="text" name="title" placeholder="Cari Disini....">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div><!-- /.container -->
+    </div><!-- /.topbar-one -->
     <header class="site-header site-header__header-one ">
         <nav class="navbar navbar-expand-lg navbar-light header-navigation stricky">
             <div class="container clearfix">
+
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="logo-box clearfix">
-                    <a class="navbar-brand" href="<?=base_url();?>">
-                        <img src="<?=base_url();?>assets/images/logo-dark.png" class="main-logo" width="75" alt="Awesome Image" />
-                    </a>
-                    <button class="menu-toggler" data-target=".main-navigation">
-                        <span class="kipso-icon-menu"></span>
-                    </button>
+
+                        <a class="navbar-brand" href="<?=base_url();?>">
+                            <img src="<?=base_url();?>assets/images/logo-dark.png" class="main-logo" width="75" alt="Awesome Image" />
+                        </a>
+                        <button class="menu-toggler text-right" data-target=".main-navigation">
+                            <span class="kipso-icon-menu"></span>
+                        </button>
+
+
+
                 </div><!-- /.logo-box -->
+
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="main-navigation">
                     <ul class=" navigation-box">
+                        <?php if($this->session->isLogin == true) {?>
+                            <li class="visible-xs"><a href="<?=base_url().'download';?>"><?=$this->session->nama?> ( <?=$this->session->nis?> )</a></li>
+                        <?php } ?>
                         <li><a href="<?=base_url();?>">Beranda</a></li>
 
                         <li>
@@ -104,6 +119,7 @@
                         <?php if($this->session->isLogin == true) {?>
                             <li><a href="<?=base_url().'download';?>">Download</a></li>
                         <?php } ?>
+
                     </ul>
                 </div><!-- /.navbar-collapse -->
                 <style>
@@ -117,7 +133,9 @@
                 <div class="right-side-box">
                     <a class="header__search-btn search-popup__toggler" href="#"><i class="fa fa-search"></i></a>
                 </div><!-- /.right-side-box
+
                 </div>
+
                 <!-- /.container -->
         </nav>
         <div class="site-header__decor">
@@ -142,7 +160,7 @@
         </div>
         <div class="search-popup__inner">
             <form action="<?=base_url().'berita'?>" class="search-popup__form">
-                <input type="text" name="title" placeholder="Type here to Search....">
+                <input type="text" name="title" placeholder="Cari Disini....">
                 <button type="submit"><i class="kipso-icon-magnifying-glass"></i></button>
             </form>
         </div>

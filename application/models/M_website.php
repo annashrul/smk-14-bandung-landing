@@ -75,9 +75,14 @@ class M_website extends CI_Model
     }
 
 
-    public function tempNews($id,$image,$category,$url,$date,$name,$title,$content,$count,$slug_category){
-        if(strlen($title) > 20){
-            $subTitle = substr($title,0,20).' .....';
+    public function tempNews($id,$image,$category,$url,$date,$name,$title,$content,$count,$slug_category,$isTrue){
+        if($isTrue == false){
+            $hati = 'color:red;';
+        }else{
+            $hati = 'color:blue;';
+        }
+        if(strlen($title) > 15){
+            $subTitle = substr($title,0,15).' .....';
         }else{
             $subTitle = $title;
         }
@@ -102,8 +107,8 @@ class M_website extends CI_Model
                         <h2 class="course-one__title"><a href="'.$url.'" id="cek">'.$subTitle.'</a></h2>
                         <p class="text-left">'.html_entity_decode($subContent).'</p>
                         <div class="course-one__meta">
-                            <a href="course-details.html"><i class="far fa-clock" id="love"></i> '.date("Y-m-d",strtotime($date)).'</a>
-                            <a href="javascript:void(0)"onclick="isLike('."'".$id."'".')"><i class="far fa-heart"></i> '.$count.' disukai</a>
+                            <a href="course-details.html"><i class="far fa-clock"></i> '.date("Y-m-d",strtotime($date)).'</a>
+                            <a href="javascript:void(0)"onclick="isLike('."'".$id."'".')"><i class="far fa-heart" style="'.$hati.'""></i> '.$count.' disukai</a>
                         </div>
                         <a href="'.$url.'" class="course-one__link">Selengkapnya</a>
                     </div>

@@ -4,22 +4,22 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-3 col-sm-3">
                     <div class="footer-widget footer-widget__contact">
-                        <h2 class="footer-widget__title">Address</h2>
+                        <h2 class="footer-widget__title">Alamat</h2>
                         <ul class="list-unstyled footer-widget__course-list">
                             <li>
-                                <h2><a href="#">Jl. Cijawura Hilir No. 341 <br> Kota Bandung</a></h2>
+                                <h2><a href="#"><?=$config['address']?></a></h2>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-sm-3">
                     <div class="footer-widget footer-widget__link">
-                        <h2 class="footer-widget__title">Contacts</h2>
+                        <h2 class="footer-widget__title">Kontak Kami</h2>
                         <div class="footer-widget__link-wrap">
                             <ul class="list-unstyled footer-widget__link-list">
-                                <li><a href="#">Email: smk14bdg@yahoo.com </a></li>
-                                <li><a href="#">Phone: (022)7560358</a></li>
-                                <li><a href="#">Fax: (022)7505763</a></li>
+                                <li><a href="#">Email: <?=$config['email']?> </a></li>
+                                <li><a href="#">Phone: <?=$config['telp']?></a></li>
+                                <li><a href="#">Fax: <?=$config['fax']?></a></li>
                             </ul>
                             <ul class="list-unstyled footer-widget__link-list">
                             </ul>
@@ -28,8 +28,8 @@
                 </div>
                 <div class="col-xl-3 col-lg-3 col-sm-6">
                     <div class="footer-widget footer-widget__about">
-                        <h2 class="footer-widget__title">About</h2>
-                        <p class="footer-widget__text">SMK 14 Bandung</p>
+                        <h2 class="footer-widget__title">Tentang Kami</h2>
+                        <p class="footer-widget__text"><?=$config['site_title']?></p>
                         <div class="footer-widget__btn-block">
                             <a href="#" class="thm-btn">Contact</a>
                             <a href="#" class="thm-btn">Purchase</a>
@@ -44,10 +44,9 @@
             <p class="site-footer__copy">&copy; Copyright 2019 by <a href="#">www.smkn14bandung.sch.id - All Rights Reserved</a></p>
             <div class="site-footer__social">
                 <a href="#" data-target="html" class="scroll-to-target site-footer__scroll-top"><i class="kipso-icon-top-arrow"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook-square"></i></a>
-                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="<?=$config['twitter']?>"><i class="fab fa-twitter"></i></a>
+                <a href="<?=$config['facebook']?>"><i class="fab fa-facebook-square"></i></a>
+                <a href="<?=$config['instagram']?>"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>
