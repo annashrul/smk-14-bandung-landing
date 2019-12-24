@@ -23,7 +23,7 @@ class Struktur extends CI_Controller
         $read_data = $this->M_crud->get_data("v_berita","*",$where);
         if($read_data!=null){
             $title.=$read_data['title'];
-            $result.=$this->tempFour($read_data['image'],$read_data['title'],$read_data['content']);
+            $result.=$this->tempFour($read_data['image'],'',$read_data['content']);
         }else{
             $title.='<h1>Tidak Ada Data</h1>';
             $result.='<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';

@@ -23,7 +23,7 @@ $this->load->view('layout/header');
                 </div><!-- /.logo-box -->
             </div><!-- /.topbar-one__left -->
             <div class="col-lg-6 col-md-offset-7" style="margin-top:20px;">
-                <a class="btn btn-primary " href="http://localhost/perpustakaan/auth/auth_siswa" style="color:white;">Perpustakaan</a>
+                <a class="btn btn-primary " href="<?=$this->config->item('perpus')?>auth/auth_siswa" style="color:white;">Perpustakaan</a>
                 <a class="btn btn-primary " href="<?=base_url();?>" style="color:white;">Beranda</a>
             </div><!-- /.topbar-one__right -->
 

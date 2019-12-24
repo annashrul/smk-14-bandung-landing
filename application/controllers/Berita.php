@@ -61,6 +61,12 @@ class Berita extends CI_Controller
         }
         elseif ($action == 'detail'){
             $read_data=$this->M_crud->get_data("v_berita","*","status='1' and slug='".$_POST['type']."'");
+            $cek = $this->M_crud->read_data("tbl_likes","*","id_content='".$read_data['id']."' and id_siswa='".$this->session->id."'");
+            if(count($cek) > 0){
+                $hati = 'color:blue;';
+            }else{
+                $hati = 'color:red';
+            }
             $result = '
                 <div class="course-details__content">
                     <p class="course-details__author">
@@ -86,7 +92,7 @@ class Berita extends CI_Controller
                         </div>
                         <div class="course-one__meta">
                             <a href="#!"><i class="far fa-clock"></i> '.$read_data["created_at"].'</a>
-                            <a href="#!"><i class="far fa-heart" onclick="isLike('."'".$read_data['id']."'".')"></i> '.$read_data["likes"].' disukai</a>
+                            <a href="#!" onclick="isLike('."'".$read_data['id']."'".')"><i class="far fa-heart" style="'.$hati.'" ></i> '.$read_data["likes"].' disukai</a>
                         </div>
                     </div>
                 </div>

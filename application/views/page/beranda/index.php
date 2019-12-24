@@ -18,9 +18,9 @@
     if(count($read_data) > 0){
         foreach($read_data as $key=>$value){
             $ke.=$key;
-            $gbr.=$value['image'];
+            $gbr =$value['image'];
             $slide.= /** @lang text */'
-            <div class="banner-one__slide banner-one__slide-'.$ke.'" style="background-image: url('."'$gbr'".');">
+            <div class="banner-one__slide banner-one__slide-one" style="background-image: url('."'$gbr'".');">
                 <div class="container">
                     <div class="banner-one__bubble-1"></div>
                     <div class="banner-one__bubble-2"></div>
