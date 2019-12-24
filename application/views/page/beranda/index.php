@@ -13,13 +13,14 @@
 
 </style>
 <?php
-    $ke = '';$slide='';$gbr='';$btn='';
-    $read_data = $this->M_crud->read_data("tbl_gallery","*","status=1 and type='7'");
-    if(count($read_data) > 0){
-        foreach($read_data as $key=>$value){
-            $ke.=$key;
-            $gbr =$value['image'];
-            $slide.= /** @lang text */'
+$ke = '';$slide='';$gbr='';$btn='';
+$read_data = $this->M_crud->read_data("tbl_gallery","*","status=1 and type='7'");
+
+if(count($read_data) > 0){
+    foreach($read_data as $key=>$value){
+        $ke.=$key;
+        $gbr=$value['image'];
+        $slide.= /** @lang text */'
             <div class="banner-one__slide banner-one__slide-one" style="background-image: url('."'$gbr'".');">
                 <div class="container">
                     <div class="banner-one__bubble-1"></div>
@@ -27,7 +28,7 @@
                     <div class="banner-one__bubble-3"></div>
                     <div class="row no-gutters">
                         <div class="col-xl-12">
-                            <h3 class="banner-one__title banner-one__light-color">'.$value["title"].' </h3>
+                            <h3 style="font-size:60px;" class="banner-one__title banner-one__light-color">'.$value["title"].' </h3>
                             <p class="banner-one__tag-line">'.$value["deskripsi"].' </p>
                             <a href="'.$value["link"].'" class="thm-btn banner-one__btn">Selengkapnya</a>
                         </div>
@@ -35,21 +36,21 @@
                 </div>
             </div>
             ';
-        }
     }
-    if(count($read_data) > 1){
-        $btn.= /** @lang text */'
+}
+if(count($read_data) > 1){
+    $btn.= /** @lang text */'
             <div class="banner-carousel-btn">
                 <a href="#" class="banner-carousel-btn__left-btn"><i class="kipso-icon-left-arrow"></i></a>
                 <a href="#" class="banner-carousel-btn__right-btn"><i class="kipso-icon-right-arrow"></i></a>
             </div>
         ';
-    }
+}
 ?>
 
 
 <div class="banner-wrapper">
-    <section class="banner-one banner-carousel__one no-dots owl-theme owl-carousel" id="result_slider">
+    <section class="banner-one banner-carousel__one no-dots owl-theme owl-carousel" style="background-color: rgba(0,0,0,0.5); z-index: 2;">
         <?=$slide?>
     </section>
     <?=$btn?>
@@ -150,26 +151,26 @@
 </section>
 
 <section class="brand-two sr-btm"">
-    <div class="container">
-        <div class="block-title">
-            <h2 class="block-title__title" style="text-align:center">Our company & partners</h2><!-- /.block-title__title -->
-        </div><!-- /.block-title -->
-        <div class="brand-one__carousel owl-carousel owl-theme">
-            <?php $read_data = $this->M_crud->read_data("tbl_gallery","*","type='9'");foreach($read_data as $row):?>
+<div class="container">
+    <div class="block-title">
+        <h2 class="block-title__title" style="text-align:center">Our company & partners</h2><!-- /.block-title__title -->
+    </div><!-- /.block-title -->
+    <div class="brand-one__carousel owl-carousel owl-theme">
+        <?php $read_data = $this->M_crud->read_data("tbl_gallery","*","type='9'");foreach($read_data as $row):?>
             <div class="item">
-                <img src="<?=$row['image']?>" alt="">
+                <img src="<?=$row['image']?>" alt="" style="height: 70px!important;">
             </div><!-- /.item -->
-            <?php endforeach; ?>
-        </div><!-- /.brand-one__carousel owl-carousel owl-theme -->
-    </div><!-- /.container -->
+        <?php endforeach; ?>
+    </div><!-- /.brand-one__carousel owl-carousel owl-theme -->
+</div><!-- /.container -->
 </section>
 
 
 <!-- MAPS -->
 <section class="inner-banner sr-btm"">
-    <div class="container">
-        <h2 class="inner-banner__title text">Kontak</h2><!-- /.inner-banner__title -->
-    </div><!-- /.container -->
+<div class="container">
+    <h2 class="inner-banner__title text">Kontak</h2><!-- /.inner-banner__title -->
+</div><!-- /.container -->
 </section>
 <section class="contact-one">
     <div class="container-fluid">
@@ -196,7 +197,7 @@
                         </div>
                         <div class="col-md-4 col-xs-6">
                             <p id="captImg"><?=$captchaImg; ?></p>
-<!--                            <a href="javascript:void(0);" class="refreshCaptcha" ><img style="height: 50px;" src="--><?php //echo base_url().'assets/images/refresh.png'; ?><!--"/></a>-->
+                            <!--                            <a href="javascript:void(0);" class="refreshCaptcha" ><img style="height: 50px;" src="--><?php //echo base_url().'assets/images/refresh.png'; ?><!--"/></a>-->
                         </div>
                         <div class="col-md-4 col-xs-12">
                             <button type="button" onclick="kirim()" class="contact-one__btn thm-btn">Kirim</button>
@@ -231,7 +232,7 @@
 		if(nama.val()==''||email.val()==''||captcha.val()==''||pesan.val()==''){
 			alert('lengkapi form yang tersedia');
 			$("#form_input")[0].reset();
-        }else{
+		}else{
 			if(validateEmail(email.val())){
 				console.log(captcha.val());
 				dynamic_ajax(
@@ -245,13 +246,13 @@
 							alert(res.msg)
 						}
 					});
-            }else{
+			}else{
 				alert('email tidak valid');
-            }
+			}
 
-        }
+		}
 
-    }
+	}
 	$(document).ready(function(){
 		load_berita();
 	});
@@ -274,7 +275,7 @@
 					$("#love").css('color','white');
 				}
 			})
-        }
+		}
 
 
 	}

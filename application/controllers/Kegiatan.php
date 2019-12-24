@@ -34,7 +34,7 @@ class Kegiatan extends CI_Controller
             if($read_header!=null){
                 $title.=$read_header['title'];
                 $title_body.='Galeri Kegiatan '.$read_header['title'];
-                $header.=$this->M_website->tempThree($read_header["image"],$read_header["title"],$read_header["content"]);
+                $header.=$this->M_website->tempThree($read_header["image"],'',$read_header["content"]);
             }else{
                 $title.='<h1 class="text-center">Tidak Ada Data</h1>';
                 $title_body.='<h1 class="text-center">Tidak Ada Data</h1>';
@@ -49,7 +49,7 @@ class Kegiatan extends CI_Controller
             }
         }else{
             $title.=$read_header['title'];
-            $title_body.='Galeri Kegiatan '.$read_header['title'];
+            $title_body.='Galeri Kegiatan ';
             $header.='<div class="col-lg-12">'.html_entity_decode($read_header["content"]).'</div>';
             if($read_data!=null){
                 foreach($read_data as $row){

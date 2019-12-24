@@ -58,7 +58,7 @@ class Beranda extends CI_Controller
         $data['jurusan'] = $this->M_crud->read_data("tbl_jurusan","*");
         $data['config'] = $this->M_crud->get_data("tbl_config","*");
         $data['manajemen'] = $this->M_crud->get_data("tbl_manajemen","*","jabatan=1");
-        $data['gallery'] = $this->M_crud->read_data("tbl_gallery","*",null,"id desc",null,3);
+        $data['gallery'] = $this->M_crud->read_data("tbl_gallery","*","type in(1,2,3,4)","id desc",null,3);
         $data['jurusan'] = $this->M_crud->read_data("tbl_jurusan","*");
         $this->load->view("layout/wrapper.php",$data);
     }
