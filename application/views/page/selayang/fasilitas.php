@@ -4,8 +4,8 @@
 
 <section class="inner-banner">
     <div class="container">
-        <h2 class="inner-banner__title text" id="title"></h2><!-- /.inner-banner__title -->
-    </div><!-- /.container -->
+        <h2 class="inner-banner__title text" id="title"></h2>
+    </div>
 </section>
 <section class="team-one">
     <div class="container">
