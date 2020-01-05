@@ -121,34 +121,40 @@ if(count($read_data) > 1){
         </div>
 </section>
 
-<!-- Galeri -->
 
-<section class="inner-banner sr-btm">
+
+<section class="blog-two  sr-btm">
     <div class="container">
-        <h2 class="inner-banner__title text">Gallery</h2>
-    </div>
-</section>
-
-
-<section class="gallery-one sr-btm">
-    <div class="container">
-        <div class="row">
+        <div class="block-title text-center">
+            <h2 class="block-title__title">Our latest news <br>
+                & articles</h2><!-- /.block-title__title -->
+        </div><!-- /.block-title -->
+        <div class="blog-two__carousel owl-carousel owl-theme">
             <?php if($gallery != null){ foreach($gallery as $row):?>
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-one__single">
-                        <img src="<?=$row['image']?>" alt="" style="height:300px;width:100%;">
-                        <a href="<?=$row['image']?>" class="gallery-one__popup img-popup">
-                            <p class="text-center" style="font-size:20px!important;color: white!important;"><?=$row['title']?></p>
-                        </a>
-                    </div>
-                </div>
-
+            <div class="item">
+                <div class="blog-two__single" style="background-image: url(<?=$row['image']?>);">
+                    <div class="blog-two__inner">
+                        <a href="news-details.html" class="blog-two__date">
+                            <span>25</span>
+                            Jul
+                        </a><!-- /.blog-two__date -->
+                        <div class="blog-two__meta">
+                            <a href="#">by Admin</a>
+                            <a href="#">3 Comments</a>
+                        </div><!-- /.blog-two__meta -->
+                        <h3 class="blog-two__title">
+                            <a href="news-details.html">Summer high school journalism camp</a>
+                        </h3><!-- /.blog-two__title -->
+                    </div><!-- /.blog-two__inner -->
+                </div><!-- /.blog-two__single -->
+            </div><!-- /.item -->
             <?php endforeach;}else{ ?>
                 <h1 class="text-center">Data Tidak Tersedia</h1>
             <?php } ?>
-        </div><!-- /.row -->
+        </div><!-- /.blog-two__carousel owl-carousel owl-theme -->
     </div><!-- /.container -->
-</section>
+</section><!-- /.blog-one blog-page -->
+
 
 <section class="brand-two sr-btm"">
 <div class="container">

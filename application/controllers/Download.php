@@ -70,7 +70,7 @@ class Download extends CI_Controller
 //        var_dump($hits);die();
 //        var_dump();die();
         $data =  file_get_contents($file);
-        force_download(substr($file,38,strlen($file)), $data);
+        force_download($file, $data);
         redirect('download');
 
 //        var_dump()

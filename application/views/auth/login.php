@@ -36,7 +36,7 @@ $this->load->view('layout/header');
                 <div class="card login-register login-reset">
 
                     <h1 class="title">Login</h1>
-                    <form action="<?=base_url();?>auth/login" method="post">
+                    <form action="<?=base_url();?>auth/logins" method="post">
                         <div class = "input-container has-feedback">
                             <input type="text" id="username" name="username" required autocomplete="off" pattern="[\w_-]{3,20}" title="Must contain from 3 to 20 characters such as any letter, number, an underscore, or a hyphen."/>
                             <label for="Username">Username</label>
