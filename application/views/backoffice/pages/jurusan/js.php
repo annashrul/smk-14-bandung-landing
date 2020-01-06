@@ -38,7 +38,7 @@
             
             $("#file2").val("");
             $("#caption").text("");
-            $("#idItem").val();
+            $("#idItem").val("");
             $("#btn_simpan").text("Simpan")
             $("#notif-container").show();
             $('#preview').attr("src","");
@@ -95,6 +95,7 @@
                                 '<td>'+item.deskripsi.replace(/(<([^>]+)>)/ig,"")+'</td>'+
                                 '<td>'+item.visi.replace(/(<([^>]+)>)/ig,"")+'</td>'+
                                 '<td>'+item.misi.replace(/(<([^>]+)>)/ig,"")+'</td>'+
+                                '<td><img src="'+item.icon+'" width="100px"/></td>'+
                                 '<td>'+item.created_at+'</td>'+
                                 '<td>';
                             card+='</td>'+
@@ -181,6 +182,9 @@
         if ($('input[type=file]')[0].files.length !== 0) {
             fd.append( 'image', $('input[type=file]')[0].files[0])
         }
+        if ($('input[type=file]')[1].files.length !== 0) {
+            fd.append( 'image2', $('input[type=file]')[1].files[0])
+        }
         fd.append( 'deskripsi', caption);
         fd.append( 'visi', visi);
         fd.append( 'misi', misi);
@@ -235,7 +239,7 @@
         fd.append( 'deskripsi', caption);
         fd.append( 'visi', visi);
         fd.append( 'misi', misi);
-
+        fd.append( 'image2', $('input[type=file]')[1].files[0])
         
         if(title!=="" &&  caption!==""){
             console.log("oke")

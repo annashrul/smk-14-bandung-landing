@@ -206,7 +206,7 @@
 
         var fd =  new FormData();
         fd.append( 'id', id);
-        d.append( 'title', judul);
+        fd.append( 'title', judul);
         fd.append( 'type', 9);
         fd.append( 'link', '-');
         fd.append( 'deskripsi', '-');

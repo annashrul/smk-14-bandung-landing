@@ -26,7 +26,7 @@
                 $("#picture").val("");
                 $("#caption").text("");
                 $("#tags").val("");
-                $("#idItem").val();
+                $("#idItem").val("");
                 $("#btn_simpan").text("Simpan")
                 $("#notif-container").show();
                 $('#preview').attr("src","");

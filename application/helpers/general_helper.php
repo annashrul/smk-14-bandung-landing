@@ -20,7 +20,7 @@ function getFile($filename){
     return base_url().'files/'.$filename;
 }
 
-function _uploadImage(){
+function _uploadImage($image='image'){
     $dis = & get_instance();
     $config['upload_path']          = './upload/';
     $config['allowed_types']        = 'gif|jpg|png';
@@ -32,7 +32,7 @@ function _uploadImage(){
 
     $dis->load->library('upload', $config);
 
-    if ($dis->upload->do_upload('image')) {
+    if ($dis->upload->do_upload($image)) {
         return $dis->upload->data("file_name");
     }else{
         $error = array('error' => $dis->upload->display_errors());

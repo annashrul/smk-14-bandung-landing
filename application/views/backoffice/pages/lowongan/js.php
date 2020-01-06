@@ -35,7 +35,7 @@
                 $("#file2").val("");
                 $("#picture").val("");
                 $("#caption").text("");
-                $("#idItem").val();
+                $("#idItem").val("");
                 $("#btn_simpan").text("Simpan")
                 $("#notif-container").show();
                 $('#preview').attr("src","");

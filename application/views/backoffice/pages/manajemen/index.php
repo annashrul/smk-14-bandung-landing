@@ -69,9 +69,16 @@
                     </div>
                     <div class="form-group">
                         <label for="price">Jabatan</label>
-                        <select name="jabatan" class="form-control" id="jabatan">
+                        <select name="jabatan" class="form-control" id="jabatan"  onChange="getval(this);">
                             <option value="1"></option>
                         </select>
+                    </div>
+                    <div class="form-group" id="jurContainer" style="display:none">
+                        <label for="title">Jurusan</label>
+                        <select name="jurusan" class="form-control" id="jurusan">
+                            <option value="1">x</option>
+                        </select>
+                        <small id="err-jurusan" style="display:none" class="form-text text-danger">.</small>
                     </div>
                     <div class="form-group">
                         <label for="price">Sambutan</label>

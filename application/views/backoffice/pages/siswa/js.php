@@ -14,6 +14,7 @@
             // $("#form-user").appendTo("body");
             $(".modal-title").html("Tambah Siswa");
             $("#title").val("");
+            $("#idItem").val("");
             $("#btn_simpan").text("Simpan")
         });
             $("#btn_search").click(function(event) {
@@ -348,7 +349,7 @@
         $('#kelas').empty().append('<option value="0">Pilih Kelas</option>');
         $('#kelasfilter').empty().append('<option value="0">Semua</option>');
         $.ajax({
-                url: "<?=urls('kelasAction')?>?aksi=get", 
+                url: "<?=urls('kelasAction')?>?aksi=get&jurusan=0", 
                 dataType: 'json',
                 type: 'GET',
                 success: function(response) {

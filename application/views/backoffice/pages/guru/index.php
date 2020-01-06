@@ -28,6 +28,7 @@
     			<th>Nama</th> 
     			<th>NIP</th> 
     			<th>Mata Pelajaran</th> 
+    			<th>Sambutan</th> 
     			<th>Dibuat pada</th> 
     		</tr> 
     	</thead> 
@@ -78,6 +79,11 @@
                         <small id="err-picture" style="display:none" class="form-text text-danger">.</small>
                         <input type="hidden" name="picture" id="picture" require>
                         <img src="" id="preview" alt="" width="100%">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Sambutan</label>
+                        <textarea name="caption" class="form-control" id="caption" cols="30" rows="10"></textarea>
+                        <small id="err-caption" style="display:none" class="form-text text-danger">.</small>
                     </div>
                 </div>
                     <!-- Modal footer -->
