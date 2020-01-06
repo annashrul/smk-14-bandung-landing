@@ -107,8 +107,8 @@ class M_website extends CI_Model
                         <img src="assets/images/team-1-1.jpg" alt="">
                         by <a href="#">'.$name.'</a>
                     </div>
-                    <h2 class="course-one__title"><a href="'.$url.'" id="cek">'.$subTitle.'</a></h2>
-                    <p class="text-left">'.html_entity_decode($subContent).'</p>
+                    <h2 class="course-one__title"><a href="'.$url.'" id="cek">'.strip_tags($subTitle).'</a></h2>
+                    <p class="text-left">'.strip_tags($subContent).'</p>
                     <div class="course-one__meta">
                         <a href="course-details.html"><i class="far fa-clock"></i> '.date("Y-m-d",strtotime($date)).'</a>
                         <a href="javascript:void(0)"onclick="isLike('."'".$id."'".')"><i class="far fa-heart" style="'.$hati.'""></i> '.$count.' disukai</a>
