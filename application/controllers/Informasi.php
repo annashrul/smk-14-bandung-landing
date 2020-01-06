@@ -44,10 +44,28 @@ class Informasi extends CI_Controller
             $body='';
             if($read_data!=null){
                 foreach($read_data as $row){
-                    $body.=$this->M_website->tempGallery($row['image'],$row['title']);
+                    $body.='
+                    <div class="col-md-4">
+                        <div class="blog-two__single" style="background-image: url('.$row["image"].')">
+                            <div class="blog-two__inner">
+                                <a href="'.base_url("detail?type=gallery&title=".$row["slug"]).'" class="blog-two__date">
+                                    <span>'.date("d",strtotime($row["created_at"])).'</span>
+                                    '.date("M",strtotime($row["created_at"])).'
+                                </a>
+                                <div class="blog-two__meta">
+                                    <a href="#">oleh Admin</a>
+                                </div>
+                                <h3 class="blog-two__title">
+                                    <a href="'.base_url("detail?type=gallery&title=".$row["slug"]).'">'.$row["title"].'</a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    ';
                 }
             }else{
-                $body.=/**@lang text */'<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';
+                $body.=$this->M_website->noData();
             }
             echo json_encode(array(
                 'header'=>$header,

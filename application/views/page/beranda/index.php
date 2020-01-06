@@ -93,11 +93,16 @@ if(count($read_data) > 1){
                 </h2>
             </div>
             <div class="course-category-one__carousel owl-carousel owl-theme">
+                <style>
+                    .course-category-one__single.color-1 .course-category-one__icon {
+                        background-color:transparent!important;
+                    }
+                </style>
                 <?php foreach($jurusan as $row) : ?>
                     <div class="item">
                         <div class="course-category-one__single color-1 headline">
                             <div class="course-category-one__icon">
-                                <i class="kipso-icon-desktop"></i>
+                                <img src="<?=$row['icon']?>" alt="">
                             </div>
                             <h3 class="course-category-one__title"><a href="<?=base_url("keahlian?type=".$row['slug'])?>"><?=$row['title']?></a></h3>
                         </div>
@@ -126,8 +131,7 @@ if(count($read_data) > 1){
 <section class="blog-two  sr-btm">
     <div class="container">
         <div class="block-title text-center">
-            <h2 class="block-title__title">Our latest news <br>
-                & articles</h2>
+            <h2 class="block-title__title">Galeri</h2>
         </div>
         <div class="blog-two__carousel owl-carousel owl-theme">
             <?php if($gallery != null){ foreach($gallery as $row):?>
@@ -142,7 +146,7 @@ if(count($read_data) > 1){
                             <a href="#">by Admin</a>
                         </div>
                         <h3 class="blog-two__title">
-                            <a href="<?=base_url("detail?type=gallery&title=".$row['id'])?>"><?=$row['title']?></a>
+                            <a href="<?=base_url("detail?type=gallery&title=".$row['slug'])?>"><?=$row['title']?></a>
                         </h3>
                     </div>
                 </div>

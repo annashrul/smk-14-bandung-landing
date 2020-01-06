@@ -89,6 +89,8 @@ class M_website extends CI_Model
         ';
     }
 
+
+
     public function tempNews($id,$image,$category,$url,$date,$name,$title,$content,$count,$slug_category,$isTrue){
         $hati = $isTrue == false ? 'color:red;' : 'color:blue;';
         $subTitle = strlen($title) > 15 ? substr($title,0,15).' .....' : $title;
