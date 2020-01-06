@@ -134,7 +134,7 @@
         fd.append( 'title', judul);
         fd.append( 'type', tipe);
         fd.append( 'link', '-');
-        fd.append( 'deskripsi', '-');
+        fd.append( 'deskripsi',caption);
         // if ($('input[type=file]')[0].files.length !== 0) {
             fd.append( 'image', $('input[type=file]')[0].files[0])
         // }
@@ -188,7 +188,7 @@
                     const result = res;
                     $(".modal-title").html("Update: "+result.title);
                     $("#judul").val(res.title);
-                    // $("#caption").val(res.deskripsi);
+                    $("#caption").val(res.deskripsi);
                     $('#preview').attr("src",res.image);
                     if(res.status==1){
                         $("#btn_aktif").html('Non-aktifkan');
@@ -232,7 +232,7 @@
         fd.append( 'title', judul);
         fd.append( 'type', tipe);
         fd.append( 'link', '-');
-        fd.append( 'deskripsi', '-');
+        fd.append( 'deskripsi', caption);
         if ($('input[type=file]')[0].files.length !== 0) {
             fd.append( 'image', $('input[type=file]')[0].files[0])
         }
