@@ -32,6 +32,8 @@
 			$("#title").html(res.title);
 			$("#result_header").html(res.header);
 			$("#title_body").html(res.title_body);
+			$("table").addClass('table table-bordered table-hover')
+
 		});
 	}
 </script>

@@ -22,7 +22,7 @@
                 </select>
         </div>
         <div class="col-md-3 float-right">
-            <a href="#" class="btn btn-primary btn-sm float-right" style="margin-right:5px" id="tambah">Tambah Partnership</a> 
+            <a href="#" class="btn btn-primary btn-sm float-right" style="margin-right:5px" id="tambah">Tambah Files</a> 
         </div>
     </div>
 <div class="box-content">

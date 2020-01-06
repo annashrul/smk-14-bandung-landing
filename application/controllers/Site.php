@@ -493,6 +493,7 @@ class Site extends CI_Controller{
 					"image"=>getImage(_uploadImage()),
 					"deskripsi"=>$this->input->post('deskripsi'),
 					"matpel"=>$this->input->post('matpel'),
+					"id_jurusan"=>$this->input->post('id_jurusan'),
 				);
 				$berita = $this->M_crud->create_data('tbl_manajemen',$data);
 				echo json_encode($berita, true);
@@ -508,6 +509,7 @@ class Site extends CI_Controller{
 					"nip"=>$this->input->post('nip'),
 					"deskripsi"=>$this->input->post('deskripsi'),
 					"matpel"=>$this->input->post('matpel'),
+					"id_jurusan"=>$this->input->post('id_jurusan'),
 
 				);
 				if (!empty($_FILES["image"]["name"])) {
@@ -674,6 +676,7 @@ class Site extends CI_Controller{
 					"title"=>$this->input->post('title'),
 					"slug"=>url_title($this->input->post('title'), 'dash', true),
 					"image"=>getImage(_uploadImage()),
+					"icon"=>getImage(_uploadImage('image2')),
 					"deskripsi"=>$this->input->post('deskripsi'),
 					"visi"=>$this->input->post('visi'),
 					"misi"=>$this->input->post('misi'),
@@ -698,6 +701,10 @@ class Site extends CI_Controller{
 				if (!empty($_FILES["image"]["name"])) {
 					$image = _uploadImage();
 					$data['image']=getImage($image);
+				}
+				if (!empty($_FILES["image2"]["name"])) {
+					$image = _uploadImage('image2');
+					$data['icon']=getImage($image);
 				}
 				
 				$berita = $this->M_crud->update_data('tbl_jurusan',$data,array('id'=>$this->input->post('id')));
@@ -977,7 +984,7 @@ class Site extends CI_Controller{
 			if(isset($_GET['category'])) $where['id_category']=$_GET['category'];
 			if(isset($_GET['q'])) $where['title like']="%".$_GET['q']."%";
 			if($_GET['type']!=0) $where['type']=$_GET['type'];
-			if($_GET['type']==0)$where['type != 5 and type != 7 and type != 8 and type !=']=6;
+			if($_GET['type']==0)$where['type != 5 and type != 7 and type != 8 and type != 9 and type !=']=6;
 			if(isset($_GET['status'])) $where['status']=$_GET['status'];
 			$page= isset($_GET['page'])?$_GET['page']:1;
 
@@ -1006,6 +1013,7 @@ class Site extends CI_Controller{
 					"id_member"=>$this->session->id,
 					"image"=>getImage(_uploadImage()),
 					"title"=>$this->input->post('title'),
+					"slug"=>url_title($this->input->post('title'), 'dash', true),
 					"deskripsi"=>$this->input->post('deskripsi'),
 					"type"=>$this->input->post('type'),
 					"link"=>$this->input->post('link'),
@@ -1022,6 +1030,7 @@ class Site extends CI_Controller{
 				$data = array(
 					"id_member"=>$this->session->id,
 					"title"=>$this->input->post('title'),
+					"slug"=>url_title($this->input->post('title'), 'dash', true),
 					"deskripsi"=>$this->input->post('deskripsi'),
 					"type"=>$this->input->post('type'),
 					"link"=>$this->input->post('link'),

@@ -24,7 +24,7 @@
                 $("#jabatan").val("");
                 $("#nip").val("");
                 $("#matpel").val("");
-                $("#idItem").val();
+                $("#idItem").val("");
                 $("#btn_simpan").text("Simpan")
                 $("#notif-container").show();
                 $('#preview').attr("src","");
@@ -119,6 +119,7 @@
                                 '<td>'+item.nama+'</td>'+
                                 '<td>'+item.nip+'</td>'+
                                 '<td>'+item.matpel+'</td>'+
+                                '<td>'+item.deskripsi+'</td>'+
                                 '<td>'+item.created_at+'</td>'+
                                 '<td>';
                             card+='</td>'+
@@ -167,13 +168,14 @@
                 if(res){
                     $("#form-berita").modal();
                     if(!$("#form-berita").parent().is('body')) $("#form-berita").appendTo("body");
-                    $(".modal-title").html("Update: "+res.title);
+                    $(".modal-title").html("Update: "+res.nama);
                     $("#idItem").val(res.id);
                     $("#nama").val(res.nama);
                     $("#matpel").val(res.matpel);
                     $("#nip").val(res.nip);
                     $("#btn_simpan").text("Update")
-                    
+                    CKEDITOR.instances['caption'].setData(res.deskripsi);
+
                     $('#preview').attr("src",res.image);
                     // $(".modal-body").html(data);
                 }else{
@@ -192,6 +194,7 @@
         let matpel=$("#matpel").val();
         let picture=$("#file2").val();
         if(nama===""){$("#err-nama").css("display", "block");$("#err-nama").html("Nama produk tidak boleh kosong.")}
+        let caption=CKEDITOR.instances['caption'].getData();
 
         var fd =  new FormData();
         fd.append( 'id', id);
@@ -200,7 +203,7 @@
         fd.append( 'matpel', matpel);
         fd.append( 'nip', nip);
         fd.append( 'image', $('input[type=file]')[0].files[0])
-        fd.append( 'deskripsi', '-');
+        fd.append( 'deskripsi', caption);
 
         if(nama!=="" && matpel!==""){
             $.ajax({
@@ -242,6 +245,7 @@
         let picture=$("#file2").val();
         if(nama===""){$("#err-nama").css("display", "block");$("#err-nama").html("Nama produk tidak boleh kosong.")}
         if(picture===""){$("#err-picture").css("display", "block");$("#err-picture").html("Gambar tidak boleh kosong.")}
+        let caption=CKEDITOR.instances['caption'].getData();
 
         var fd =  new FormData();
         fd.append( 'nama', nama);
@@ -249,7 +253,7 @@
         fd.append( 'matpel', matpel);
         fd.append( 'nip', nip);
         fd.append( 'image', $('input[type=file]')[0].files[0])
-        fd.append( 'deskripsi', '-');
+        fd.append( 'deskripsi', caption);
         
         if(nama!=="" && matpel!=="" ){
             console.log("oke")

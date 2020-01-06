@@ -8,6 +8,7 @@
         let searchParams = new URLSearchParams(window.location.search)
         if(searchParams.has('page')) get(searchParams.get('page'));
         else get();
+        loadCategory();
             $("#tambah").on('click',function(event) {
                 set_ckeditor('caption');
                 loadJabatan();
@@ -25,7 +26,7 @@
                 $("#nip").val("");
                 $("#nama").val("");
                 $("#jabatan").text("");
-                $("#idItem").val();
+                $("#idItem").val("");
                 $("#btn_simpan").text("Simpan")
                 $("#notif-container").show();
                 $('#preview').attr("src","");
@@ -206,6 +207,11 @@
         fd.append( 'image', $('input[type=file]')[0].files[0])
         fd.append( 'deskripsi', caption);
         fd.append( 'matpel', '-');
+        if(jabatan==6 ||jabatan==5){
+            fd.append( 'id_jurusan', $("#jurusan").val());
+        }else{
+            fd.append( 'id_jurusan', 0);
+        }
         if(nama!=="" && caption!==""){
             $.ajax({
                 url: "<?=urls('manajemenAction')?>?aksi=update&id="+id, 
@@ -256,6 +262,12 @@
         fd.append( 'image', $('input[type=file]')[0].files[0])
         fd.append( 'deskripsi', caption);
         fd.append( 'matpel', '-');
+        if(jabatan==6 ||jabatan==5){
+            fd.append( 'id_jurusan', $("#jurusan").val());
+        }else{
+            fd.append( 'id_jurusan', 0);
+        }
+
         
         if(nama!=="" && jabatan!=="" &&  caption!==""){
             console.log("oke")
@@ -428,6 +440,27 @@
                                 $("#jabatan").append("<option value="+array[i].id+">"+array[i].title+"</option>");
                             }
                         }
+                    }
+
+                },
+                error: function(x, e) {
+
+                }
+
+        });
+    }
+    function loadCategory(){
+        $('#jurusan').empty().append('<option value="0">Pilih jurusan</option>');
+        $.ajax({
+                url: "<?=urls('jurusanAction')?>?aksi=get", 
+                dataType: 'json',
+                type: 'GET',
+                success: function(response) {
+                var array = response.data;
+                    if (array != ''){
+                        for (i in array) {
+                            $("#jurusan").append("<option value="+array[i].id+">"+array[i].title+"</option>");
+                        }
 
                     }
 
@@ -438,5 +471,12 @@
 
         });
     }
-
+    function getval(sel){
+        if(sel.value==6 ||sel.value==5){
+            console.log(sel.value);
+            $("#jurContainer").show();
+        }else{
+            $("#jurContainer").hide();
+        }
+    }
 </script>

@@ -11,7 +11,7 @@
             $("#form-gallery").modal();
             if(!$("#form-gallery").parent().is('body')) $("#form-gallery").appendTo("body");
             // $("#form-gallery").appendTo("body");
-            $(".modal-title").html("Tambah Partnership");
+            $(".modal-title").html("Tambah Files");
             $("#judul").val('');
             $("#idItem").val('')
             $("#tipe").val('');
