@@ -9,7 +9,7 @@
 class Struktur extends CI_Controller
 {
     public function index(){
-        $data['isi'] = 'page/so/'.$_GET['type'];
+        $data['isi'] = 'page/so/index';
         $this->load->view("layout/wrapper.php",$data);
     }
 
@@ -25,19 +25,22 @@ class Struktur extends CI_Controller
             $title.=$read_data['title'];
             $result.=$this->tempFour($read_data['image'],'',$read_data['content']);
         }else{
-            $title.='<h1>Tidak Ada Data</h1>';
-            $result.='<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';
+            $title.= /** @lang text */'<h1>Tidak Ada Data</h1>';
+            $result.= /** @lang text */'<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';
         }
-        echo json_encode(array('result'=>$result,'title'=>$title));
+        $img = '<img src="'.$read_data['image'].'" width="100%" height="100%!important;">';
+        echo json_encode(array('result'=>$result,'title'=>$title,'img'=>$img));
 
     }
     public function tempFour($img,$title,$desc){
-        return '
+        return /** @lang text */
+            '
             <div class="col-lg-12">
-                <div class="team-one__single">
-                    <div class="team-one__image">
-                        <img src="'.$img.'" alt="" width="100%">
-                    </div>
+                <div class="gallery-one__single">
+                    <img src="'.$img.'">
+                    <a style="color:white!important;font-weight:bold;" onclick="printDiv()" href="#" class="gallery-one__popup img-popup">
+                        Cetak Gambar
+                    </a>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -46,7 +49,7 @@ class Struktur extends CI_Controller
                     <p class="team-details__text" style="text-align:justify">'.strip_tags($desc).'</p>
                 </div>
             </div>
-
+            
         ';
     }
 

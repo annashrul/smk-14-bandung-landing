@@ -4,20 +4,18 @@
 
 <section class="inner-banner">
     <div class="container">
-        <h2 class="inner-banner__title text" id="title"></h2><!-- /.inner-banner__title -->
-    </div><!-- /.container -->
+        <h2 class="inner-banner__title text" id="title"></h2>
+    </div>
 </section>
 
 <section class="team-one">
     <div class="container">
-        <div class="row justify-content-between" id="result_table">
-
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section><!-- /.team-details -->
+        <div class="row justify-content-between" id="result_table"></div>
+    </div>
+</section>
 
 <script>
-    $(document).ready(function(res){
+    $(document).ready(function(){
 	    load_data();
     });
 	function load_data(){
