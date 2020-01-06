@@ -258,6 +258,7 @@
                 <option value="2">Pramuka</option>
                 <option value="3">Ekstrakurikuler</option>
                 <option value="8">Prestasi</option>
+                <!-- <option value="9">Prestasi</option> -->
                 <option value="4">Kegiatan Lainnya</option>
             </select>
         </div>
@@ -304,7 +305,7 @@
                         <form id="form_input" novalidate="novalidate">
                             <p class="text-center" id="pesan" style="color: red;"></p>
                             <input type="hidden" name="id_gallery" class="id_gallery" value="69">
-                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">judul</label>
                                     <input type="text" name="judul" id="judul" class="form-control judul">
@@ -329,18 +330,17 @@
                                     <label class="control-label">Gambar</label>
                                     <input type="file" id="file2" class="form-control" onchange="readURL(this,'preview')">
                                 </div>
+                            </div>
+                        
+                            <div class="col-sm-6" id="desk" style="">
+                                <div class="form-group">
+                                    <label class="control-label">Deskripsi</label>
+                                    <textarea class="form-control deskripsi" name="deskripsi" id="caption"></textarea>
+                                </div>
                                 <div class="form-group">
                                     <img src="" id="preview" alt="" width="100%" height="200px">
                                 </div>
                             </div>
-                        
-                            <div class="col-sm-6" id="desk" style="">
-                                <!-- <div class="form-group">
-                                    <label class="control-label">Deskripsi</label>
-                                    <textarea class="form-control deskripsi" name="deskripsi" id="caption"></textarea>
-                                </div> -->
-                            </div>
-        
                         </form>
                     </div>
                 </div>
