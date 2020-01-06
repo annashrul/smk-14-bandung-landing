@@ -14,14 +14,11 @@ class Berita extends CI_Controller
     }
     function load_data($action=null){
         if($action == "get_list"){
-            $pagin = $this->M_website->myPagination('v_berita','id',"type!='3' and status='1' and slug_category='".$_POST['type']."' or title like '%".$_POST['type']."%' or content like '%".$_POST['type']."%' or tags like '%".$_POST['type']."%' ",6);
-            $read_data = $this->M_crud->read_data(
-                "v_berita","*",
-                "type!='3' and status='1' and slug_category='".$_POST['type']."' or title like '%".$_POST['type']."%' or content like '%".$_POST['type']."%' or tags like '%".$_POST['type']."%'","id desc",null,$pagin["perPage"], $pagin['start']
-            );
+            $where = "type!='3' and status='1' and slug_category='".$_POST['type']."' or title like '%".$_POST['type']."%' or content like '%".$_POST['type']."%' or tags like '%".$_POST['type']."%' ";
+            $pagin = $this->M_website->myPagination('v_berita','id',$where,6);
+            $read_data = $this->M_crud->read_data("v_berita","*",$where,"id desc",null,$pagin["perPage"], $pagin['start']);
             $res_index = "";
             if($read_data != null){
-
                 foreach ($read_data as $row):
                     $cek = $this->M_crud->read_data("tbl_likes","*","id_content='".$row['id']."' and id_siswa='".$this->session->id."'");
                     if(count($cek) > 0){
@@ -32,7 +29,7 @@ class Berita extends CI_Controller
                     $res_index.=$this->M_website->tempNews($row['id'],$row['image'],$row['category'],base_url("detail?type=berita&title=".$row['slug']),$row['created_at'],$row['nama'],$row['title'],$row['content'],$row['likes'],base_url("berita?title=".$row['slug_category']),$isTrue);
                 endforeach;
             }else{
-                $res_index .=/**@lang text */'<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';
+                $res_index .=$this->M_website->noData();
             }
             $data = array(
                 "pagination_link"   => $pagin['pagination_link'],
@@ -55,7 +52,7 @@ class Berita extends CI_Controller
                     $result.=$this->M_website->tempNews($row['id'],$row['image'],$row['category'],base_url("detail?type=berita&title=".$row['slug']),$row['created_at'],$row['nama'],$row['title'],$row['content'],$row['likes'],base_url("berita?title=".$row['slug_category']),$isTrue);
                 endforeach;
             }else{
-                $result.='<h1 class="text-center">Tidak Ada Data</h1>';
+                $result.=$this->M_website->noData();
             }
             echo json_encode(array('result'=>$result));
         }
@@ -70,7 +67,7 @@ class Berita extends CI_Controller
             $result = '
                 <div class="course-details__content">
                     <p class="course-details__author">
-                        <img src="'.base_url().'assets/images/team-1-1.jpg" alt="">
+                        <img src="'.base_url().'assets/images/logo-dark.png" alt="">
                         Oleh <a href="#">'.$read_data["nama"].'</a>
                     </p>
                     <div class="course-details__top">
@@ -78,7 +75,7 @@ class Berita extends CI_Controller
                             <h2 class="course-details__title">'.$read_data["title"].'</h2>
                         </div>
                         <div class="course-details__top-right">
-                            <a href="'.base_url("berita?title=".$read_data["slug_category"]).'" class="course-one__category"><?=$read_data[\'category\']?></a>
+                            <a href="'.base_url("berita?title=".$read_data["slug_category"]).'" class="course-one__category">'.$read_data["category"].'</a>
                         </div>
                     </div>
                     <div class="course-one__image">
@@ -87,7 +84,7 @@ class Berita extends CI_Controller
                     <div class="tab-content course-details__tab-content ">
                         <div class="tab-pane show active  animated fadeInUp" role="tabpanel" id="overview">
                             <p class="course-details__tab-text">
-                                '.$read_data["content"].'
+                                '.html_entity_decode($read_data["content"]).'
                             </p>
                         </div>
                         <div class="course-one__meta">

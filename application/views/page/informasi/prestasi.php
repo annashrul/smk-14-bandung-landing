@@ -1,5 +1,3 @@
-<?php $this->load->view('layout/header') ?>
-
 <section class="inner-banner">
     <div class="container">
         <h2 class="inner-banner__title text" id="title"></h2><!-- /.inner-banner__title -->

@@ -9,16 +9,19 @@
 class Detail extends CI_Controller
 {
     public function index(){
-        if($_GET['type']=='lowongan_kerja'){
-            $late_post = $this->M_crud->read_data("v_berita","*","status='1' and type='2' and slug != '".$_GET['title']."'","RAND()",null,3);
-            $read_data = $this->M_crud->get_data("v_berita","*","status='1' and slug='".$_GET['title']."'");
-        }
-        elseif ($_GET['type'] == 'berita'){
-            $late_post = $this->M_crud->read_data("v_berita","*","status='1' and type='1' and slug != '".$_GET['title']."'","RAND()",null,3);
-            $read_data = $this->M_crud->get_data("v_berita","*","status='1' and slug='".$_GET['title']."'");
+        $slug = $_GET['title'];
+        $type = $_GET['type'];
+        if($type == 'lowongan_kerja'){
+            $read_data = $this->M_crud->get_data("v_berita","*","status='1' and slug='".$slug."'");
+            $late_post = $this->M_crud->read_data("v_berita","*","status='1' and type='2' and slug != '".$slug."'","RAND()",null,3);
+        }elseif ($type == 'berita'){
+            $read_data = $this->M_crud->get_data("v_berita","*","status='1' and slug='".$slug."'");
+            $late_post = $this->M_crud->read_data("v_berita","*","status='1' and type='1' and slug != '".$slug."'","RAND()",null,3);
+        }elseif ($type == 'gallery'){
+            $read_data = $this->M_crud->get_data("tbl_gallery","*","status='1' and slug='".$slug."'");
         }
 
-        $data['isi'] = 'page/berita/detail_berita';
+        $data['isi']        = 'page/berita/detail_berita';
         $data['kategori']   = $this->M_crud->read_data("tbl_category","*");
         $data['read_data']  = $read_data;
         $data['late_post']  = $late_post;

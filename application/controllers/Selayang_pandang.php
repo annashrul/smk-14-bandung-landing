@@ -22,7 +22,7 @@ class Selayang_pandang extends CI_Controller
                 $result.=$this->M_website->tempThree($read_data["image"],$read_data["title"],$read_data["content"]);
             }
             else{
-                $result.=/** @lang text */'<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';
+                $result.=$this->M_website->noData();
             }
             echo json_encode(array('result'=> $result,'title'=> $title));
 
@@ -42,7 +42,7 @@ class Selayang_pandang extends CI_Controller
                 </div>';
             }
             else{
-                $result.=/** @lang text */'<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';
+                $result.=$this->M_website->noData();
             }
             echo json_encode(array('result'=> $result,'title'=> $title));
 
@@ -54,7 +54,7 @@ class Selayang_pandang extends CI_Controller
                 $result.=$this->M_website->tempThree($read_data["image"],$read_data["title"],$read_data["content"]);
             }
             else{
-                $result.=/** @lang text */'<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';
+                $result.=$this->M_website->noData();
             }
             echo json_encode(array('result'=> $result,'title'=> $title));
 
@@ -97,8 +97,8 @@ class Selayang_pandang extends CI_Controller
                 }
 
             }else{
-                $title.='Tidak Ada Data';
-                $result.=/** @lang text */'<div class="col-md-12"><h1 class="text-center">Tidak Ada Data</h1></div>';
+                $title.=$this->M_website->noData();
+                $result.=$this->M_website->noData();
             }
             echo json_encode(array(
                 "pagination_link"   => $pagin['pagination_link'],

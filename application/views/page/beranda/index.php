@@ -127,27 +127,26 @@ if(count($read_data) > 1){
     <div class="container">
         <div class="block-title text-center">
             <h2 class="block-title__title">Our latest news <br>
-                & articles</h2><!-- /.block-title__title -->
-        </div><!-- /.block-title -->
+                & articles</h2>
+        </div>
         <div class="blog-two__carousel owl-carousel owl-theme">
             <?php if($gallery != null){ foreach($gallery as $row):?>
             <div class="item">
                 <div class="blog-two__single" style="background-image: url(<?=$row['image']?>);">
                     <div class="blog-two__inner">
-                        <a href="news-details.html" class="blog-two__date">
-                            <span>25</span>
-                            Jul
-                        </a><!-- /.blog-two__date -->
+                        <a href="<?=base_url("detail?type=gallery&title=".$row['slug'])?>" class="blog-two__date">
+                            <span><?=date('d',strtotime($row['created_at']))?></span>
+                            <?=date('M',strtotime($row['created_at']))?>
+                        </a>
                         <div class="blog-two__meta">
                             <a href="#">by Admin</a>
-                            <a href="#">3 Comments</a>
-                        </div><!-- /.blog-two__meta -->
+                        </div>
                         <h3 class="blog-two__title">
-                            <a href="news-details.html">Summer high school journalism camp</a>
-                        </h3><!-- /.blog-two__title -->
-                    </div><!-- /.blog-two__inner -->
-                </div><!-- /.blog-two__single -->
-            </div><!-- /.item -->
+                            <a href="<?=base_url("detail?type=gallery&title=".$row['id'])?>"><?=$row['title']?></a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
             <?php endforeach;}else{ ?>
                 <h1 class="text-center">Data Tidak Tersedia</h1>
             <?php } ?>

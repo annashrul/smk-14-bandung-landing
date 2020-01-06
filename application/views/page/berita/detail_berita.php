@@ -1,5 +1,3 @@
-<?php $this->load->view('layout/tambahan') ?>
-<?php $this->load->view('layout/header') ?>
 
 <section class="course-details">
     <div class="container">
@@ -55,7 +53,7 @@
 	}
     function isLike(idContent){
 		var id="<?=$this->session->id?>";
-		if(id!=''){
+		if(id!==''){
 			dynamic_ajax("<?=base_url().'berita/isLike'?>",{idContent:idContent},function(res){
 				if(res.status === 'success'){
 					console.log(res.msg);
@@ -67,6 +65,8 @@
 					$("#love").css('color','white');
 				}
 			})
+        }else{
+			alert('silahkan masuk terlebih dahulu')
         }
 
     }

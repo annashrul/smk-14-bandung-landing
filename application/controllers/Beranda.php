@@ -22,7 +22,7 @@ class Beranda extends CI_Controller
             'word_length'   => 4,
             'font_size'     => 20,
             'font_path'     => './path/to/fonts/texb.ttf',
-            'expiration' => 60
+            'expiration'    => 60
         );
         return $config;
     }
@@ -68,10 +68,10 @@ class Beranda extends CI_Controller
             $read_data = $this->M_crud->read_data("tbl_gallery","*",null,"RAND()",null,3);
             if($read_data!=null){
                 foreach($read_data as $row){
-                    $result =$this->M_website->tempGallery($row['image'],$row['title']);
+                    $result =$this->M_website->tempFour($row['image'],$row['created_at'],'netindo',$row['title'],$row['title']);
                 }
             }else{
-                $result = '<h1 class="text-center">Tidak Ada Data</h1>';
+                $result = $this->M_website->noData();
             }
             echo json_encode(array('result'=>$result));
         }
@@ -91,7 +91,6 @@ class Beranda extends CI_Controller
         $captcha = create_captcha($config);
         $response = array();
         $input = $this->input->post();
-
         $inputCaptcha = $input['captcha'];
         $sessCaptcha = $this->session->userdata('captchaCode');
         if($inputCaptcha === $sessCaptcha){

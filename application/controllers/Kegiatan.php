@@ -36,9 +36,9 @@ class Kegiatan extends CI_Controller
                 $title_body.='Galeri Kegiatan '.$read_header['title'];
                 $header.=$this->M_website->tempThree($read_header["image"],'',$read_header["content"]);
             }else{
-                $title.='<h1 class="text-center">Tidak Ada Data</h1>';
-                $title_body.='<h1 class="text-center">Tidak Ada Data</h1>';
-                $header.='<h1 class="text-center">Tidak Ada Data</h1>';
+                $title.=/** @lang text */'<h1 class="text-center">Tidak Ada Data</h1>';
+                $title_body.=/** @lang text */'<h1 class="text-center">Tidak Ada Data</h1>';
+                $header.=/** @lang text */'<h1 class="text-center">Tidak Ada Data</h1>';
             }
             if($read_data!=null){
                 foreach($read_data as $row){
@@ -50,7 +50,7 @@ class Kegiatan extends CI_Controller
         }else{
             $title.=$read_header['title'];
             $title_body.='Galeri Kegiatan ';
-            $header.='<div class="col-lg-12">'.html_entity_decode($read_header["content"]).'</div>';
+            $header.=/** @lang text */'<div class="col-lg-12">'.html_entity_decode($read_header["content"]).'</div>';
             if($read_data!=null){
                 foreach($read_data as $row){
                     $body.=$this->M_website->tempGallery($row['image'],$row['title']);

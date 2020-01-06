@@ -17,7 +17,7 @@ class Keahlian extends CI_Controller
             $read_data = $this->M_crud->get_data("tbl_jurusan","*","slug='".$_POST['type']."'");
             $title=$read_data['title']!=null?$read_data['title']:'Tidaka Ada data';
             if($read_data != null){
-                $result='
+                $result= /** @lang text */'
                 <div class="col-md-12">
                     <div class="col-lg-6">
                         <div class="team-one__single">

@@ -1,5 +1,3 @@
-<?php //$this->load->view('layout/tambahan') ?>
-<?php $this->load->view('layout/header') ?>
 
 <section class="inner-banner">
     <div class="container">
