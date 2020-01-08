@@ -456,7 +456,7 @@
                 animateIn: 'fadeIn',
                 active: true,
                 smartSpeed: 1000,
-                autoplay: false
+                autoplay: true
             });
             $('.banner-carousel-btn__left-btn').on('click', function () {
                 $('.banner-carousel__one').trigger('next.owl.carousel');
