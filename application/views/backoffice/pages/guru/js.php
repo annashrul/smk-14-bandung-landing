@@ -428,9 +428,7 @@
                     }
 
                 },
-                error: function(x, e) {
-
-                }
+                
 
         });
     }
