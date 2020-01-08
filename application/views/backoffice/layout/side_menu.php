@@ -1,6 +1,6 @@
 <div class="main-menu">
 	<header class="header">
-		<a href="<?=urls('/')?>" class="logo"><img width="50px" src="<?=base_url()?>/assets/images/logo-dark.png"/><?=$site?></a>
+		<a href="<?=urls('/')?>" class="logo"><img width="50px" src="<?=base_url()?>assets/images/logo-dark.png"/><?=$site?></a>
 		<button type="button" class="button-close fa fa-times js__menu_close"></button>
 		<div class="user">
 			<a href="#" class="avatar"><img src="<?=assets('bo/images/profile.png')?>" alt=""><span class="status online"></span></a>
