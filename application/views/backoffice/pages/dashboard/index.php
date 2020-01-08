@@ -226,3 +226,82 @@
 	</div>
 
 </div>
+
+<?php if($this->session->grant_access==1):?>
+<div class="row small-spacing">
+	<div class="col-lg-12 col-xs-12">
+		<div class="box-content">
+			<h4 class="box-title">Berita <small>(<a href="<?=base_url()?>site/berita">Selengkapnya</a>)</small></h4>
+		    <table class="table table-hover">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Gambar</th> 
+						<th>Judul</th> 
+						<th>Penulis</th> 
+						<th>Konten</th> 
+						<th>Status</th> 
+						<th>Dibuat pada</th> 
+					</tr> 
+				</thead>
+				<tbody id="berita"></tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-lg-12 col-xs-12">
+		<div class="box-content">
+			<h4 class="box-title">Lowongan <small>(<a href="<?=base_url()?>site/lowongan">Selengkapnya</a>)</small></h4>
+		    <table class="table table-hover">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Gambar</th> 
+						<th>Judul</th> 
+						<th>Penulis</th> 
+						<th>Konten</th> 
+						<th>Status</th> 
+						<th>Dibuat pada</th> 
+					</tr> 
+				</thead>
+				<tbody id="lowongan"></tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="row small-spacing">
+	<div class="col-lg-6 col-xs-6">
+		<div class="box-content">
+			<h4 class="box-title">Gallery <small>(<a href="<?=base_url()?>site/gallery">Selengkapnya</a>)</small></h4>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Gambar</th> 
+						<th>Judul</th> 
+						<th>Status</th> 
+						<th>Dibuat pada</th> 
+					</tr> 
+				</thead>
+				<tbody id="gallery"></tbody>
+			</table>
+			
+		</div>
+	</div>
+	<div class="col-lg-6 col-xs-6">
+		<div class="box-content">
+			<h4 class="box-title">Partnership <small>(<a href="<?=base_url()?>site/partnership">Selengkapnya</a>)</small></h4>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Gambar</th> 
+						<th>Judul</th> 
+						<th>Status</th> 
+						<th>Dibuat pada</th> 
+					</tr> 
+				</thead>
+				<tbody id="partnership"></tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<?php endif?>
