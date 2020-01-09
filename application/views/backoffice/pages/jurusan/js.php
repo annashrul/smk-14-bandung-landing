@@ -232,7 +232,6 @@
         if(title===""){$("#err-title").css("display", "block");$("#err-title").html("Nama produk tidak boleh kosong.")}
         if(picture===""){$("#err-picture").css("display", "block");$("#err-picture").html("Gambar tidak boleh kosong.")}
         if(caption===""){$("#err-caption").css("display", "block");$("#err-caption").html("Deskripsi tidak boleh kosong.")}
-
         var fd =  new FormData();
         fd.append( 'title', title);
         fd.append( 'image', $('input[type=file]')[0].files[0])

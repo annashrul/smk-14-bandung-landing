@@ -83,14 +83,12 @@
                         <label for="">Gambar</label>
                         <input type="file" id="file2" class="form-control" onchange="readURL(this,'preview')">
                         <small id="err-picture" style="display:none" class="form-text text-danger">.</small>
-                        <input type="hidden" name="picture" id="picture" require>
                         <img src="" id="preview" alt="" width="100%">
                     </div>
                     <div class="form-group">
                         <label for="">Icon Jurusan <small>(Icon dihomepage)</small></label>
-                        <input type="file" id="file3" class="form-control" onchange="readURL(this,'preview')">
+                        <input type="file" id="file3" class="form-control">
                         <small id="err-picture" style="display:none" class="form-text text-danger">.</small>
-                        <input type="hidden" name="picture" id="picture" require>
                         <img src="" id="preview" alt="" width="100%">
                     </div>
                 </div>
