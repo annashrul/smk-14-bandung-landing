@@ -9,11 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?=$config['site_title']?></title>
-    <link rel="apple-touch-icon" sizes="180x180" href="<?=base_url();?>assets/images/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?=base_url();?>assets/img/icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url();?>assets/img/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?=base_url()?>assets/images/logo-dark.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?=base_url()?>assets/images/logo-dark.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url()?>assets/images/logo-dark.png">
     <link rel="manifest" href="<?=base_url();?>assets/images/favicons/site.webmanifest">
-
     <!-- plugin scripts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,500i,600,700,800%7CSatisfy&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?=base_url();?>assets/css/animate.min.css">

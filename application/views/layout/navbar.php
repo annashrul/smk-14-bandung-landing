@@ -1,4 +1,13 @@
 <?php $url = base_url() . "assets"?>
+<style>
+    @media (max-width: 576px) {
+        .right-side-box{margin-top: 20px!important;}
+    }
+    @media (max-width: 300px) {
+        .right-side-box{margin-top: 20px!important;}
+    }
+
+</style>
 <div class="page-wrapper">
     <div class="topbar-one">
         <div class="container">
@@ -120,16 +129,10 @@
                             <li><a href="<?=base_url().'download';?>">Download</a></li>
                         <?php } ?>
 
+
                     </ul>
                 </div><!-- /.navbar-collapse -->
-                <style>
-                    @media (max-width: 576px) {
-                        .right-side-box{margin-top: 20px!important;}
-                    }
-                    @media (max-width: 300px) {
-                        .right-side-box{margin-top: 20px!important;}
-                    }
-                </style>
+
                 <div class="right-side-box">
                     <a class="header__search-btn search-popup__toggler" href="#"><i class="fa fa-search"></i></a>
                 </div><!-- /.right-side-box
