@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['perpus']  = 'http://perpustakaan.smkn14bdg.sch.id/';
 $config['url'] = 'http://'.$_SERVER['HTTP_HOST'].'/';
-$config['site'] = 'smk-14-bandung/';
+$config['site'] = 'smk-14-bandung2/';
 $config['base_url'] = $config['url'].$config['site'];
 //$config['base_url'] = $config['url'];
 // $config['base_url'] = 'http://dev.smkn14bdg.sch.id/';
@@ -105,7 +105,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = TRUE;
+$config['enable_hooks'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------

@@ -105,7 +105,7 @@ class M_website extends CI_Model
                             by <a href="#">'.$name.'</a>
                         </div><!-- /.course-one__admin -->
                         <h2 class="course-one__title"><a href="'.$url.'" id="cek">'.$subTitle.'</a></h2>
-                        <p class="text-left">'.strip_tags($subContent).'</p>
+                        <p class="text-left">'.html_entity_decode($subContent).'</p>
                         <div class="course-one__meta">
                             <a href="course-details.html"><i class="far fa-clock"></i> '.date("Y-m-d",strtotime($date)).'</a>
                             <a href="javascript:void(0)"onclick="isLike('."'".$id."'".')"><i class="far fa-heart" style="'.$hati.'""></i> '.$count.' disukai</a>
@@ -167,10 +167,6 @@ class M_website extends CI_Model
             'perPage'=> $config["per_page"],
             'pagination_link' => $this->pagination->create_links()
         );
-    }
-
-    public function noData(){
-        return "<h1 class='text-center'>Tidak Ada Data</h1>";
     }
 
 }
