@@ -227,7 +227,7 @@
 
 </div>
 
-<?php if($this->session->grant_access==1):?>
+<?php if( (int)$this->session->grant_access==1):?>
 <div class="row small-spacing">
 	<div class="col-lg-12 col-xs-12">
 		<div class="box-content">

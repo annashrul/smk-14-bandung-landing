@@ -204,6 +204,7 @@
         fd.append( 'nip', nip);
         fd.append( 'image', $('input[type=file]')[0].files[0])
         fd.append( 'deskripsi', caption);
+            fd.append( 'id_jurusan', 0);
 
         if(nama!=="" && matpel!==""){
             $.ajax({
@@ -254,7 +255,8 @@
         fd.append( 'nip', nip);
         fd.append( 'image', $('input[type=file]')[0].files[0])
         fd.append( 'deskripsi', caption);
-        
+                    fd.append( 'id_jurusan', 0);
+
         if(nama!=="" && matpel!=="" ){
             console.log("oke")
             $.ajax({

@@ -77,10 +77,10 @@
                                             '<div class="team-details__content">'+
                                                 '<h4 class="team-details__title" style="font-size:1.2em">'+item.title+
                                                 '<div class="float-right">'+
-                                                (item.status==1?'<a href="#" class="label label-warning" onclick="approve(\''+item.status+'\',\''+item.id+'\')"><i class="fa fa-remove"></i> Non-Aktifkan</a>':'<a href="#" class="label label-success" onclick="approve(\''+item.status+'\',\''+item.id+'\')"><i class="fa fa-check"></i> Aktifkan</a>')+' <a href="#" class="label label-info" onclick="update(\''+item.id+'\')"><i class="fa fa-edit"></i></a> <a href="#" class="label label-danger" onclick="hapus(\''+item.id+'\')"><i class="fa fa-trash"></i></a>'+
+                                                (item.status==1?'<a href="#" class="label label-warning" onclick="approve(\''+item.status+'\',\''+item.id+'\')" <?= (int)$this->session->grant_access!=1?'style="display:none"':''?>><i class="fa fa-remove"></i> Non-Aktifkan</a>':'<a href="#" class="label label-success" onclick="approve(\''+item.status+'\',\''+item.id+'\')" <?= (int)$this->session->grant_access!=1?'style="display:none"':''?>><i class="fa fa-check"></i> Aktifkan</a>')+' <a href="#" class="label label-info" onclick="update(\''+item.id+'\')"><i class="fa fa-edit"></i></a> <a href="#" class="label label-danger" onclick="hapus(\''+item.id+'\')"><i class="fa fa-trash"></i></a>'+
                                                 '</div>'+
                                                 '</h4>'+
-                                                '<div <?=$this->session->grant_access!=1?'style="display:none"':''?>>'+
+                                                '<div>'+
                                                 (item.status==1?'<span class="label label-success">Aktif</span>':'<span class="label label-danger">Non-Aktif</span>')+
                                                 '</div>'+
                                                 '<p class="team-details__text" style="text-align:justify">'+item.deskripsi+'</p>'+                      

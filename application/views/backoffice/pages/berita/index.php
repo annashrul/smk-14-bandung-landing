@@ -23,7 +23,7 @@
                     <option value="0">Tidak Aktif</option>
                 </select>
             </div>
-            <?php if($this->session->grant_access!=0):?>
+            <?php if( (int)$this->session->grant_access!=0):?>
            <div class="float-right" style="margin-right:15px;margin-bottom:10px;">
                <a href="#!" class="btn btn-success" id="tambahKategori">Tambah Kategori</a>
            </div>

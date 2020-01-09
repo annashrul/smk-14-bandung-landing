@@ -93,10 +93,10 @@
                                         '<button type="button" class="btn btn-default btn-xs  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>'+
                                         '<ul class="dropdown-menu"><input type="hidden" id="getId'+key+'" value="'+item.id+'">'+
                                             '<li><a href="#" onClick="event.preventDefault();update(\''+item.id+'\');"><i class="mdi mdi-tooltip-edit"></i> Update</a></li>'+
-                                                                                                                                                    '<li <?=$this->session->grant_access!=1?'style="display:none"':''?>>'+
+                                                                                                                                                    '<li <?= (int)$this->session->grant_access!=1?'style="display:none"':''?>>'+
 
-                                            '<li><a href="#" onClick="event.preventDefault();approval(\''+item.status+'\',\''+item.id+'\');"><i class="mdi mdi-account-check"></i> '+(item.status===0?'Aktifkan':'Non-Aktifkan')+'</a></li>'+'</li>'+
-                                            '<li><a href="#" onClick="event.preventDefault();hapus(\''+item.id+'\');"><i class="mdi mdi-delete-forever"></i> Delete</a></li>'+
+                                            '<li><a href="#" onClick="event.preventDefault();approval(\''+item.status+'\',\''+item.id+'\');" <?= (int)$this->session->grant_access!=1?'style="display:none"':''?>><i class="mdi mdi-account-check"></i> '+(item.status===0?'Aktifkan':'Non-Aktifkan')+'</a></li>'+'</li>'+
+                                            '<li><a href="#" onClick="event.preventDefault();hapus(\''+item.id+'\');" <?= (int)$this->session->grant_access!=1?'style="display:none"':''?>><i class="mdi mdi-delete-forever"></i> Delete</a></li>'+
                                         '</ul></div></td>'+
                                 '<td><img src="'+item.image+'" width="100px"/></td>'+
                                 '<td>'+item.title+'</td>'+

@@ -532,7 +532,7 @@
                             html+="<div class='col-md-8' style='cursor:pointer' onClick='event.preventDefault();get(1,null,\""+array[i].id+"\");'>"
                             html+="<span>"+array[i].title+"</span>";
                             html+="</div>"
-                            <?php if($this->session->grant_access!=0):?>
+                            <?php if( (int)$this->session->grant_access!=0):?>
                             html+="<div class='col-md-4' style='margin:0;padding:0;'>"
                             html+='<a class="label label-success label-custom waves-effect waves-light label-xs" onclick="updateCategory(\''+array[i].id+'\')">'+
                                 '<i class="fa fa-pencil"></i>'+

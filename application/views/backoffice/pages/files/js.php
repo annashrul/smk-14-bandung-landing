@@ -71,8 +71,8 @@
                                 '<td>'+item.hits+'</td>'+  
                                 '<td>'+item.created_at+'</td>'+  
                                 '<td>'+
-                                '<span <?=$this->session->grant_access!=1?'style="display:none"':''?>>'+
-                                    (item.status==1?'<a href="#" class="label label-warning" onclick="approve(\''+item.status+'\',\''+item.id+'\')" title="Non-aktifkan"><i class="fa fa-remove"></i></a> ':'<a href="#" class="label label-info" onclick="approve(\''+item.status+'\',\''+item.id+'\')" title="Aktifkan"><i class="fa fa-check"></i></a> ')+
+                                '<span <?= (int)$this->session->grant_access!=1?'style="display:none"':''?>>'+
+                                    (item.status==1?'<a href="#" class="label label-warning" onclick="approve(\''+item.status+'\',\''+item.id+'\')" title="Non-aktifkan" <?= (int)$this->session->grant_access!=1?'style="display:none"':''?>><i class="fa fa-remove"></i></a> ':'<a href="#" class="label label-info" onclick="approve(\''+item.status+'\',\''+item.id+'\')" title="Aktifkan" <?= (int)$this->session->grant_access!=1?'style="display:none"':''?>><i class="fa fa-check"></i></a> ')+
                                 '</span>'
                                 +'<a href="#" class="label label-danger" onclick="hapus(\''+item.id+'\')" title="Hapus"><i class="fa fa-trash"></i></a>'+
                                 '</td>'+  

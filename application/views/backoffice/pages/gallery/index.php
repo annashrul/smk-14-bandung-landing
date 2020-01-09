@@ -347,7 +347,7 @@
                     <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary btn-sm" id="btn_simpan">Simpan</button>
-                    <?=$this->session->grant_access!=1?'':' <button type="button" class="btn btn-success btn-sm" id="btn_aktif">Aktifkan</button>'?>
+                    <?= (int)$this->session->grant_access!=1?'':' <button type="button" class="btn btn-success btn-sm" id="btn_aktif">Aktifkan</button>'?>
                    
                     <button type="button" class="btn btn-danger btn-sm" id="btn_hapus" onClick="hapus()">Hapus</button>
                     <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Close</button>
