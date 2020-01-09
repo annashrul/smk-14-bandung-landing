@@ -209,12 +209,11 @@ if(count($read_data) > 1){
                         <div class="col-md-4 col-xs-12">
                             <button type="button" onclick="kirim()" class="contact-one__btn thm-btn">Kirim</button>
                         </div>
-
                     </div><!-- /.row -->
                 </form><!-- /.contact-one__form -->
 
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6" style="margin-top: 10px;">
                 <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJfxip1i3oaC4Rz-hAAQOPSQ0" class="google-map__contact" allowfullscreen></iframe>
             </div>
         </div>

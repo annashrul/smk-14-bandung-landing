@@ -33,10 +33,10 @@
     <div class="container-login100" style="background-image: url(<?=base_url().'assets/auth/images/bg-01.jpg'?>);">
         <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
             <form class="login100-form validate-form flex-sb flex-w"  action="<?=base_url();?>auth/logins" method="post">
-                   <?php if ($this->session->flashdata('error')) { ?>
-                       <p class="text-center" style='font-style:italic;color:red'> <?= $this->session->flashdata('error') ?> </p>
-                   <?php } ?>
-<!--                </span>-->
+                <?php if ($this->session->flashdata('error')) { ?>
+                    <p class="text-center" style='font-style:italic;color:red'> <?= $this->session->flashdata('error') ?> </p>
+                <?php } ?>
+                <!--                </span>-->
                 <a href="<?=$this->config->item('perpus')?>auth/auth_siswa" class="btn-face m-b-20">
                     Perpustakaan
                 </a>
@@ -47,7 +47,7 @@
                     <span class="txt1">Username</span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate = "Username is required">
-                    <input class="input100" type="text" name="username">
+                    <input class="input100" type="text" name="username" id="username">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -88,6 +88,12 @@
 <script src="<?=base_url().'assets/auth/'?>vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 <script src="<?=base_url().'assets/auth/'?>js/main.js"></script>
+
+<script>
+    $(document).ready(function(){
+    	$("#username").focus();
+    })
+</script>
 
 </body>
 </html>
