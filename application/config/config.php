@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['perpus']  = 'http://perpustakaan.smkn14bdg.sch.id/';
 $config['url'] = 'http://'.$_SERVER['HTTP_HOST'].'/';
-$config['site'] = 'smk-14-bandung2/';
+$config['site'] = 'smk-14-bandung/';
 $config['base_url'] = $config['url'].$config['site'];
 //$config['base_url'] = $config['url'];
 // $config['base_url'] = 'http://dev.smkn14bdg.sch.id/';

@@ -101,7 +101,7 @@ if(count($read_data) > 1){
                 <?php foreach($jurusan as $row) : ?>
                     <div class="item">
                         <div class="course-category-one__single color-1 headline">
-                            <img src="<?=$row['icon']?>" alt="" class="course-category-one__icon" style="border: 1px solid black;height: 50%;width: 50%;">
+                            <img src="<?=$row['icon']?>" alt="" class="course-category-one__icon" style="height: 50%;width: 50%;">
                             <h3 class="course-category-one__title"><a href="<?=base_url("keahlian?type=".$row['slug'])?>"><?=$row['title']?></a></h3>
                         </div>
                     </div>
