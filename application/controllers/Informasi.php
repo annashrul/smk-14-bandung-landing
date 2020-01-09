@@ -76,8 +76,8 @@ class Informasi extends CI_Controller
             ));
         }
         elseif ($action == 'sarana_prasarana'){
-            $pagin = $this->M_website->myPagination("tbl_gallery",'id','type=6',10);
-            $read_data = $this->M_crud->read_data("tbl_gallery","*",'type=6',"id desc",null,$pagin["perPage"], $pagin['start']);
+            $pagin = $this->M_website->myPagination("tbl_gallery",'id',"type='6' and status='1'",10);
+            $read_data = $this->M_crud->read_data("tbl_gallery","*","type='6' and status='1'","id desc",null,$pagin["perPage"], $pagin['start']);
             if($read_data!=null){
                 $title.='Sarana & Prasarana';
                 foreach($read_data as $row){

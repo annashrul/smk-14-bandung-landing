@@ -70,8 +70,8 @@ class Selayang_pandang extends CI_Controller
             echo json_encode(array('result'=> $result,'title'=> $title));
         }
         elseif($action == 'fasilitas'){
-            $pagin = $this->M_website->myPagination('tbl_gallery', "id", "type='5'",6);
-            $read_data = $this->M_crud->read_data("tbl_gallery","*","type='5'","id desc",null,$pagin["perPage"], $pagin['start']);
+            $pagin = $this->M_website->myPagination('tbl_gallery', "id", "type='5' and status='1'",6);
+            $read_data = $this->M_crud->read_data("tbl_gallery","*","type='5' and status='1'","id desc",null,$pagin["perPage"], $pagin['start']);
             if($read_data != null){
                 $title.='Fasilitas';
                 foreach($read_data as $row){

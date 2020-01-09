@@ -134,7 +134,7 @@ if(count($read_data) > 1){
         <div class="blog-two__carousel owl-carousel owl-theme">
             <?php if($gallery != null){ foreach($gallery as $row):?>
             <div class="item">
-                <div class="blog-two__single" style="background-image: url(<?=$row['image']?>);">
+                <div class="blog-two__single" style="background-image: url(<?=$row['image']?>);background-size: cover;background-position: center;">
                     <div class="blog-two__inner">
                         <a href="<?=base_url("detail?type=gallery&title=".$row['slug'])?>" class="blog-two__date">
                             <span><?=date('d',strtotime($row['created_at']))?></span>
