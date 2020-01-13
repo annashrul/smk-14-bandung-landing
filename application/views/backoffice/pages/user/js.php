@@ -121,7 +121,7 @@
 
         var fd =  new FormData();
         fd.append( 'nama', nama);
-        fd.append( 'username', username);
+        fd.append( 'username', username.replace(/\s/g, ''));
         fd.append( 'password', password)
         fd.append( 'level', level);
         fd.append( 'status', status);
@@ -210,7 +210,8 @@
         var fd =  new FormData();
         fd.append( 'id', id);
         fd.append( 'nama', nama);
-        fd.append( 'username', username);
+        fd.append( 'username', username.replace(/\s/g, ''));
+
         fd.append( 'password', password)
         fd.append( 'level', level);
         fd.append( 'status', status);

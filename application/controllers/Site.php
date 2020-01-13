@@ -552,7 +552,7 @@ class Site extends CI_Controller{
 		$action = $_GET['aksi'];
 		$where = array();
 		if($action=='get'){
-			if(!$this->akses) $where['id_member']=$this->id;
+			// if(!$this->akses) $where['id_member']=$this->id;
 			if(isset($_GET['q'])) $where['title like']="%".$_GET['q']."%";
 
 			$page= isset($_GET['page'])?$_GET['page']:1;

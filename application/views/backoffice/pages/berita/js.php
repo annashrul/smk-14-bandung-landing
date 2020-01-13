@@ -133,7 +133,7 @@
                                                         '<span class="caret"></span>'+
                                                     ' </button>'+
                                                         '<ul class="dropdown-menu">'+
-                                                            '<li><a target="_blank" href="<?=base_url()?>berita/'+item.slug+'"><i class="fa fa-eye"></i> Detail</a></li>'+
+                                                            '<li><a target="_blank" href="<?=base_url()?>detail?type=berita&title='+item.slug+'"><i class="fa fa-eye"></i> Detail</a></li>'+
                                                             '<li><a href="#" onclick="update(\''+item.id+'\')"><i class="fa fa-edit"></i> Update</a></li>'+
                                                             '<li <?= (int)$this->session->grant_access!=1?'style="display:none"':''?>>'+
                                                             (item.status==0?'<li  <?= (int)$this->session->grant_access!=1?'style="display:none"':''?>><a href="#"  onclick="approval(\''+item.id+'\',\'1\')"><i class="fa fa-check"></i> Aktifkan</a></li>':'<li  <?= (int)$this->session->grant_access!=1?'style="display:none"':''?>><a href="#"  onclick="approval(\''+item.id+'\',\'0\')"><i class="fa fa-close"></i> Non-Aktifkan</a></li>')+

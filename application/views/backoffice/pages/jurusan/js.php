@@ -26,6 +26,8 @@
             set_ckeditor('visi')
             set_ckeditor('misi')
             event.preventDefault();
+            $('#addBerita')[0].reset();
+
             // $("#form-berita").modal('show');
             $("#form-berita").modal();
             if(!$("#form-berita").parent().is('body')) $("#form-berita").appendTo("body");
@@ -130,6 +132,8 @@
 
     function update(id){
         // $('.modal-body').html(id)
+        $('#addBerita')[0].reset();
+
         set_ckeditor('caption')
         set_ckeditor('visi')
         set_ckeditor('misi')
