@@ -61,7 +61,7 @@
                         <li>
                             <a href="#">Berita</a>
                             <ul class="sub-menu">
-                                <?php $read_data=$this->M_crud->read_data('tbl_category','*'); foreach ($read_data as $row) { ?>
+                                <?php $read_data=$this->M_crud->read_data('tbl_category','*','id !=4'); foreach ($read_data as $row) { ?>
                                     <li><a href="<?=base_url("berita?title=".$row['slug'])?>"><?=$row['title']?></a></li>
                                 <?php }?>
                             </ul>

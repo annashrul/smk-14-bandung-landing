@@ -169,4 +169,8 @@ class M_website extends CI_Model
         );
     }
 
+    public function noData(){
+        return '<h1 class="text-center">Tidak Ada Data</h1>';
+    }
+
 }
