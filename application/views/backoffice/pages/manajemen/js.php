@@ -9,8 +9,8 @@
         if(searchParams.has('page')) get(searchParams.get('page'));
         else get();
         loadCategory();
-            $("#tambah").on('click',function(event) {
-                set_ckeditor('caption');
+        $("#tambah").on('click',function(event) {
+            set_ckeditor('caption');
                 loadJabatan();
 
                 event.preventDefault();
@@ -82,6 +82,10 @@
                     get(1, data);
                 }
         }); 
+        $('#form-berita').on('hidden.bs.modal', function (e) {
+            // do something when this modal window is closed...
+            CKEDITOR.instances.editor.destroy();
+        });
             
     });
 
@@ -178,7 +182,7 @@
                     $("#btn_simpan").text("Update")
                     
                     $('#preview').attr("src",res.image);
-                    CKEDITOR.instances['caption'].setData(res.deskripsi);
+                    CKReset(res.deskripsi);
                     // $(".modal-body").html(data);
                 }else{
                     $('#form-berita').modal('hide');
@@ -229,13 +233,13 @@
                 success: function(data){
                     NProgress.done();HoldOn.close();
                     const res = data;
+                    get();
                     if(res){
-                        $("#form-berita").modal('hide');
                         toastr["success"]("Berhasil memperbaharui data.")
+                        $("#form-berita").modal('hide');
                     }else{
                         toastr["error"]("Gagal memperbaharui data.")
                     }
-                    get();
 
                     // id(result.)
                 }
@@ -286,13 +290,13 @@
                         },
                         success: function(data){
                             NProgress.done();
+                            get();
                             if(data){
+                                toastr["success"]("Berhasil menambah data.")
                                 $("#form-berita").modal('hide');
-                            toastr["success"]("Berhasil menambah data.")
                             }else{
                                 toastr["error"]("Gagal menambah data.")
                             }
-                            get();
 
                     // id(result.)
                         }

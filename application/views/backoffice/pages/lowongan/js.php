@@ -8,7 +8,7 @@
         
         let searchParams = new URLSearchParams(window.location.search)
         if(searchParams.has('page')) get(searchParams.get('page'));
-        else get();
+        else get(1);
         $("#btn_search").click(function(event) {
             event.preventDefault();
             var data = $("#search").val();
@@ -24,6 +24,7 @@
             $("#tambah").on('click',function(event) {
                 set_ckeditor('caption')
                 event.preventDefault();
+                
                 // $("#form-berita").modal('show');
                 $("#form-berita").modal();
                 if(!$("#form-berita").parent().is('body')) $("#form-berita").appendTo("body");
@@ -45,7 +46,7 @@
                 event.preventDefault();
                 localStorage.removeItem('berita_cate')
                 $(".list-group-item").removeClass("active");
-                get();
+                get(1);
             });
             
            
@@ -56,6 +57,11 @@
                 }else{
                     goUpdate();
                 }
+            });
+
+            $('#form-berita').on('hidden.bs.modal', function (e) {
+            // do something when this modal window is closed...
+                CKEDITOR.instances.editor.destroy();
             });
 
             
@@ -204,19 +210,14 @@
                 },
                 success: function(data){
                     NProgress.done();HoldOn.close();
-                    const res = data;
-                    if(res){
-                        $("#form-berita").modal('hide');
+                    console.log(data);
+                    get(1);
+                    if(data){
                         toastr["success"]("Berhasil memperbaharui data.")
+                        $("#form-berita").modal('hide');
                     }else{
                         toastr["error"]("Gagal memperbaharui data.")
                     }
-                    CKEditor.destroy();
-
-
-                    get();
-
-                    // id(result.)
                 }
             });
         }
@@ -243,36 +244,31 @@
 
         
         if(title!=="" &&  caption!==""){
-            console.log("oke")
             $.ajax({
-                        url:  "<?=urls('beritaAction')?>?aksi=create",
-                        type: "post",
-                        headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                        data:fd,
-                        processData: false,
-                        contentType: false,
-                        dataType: 'json',
-                        beforeSend: function(result){
-                            NProgress.start();
-                        },
-                        success: function(data){
-                            NProgress.done();
-                            if(data){
-                                $("#form-berita").modal('hide');
-                            toastr["success"]("Berhasil menambah data.")
-                            }else{
-                                toastr["error"]("Gagal menambah data.")
-                            }
-                            get();
-CKEditor.destroy();
-
-
-                    // id(result.)
-                        }
-                    });
+                url:  "<?=urls('beritaAction')?>?aksi=create",
+                type: "post",
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                data:fd,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                beforeSend: function(result){
+                    NProgress.start();
+                },
+                success: function(data){
+                    NProgress.done();
+                    get(1);
+                    if(data){
+                        toastr["success"]("Berhasil menambah data.")
+                        $("#form-berita").modal('hide');
+                    }else{
+                        toastr["error"]("Gagal menambah data.")
+                    }
                 }
+            });
+        }
     }
 
     function approval(status,id){
@@ -317,7 +313,7 @@ CKEditor.destroy();
                             'error'
                         )
                     }
-                    get();
+                    get(1);
                 }
             });
             
@@ -359,7 +355,7 @@ CKEditor.destroy();
                     }else{
                         toastr["error"]("Gagal menghapus data.")
                     }
-                    get();
+                    get(1);
                 }
             });
             

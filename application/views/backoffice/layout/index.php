@@ -122,6 +122,14 @@ $this->load->view('backoffice/layout/side_menu')
 
 		});
 	}
+	function CKReset(caption){
+		console.log(CKEDITOR.instances['caption']);
+		if (CKEDITOR.instances['caption']) {
+			CKEDITOR.instances['caption'].destroy(true);    
+		}//if
+		CKEDITOR.replace('caption');
+		CKEDITOR.instances['caption'].setData(caption);
+	}//fn
 	function readURL(input, img) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();

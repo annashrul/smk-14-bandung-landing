@@ -81,6 +81,11 @@
                 }
             });
 
+            $('#form-berita').on('hidden.bs.modal', function (e) {
+                // do something when this modal window is closed...
+                CKEDITOR.instances.editor.destroy();
+            });
+
             
     });
 
@@ -223,13 +228,13 @@
                 success: function(data){
                     NProgress.done();HoldOn.close();
                     const res = data;
+                    get();
                     if(res){
-                        $("#form-berita").modal('hide');
                         toastr["success"]("Berhasil memperbaharui data.")
+                        $("#form-berita").modal('hide');
                     }else{
                         toastr["error"]("Gagal memperbaharui data.")
                     }
-                    get();
 
                     // id(result.)
                 }
@@ -274,13 +279,13 @@
                 },
                 success: function(data){
                     NProgress.done();
+                    get();
                     if(data){
+                        toastr["success"]("Berhasil menambah data.")
                         $("#form-berita").modal('hide');
-                    toastr["success"]("Berhasil menambah data.")
                     }else{
                         toastr["error"]("Gagal menambah data.")
                     }
-                    get();
 
                     // id(result.)
                 }

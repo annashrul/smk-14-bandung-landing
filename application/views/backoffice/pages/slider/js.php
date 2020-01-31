@@ -207,7 +207,7 @@
             fd.append( 'image', $('input[type=file]')[0].files[0])
         }
 
-        if(judul!=="" && link!==""){
+        if(judul!==""){
 
             $.ajax({
                 url:  "<?=urls('galleryAction')?>?aksi=update",
